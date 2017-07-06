@@ -32,6 +32,12 @@ public class playerStats : MonoBehaviour
 
 	}
 
+
+    public void RemoveHealth(int Damage) {
+        _CurrentHealth -= Damage;
+    }
+
+
     void OnObjectDeath() {
         // Do Soldier-of-Fortune Death Sequence
         Destroy(gameObject);

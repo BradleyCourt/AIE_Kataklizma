@@ -40,13 +40,6 @@ public class PlayerController : MonoBehaviour {
         }
 
         cc.Move(moveDirection * Time.deltaTime);
-
-        //if (Input.GetMouseButtonDown(0)) {
-        //    if (!animate.IsInTransition(0)) {
-        //        animate.SetBool("Attacking", true);
-        //        Debug.Log("Hah!");
-        //    }
-        //}
     }
 
     void Attack() {
