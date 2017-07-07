@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AgentAI : MonoBehaviour {
+public class Agent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
