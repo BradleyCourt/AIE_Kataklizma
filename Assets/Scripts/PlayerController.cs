@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int Speed = 5;
-    public int Charge = 50; // not implemented yet, intention is once used movement is limited and you charge for X seconds or until collision with something
+    public float DashLimit = 1;
+    public int charge = 50; // not implemented yet, intention is once used movement is limited and you charge for X seconds or until collision with something
     public float JumpVel = 8.0F;
     public int TempDamage = 0;
     public CharacterController Cc;
@@ -28,11 +29,24 @@ public class PlayerController : MonoBehaviour
     {
         if (HasControl)
         {
-             moveDirection = new Vector3(Input.GetAxis("Horizontal") * Speed, moveDirection.y, Input.GetAxis("Vertical") * Speed);
+             moveDirection = new Vector3(Input.GetAxis("MoveHorizontal") * Speed, moveDirection.y, Input.GetAxis("MoveVertical") * Speed);
         }
+
         if (Input.GetButton("Charge"))
         {
             HasControl = false;
+ 
+            DashLimit -= Time.deltaTime;
+            if (DashLimit >= 0)
+            {
+                moveDirection = new Vector3(0, 0, charge);
+            }
+            else
+            {
+               HasControl = true;
+                Debug.Log("stoppppp");
+                DashLimit = 1;
+            }
         }
 
 
