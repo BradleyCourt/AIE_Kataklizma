@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int speed = 5;
+    public int Speed = 5;
     public int Charge = 50; // not implemented yet, intention is once used movement is limited and you charge for X seconds or until collision with something
     public float JumpVel = 8.0F;
     public int TempDamage = 0;
-    public CharacterController cc;
+    public CharacterController Cc;
     public GameObject Player;
-    public bool isCharging = false;
+    public bool HasControl { get; set;}
     //   private Vector3 moveDirection = Vector3.zero;
 
     private Vector3 moveDirection;
@@ -20,14 +20,19 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        cc = GetComponent<CharacterController>();
+        Cc = GetComponent<CharacterController>();
+        HasControl = true;
     }
     // Update is called once per frame
     void Update()
     {
-        if (isCharging == false)
+        if (HasControl)
         {
-             moveDirection = new Vector3(Input.GetAxis("Horizontal") * speed, moveDirection.y, Input.GetAxis("Vertical") * speed);
+             moveDirection = new Vector3(Input.GetAxis("Horizontal") * Speed, moveDirection.y, Input.GetAxis("Vertical") * Speed);
+        }
+        if (Input.GetButton("Charge"))
+        {
+            HasControl = false;
         }
 
 
@@ -36,7 +41,7 @@ public class PlayerController : MonoBehaviour
             Attack();
 
         // Gravity at current does not work!  
-        if (cc.isGrounded)
+        if (Cc.isGrounded)
         {
 
             if (Input.GetButtonDown("Jump"))
@@ -50,7 +55,7 @@ public class PlayerController : MonoBehaviour
             moveDirection += Physics.gravity * Time.deltaTime;
         }
 
-        cc.Move(moveDirection * Time.deltaTime);
+        Cc.Move(moveDirection * Time.deltaTime);
     }
 
     void Attack()
