@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public int Speed = 5;
-    public float DashLimit = 1;
+    public float ChargeLimit = 1;
     public int charge = 50; // not implemented yet, intention is once used movement is limited and you charge for X seconds or until collision with something
     public float JumpVel = 8.0F;
     public int TempDamage = 0;
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         {
             if (!HasControl)
             {
-                DashLimit = 1;
+                ChargeLimit = 1;
             }
             HasControl = false;
         }
@@ -60,15 +60,15 @@ public class PlayerController : MonoBehaviour
         else
         { 
             // there needs to be a check where if the player is charging, if it collides with an object it stops charging, but if it collides with an enemy, it does damage
-            DashLimit -= Time.deltaTime;
-            if (DashLimit >= 0)
+            ChargeLimit -= Time.deltaTime;
+            if (ChargeLimit >= 0)
             {
                 moveDirection = new Vector3(0, 0, charge);
             }
             else
             {
                 HasControl = true;
-                DashLimit = 1;
+                ChargeLimit = 1;
             }
         }
         Cc.Move(moveDirection * Time.deltaTime);
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void FireAttack() // mainly a cut and paste from the function above, untested ( shouuuuuld work, just has to be called from the attack
+    void FireAttack() // mainly a cut and paste from the function above, untested ( shouuuuuld work, just has to be called from the attack  )
     {
 
         var centreOffset = transform.localToWorldMatrix.MultiplyVector(attackZone.center);
@@ -118,6 +118,16 @@ public class PlayerController : MonoBehaviour
 
         }
 
+    }
+
+    void OnTriggerEnter(Collider col) 
+    {
+
+        if (col.gameObject.tag == "Enemy")
+        {
+            ChargeLimit = 0;
+            Debug.Log("hit!");
+        }
     }
 
 }
