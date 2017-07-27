@@ -44,19 +44,20 @@ public class ObserverDirector : MonoBehaviour {
 
             Selected.Observer.PositionTheta += Input.GetAxis("ViewHorizontal");
             Selected.Observer.PositionPhi = Mathf.Clamp(Selected.Observer.PositionPhi + Input.GetAxis("ViewVertical"), Selected.MinPitch, Selected.MaxPitch);
+            
+            var yaw = Quaternion.Euler(0, Selected.Observer.PositionTheta, 0);
+            var pitch = Quaternion.Euler(-Selected.Observer.PositionPhi, 0, 0);
 
-            //if (distance <= 1.0f)
-            //    zoom = Mathf.Max(1.0f, zoom);
 
-            //var offset = direction;
-            //offset = yawDelta * offset;
-            //offset = pitchDelta * offset;
-            //offset = zoom * offset;
+            var offset = Vector3.forward * Selected.Observer.Distance;
+
+            offset = pitch * offset;
+            offset = yaw * offset;
 
             // Rotate camera around target
-            //Selected.Observer.transform.position = (Target.transform.position + offset);
+            Selected.Observer.transform.position = (Target.transform.position + offset);
 
+            Debug.Log("View From: " + Selected.Observer.PositionTheta.ToString("N2") + " Theta, " + Selected.Observer.PositionPhi.ToString("N2") + " Phi.");
         }
-
     }
 }

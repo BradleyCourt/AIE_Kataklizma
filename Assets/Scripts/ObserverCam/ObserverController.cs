@@ -14,10 +14,13 @@ public class ObserverController : MonoBehaviour {
     private Vector3 Offset;
 
     [HideInInspector]
-    public float PositionTheta = 0; // "Yaw"
+    public float PositionTheta = 0; // "Yaw" degrees
 
     [HideInInspector]
-    public float PositionPhi = 20; // "Pitch"
+    public float PositionPhi = 20; // "Pitch" degrees
+
+    [HideInInspector]
+    public float Distance = 10; // Distance in world units
 
 	// Use this for initialization
 	void Start () {
