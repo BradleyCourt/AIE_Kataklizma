@@ -2,80 +2,107 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+[RequireComponent(typeof(ObserverDirector))]
+[RequireComponent(typeof(CharacterController))]
+public class PlayerController : MonoBehaviour {
+
     public int Speed = 5;
     public float ChargeLimit = 1;
     public int charge = 50; // not implemented yet, intention is once used movement is limited and you charge for X seconds or until collision with something
     public float JumpVel = 8.0F;
     public int TempDamage = 0;
-    public CharacterController Cc;
-    public GameObject Player;
-    public bool HasControl { get; set; }
+
+    public bool IsControllable { get; set; }
     //   private Vector3 moveDirection = Vector3.zero;
 
     private Vector3 moveDirection;
 
     public BoxCollider attackZone; // melee attack
     public CapsuleCollider fireBreath; // fire breath attack
+
+    private ObserverDirector Observers;
+    private CharacterController Cc;
+
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
+        Observers = GetComponent<ObserverDirector>();
         Cc = GetComponent<CharacterController>();
-        HasControl = true;
+
+        IsControllable = false;
+
+        // In 2 seconds, Set Character as controllable
+        StartCoroutine(this.DelayedAction(2.0f, 
+            () => {
+                IsControllable = true;
+                Debug.Log("Delayed Log!");
+            }));
     }
+
+
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Charge"))
-        {
-            if (!HasControl)
-            {
+    void Update() {
+        if (Input.GetButtonDown("Charge")) {
+            if (!IsControllable) {
                 ChargeLimit = 1;
             }
-            HasControl = false;
+            IsControllable = false;
+            
         }
 
-        if (HasControl)
-        {
-            moveDirection = new Vector3(Input.GetAxis("MoveHorizontal") * Speed, moveDirection.y, Input.GetAxis("MoveVertical") * Speed);
+        UpdateMotion();
 
+        if (IsControllable) {
             if (Input.GetMouseButtonDown(0))
                 MeleeAttack();
 
-            if (Cc.isGrounded)
-            {
+            if (Cc.isGrounded) {
 
-                if (Input.GetButtonDown("Jump"))
-                {
+                if (Input.GetButtonDown("Jump")) {
                     moveDirection.y = JumpVel;
                 }
-            }
-            else
-            {
+            } else {
 
                 moveDirection += Physics.gravity * Time.deltaTime;
             }
-        }
-        else
-        { 
+        } else {
             // there needs to be a check where if the player is charging, if it collides with an object it stops charging, but if it collides with an enemy, it does damage
             ChargeLimit -= Time.deltaTime;
-            if (ChargeLimit >= 0)
-            {
-                moveDirection = new Vector3(0, 0, charge);
-            }
-            else
-            {
-                HasControl = true;
+            if (ChargeLimit >= 0) {
+                moveDirection = transform.forward;
+            } else {
+                IsControllable = true;
                 ChargeLimit = 1;
             }
         }
+
         Cc.Move(moveDirection * Time.deltaTime);
     }
 
-    void MeleeAttack()
-    {
+
+    /// <summary>
+    /// Apply captured motion to character.  Update character velocity.
+    /// </summary>
+    void UpdateMotion() {
+
+        if (!IsControllable) return; // Player-control disabled
+
+        var cameraDirection = Observers.Target.transform.position - Observers.Selected.Observer.transform.position;
+
+        var characterFwd = new Vector3(cameraDirection.x, 0, cameraDirection.z).normalized;
+        var characterRight = new Vector3(cameraDirection.z, 0, -cameraDirection.x).normalized;
+
+        var motion = characterFwd * Input.GetAxis("MoveVertical") + characterRight * Input.GetAxis("MoveHorizontal");
+        motion.Normalize();
+
+        Observers.Target.transform.LookAt(Observers.Target.transform.position + motion);
+        //Observers.TargetRb.velocity = motion * 5.0f;
+
+        /// NOTE: Would really like to remove CharacterController dependency.
+        Cc.SimpleMove(motion * 5.0f);
+    }
+
+
+    void MeleeAttack() {
 
         var centreOffset = transform.localToWorldMatrix.MultiplyVector(attackZone.center);
         var centre = transform.position + centreOffset;
@@ -83,13 +110,11 @@ public class PlayerController : MonoBehaviour
 
         Collider[] targets = Physics.OverlapBox(centre, size, new Quaternion(), ~8);
 
-        foreach (Collider target in targets)
-        {
+        foreach (Collider target in targets) {
             if (target.gameObject.tag == "Player") continue;
 
             var playerStats = target.GetComponent<playerStats>();
-            if (playerStats)
-            {
+            if (playerStats) {
                 playerStats.RemoveHealth(TempDamage);
             }
 
@@ -106,13 +131,11 @@ public class PlayerController : MonoBehaviour
 
         Collider[] targets = Physics.OverlapCapsule(centre, size, ~8);
 
-        foreach (Collider target in targets)
-        {
+        foreach (Collider target in targets) {
             if (target.gameObject.tag == "Player") continue;
 
             var playerStats = target.GetComponent<playerStats>();
-            if (playerStats)
-            {
+            if (playerStats) {
                 playerStats.RemoveHealth(TempDamage);
             }
 
@@ -120,14 +143,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider col) 
-    {
+    void OnTriggerEnter(Collider col) {
 
-        if (col.gameObject.tag == "Enemy")
-        {
+        if (col.gameObject.tag == "Enemy") {
             ChargeLimit = 0;
             Debug.Log("hit!");
         }
     }
+
 
 }
