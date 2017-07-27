@@ -6,7 +6,7 @@ public class playerStats : MonoBehaviour
 {
     public int MaxHealth;
 
-    public int _CurrentHealth;
+    private int _CurrentHealth;
     public int CurrentHealth {
         get { return _CurrentHealth; }
         set {
@@ -14,7 +14,11 @@ public class playerStats : MonoBehaviour
             _CurrentHealth = Mathf.Max(value, 0);
 
             if (_CurrentHealth <= 0)
+            {
+
                 BroadcastMessage("OnObjectDeath", SendMessageOptions.DontRequireReceiver);
+                Debug.Log("Object Died: " + gameObject.name);
+            }
         }
     }
 
@@ -24,6 +28,7 @@ public class playerStats : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        CurrentHealth = MaxHealth;
     }
 	
 	// Update is called once per frame
@@ -34,13 +39,8 @@ public class playerStats : MonoBehaviour
 
 
     public void RemoveHealth(int Damage) {
-        _CurrentHealth -= Damage;
+        CurrentHealth -= Damage;
     }
 
-
-    void OnObjectDeath() {
-        // Do Soldier-of-Fortune Death Sequence
-        Destroy(gameObject);
-    }
 }
 
