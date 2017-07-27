@@ -19,8 +19,8 @@ public class ObserverController : MonoBehaviour {
     [HideInInspector]
     public float PositionPhi = 20; // "Pitch" degrees
 
-    [HideInInspector]
-    public float Distance = 10; // Distance in world units
+    //[HideInInspector]
+    public float Distance = 15; // Distance in world units
 
 	// Use this for initialization
 	void Start () {
