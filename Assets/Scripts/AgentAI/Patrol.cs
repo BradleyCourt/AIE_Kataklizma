@@ -10,10 +10,10 @@ public class Patrol : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
     private GameObject player;
-    private bool isInRange;
+
     void Start()
     {
-        bool isInRange = false;
+      
         agent = GetComponent<NavMeshAgent>();
 
         // Disabling auto-braking allows for continuous movement
@@ -21,7 +21,7 @@ public class Patrol : MonoBehaviour
         // approaches a destination point).
         agent.autoBraking = false;
 
-        //GotoNextPoint();
+        GotoNextPoint();
         player = GameObject.FindGameObjectWithTag("Player");
 
         agent.SetDestination(player.transform.position);
@@ -43,7 +43,7 @@ public class Patrol : MonoBehaviour
 
         // Goto the selected destination
         agent.destination = points[destPoint].position;
-
+        agent.Resume();
         // Pull random element from array:
         //var selected = points[Random.Range(0, points.Length)];
     }
@@ -53,16 +53,35 @@ public class Patrol : MonoBehaviour
     {
         // Choose the next destination point when the agent gets
         // close to the current one.
-        if (!agent.pathPending && agent.remainingDistance > 5)// && isInRange != true)
-            //GotoNextPoint();
-            agent.SetDestination(player.transform.position);
-        else if (!agent.pathPending && agent.remainingDistance < 5)// && isInRange != true)
-        {
-           //isInRange = true;
-            agent.SetDestination(agent.transform.position);
-            Debug.Log("stopmoving");
-        }
+        float dist = Vector3.Distance(transform.position, player.transform.position);
 
+        if (!agent.pathPending)
+        {
+            // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
+            if (dist > 10)
+            {
+                // very far away, keep patrolling
+                if (agent.remainingDistance < 0.1f)
+                    GotoNextPoint();
+            }
+            else if (dist > 5)
+            {
+                // move closer to player
+                agent.SetDestination(player.transform.position);
+                agent.Resume();
+            }
+            else
+            {
+                // stop and fire
+                agent.Stop(); // we're within 5m so stop
+                Debug.Log("stopmoving");
+            }
+
+        }
+    }
+
+    void SetDestination(Vector3 pt)
+    {
 
     }
 }
