@@ -6,10 +6,48 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour {
 
-    public int Speed = 5;
-    public float ChargeLimit = 1;
-    public int charge = 50; // not implemented yet, intention is once used movement is limited and you charge for X seconds or until collision with something
+
+    enum AnimState {
+        Idle,
+        Moving,
+        Jumping,
+        Attacking,
+        Charging,
+    }
+
+    private AnimState State = AnimState.Idle;
+
+    public float Speed = 5;
+    public float ChargeSpeed = 7.5f;
+
+    //public float ChargeLimit = 1; // Maximum number of allowed charges
+    public float ChargeCooldown = 5; // Time before next charge is available
+    public float ChargeDuration = 1.8f; // Time charge lasts for if not interrupted
+    private bool IsChargeReady = true;
+    private bool CanCharge {
+        get {
+            return IsChargeReady && Cc.isGrounded && (State == AnimState.Idle || State == AnimState.Moving);
+        }
+    }
+
+
+    public float MeleeAttackCooldown = 1;
+    public float MeleeAttackDuration = 0.3f;
+    private bool IsMeleeAttackReady = true;
+    private bool CanAttack {
+        get {
+            return IsMeleeAttackReady;
+        }
+    }
+
+    //private int ChargeCount = 0;
+
+    
     public float JumpVel = 8.0F;
+    public float JumpCooldown = 0;
+    public float JumpDuration = 0.2f;
+    private bool CanJump = true;
+
     public int TempDamage = 0;
 
     public bool IsControllable { get; set; }
@@ -37,19 +75,40 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetButtonDown("Charge")) {
-            if (!IsControllable) {
-                ChargeLimit = 1;
+
+        // Process input
+        if (IsControllable) {
+            if (CanCharge && Input.GetButtonDown("Charge")) {
+                DoCharge();
             }
-            IsControllable = false;
+
+            if (CanAttack && Input.GetButtonDown("Fire1"))
+                DoMeleeAttack();
+
+            if (Cc.isGrounded && CanJump && Input.GetButtonDown("Jump"))
+                DoJump();
             
+
+            
+
+
         }
 
-        UpdateMotion();
+        // Move character
+        Vector3 motion;
+        if (State != AnimState.Charging) {
+            motion = GetPlayerMotion() * ChargeSpeed;
+            Observers.Target.transform.LookAt(Observers.Target.transform.position + motion);
+        } else {
+            motion = transform.forward * ChargeSpeed;
+        }
+        
+        Cc.SimpleMove(motion);
 
+
+        /////////////////
         if (IsControllable) {
-            if (Input.GetMouseButtonDown(0))
-                MeleeAttack();
+
 
             if (Cc.isGrounded) {
 
@@ -58,17 +117,11 @@ public class PlayerController : MonoBehaviour {
                 }
             } else {
 
-                moveDirection += Physics.gravity * Time.deltaTime;
+                //moveDirection += Physics.gravity * Time.deltaTime;
             }
         } else {
             // there needs to be a check where if the player is charging, if it collides with an object it stops charging, but if it collides with an enemy, it does damage
-            ChargeLimit -= Time.deltaTime;
-            if (ChargeLimit >= 0) {
-                moveDirection = transform.forward;
-            } else {
-                IsControllable = true;
-                ChargeLimit = 1;
-            }
+
         }
 
         //Cc.Move(moveDirection * Time.deltaTime);
@@ -78,9 +131,9 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// Apply captured motion to character.  Update character velocity.
     /// </summary>
-    void UpdateMotion() {
+    Vector3 GetPlayerMotion() {
 
-        if (!IsControllable) return; // Player-control disabled
+        if (!IsControllable) return Vector3.zero; // Player-control disabled
 
         var cameraDirection = Observers.Target.transform.position - Observers.Selected.Observer.transform.position;
 
@@ -90,16 +143,71 @@ public class PlayerController : MonoBehaviour {
         var motion = characterFwd * Input.GetAxis("MoveVertical") + characterRight * Input.GetAxis("MoveHorizontal");
         motion.Normalize();
 
-        Observers.Target.transform.LookAt(Observers.Target.transform.position + motion);
-        //Observers.TargetRb.velocity = motion * 5.0f;
+        
 
-        /// NOTE: Would really like to remove CharacterController dependency.
-        Cc.SimpleMove(motion * 5.0f);
+        return motion;
     }
 
 
-    void MeleeAttack() {
+    /// <summary>
+    /// 
+    /// </summary>
+    void DoCharge() {
+        IsControllable = false;
+        IsChargeReady = false;
+        State = AnimState.Charging;
 
+        // Setup delay for returning control
+        StartCoroutine(this.DelayedAction(ChargeDuration,
+            () => {
+                if (State == AnimState.Charging) { // If we're still 'charging' (ie, if we haven't hit anything already)
+                    State = AnimState.Idle;
+                    IsControllable = true;
+                }
+            }));
+
+        // Setup delay for cooldown
+        StartCoroutine(this.DelayedAction(ChargeCooldown,
+            () => {
+                IsChargeReady = true;
+            }));
+
+        // Do Charge
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    void DoJump() {
+
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    void DoMeleeAttack() {
+        State = AnimState.Attacking;
+        IsMeleeAttackReady = false;
+
+        // Setup delay for returning control
+        StartCoroutine(this.DelayedAction(MeleeAttackDuration,
+            () => {
+                if (State == AnimState.Attacking) {
+                    State = AnimState.Idle;
+                }
+            }));
+
+        // Setup delay for cooldown
+        StartCoroutine(this.DelayedAction(MeleeAttackCooldown,
+            () => {
+                IsMeleeAttackReady = true;
+            }));
+
+
+
+        // Do Attack
         var centreOffset = transform.localToWorldMatrix.MultiplyVector(attackZone.center);
         var centre = transform.position + centreOffset;
         var size = transform.localToWorldMatrix.MultiplyVector(attackZone.size);
@@ -140,12 +248,15 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider col) {
+        
 
         if (col.gameObject.tag == "Enemy") {
-            ChargeLimit = 0;
+            State = AnimState.Idle;
             Debug.Log("hit!");
         }
     }
 
-
+    private void OnCollisionEnter(Collision collision) {
+        //IsCharging = false;
+    }
 }

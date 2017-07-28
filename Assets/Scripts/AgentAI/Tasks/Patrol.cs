@@ -38,7 +38,6 @@ public class Patrol : MonoBehaviour
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
         destPoint = Random.Range(0, points.Length);
-        Debug.Log(destPoint);
 
 
         // Goto the selected destination

@@ -27,6 +27,7 @@ public class ObserverDirector : MonoBehaviour {
             throw new System.InvalidOperationException("ObserverDirector REQUIRES at least one Observer Definition");
 
         Selected = Observers[Random.Range(0, Observers.Count)];
+        Selected.Observer.Target = Target;
 
         TargetRb = Target.GetComponent<Rigidbody>();
         
