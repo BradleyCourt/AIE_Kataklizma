@@ -26,16 +26,12 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start() {
         Observers = GetComponent<ObserverDirector>();
+        if (Observers == null) throw new System.ApplicationException("PlayerController requires an ObserverDirector sibling");
+
         Cc = GetComponent<CharacterController>();
+        if (Cc == null) throw new System.ApplicationException("PlayerController requires a CharacterController sibling");
 
-        IsControllable = false;
-
-        // In 2 seconds, Set Character as controllable
-        StartCoroutine(this.DelayedAction(2.0f, 
-            () => {
-                IsControllable = true;
-                Debug.Log("Delayed Log!");
-            }));
+        IsControllable = true;
     }
 
 
