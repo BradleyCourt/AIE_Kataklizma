@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        Cc.Move(moveDirection * Time.deltaTime);
+        //Cc.Move(moveDirection * Time.deltaTime);
     }
 
 
