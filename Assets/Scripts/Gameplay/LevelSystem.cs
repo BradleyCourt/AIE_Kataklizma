@@ -4,8 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class LevelSystem : MonoBehaviour
 {
+
+    public List<int> XpThresholds;
+
     public int XP;
-    public int CurrentLevel;
+    private int CurrentLevel;  // Character's 'evolution' level
+    public int CurrentXpThreshold {  get { return XpThresholds[Mathf.Min(CurrentLevel - 1, XpThresholds.Count - 1)]; } }
+    public bool HasMoreLevels {  get { return CurrentLevel < XpThresholds.Count; } }
 
     int totaldifference;
     int experienceToNextLevel;
@@ -15,45 +20,37 @@ public class LevelSystem : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        CurrentLevel = 1;
         xpBar.value = 0;
+        xpBar.maxValue = CurrentXpThreshold;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        
-        if (XP > 900 && CurrentLevel == 3)
-        {
-            XP = 900;
-            CurrentLevel = 3;
-        }
- 
-        UpdateXP(5); // checks how much xp to add every frame
-        xpBar.value = updateXPBar(); 
+
+        UpdateXP(1); // checks how much xp to add every frame
+        Debug.Log("XP: " + XP);
 	}
 
     public void UpdateXP (int experiece)
     {
         XP += experiece;
 
-        int Charlvl = (int)(0.1f * Mathf.Sqrt(XP));
+        bool shouldLevelUp = HasMoreLevels && XP >= CurrentXpThreshold;
 
-        if (Charlvl != CurrentLevel) // if the characters level is no longer = to your current level
+       // int Charlvl = (int)(0.1f * Mathf.Sqrt(XP));
+
+        if (shouldLevelUp) // if the characters level is no longer = to your current level
         {
-            CurrentLevel = Charlvl; // add level
+            CurrentLevel++; // add level
+            xpBar.maxValue = CurrentXpThreshold; // updates the xp threshold
+            Debug.Log("I gained a level   " + CurrentLevel);
         }
 
-        experienceToNextLevel = 50 * (CurrentLevel + 1) * (CurrentLevel + 1);
+        xpBar.value = XP;
 
-        differencexp = experienceToNextLevel - XP;
-
-        
-
-        //total difference / difference xp is what needs to be displayed on the UI
      }
 
-    float updateXPBar()
-    {
-        return totaldifference = experienceToNextLevel - (100 * CurrentLevel * CurrentLevel);
-    }
+
 }
