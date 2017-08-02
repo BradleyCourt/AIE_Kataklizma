@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ObserverDirector))]
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour {
 
+    [System.Serializable]
+    public struct Action {
+        public float Cooldown;
+        public float Duration;
+        [HideInInspector]
+        public bool IsReady;
+        
+        public System.Func<bool> CanPerform;
+    }
 
+    [System.Serializable]
     enum AnimState {
         Idle,
         Moving,
@@ -15,22 +25,26 @@ public class PlayerController : MonoBehaviour {
         Charging,
     }
 
+    private bool IsGrounded {  get {
+            return Physics.Raycast(transform.position, -transform.up, 1.0001f);
+        } }
+
     private AnimState State = AnimState.Idle;
 
     public float Speed = 5;
-    public float ChargeSpeed = 7.5f;
 
-    //public float ChargeLimit = 1; // Maximum number of allowed charges
+    
+    public float ChargeSpeed = 7.5f;
     public float ChargeCooldown = 5; // Time before next charge is available
     public float ChargeDuration = 1.8f; // Time charge lasts for if not interrupted
     private bool IsChargeReady = true;
     private bool CanCharge {
         get {
-            return IsChargeReady && Cc.isGrounded && (State == AnimState.Idle || State == AnimState.Moving);
+            return IsChargeReady && IsGrounded && (State == AnimState.Idle || State == AnimState.Moving);
         }
     }
 
-
+    
     public float MeleeAttackCooldown = 1;
     public float MeleeAttackDuration = 0.3f;
     private bool IsMeleeAttackReady = true;
@@ -39,14 +53,13 @@ public class PlayerController : MonoBehaviour {
             return IsMeleeAttackReady;
         }
     }
-
-    //private int ChargeCount = 0;
-
+    
     
     public float JumpVel = 8.0F;
     public float JumpCooldown = 0;
     public float JumpDuration = 0.2f;
     private bool CanJump = true;
+
 
     public int TempDamage = 0;
 
@@ -59,15 +72,15 @@ public class PlayerController : MonoBehaviour {
     public CapsuleCollider fireBreath; // fire breath attack
 
     private ObserverDirector Observers;
-    private CharacterController Cc;
+    private Rigidbody Rb;
 
     // Use this for initialization
     void Start() {
         Observers = GetComponent<ObserverDirector>();
         if (Observers == null) throw new System.ApplicationException("PlayerController requires an ObserverDirector sibling");
 
-        Cc = GetComponent<CharacterController>();
-        if (Cc == null) throw new System.ApplicationException("PlayerController requires a CharacterController sibling");
+        Rb = GetComponent<Rigidbody>();
+        if (Rb == null) throw new System.ApplicationException("PlayerController requires a Rigidbody sibling");
 
         IsControllable = true;
     }
@@ -85,12 +98,11 @@ public class PlayerController : MonoBehaviour {
             if (CanAttack && Input.GetButtonDown("Fire1"))
                 DoMeleeAttack();
 
-            if (Cc.isGrounded && CanJump && Input.GetButtonDown("Jump"))
+            Debug.Log("IsGrounded: " + IsGrounded + ", CanJump: " + CanJump + ", Button: " + Input.GetButtonDown("Jump"));
+
+            if (IsGrounded && CanJump && Input.GetButtonDown("Jump"))
                 DoJump();
             
-
-            
-
 
         }
 
@@ -103,28 +115,14 @@ public class PlayerController : MonoBehaviour {
             motion = transform.forward * ChargeSpeed;
         }
         
-        Cc.SimpleMove(motion);
 
+        var velocity = Rb.velocity;
+        velocity.x = 0;
+        velocity.z = 0;
+        velocity += motion;
 
-        /////////////////
-        if (IsControllable) {
-
-
-            if (Cc.isGrounded) {
-
-                if (Input.GetButtonDown("Jump")) {
-                    moveDirection.y = JumpVel;
-                }
-            } else {
-
-                //moveDirection += Physics.gravity * Time.deltaTime;
-            }
-        } else {
-            // there needs to be a check where if the player is charging, if it collides with an object it stops charging, but if it collides with an enemy, it does damage
-
-        }
-
-        //Cc.Move(moveDirection * Time.deltaTime);
+        Rb.velocity = velocity;
+        Rb.angularVelocity = Vector3.zero;
     }
 
 
@@ -180,7 +178,7 @@ public class PlayerController : MonoBehaviour {
     /// 
     /// </summary>
     void DoJump() {
-
+        Rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
     }
 
 
@@ -191,7 +189,7 @@ public class PlayerController : MonoBehaviour {
         State = AnimState.Attacking;
         IsMeleeAttackReady = false;
 
-        // Setup delay for returning control
+        // Setup delay for returning control "when it stops"
         StartCoroutine(this.DelayedAction(MeleeAttackDuration,
             () => {
                 if (State == AnimState.Attacking) {
@@ -199,7 +197,7 @@ public class PlayerController : MonoBehaviour {
                 }
             }));
 
-        // Setup delay for cooldown
+        // Setup delay for cooldown "when it can be done again"
         StartCoroutine(this.DelayedAction(MeleeAttackCooldown,
             () => {
                 IsMeleeAttackReady = true;
