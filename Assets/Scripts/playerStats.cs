@@ -30,9 +30,13 @@ public class playerStats : MonoBehaviour
 	void Start ()
     {
         CurrentHealth = MaxHealth;
+        if (HealthBar != null)
+        {
         HealthBar.maxValue = MaxHealth;
         HealthBar.minValue = 0;
+        }
     }
+
 	
 	// Update is called once per frame
 	void Update ()
@@ -46,7 +50,10 @@ public class playerStats : MonoBehaviour
     public void RemoveHealth(int Damage)
     {
         CurrentHealth -= Damage;
+        if (HealthBar != null)
+        {
         HealthBar.value = CurrentHealth;
+        }
     }
 
 }
