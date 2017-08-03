@@ -23,7 +23,8 @@ public class LevelSystem : MonoBehaviour
         CurrentLevel = 1;
         xpBar.value = 0;
         xpBar.maxValue = CurrentXpThreshold;
-	}
+        xpBar.minValue = 0;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -44,6 +45,7 @@ public class LevelSystem : MonoBehaviour
         if (shouldLevelUp) // if the characters level is no longer = to your current level
         {
             CurrentLevel++; // add level
+            xpBar.minValue = xpBar.maxValue; // after gaining a level sets the minimum to your current xp
             xpBar.maxValue = CurrentXpThreshold; // updates the xp threshold
             Debug.Log("I gained a level   " + CurrentLevel);
         }
