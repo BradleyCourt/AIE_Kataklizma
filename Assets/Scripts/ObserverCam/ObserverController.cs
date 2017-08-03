@@ -30,6 +30,6 @@ public class ObserverController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        ObserverCam.transform.LookAt(Target.transform);
+        
     }
 }

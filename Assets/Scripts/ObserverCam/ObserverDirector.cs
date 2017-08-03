@@ -82,6 +82,9 @@ public class ObserverDirector : MonoBehaviour {
         // Rotate camera around target
         Selected.Observer.transform.position = (Target.transform.position + offset);
 
+        // Point camera at target
+        Selected.Observer.ObserverCam.transform.LookAt(Target.transform);
+
         //Debug.Log("View From: " + Selected.Observer.PositionTheta.ToString("N2") + " Theta, " + Selected.Observer.PositionPhi.ToString("N2") + " Phi.");
     }
 

@@ -121,7 +121,8 @@ public class PlayerController : MonoBehaviour {
         velocity.z = 0;
         velocity += motion;
 
-        Rb.velocity = velocity;
+        if ( velocity.magnitude > 0)
+            Rb.velocity = velocity;
         Rb.angularVelocity = Vector3.zero;
     }
 
