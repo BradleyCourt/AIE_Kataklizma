@@ -30,10 +30,7 @@ public class PlayerController : MonoBehaviour {
         } }
 
     private AnimState State = AnimState.Idle;
-
-    public float Speed = 5;
-
-    
+        
     public float ChargeSpeed = 7.5f;
     public float ChargeCooldown = 5; // Time before next charge is available
     public float ChargeDuration = 1.8f; // Time charge lasts for if not interrupted
@@ -58,8 +55,19 @@ public class PlayerController : MonoBehaviour {
     public float JumpVel = 8.0F;
     public float JumpCooldown = 0;
     public float JumpDuration = 0.2f;
-    private bool CanJump = true;
+    private bool IsJumpReady = true;
+    private bool CanJump {
+        get {
+            return IsJumpReady && IsGrounded;
+        }
+    }
 
+    public float MoveSpeed = 5.0f;
+    private bool CanMove {
+        get {
+            return State == AnimState.Idle;
+        }
+    }
 
     public int TempDamage = 0;
 
@@ -91,16 +99,13 @@ public class PlayerController : MonoBehaviour {
 
         // Process input
         if (IsControllable) {
-            if (CanCharge && Input.GetButtonDown("Charge")) {
-                DoCharge();
-            }
+            if (CanCharge && Input.GetButtonDown("Charge"))
+                DoCharge();            
 
             if (CanAttack && Input.GetButtonDown("Fire1"))
                 DoMeleeAttack();
-
-            Debug.Log("IsGrounded: " + IsGrounded + ", CanJump: " + CanJump + ", Button: " + Input.GetButtonDown("Jump"));
-
-            if (IsGrounded && CanJump && Input.GetButtonDown("Jump"))
+            
+            if (CanJump && Input.GetButtonDown("Jump"))
                 DoJump();
             
 
@@ -179,6 +184,23 @@ public class PlayerController : MonoBehaviour {
     /// 
     /// </summary>
     void DoJump() {
+        State = AnimState.Jumping;
+        IsJumpReady = false;
+
+        // Setup delay for returning control "when it stops"
+        StartCoroutine(this.DelayedAction(JumpDuration,
+            () => {
+                if (State == AnimState.Jumping) {
+                    State = AnimState.Idle;
+                }
+            }));
+
+        // Setup delay for cooldown "when it can be done again"
+        StartCoroutine(this.DelayedAction(JumpCooldown,
+            () => {
+                IsJumpReady = true;
+            }));
+
         Rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
     }
 
@@ -187,6 +209,8 @@ public class PlayerController : MonoBehaviour {
     /// 
     /// </summary>
     void DoMeleeAttack() {
+        Debug.Log("Do Melee Attack!");
+
         State = AnimState.Attacking;
         IsMeleeAttackReady = false;
 
@@ -216,9 +240,12 @@ public class PlayerController : MonoBehaviour {
         foreach (Collider target in targets) {
             if (target.gameObject.tag == "Player") continue;
 
-            var playerStats = target.GetComponent<playerStats>();
-            if (playerStats) {
-                playerStats.RemoveHealth(TempDamage);
+
+            if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "Building") {
+                var playerStats = target.GetComponent<playerStats>();
+                if (playerStats) {
+                    playerStats.RemoveHealth(TempDamage);
+                }
             }
 
         }
