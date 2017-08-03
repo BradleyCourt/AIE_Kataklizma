@@ -6,7 +6,7 @@ using System.Collections;
 public class playerStats : MonoBehaviour
 {
 
-    public event System.EventHandler HealthChanged;
+    public event System.Action<Object, int> HealthChanged;
 
     public int MaxHealth;
     private int _CurrentHealth;
@@ -38,11 +38,13 @@ public class playerStats : MonoBehaviour
         HealthBar.maxValue = MaxHealth;
         HealthBar.minValue = 0;
         }
+        
     }
+    
 
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
         if (CurrentHealth <= 0)
         {
