@@ -5,6 +5,9 @@ using System.Collections;
 [DisallowMultipleComponent]
 public class playerStats : MonoBehaviour
 {
+
+    public event System.EventHandler HealthChanged;
+
     public int MaxHealth;
     private int _CurrentHealth;
     public Slider HealthBar;

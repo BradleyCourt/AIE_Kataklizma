@@ -317,7 +317,6 @@ public class PlayerController : MonoBehaviour {
         if (State == AnimState.Charging) {
             if (col.gameObject.tag == "Enemy") {
                 State = AnimState.Idle;
-                Debug.Log("hit!");
             }
         }
     }
