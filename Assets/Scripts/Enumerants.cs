@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StatType {
+public enum ValueType {
     Health,
-    Experience,
-    Armour,
+    HealthMax,
     HealthRegen,
+    Experience,
+    Armour,    
     MoveSpeed,
     JumpHeight,
+    Cooldown,
+    Duration,
+}
+
+[System.Serializable]
+public enum ValueSubtype {
+    Base,
+    Modifier,
+    Derived
 }
 
 public enum DamageType {
@@ -18,3 +28,10 @@ public enum DamageType {
 }
 
 
+[System.Serializable]
+public enum FilterType {
+    WhitelistAny,
+    WhitelistAll,
+    BlacklistAny,
+    BlacklistAll,
+}
