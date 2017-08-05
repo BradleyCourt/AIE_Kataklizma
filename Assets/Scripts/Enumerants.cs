@@ -7,6 +7,7 @@ public enum ValueType {
     HealthMax,
     HealthRegen,
     Experience,
+    ExperienceThreshold,
     CharacterLevel,
     Armour,    
     MoveSpeed,

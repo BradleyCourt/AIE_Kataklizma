@@ -34,18 +34,8 @@ namespace Gameplay {
 
         // Use this for initialization
         void Start() {
-            //
-            // *** NOTE: UI should have its own scripts that hook into StatChanged events! ***
-            //
-            //if (HealthBar != null)
-            //{
-            //HealthBar.maxValue = MaxHealth;
-            //HealthBar.minValue = 0;
-            //}
-
-            _Stats = new ValueCollection(StartingStats);
-
             _Stats.ValueChanged += OnStatsValueChanged;
+            _Stats = new ValueCollection(StartingStats);
         }
 
         private void OnStatsValueChanged(object arg1, ValueType arg2, ValueSubtype arg3, float arg4) {

@@ -35,6 +35,7 @@ namespace Gameplay {
                 return XpThresholds[Mathf.Min(CurrentLevel - 1, XpThresholds.Count - 1)];
             }
         }
+
         public bool HasMoreLevels { get { return CurrentLevel < XpThresholds.Count; } }
 
 
@@ -45,9 +46,10 @@ namespace Gameplay {
             if (Stats == null) throw new System.ApplicationException(gameObject.name + " - LevelSystem: Could not locate required EntityStats sibling.");
 
             if (XpThresholds.Count < 1) throw new System.ApplicationException(gameObject.name + " - LevelSystem: XpThresholds cannot be empty.");
+            
+            Stats.ValueChanged += OnPlayerStatsValueChanged;
 
             CurrentLevel = 1;
-            Stats.ValueChanged += OnPlayerStatsValueChanged;
         }
         
         // Update is called once per frame
@@ -58,19 +60,29 @@ namespace Gameplay {
 
         private void OnPlayerStatsValueChanged(Object sender, ValueType type, ValueSubtype subtype, float old) {
             
-            if ( type == ValueType.Experience) {
-                var XP = Stats[ValueType.Experience];
-
-                bool shouldLevelUp = HasMoreLevels && XP >= CurrentXpThreshold;
-                
-                if (shouldLevelUp) // if the characters level is no longer = to your current level
-                {
-                    var oldLevel = CurrentLevel;
-                    var oldThreshold = CurrentXpThreshold;
-
-                    CurrentLevel++; // add level
-                }
+            switch ( type ) {
+                case ValueType.Experience:
+                    // Ensure CharacterLevel is correct for current accrued Experience
+                    DoExperienceGained();
+                    break;
+                case ValueType.CharacterLevel:
+                    // Ensure ExperienceThreshold is correct for new current level
+                    DoLevelGained();
+                    break;
             }
+        }
+
+        private void DoExperienceGained() {
+            var XP = Stats[ValueType.Experience];
+
+            bool shouldLevelUp = HasMoreLevels && XP >= CurrentXpThreshold;
+
+            if (shouldLevelUp) // if the characters level is no longer = to your current level
+                CurrentLevel++; // add level
+        }
+
+        private void DoLevelGained() {
+            Stats[ValueType.ExperienceThreshold] = CurrentXpThreshold;
         }
     }
 }

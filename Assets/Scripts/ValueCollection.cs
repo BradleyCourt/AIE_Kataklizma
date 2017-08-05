@@ -79,7 +79,9 @@ public class ValueCollection  {
                 case ValueSubtype.Derived:
                     throw new System.InvalidOperationException("Cannot set EntityStat (" + type.ToString() + ") value directly.  MUST set Base or Modifier instead.");
             }
-            RaiseValueChanged(type, subtype, old);
+
+            if ( old != value )
+                RaiseValueChanged(type, subtype, old);
         }
     }
 

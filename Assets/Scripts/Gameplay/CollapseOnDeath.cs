@@ -48,7 +48,6 @@ namespace Gameplay {
         }
 
         private void OnStatsValueChanged(UnityEngine.Object sender, ValueType type, ValueSubtype subtype, float old) {
-            Debug.Log("Death Check: " + type.ToString() + ", " + subtype.ToString() + ", " + old.ToString("N2") + " -> " + Stats[type, subtype].ToString("N2"));
             if ( type == ValueType.Health && Stats[ValueType.Health] <= 0 && !IsFalling) {
                 // Object Died
                 IsFalling = true;
