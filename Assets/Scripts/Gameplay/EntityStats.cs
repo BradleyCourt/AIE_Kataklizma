@@ -32,10 +32,16 @@ namespace Gameplay {
         public bool IsAlive { get { return this[ValueType.Health] > 0; } }
 
 
+        public EntityStats() {
+            _Stats = new ValueCollection();
+            _Stats.ValueChanged += OnStatsValueChanged;
+
+        }
+
         // Use this for initialization
         void Start() {
-            _Stats.ValueChanged += OnStatsValueChanged;
-            _Stats = new ValueCollection(StartingStats);
+            
+            _Stats.Parse(StartingStats);
         }
 
         private void OnStatsValueChanged(object arg1, ValueType arg2, ValueSubtype arg3, float arg4) {

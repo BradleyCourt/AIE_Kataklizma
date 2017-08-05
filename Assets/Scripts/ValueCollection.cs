@@ -21,11 +21,22 @@ public class ValueCollection  {
 
     public ValueCollection(IEnumerable<Preset> presets = null) {
         SuppressEvents = true;
-        if (presets != null)
-            foreach (var preset in presets)
-                this[preset.Type, preset.Subtype] = preset.Value;
+
 
         SuppressEvents = false;
+    }
+
+    public void Parse(IEnumerable<Preset> presets, bool suppressEvents = false) {
+        if (presets == null)
+            throw new System.ArgumentNullException("ValueCollection.Parse(): presets cannot be null.");
+
+        var temp = SuppressEvents;
+        SuppressEvents = suppressEvents;
+
+        foreach (var preset in presets)
+            this[preset.Type, preset.Subtype] = preset.Value;
+
+        SuppressEvents = temp;
     }
 
     #region " events "

@@ -49,7 +49,9 @@ namespace Gameplay {
             
             Stats.ValueChanged += OnPlayerStatsValueChanged;
 
-            CurrentLevel = 1;
+            Stats[ValueType.CharacterLevel, ValueSubtype.Base] = 1;
+            Stats[ValueType.ExperienceThreshold, ValueSubtype.Base] = CurrentXpThreshold;
+
         }
         
         // Update is called once per frame
@@ -57,7 +59,13 @@ namespace Gameplay {
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="type"></param>
+        /// <param name="subtype"></param>
+        /// <param name="old"></param>
         private void OnPlayerStatsValueChanged(Object sender, ValueType type, ValueSubtype subtype, float old) {
             
             switch ( type ) {
@@ -72,6 +80,9 @@ namespace Gameplay {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void DoExperienceGained() {
             var XP = Stats[ValueType.Experience];
 
@@ -81,8 +92,11 @@ namespace Gameplay {
                 CurrentLevel++; // add level
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void DoLevelGained() {
-            Stats[ValueType.ExperienceThreshold] = CurrentXpThreshold;
+            Stats[ValueType.ExperienceThreshold, ValueSubtype.Base] = CurrentXpThreshold;
         }
     }
 }

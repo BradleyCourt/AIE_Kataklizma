@@ -39,10 +39,10 @@ namespace Gameplay {
             IsFalling = false;
 
             Rb = GetComponent<Rigidbody>();
-            if (Rb == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath could not locate required Rigidbody sibling.");
+            if (Rb == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required Rigidbody sibling.");
 
             Stats = GetComponent<EntityStats>();
-            if (Stats == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath could not locate required EntityStats sibling.");
+            if (Stats == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required EntityStats sibling.");
 
             Stats.ValueChanged += OnStatsValueChanged;
         }
@@ -63,7 +63,7 @@ namespace Gameplay {
 
                 Velocity = Vector3.ClampMagnitude(Velocity, MaxFallSpeed); // Limit to MaxfallSpeed
 
-                if (Rb == null) // If we have a rigidbody then volicty is already updating position.
+                if (Rb == null) // If we have a rigidbody then velocity is already updating position.
                     transform.position += Velocity;
             }
         }

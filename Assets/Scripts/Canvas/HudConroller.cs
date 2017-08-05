@@ -23,13 +23,17 @@ namespace Canvas {
 
         // Use this for initialization
         void Start() {
-            Widgets.XpBar.minValue = 0;
-            Widgets.XpBar.value = Sources.PlayerStats[ValueType.Experience];
-            Widgets.XpBar.maxValue = Sources.PlayerStats[ValueType.ExperienceThreshold];
+            if (Widgets.XpBar != null) {
+                Widgets.XpBar.minValue = 0;
+                Widgets.XpBar.value = Sources.PlayerStats[ValueType.Experience];
+                Widgets.XpBar.maxValue = Sources.PlayerStats[ValueType.ExperienceThreshold];
+            }
 
-            Widgets.HealthBar.minValue = 0;
-            Widgets.HealthBar.value = Sources.PlayerStats[ValueType.Health];
-            Widgets.HealthBar.maxValue = Sources.PlayerStats[ValueType.HealthMax];
+            if (Widgets.HealthBar != null) {
+                Widgets.HealthBar.minValue = 0;
+                Widgets.HealthBar.value = Sources.PlayerStats[ValueType.Health];
+                Widgets.HealthBar.maxValue = Sources.PlayerStats[ValueType.HealthMax];
+            }
 
             Sources.PlayerStats.ValueChanged += OnPlayerStatsValueChanged;
         }

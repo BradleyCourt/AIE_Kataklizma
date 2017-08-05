@@ -25,6 +25,8 @@ namespace Gameplay {
 
                 foreach (var preset in Contents)
                     stats[preset.Type, preset.Subtype] += preset.Value;
+
+                Destroy(gameObject);
             }
         }
     }
