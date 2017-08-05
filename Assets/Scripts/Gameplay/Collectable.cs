@@ -26,6 +26,8 @@ namespace Gameplay {
                 foreach (var preset in Contents)
                     stats[preset.Type, preset.Subtype] += preset.Value;
 
+                Contents.Clear(); // Handle exceptional cases of multiple-triggering
+
                 Destroy(gameObject);
             }
         }
