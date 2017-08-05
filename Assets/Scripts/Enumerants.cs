@@ -7,11 +7,14 @@ public enum ValueType {
     HealthMax,
     HealthRegen,
     Experience,
+    CharacterLevel,
     Armour,    
     MoveSpeed,
     JumpHeight,
     Cooldown,
     Duration,
+    Damage,
+    Range,
 }
 
 [System.Serializable]

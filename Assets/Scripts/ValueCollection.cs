@@ -3,22 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class ValueCollection : UnityEngine.Object {
-    public class Value : UnityEngine.Object {
+//[Serializable]
+public class ValueCollection  {
+    public class Value {
 
         public float Base;
         public float Modifier;
         public float Derived { get { return Base + Base * Modifier; } }
     }
 
+    [Serializable]
+    public class Preset {
+        public ValueType Type;
+        public ValueSubtype Subtype;
+        public float Value;
+    }
+
+    public ValueCollection(IEnumerable<Preset> presets = null) {
+        SuppressEvents = true;
+        if (presets != null)
+            foreach (var preset in presets)
+                this[preset.Type, preset.Subtype] = preset.Value;
+
+        SuppressEvents = false;
+    }
+
     #region " events "
     public event System.Action<Object, ValueType, ValueSubtype, float> ValueChanged;
 
     protected void RaiseValueChanged(ValueType type, ValueSubtype subtype, float oldValue) {
-        if (ValueChanged != null) ValueChanged(this, type, subtype, oldValue);
+        if (!SuppressEvents && ValueChanged != null) ValueChanged(this, type, subtype, oldValue);
     }
     #endregion
 
+    public bool SuppressEvents { get; set; }
     protected Dictionary<ValueType, Value> _Stats = new Dictionary<ValueType, Value>();
 
 

@@ -9,26 +9,18 @@ namespace Gameplay {
     [DisallowMultipleComponent]
     public class EntityStats : MonoBehaviour {
 
-        [System.Serializable]
-        public class StartingStat {
-            public ValueType Name;
-            public ValueSubtype _ValueType;
-            public float _Value;
-        }
 
-        public List<StartingStat> StartingStats;
+        #region " Stats "
+        public List<ValueCollection.Preset> StartingStats;
 
-        #region " events "
         public event System.Action<Object, ValueType, ValueSubtype, float> ValueChanged;
 
         protected void RaiseValueChanged(ValueType type, ValueSubtype subtype, float oldValue) {
             if (ValueChanged != null) ValueChanged(this, type, subtype, oldValue);
         }
-        #endregion
 
-        #region " Stat collection "
 
-        protected ValueCollection _Stats = new ValueCollection();
+        protected ValueCollection _Stats;
 
         public float this[ValueType type, ValueSubtype subtype = ValueSubtype.Derived] {
             get { return _Stats[type, subtype]; }
@@ -51,15 +43,14 @@ namespace Gameplay {
             //HealthBar.minValue = 0;
             //}
 
-            foreach (var stat in StartingStats) {
-                this[stat.Name, stat._ValueType] = stat._Value;
-            }
+            _Stats = new ValueCollection(StartingStats);
 
             _Stats.ValueChanged += OnStatsValueChanged;
         }
 
         private void OnStatsValueChanged(object arg1, ValueType arg2, ValueSubtype arg3, float arg4) {
             Debug.Log("Stat Value Changed: " + arg2.ToString() + ", " + arg3.ToString() + ", " + arg4.ToString("N2") + " -> " + _Stats[arg2, arg3].ToString("N2"));
+            RaiseValueChanged(arg2, arg3, arg4);
         }
 
 
