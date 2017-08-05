@@ -39,7 +39,7 @@ namespace Gameplay {
             IsFalling = false;
 
             Rb = GetComponent<Rigidbody>();
-            if (Rb == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required Rigidbody sibling.");
+            //if (Rb == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required Rigidbody sibling.");
 
             Stats = GetComponent<EntityStats>();
             if (Stats == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required EntityStats sibling.");
