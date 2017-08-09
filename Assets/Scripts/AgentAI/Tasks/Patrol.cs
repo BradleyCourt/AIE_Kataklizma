@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Patrol : MonoBehaviour
 {
 
+    public GunLayer Aiming;
     public Transform[] points;
     private int destPoint = 0;
     private NavMeshAgent agent;
@@ -59,6 +60,8 @@ public class Patrol : MonoBehaviour
             // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
             if (dist > 10)
             {
+                Aiming.Target = null;
+
                 // very far away, keep patrolling
                 if (agent.remainingDistance < 0.1f)
                     GotoNextPoint();
@@ -67,11 +70,13 @@ public class Patrol : MonoBehaviour
             {
                 // move closer to player
                 agent.SetDestination(player.transform.position);
+                Aiming.Target = player.transform;
                 agent.Resume();
             }
             else
             {
                 //shoot mah chalie sheen gun
+                Aiming.Target = player.transform;
 
                 // stop and fire
                 agent.Stop(); // we're within 5m so stop

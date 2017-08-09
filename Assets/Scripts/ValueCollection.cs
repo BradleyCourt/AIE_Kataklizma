@@ -64,7 +64,7 @@ public class ValueCollection  {
     public float this[ValueType type, ValueSubtype subtype = ValueSubtype.Derived] {
         get {
             if (!_Stats.ContainsKey(type))
-                throw new InvalidOperationException("ValueCollection does not contain a value of type " + type.ToString());
+                return 0;
 
             switch (subtype) {
                 case ValueSubtype.Base: { return _Stats[type].Base; }

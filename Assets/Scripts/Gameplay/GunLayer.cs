@@ -12,10 +12,10 @@ public class GunLayer: MonoBehaviour {
         Both = DirectFire | IndirectFire,
     }
 
-    public Transform Rotator;
+    public Transform Traversor;
     public Transform Elevator;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Transform Target;
 
     public FireMode Mode = FireMode.DirectFire;
@@ -23,26 +23,21 @@ public class GunLayer: MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Target = null;
+        //Target = null;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        DoRotate();
-        DoElevate();
-	}
-
-    protected void DoRotate() {
         if ( Target == null ) {
             // No Target, align forward
-            Rotator.localEulerAngles = Vector3.zero;
-        }
-    }
-
-    protected void DoElevate() {
-        if (Target == null) {
-            // No Target, align forward
+            Traversor.localEulerAngles = Vector3.zero;
             Elevator.localEulerAngles = Vector3.zero;
+            return;
         }
+
+        var traverseTarget = new Vector3(Target.position.x, Traversor.transform.position.y, Target.position.z);
+        Traversor.LookAt(traverseTarget, Vector3.up);
+
+
     }
 }
