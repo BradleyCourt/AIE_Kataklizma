@@ -13,6 +13,7 @@ namespace Gameplay {
         
         private EntityStats Stats;
         private bool HasSpawned = false;
+
         // Use this for initialization
         void Start() {
 
@@ -26,10 +27,7 @@ namespace Gameplay {
         private void OnStatsValueChanged(UnityEngine.Object sender, ValueType type, ValueSubtype subtype, float old) {
             if ( type == ValueType.Health && Stats[ValueType.Health] <= 0 && !HasSpawned ) {
                 HasSpawned = true;
-
-
-
-
+                
                 // Spawn Collectables
 
                 // foreach (prefab)
