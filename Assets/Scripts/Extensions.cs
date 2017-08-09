@@ -12,4 +12,13 @@ public static class Extensions {
         return lhs.Where(m => Vector3.Dot((m.transform.position - position).normalized, direction) <= discrim).ToArray();
 
     }
+
+    public static IEnumerator DelayedAction(this MonoBehaviour obj, float delay, System.Action action) {
+
+        yield return new WaitForSeconds(delay);
+
+        if (action != null) action();
+
+    }
+
 }

@@ -13,8 +13,11 @@ public class ObserverDirector : MonoBehaviour {
 
     public GameObject Target;
 
-    protected ObserverDefinition Selected;
-    protected Rigidbody TargetRb;
+    [HideInInspector]
+    public ObserverDefinition Selected;
+
+    [HideInInspector]
+    public Rigidbody TargetRb;
 
     public List<ObserverDefinition> Observers;
     
@@ -24,6 +27,7 @@ public class ObserverDirector : MonoBehaviour {
             throw new System.InvalidOperationException("ObserverDirector REQUIRES at least one Observer Definition");
 
         Selected = Observers[Random.Range(0, Observers.Count)];
+        Selected.Observer.Target = Target;
 
         TargetRb = Target.GetComponent<Rigidbody>();
         
@@ -34,7 +38,6 @@ public class ObserverDirector : MonoBehaviour {
 
         UpdateInputState();
         UpdateCamera();
-        UpdateMotion();
 
     }
 
@@ -79,26 +82,12 @@ public class ObserverDirector : MonoBehaviour {
         // Rotate camera around target
         Selected.Observer.transform.position = (Target.transform.position + offset);
 
-        Debug.Log("View From: " + Selected.Observer.PositionTheta.ToString("N2") + " Theta, " + Selected.Observer.PositionPhi.ToString("N2") + " Phi.");
+        // Point camera at target
+        Selected.Observer.ObserverCam.transform.LookAt(Target.transform);
+
+        //Debug.Log("View From: " + Selected.Observer.PositionTheta.ToString("N2") + " Theta, " + Selected.Observer.PositionPhi.ToString("N2") + " Phi.");
     }
 
 
-    /// <summary>
-    /// Apply captured motion to character.  Update character velocity.
-    /// </summary>
-    void UpdateMotion() {
 
-        var cameraDirection = Target.transform.position - Selected.Observer.transform.position;
-
-        var characterFwd = new Vector3(cameraDirection.x, 0, cameraDirection.z).normalized;
-        var characterRight = new Vector3(cameraDirection.z, 0, -cameraDirection.x).normalized;
-
-
-        var motion = characterFwd * Input.GetAxis("MoveVertical") + characterRight * Input.GetAxis("MoveHorizontal");
-        motion.Normalize();
-
-        Target.transform.LookAt(Target.transform.position + motion);
-
-        TargetRb.velocity = motion * 5.0f;
-    }
 }
