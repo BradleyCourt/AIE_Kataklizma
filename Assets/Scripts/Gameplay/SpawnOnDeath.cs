@@ -7,10 +7,7 @@ namespace Gameplay {
 
     [RequireComponent(typeof(EntityStats))]
     public class SpawnOnDeath : MonoBehaviour {
-
-        public GameObject RubblePrefab;
-
-
+        
         public float CollectableRadius = 2;
         public GameObject CollectablePrefab;
         
@@ -24,7 +21,6 @@ namespace Gameplay {
 
             Stats.ValueChanged += OnStatsValueChanged;
 
-            if (RubblePrefab == null) Debug.LogWarning(gameObject + " - SpawnOnDeath: RubblePrefab is empty, this may cause holes in world");
         }
 
         private void OnStatsValueChanged(UnityEngine.Object sender, ValueType type, ValueSubtype subtype, float old) {
@@ -32,8 +28,7 @@ namespace Gameplay {
                 HasSpawned = true;
 
 
-                // Spawn Rubble tile
-                Instantiate(RubblePrefab, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform.parent);
+
 
                 // Spawn Collectables
 

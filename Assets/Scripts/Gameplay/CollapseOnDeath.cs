@@ -9,6 +9,7 @@ namespace Gameplay {
     public class CollapseOnDeath : MonoBehaviour {
         private bool IsFalling { get; set; }
 
+        public GameObject RubblePrefab;
 
         public bool UseSceneGravity = true;
         public float LocalGravity = 0.05f; // "Fall Speed"
@@ -44,6 +45,9 @@ namespace Gameplay {
             Stats = GetComponent<EntityStats>();
             if (Stats == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required EntityStats sibling.");
 
+
+            if (gameObject.tag == "Building" && RubblePrefab == null) Debug.LogWarning(gameObject + " - SpawnOnDeath: Object tagged as building but RubblePrefab is empty, this may cause holes in world");
+
             Stats.ValueChanged += OnStatsValueChanged;
         }
 
@@ -51,6 +55,10 @@ namespace Gameplay {
             if ( type == ValueType.Health && Stats[ValueType.Health] <= 0 && !IsFalling) {
                 // Object Died
                 IsFalling = true;
+
+                // Spawn Rubble tile
+                Instantiate(RubblePrefab, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform.parent);
+
                 Destroy(gameObject, TimeToLive);
             }
         }
