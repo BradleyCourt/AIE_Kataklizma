@@ -57,7 +57,8 @@ namespace Gameplay {
                 IsFalling = true;
 
                 // Spawn Rubble tile
-                Instantiate(RubblePrefab, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform.parent);
+                if (RubblePrefab != null)
+                    Instantiate(RubblePrefab, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform.parent);
 
                 Destroy(gameObject, TimeToLive);
             }
