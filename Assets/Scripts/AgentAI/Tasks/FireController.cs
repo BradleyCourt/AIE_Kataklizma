@@ -5,39 +5,67 @@ using Gameplay;
 
 public class FireController : MonoBehaviour
 {
+    
+    public Transform BulletSpawn;
+    private MovementChecker movementChecker;
     private EntityStats Stats;
     public Patrol P;
     public Transform Target;
     public GameObject Projectile;
-    public float speed;
+    public float BulletSpeed = 3;
     public float CannonFire = 50f;
     public float MachineGun = 10f;
     private bool shooting;
 
-    
-	// Use this for initialization
-	void Start ()
+
+    // Use this for initialization
+    void Start()
     {
         // aquire target
         // aim towards the target
         // shoot
         // gun delay
         P = GetComponent<Patrol>();
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (P.Target == null)
         {
             // no target found
-            Debug.Log("attach a transform");
         }
         else
         {
-            Vector3 targetDir = Target.position - transform.position;
-            float step = speed * Time.deltaTime;
-            Debug.DrawRay(transform.position, targetDir, Color.red);
+            movementChecker = Target.GetComponent<MovementChecker>(); // TODO - setTatrget function
+            Vector3 targetDir = Target.position - transform.position; 
+            float step = BulletSpeed * Time.deltaTime;
+
+            if (movementChecker.IsStationary())
+            {
+                FireCannon();
+            }
+            else
+            {
+                FireMachineGun(targetDir);
+            }
+
+
         }
+    }
+
+    void FireMachineGun(Vector3 targetDir)
+    {
+        // Shooting machine gun, and draweing ray in scene view
+        Target.GetComponent<EntityStats>().RemoveHealth(MachineGun * Time.deltaTime);
+        Debug.DrawRay(transform.position, targetDir, Color.red);
+    }
+
+    void FireCannon()
+    {
+        //shoot the cannon ball;
+        GameObject go = Instantiate(Projectile, BulletSpawn.position, BulletSpawn.rotation);
+        go.GetComponent<Rigidbody>().velocity = BulletSpawn.forward * BulletSpeed;
     }
 }

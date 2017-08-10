@@ -57,7 +57,7 @@ namespace Gameplay {
 
         }
 
-        public void RemoveHealth(int Damage) {
+        public void RemoveHealth(float Damage) {
             this[ValueType.Health, ValueSubtype.Base] -= Damage;
 
             // NOTE: "Object Death" no longer needs a broadcast.  Attach an event listener instead.
