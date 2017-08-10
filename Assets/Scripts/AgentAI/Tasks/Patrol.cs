@@ -83,10 +83,7 @@ public class Patrol : MonoBehaviour
                 // if within 3 metres, move away
                 // else if player is stationary, shoot cannon
 
-             if (player.GetComponent<Rigidbody>().velocity.magnitude == 0)
-                {
-                    //shoot the cannon ball;
-                }
+            
             }
 
         }
