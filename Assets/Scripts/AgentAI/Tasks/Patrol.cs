@@ -1,11 +1,14 @@
 ﻿// Patrol.cs
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.AI;
 public class Patrol : MonoBehaviour
 {
+    [HideInInspector]
     public Transform Target;
-    public Transform[] points;
+    public GameObject NavPointCollection;
+    private List<Transform> points = new List<Transform>();
     private int destPoint = 0;
     private NavMeshAgent agent;
     private GameObject player;
@@ -24,19 +27,26 @@ public class Patrol : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         agent.SetDestination(player.transform.position);
+
+        if (NavPointCollection == null) throw new System.ApplicationException(gameObject + " - Patrol: NavPointCollection cannot be empty");
+        if (NavPointCollection.transform.childCount < 1) throw new System.ApplicationException(gameObject.name + " - Patrol: NavPointCollection must have children");
+
+        for ( var idx = 0; idx < NavPointCollection.transform.childCount; idx++ ) {
+            points.Add(NavPointCollection.transform.GetChild(idx));
+        }
     }
 
 
     void GotoNextPoint()
     {
         // Do nothing if the array is empty
-        if (points.Length == 0)
+        if (points.Count == 0)
             return;
 
 
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
-        destPoint = Random.Range(0, points.Length);
+        destPoint = Random.Range(0, points.Count);
 
 
         // Goto the selected destination
@@ -78,7 +88,6 @@ public class Patrol : MonoBehaviour
 
                 // stop and fire
                 agent.Stop(); // we're within 5m so stop
-                Debug.Log("stopmoving");
 
                 // if within 3 metres, move away
                 // else if player is stationary, shoot cannon
