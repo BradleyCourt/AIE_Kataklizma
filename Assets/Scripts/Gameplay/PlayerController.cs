@@ -167,9 +167,9 @@ namespace Gameplay {
             var centreOffset = transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.center);
 
             var centre = transform.position + centreOffset;
-            var size = transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.size);
+            var size = MeleeAttackZone.size; // transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.size);
 
-            Collider[] targets = Physics.OverlapBox(centre, size, new Quaternion(), ~8); // Anything that is NOT a PlayerAvatar layer
+            Collider[] targets = Physics.OverlapBox(centre, size, transform.rotation, ~8); // Anything that is NOT a PlayerAvatar layer
 
             foreach (Collider target in targets) {
                 if (target.gameObject.tag == "Player") continue;
@@ -220,10 +220,10 @@ namespace Gameplay {
 
 
             // Do Attack
-            var centre = transform.position + transform.localToWorldMatrix.MultiplyPoint(RangedAttackZone.center); ;
-            var size = transform.localToWorldMatrix.MultiplyVector(RangedAttackZone.size);
+            var centre = transform.position + transform.localToWorldMatrix.MultiplyVector(RangedAttackZone.center); ;
+            var size = RangedAttackZone.size;
 
-            Collider[] targets = Physics.OverlapBox(centre, size, new Quaternion(), ~8); // Anything that is NOT a PlayerAvatar layer
+            Collider[] targets = Physics.OverlapBox(centre, size, transform.rotation, ~8); // Anything that is NOT a PlayerAvatar layer
 
             foreach (Collider target in targets) {
                 if (target.gameObject.tag == "Player") continue;
@@ -338,15 +338,17 @@ namespace Gameplay {
             Gizmos.color = new Color(1, 0, 0, 0.5f);
 
             if (State == AnimState.Attacking) {
-                if (!IsMeleeAttackReady) {
-                    var centre = transform.localToWorldMatrix.MultiplyPoint(MeleeAttackZone.center);
-                    var size = transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.size);
+                Gizmos.matrix = gameObject.transform.localToWorldMatrix;
 
+                if (!IsMeleeAttackReady) {
+                    var centre = MeleeAttackZone.center;
+                    var size = MeleeAttackZone.size;
+ 
                     Gizmos.DrawCube(centre, size);
                 }
                 if (!IsRangedAttackReady) {
-                    var centre = transform.localToWorldMatrix.MultiplyPoint(RangedAttackZone.center);
-                    var size = transform.localToWorldMatrix.MultiplyVector(RangedAttackZone.size);
+                    var centre = RangedAttackZone.center;
+                    var size = RangedAttackZone.size;
 
                     Gizmos.DrawCube(centre, size);
                 }
