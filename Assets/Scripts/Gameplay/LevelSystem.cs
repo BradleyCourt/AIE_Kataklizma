@@ -97,6 +97,8 @@ namespace Gameplay {
         /// </summary>
         private void DoLevelGained() {
             Stats[ValueType.ExperienceThreshold, ValueSubtype.Base] = CurrentXpThreshold;
+
+            transform.localScale = Vector3.one * Mathf.Pow(2, Stats[ValueType.CharacterLevel] - 1);
         }
     }
 }

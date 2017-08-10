@@ -9,6 +9,7 @@ namespace Gameplay {
     [DisallowMultipleComponent]
     public class EntityStats : MonoBehaviour {
 
+        public bool ShowDebug;
 
         #region " Stats "
         public List<ValueCollection.Preset> StartingStats;
@@ -45,8 +46,8 @@ namespace Gameplay {
         }
 
         private void OnStatsValueChanged(object arg1, ValueType arg2, ValueSubtype arg3, float arg4) {
-            if ( gameObject.tag == "Player" )
-                Debug.Log("Stat Value Changed: " + arg2.ToString() + ", " + arg3.ToString() + ", " + arg4.ToString("N2") + " -> " + _Stats[arg2, arg3].ToString("N2"));
+            if ( ShowDebug )
+                Debug.Log(gameObject.name + " - EntityStats: Value Changed: " + arg2.ToString() + ", " + arg3.ToString() + ", " + arg4.ToString("N2") + " -> " + _Stats[arg2, arg3].ToString("N2"));
             RaiseValueChanged(arg2, arg3, arg4);
         }
 

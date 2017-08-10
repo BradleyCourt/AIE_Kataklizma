@@ -10,7 +10,7 @@ public class FireController : MonoBehaviour
     private MovementChecker movementChecker;
     private EntityStats Stats;
     public Patrol P;
-    public Transform Target;
+    //public Transform Target;
     public GameObject Projectile;
     public float BulletSpeed = 3;
     public float CannonFire = 50f;
@@ -41,8 +41,8 @@ public class FireController : MonoBehaviour
         }
         else
         {
-            movementChecker = Target.GetComponent<MovementChecker>(); // TODO - setTatrget function
-            Vector3 targetDir = Target.position - transform.position; 
+            movementChecker = P.Target.GetComponent<MovementChecker>(); // TODO - setTatrget function
+            Vector3 targetDir = P.Target.position - transform.position; 
             float step = BulletSpeed * Time.deltaTime;
 
             if (movementChecker.IsStationary())
@@ -62,7 +62,7 @@ public class FireController : MonoBehaviour
     void FireMachineGun(Vector3 targetDir)
     {
         // Shooting machine gun, and draweing ray in scene view
-        Target.GetComponent<EntityStats>().RemoveHealth(MachineGun * Time.deltaTime);
+        P.Target.GetComponent<EntityStats>().RemoveHealth(MachineGun * Time.deltaTime);
         Debug.DrawRay(transform.position, targetDir, Color.red);
     }
 
