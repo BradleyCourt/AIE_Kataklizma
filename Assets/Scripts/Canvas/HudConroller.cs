@@ -59,6 +59,13 @@ namespace Canvas {
                         Widgets.HealthBar.value = (source as EntityStats)[type];
                     }
                     break;
+                case ValueType.HealthMax:
+                    if ( Widgets.HealthBar != null )
+                    {
+                        Widgets.HealthBar.maxValue = (source as EntityStats)[type];
+                        Widgets.HealthBar.value = (source as EntityStats)[ValueType.Health];
+                    }
+                    break;
             }
         }
 
