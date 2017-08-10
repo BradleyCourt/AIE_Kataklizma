@@ -15,6 +15,8 @@ public class FireController : MonoBehaviour
     public float BulletSpeed = 3;
     public float CannonFire = 50f;
     public float MachineGun = 10f;
+    public float Cooldown = 2f;
+    private bool CanFire;
     private bool shooting;
 
 
@@ -26,6 +28,7 @@ public class FireController : MonoBehaviour
         // shoot
         // gun delay
         P = GetComponent<Patrol>();
+        CanFire = true;
         
     }
 
@@ -44,9 +47,10 @@ public class FireController : MonoBehaviour
 
             if (movementChecker.IsStationary())
             {
+                if (CanFire)
                 FireCannon();
             }
-            else
+         
             {
                 FireMachineGun(targetDir);
             }
@@ -65,7 +69,16 @@ public class FireController : MonoBehaviour
     void FireCannon()
     {
         //shoot the cannon ball;
+        CanFire = false;
+        StartCoroutine(this.DelayedAction(Cooldown,
+            () => {
+                CanFire = true;
+            }));
+
+
         GameObject go = Instantiate(Projectile, BulletSpawn.position, BulletSpawn.rotation);
         go.GetComponent<Rigidbody>().velocity = BulletSpawn.forward * BulletSpeed;
+
+        Destroy(go, 3);
     }
 }
