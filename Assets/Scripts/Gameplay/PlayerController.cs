@@ -8,6 +8,9 @@ namespace Gameplay {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour {
 
+        public MeshRenderer MeleeAttackZoneRenderer;
+        public MeshRenderer RangedAttackZoneRenderer;
+
         [System.Serializable]
         public struct Action {
             public float Cooldown;
@@ -162,6 +165,12 @@ namespace Gameplay {
                 }));
 
 
+            // Render Zone
+            // FIXME: REmove Zone Render
+            var go = Instantiate(MeleeAttackZoneRenderer.gameObject, MeleeAttackZoneRenderer.transform.parent, false);
+            go.transform.parent = null;
+            go.GetComponent<MeshRenderer>().enabled = true;
+            Destroy(go, MeleeAttackDuration);
 
             // Do Attack
             var centreOffset = transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.center);
@@ -218,6 +227,13 @@ namespace Gameplay {
                     IsRangedAttackReady = true;
                 }));
 
+
+            // Render Zone
+            // FIXME: REmove Zone Render
+            var go = Instantiate(RangedAttackZoneRenderer.gameObject, RangedAttackZoneRenderer.transform.parent, false);
+            go.transform.parent = null;
+            go.GetComponent<MeshRenderer>().enabled = true;
+            Destroy(go, RangedAttackDuration);
 
             // Do Attack
             var centre = transform.position + transform.localToWorldMatrix.MultiplyVector(RangedAttackZone.center); ;
@@ -334,27 +350,27 @@ namespace Gameplay {
             }
         }
 
-        void OnDrawGizmos() {
+        //    void OnDrawGizmos() {
 
-            Gizmos.color = new Color(1, 0, 0, 0.5f);
+        //        Gizmos.color = new Color(1, 0, 0, 0.5f);
 
-            if (State == AnimState.Attacking) {
-                Gizmos.matrix = gameObject.transform.localToWorldMatrix;
+        //        if (State == AnimState.Attacking) {
+        //            Gizmos.matrix = gameObject.transform.localToWorldMatrix;
 
-                if (!IsMeleeAttackReady) {
-                    var centre = MeleeAttackZone.center;
-                    var size = MeleeAttackZone.size;
- 
-                    Gizmos.DrawCube(centre, size);
-                }
-                if (!IsRangedAttackReady) {
-                    var centre = RangedAttackZone.center;
-                    var size = RangedAttackZone.size;
+        //            if (!IsMeleeAttackReady) {
+        //                var centre = MeleeAttackZone.center;
+        //                var size = MeleeAttackZone.size;
 
-                    Gizmos.DrawCube(centre, size);
-                }
-            }
+        //                Gizmos.DrawCube(centre, size);
+        //            }
+        //            if (!IsRangedAttackReady) {
+        //                var centre = RangedAttackZone.center;
+        //                var size = RangedAttackZone.size;
 
-        }
+        //                Gizmos.DrawCube(centre, size);
+        //            }
+        //        }
+
+        //    }
     }
 }

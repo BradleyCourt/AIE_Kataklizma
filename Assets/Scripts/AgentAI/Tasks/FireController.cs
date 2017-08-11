@@ -62,7 +62,7 @@ public class FireController : MonoBehaviour
     void FireMachineGun(Vector3 targetDir)
     {
         // Shooting machine gun, and draweing ray in scene view
-        P.Target.GetComponent<EntityStats>().RemoveHealth(MachineGun * Time.deltaTime);
+        //P.Target.GetComponent<EntityStats>().RemoveHealth(MachineGun * Time.deltaTime);
         Debug.DrawRay(transform.position, targetDir, Color.red);
     }
 
