@@ -6,16 +6,18 @@ using UnityEngine.AI;
 public class Patrol : MonoBehaviour
 {
     [HideInInspector]
+    public float ChaseDist = 5;
     public Transform Target;
     public GameObject NavPointCollection;
     private List<Transform> points = new List<Transform>();
     private int destPoint = 0;
     private NavMeshAgent agent;
     private GameObject player;
-    
+
+
     void Start()
     {
-      
+
         agent = GetComponent<NavMeshAgent>();
 
         // Disabling auto-braking allows for continuous movement
@@ -31,7 +33,8 @@ public class Patrol : MonoBehaviour
         if (NavPointCollection == null) throw new System.ApplicationException(gameObject + " - Patrol: NavPointCollection cannot be empty");
         if (NavPointCollection.transform.childCount < 1) throw new System.ApplicationException(gameObject.name + " - Patrol: NavPointCollection must have children");
 
-        for ( var idx = 0; idx < NavPointCollection.transform.childCount; idx++ ) {
+        for (var idx = 0; idx < NavPointCollection.transform.childCount; idx++)
+        {
             points.Add(NavPointCollection.transform.GetChild(idx));
         }
     }
@@ -74,11 +77,12 @@ public class Patrol : MonoBehaviour
                 if (agent.remainingDistance < 0.1f)
                     GotoNextPoint();
             }
-            else if (dist > 5)
+            else if (dist > ChaseDist)
             {
                 // move closer to player
                 agent.SetDestination(player.transform.position);
-                Target = player.transform;
+                //  Target = player.transform;
+                TargetPlayer(ChaseDist);
                 agent.Resume();
             }
             else
@@ -92,7 +96,7 @@ public class Patrol : MonoBehaviour
                 // if within 3 metres, move away
                 // else if player is stationary, shoot cannon
 
-            
+
             }
 
         }
@@ -101,5 +105,19 @@ public class Patrol : MonoBehaviour
     void SetDestination(Vector3 pt)
     {
 
+    }
+    void TargetPlayer(float ChaseDist)
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, ChaseDist))
+        {
+            if(hit.collider.gameObject.tag == "Player")
+            {
+                Target = hit.collider.gameObject.transform;
+                Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red);
+
+            }
+        }
     }
 }
