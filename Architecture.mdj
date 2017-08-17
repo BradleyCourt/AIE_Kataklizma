@@ -1136,7 +1136,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFd6die37Bvxto="
 					},
-					"name": "ActivityDiagram1",
+					"name": "Map Proc-Gen",
 					"visible": true,
 					"defaultDiagram": false
 				}
@@ -1144,7 +1144,30 @@
 			"visibility": "public",
 			"isReentrant": true,
 			"isReadOnly": false,
-			"isSingleExecution": false
+			"isSingleExecution": false,
+			"nodes": [
+				{
+					"_type": "UMLActivityFinalNode",
+					"_id": "AAAAAAFd7b8CXpeuGZ8=",
+					"_parent": {
+						"$ref": "AAAAAAFd6die37Bvxto="
+					},
+					"name": "ActivityFinalNode1",
+					"visibility": "public"
+				},
+				{
+					"_type": "UMLAction",
+					"_id": "AAAAAAFd7b8Qo5ezqYY=",
+					"_parent": {
+						"$ref": "AAAAAAFd6die37Bvxto="
+					},
+					"name": "Action1",
+					"visibility": "public",
+					"kind": "opaque",
+					"isLocallyReentrant": false,
+					"isSynchronous": true
+				}
+			]
 		}
 	]
 }
