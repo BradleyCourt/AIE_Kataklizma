@@ -16,8 +16,6 @@ namespace MapGen {
             Right = 8,
         }
         
-        [Range(0,1)]
-        public float Weight;
         public GameObject TilePrefab;
         
     }
