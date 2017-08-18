@@ -105,7 +105,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526360699206240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.62, z: -10.03}
+  m_LocalPosition: {x: 114.867004, y: 0, z: -154.34445}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4260567253847642}
@@ -317,7 +317,7 @@ MonoBehaviour:
   ObserverCam: {fileID: 20367357404990544}
   PositionTheta: 0
   PositionPhi: 20
-  Distance: 20
+  Distance: 25
 --- !u!114 &114446518367259786
 MonoBehaviour:
   m_ObjectHideFlags: 1
