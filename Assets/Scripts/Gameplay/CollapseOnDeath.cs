@@ -47,7 +47,8 @@ namespace Gameplay {
             if (Stats == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required EntityStats sibling.");
 
 
-            if (gameObject.tag == "Building" && SpawnRubble == null && UnhideRubble == null) Debug.LogWarning(gameObject + " - SpawnOnDeath: Object tagged as building but no Rubble object provided, this may cause holes in world");
+            // NOTE: This warning no longer required as all maps are built on top of a Terrain piece - There may be empty blocks, but no holes.
+            //if (gameObject.tag == "Building" && SpawnRubble == null && UnhideRubble == null) Debug.LogWarning(gameObject + " - SpawnOnDeath: Object tagged as building but no Rubble object provided, this may cause holes in world");
 
             Stats.ValueChanged += OnStatsValueChanged;
         }
