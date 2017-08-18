@@ -12,6 +12,7 @@ public class ObserverDirector : MonoBehaviour {
     }
 
     public GameObject Target;
+    public float PitchOffset = 20;
 
     [HideInInspector]
     public ObserverDefinition Selected;
@@ -84,6 +85,7 @@ public class ObserverDirector : MonoBehaviour {
 
         // Point camera at target
         Selected.Observer.ObserverCam.transform.LookAt(Target.transform);
+        Selected.Observer.ObserverCam.transform.Rotate(PitchOffset, 0, 0, Space.Self);
 
         //Debug.Log("View From: " + Selected.Observer.PositionTheta.ToString("N2") + " Theta, " + Selected.Observer.PositionPhi.ToString("N2") + " Phi.");
     }
