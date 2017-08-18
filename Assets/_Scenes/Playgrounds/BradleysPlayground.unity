@@ -143,10 +143,13 @@ MonoBehaviour:
     - {fileID: 1181015435832540, guid: f5621194de345ac4abe3c44f290d74cf, type: 2}
   - Type: 2
     Tiles:
-    - {fileID: 1643563966904716, guid: 7170cb3b08782054a9d06587d5e70636, type: 2}
+    - {fileID: 1695158887564876, guid: 77c6988573258ba42afc5c745978eb99, type: 2}
   - Type: 3
     Tiles:
     - {fileID: 1428786979670910, guid: 41365dd9a1cd6ec4a9de825c914d17fd, type: 2}
+  - Type: 4
+    Tiles:
+    - {fileID: 1861274135498148, guid: 4e9a4c1f4eba63542ad50e0f8608be55, type: 2}
 --- !u!1 &669066966
 GameObject:
   m_ObjectHideFlags: 0
