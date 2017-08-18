@@ -6392,7 +6392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 390b771cd418c2448bde8307de9f67fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounds: {x: 10, y: 10}
+  bounds: {x: 100, y: 100}
   TileOrigin: {fileID: 330273735}
   SourceTilePresets:
   - Type: 1
