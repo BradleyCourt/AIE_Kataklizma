@@ -40,6 +40,10 @@ namespace MapGen {
                 {
                     case TileType.Tile5m: return 1;
                     case TileType.Tile10m: return 2;
+                    case TileType.Tile20m: return 4;
+                    case TileType.Tile30m: return 6;
+                    case TileType.Tile40m: return 8;
+
                         // TODO  all other sizes
                 }
                 return -1; // this should never happen!
