@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4439188968153136}
   - component: {fileID: 54262551434740080}
   - component: {fileID: 114296767256596916}
-  - component: {fileID: 114228841733500046}
+  - component: {fileID: 114105048928540972}
   - component: {fileID: 114207766935425548}
   - component: {fileID: 136284364519077114}
   - component: {fileID: 65806479828675534}
@@ -294,6 +294,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.97, y: 3.4913182, z: 3.2964745}
   m_Center: {x: 0, y: 2.25, z: 1.6817627}
+--- !u!114 &114105048928540972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431774962278804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowDebug: 0
+  _Attributes:
+    _Values:
+    - Type: 1
+      Base: 50
+      Modifier: 0
+    - Type: 2
+      Base: 50
+      Modifier: 0
+    - Type: 4
+      Base: 10
+      Modifier: 0
 --- !u!114 &114207766935425548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,28 +339,6 @@ MonoBehaviour:
   - Observer: {fileID: 0}
     MinPitch: 20
     MaxPitch: 70
---- !u!114 &114228841733500046
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431774962278804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6434cd491b3c4064e935759ec8014c97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowDebug: 0
-  StartingStats:
-  - Type: 0
-    Subtype: 0
-    Value: 20
-  - Type: 1
-    Subtype: 0
-    Value: 50
-  - Type: 3
-    Subtype: 0
-    Value: 0
 --- !u!114 &114296767256596916
 MonoBehaviour:
   m_ObjectHideFlags: 1

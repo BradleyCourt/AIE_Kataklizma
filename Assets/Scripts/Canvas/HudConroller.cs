@@ -8,7 +8,7 @@ namespace Canvas {
 
         [System.Serializable]
         public struct DataSources {
-            public EntityStats PlayerStats;
+            public EntityAttributes PlayerStats;
 
         }
 
@@ -44,26 +44,26 @@ namespace Canvas {
                 case ValueType.Experience:
                     // Update XP Bar Value
                     if (Widgets.XpBar != null) {
-                        Widgets.XpBar.value = (source as EntityStats)[type];
+                        Widgets.XpBar.value = (source as EntityAttributes)[type];
                     }
                     break;
                 case ValueType.ExperienceThreshold:
                     // Update XP Bar Extents (Min and Max)
                     if (Widgets.XpBar != null) {
                         Widgets.XpBar.minValue = old;
-                        Widgets.XpBar.maxValue = (source as EntityStats)[type];
+                        Widgets.XpBar.maxValue = (source as EntityAttributes)[type];
                     }
                     break;
                 case ValueType.Health:
                     if ( Widgets.HealthBar != null ) {
-                        Widgets.HealthBar.value = (source as EntityStats)[type];
+                        Widgets.HealthBar.value = (source as EntityAttributes)[type];
                     }
                     break;
                 case ValueType.HealthMax:
                     if ( Widgets.HealthBar != null )
                     {
-                        Widgets.HealthBar.maxValue = (source as EntityStats)[type];
-                        Widgets.HealthBar.value = (source as EntityStats)[ValueType.Health];
+                        Widgets.HealthBar.maxValue = (source as EntityAttributes)[type];
+                        Widgets.HealthBar.value = (source as EntityAttributes)[ValueType.Health];
                     }
                     break;
             }

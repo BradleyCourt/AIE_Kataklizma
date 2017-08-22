@@ -5,19 +5,19 @@ using UnityEngine;
 
 namespace Gameplay {
 
-    [RequireComponent(typeof(EntityStats))]
+    [RequireComponent(typeof(EntityAttributes))]
     public class SpawnOnDeath : MonoBehaviour {
         
         public float CollectableRadius = 2;
         public GameObject CollectablePrefab;
         
-        private EntityStats Stats;
+        private EntityAttributes Stats;
         private bool HasSpawned = false;
 
         // Use this for initialization
         void Start() {
 
-            Stats = GetComponent<EntityStats>();
+            Stats = GetComponent<EntityAttributes>();
             if (Stats == null) throw new System.ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required EntityStats sibling.");
 
             Stats.ValueChanged += OnStatsValueChanged;

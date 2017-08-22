@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Canvas {
     public class SliderHook : MonoBehaviour {
 
-        public Gameplay.EntityStats AttributeSource;
+        public Gameplay.EntityAttributes AttributeSource;
 
         private UnityEngine.UI.Slider Widget;
 

@@ -8,7 +8,7 @@ namespace Gameplay {
 
         public float RotationSpeed = 30;
 
-        public List<ValueCollection.Preset> Contents;
+        public List<ValueCollection.Value> Contents;
 
         // Use this for initialization
         void Start() {
@@ -21,10 +21,12 @@ namespace Gameplay {
 
         private void OnTriggerEnter(Collider other) {
             if (other.gameObject.transform.root.tag == "Player") {
-                var stats = other.gameObject.transform.root.GetComponent<EntityStats>();
+                var stats = other.gameObject.transform.root.GetComponent<EntityAttributes>();
 
-                foreach (var preset in Contents)
-                    stats[preset.Type, preset.Subtype] += preset.Value;
+                foreach (var preset in Contents) {
+                    stats[preset.Type, ValueSubtype.Base] += preset.Base;
+                    stats[preset.Type, ValueSubtype.Modifier] += preset.Modifier;
+                }
 
                 Contents.Clear(); // Handle exceptional cases of multiple-triggering
 

@@ -185,7 +185,7 @@ namespace Gameplay {
 
 
                 if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "Building") {
-                    var playerStats = target.GetComponent<EntityStats>();
+                    var playerStats = target.GetComponent<EntityAttributes>();
                     if (playerStats) {
                         playerStats.RemoveHealth(MeleeAttackDamage);
                     }
@@ -246,7 +246,7 @@ namespace Gameplay {
 
 
                 if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "Building") {
-                    var playerStats = target.GetComponent<EntityStats>();
+                    var playerStats = target.GetComponent<EntityAttributes>();
                     if (playerStats) {
                         playerStats.RemoveHealth(RangedAttackDamage);
                     }

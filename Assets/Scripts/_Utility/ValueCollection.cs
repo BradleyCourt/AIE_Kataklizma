@@ -3,44 +3,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-//[Serializable]
-public class ValueCollection  {
+/// <summary>
+/// The run-time parts of ValueCollection
+/// </summary>
+[Serializable]
+public partial class ValueCollection  {
+    [Serializable]
     public class Value {
-
+        public ValueType Type;
         public float Base;
         public float Modifier;
         public float Derived { get { return Base + Base * Modifier; } }
     }
 
-    [Serializable]
-    public class Preset {
-        public ValueType Type;
-        public ValueSubtype Subtype;
-        public float Value;
-    }
-
-    public ValueCollection(IEnumerable<Preset> presets = null) {
-        SuppressEvents = true;
-
-
-        SuppressEvents = false;
-    }
-
-    public void Parse(IEnumerable<Preset> presets, bool suppressEvents = false) {
+    /// <summary>
+    /// Parse a collection of Presets, overriding any duplicate value types
+    /// </summary>
+    /// <param name="presets"></param>
+    /// <param name="suppressEvents"></param>
+    public void Inject(IEnumerable<Value> presets, bool suppressEvents = false) {
         if (presets == null)
-            throw new System.ArgumentNullException("ValueCollection.Parse(): presets cannot be null.");
+            throw new System.ArgumentNullException("ValueCollection.Inject(): presets cannot be null.");
 
         var temp = SuppressEvents;
         SuppressEvents = suppressEvents;
 
-        foreach (var preset in presets)
-            this[preset.Type, preset.Subtype] = preset.Value;
+        foreach (var preset in presets) {
+            this[preset.Type, ValueSubtype.Base] = preset.Base;
+            this[preset.Type, ValueSubtype.Modifier] = preset.Modifier;
+        }
+
+        SuppressEvents = temp;
+    }
+
+    /// <summary>
+    /// Parse a collection of Presets, ADDING any duplicate value types
+    /// </summary>
+    /// <param name="presets"></param>
+    /// <param name="suppressEvents"></param>
+    public void Merge(IEnumerable<Value> presets, bool suppressEvents = false) {
+        if (presets == null)
+            throw new System.ArgumentNullException("ValueCollection.Merge(): presets cannot be null.");
+
+        var temp = SuppressEvents;
+        SuppressEvents = suppressEvents;
+
+        foreach (var preset in presets) {
+            this[preset.Type, ValueSubtype.Base] += preset.Base;
+            this[preset.Type, ValueSubtype.Modifier] += preset.Modifier;
+        }
 
         SuppressEvents = temp;
     }
 
     #region " events "
-    public event System.Action<Object, ValueType, ValueSubtype, float> ValueChanged;
+    public event System.Action<System.Object, ValueType, ValueSubtype, float> ValueChanged;
 
     protected void RaiseValueChanged(ValueType type, ValueSubtype subtype, float oldValue) {
         if (!SuppressEvents && ValueChanged != null) ValueChanged(this, type, subtype, oldValue);
@@ -50,6 +67,8 @@ public class ValueCollection  {
     public bool SuppressEvents { get; set; }
     protected Dictionary<ValueType, Value> _Stats = new Dictionary<ValueType, Value>();
 
+    //[UnityEngine.HideInInspector]
+    public List<Value> _Values = new List<Value>();
 
     /// <summary>
     /// Indexer.  Examples:
@@ -63,37 +82,61 @@ public class ValueCollection  {
     /// <returns></returns>
     public float this[ValueType type, ValueSubtype subtype = ValueSubtype.Derived] {
         get {
-            if (!_Stats.ContainsKey(type))
-                return 0;
+            var storedValue = Fetch(type);
+
+            if (storedValue == null) return 0;
+
 
             switch (subtype) {
-                case ValueSubtype.Base: { return _Stats[type].Base; }
-                case ValueSubtype.Modifier: { return _Stats[type].Modifier; }
-                default: { return _Stats[type].Derived; }
+                case ValueSubtype.Base: { return storedValue.Base; }
+                case ValueSubtype.Modifier: { return storedValue.Modifier; }
+                default: { return storedValue.Derived; }
             }
+            
+           
         }
         set {
-            if (!_Stats.ContainsKey(type))
-                _Stats.Add(type, new Value());
 
+            if ( subtype == ValueSubtype.Derived ) throw new System.InvalidOperationException("ValueCollection[].Set: Cannot set EntityStat (" + type.ToString() + ") value directly.  MUST set Base or Modifier instead.");
+
+            // Find list entry:
+            var storedValue = Fetch(type);
+
+            // If not found, create new
+            if ( storedValue == null ) {
+                storedValue = new Value { Type = type };
+                _Values.Add(storedValue);
+            }
+
+            // For appropriate subtype, remember old value and set new value
             float old = 0;
             switch (subtype) {
 
                 case ValueSubtype.Base:
-                    old = _Stats[type].Base;
-                    _Stats[type].Base = value;
+                    old = storedValue.Base;
+                    storedValue.Base = value;
                     break;
                 case ValueSubtype.Modifier:
-                    old = _Stats[type].Modifier;
-                    _Stats[type].Modifier = value;
+                    old = storedValue.Modifier;
+                    storedValue.Modifier = value;
                     break;
-                case ValueSubtype.Derived:
-                    throw new System.InvalidOperationException("Cannot set EntityStat (" + type.ToString() + ") value directly.  MUST set Base or Modifier instead.");
+                default:
+                    throw new System.ApplicationException("ValueCollection[].Set: Invalid Subtype value.");
             }
 
+            // Raise "ValueChanged" event only if value actually changed
             if ( old != value )
                 RaiseValueChanged(type, subtype, old);
         }
+    }
+
+
+    protected Value Fetch(ValueType type) {
+        foreach (var item in _Values) 
+            if (item.Type == type)
+                return item;
+        
+        return null;
     }
 
     public bool Remove(ValueType stat) {

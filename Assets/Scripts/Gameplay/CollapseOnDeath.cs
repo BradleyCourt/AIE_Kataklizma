@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Gameplay {
 
-    [RequireComponent(typeof(EntityStats))]
+    [RequireComponent(typeof(EntityAttributes))]
     public class CollapseOnDeath : MonoBehaviour {
         private bool IsFalling { get; set; }
 
@@ -19,7 +19,7 @@ namespace Gameplay {
         public float TimeToLive = 1; // "Fall Time"
 
         private Rigidbody Rb;
-        private EntityStats Stats;
+        private EntityAttributes Stats;
 
         /// Tracks velocity on a rigidbody if it exists, else tracks it locally
         private Vector3 _Velocity;
@@ -43,7 +43,7 @@ namespace Gameplay {
             Rb = GetComponent<Rigidbody>();
             //if (Rb == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required Rigidbody sibling.");
 
-            Stats = GetComponent<EntityStats>();
+            Stats = GetComponent<EntityAttributes>();
             if (Stats == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required EntityStats sibling.");
 
 

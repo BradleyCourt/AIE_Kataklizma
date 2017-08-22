@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace Gameplay {
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(EntityStats))]
+    [RequireComponent(typeof(EntityAttributes))]
     public class LevelSystem : MonoBehaviour {
 
-        protected EntityStats Stats;
+        protected EntityAttributes Stats;
 
         public List<int> XpThresholds;
 
@@ -42,7 +42,7 @@ namespace Gameplay {
         // Use this for initialization
         void Start() {
 
-            Stats = GetComponent<EntityStats>();
+            Stats = GetComponent<EntityAttributes>();
             if (Stats == null) throw new System.ApplicationException(gameObject.name + " - LevelSystem: Could not locate required EntityStats sibling.");
 
             if (XpThresholds.Count < 1) throw new System.ApplicationException(gameObject.name + " - LevelSystem: XpThresholds cannot be empty.");

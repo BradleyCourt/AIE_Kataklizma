@@ -8,7 +8,7 @@ public class FireController : MonoBehaviour
     
     public Transform BulletSpawn;
     private MovementChecker movementChecker;
-    private EntityStats Stats;
+    private EntityAttributes Stats;
     public Patrol P;
     //public Transform Target;
     public GameObject Projectile;
@@ -62,7 +62,7 @@ public class FireController : MonoBehaviour
     void FireMachineGun(Vector3 targetDir)
     {
         // Shooting machine gun, and draweing ray in scene view
-        //P.Target.GetComponent<EntityStats>().RemoveHealth(MachineGun * Time.deltaTime);
+        //P.Target.GetComponent<EntityAttributes>().RemoveHealth(MachineGun * Time.deltaTime);
         Debug.DrawRay(transform.position, targetDir, Color.red);
     }
 
