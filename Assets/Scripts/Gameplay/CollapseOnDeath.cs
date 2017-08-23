@@ -44,7 +44,7 @@ namespace Gameplay {
             //if (Rb == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required Rigidbody sibling.");
 
             Stats = GetComponent<EntityAttributes>();
-            if (Stats == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required EntityStats sibling.");
+            if (Stats == null) throw new ApplicationException(gameObject.name + " - CollapseOnDeath: Could not locate required EntityAttributes sibling.");
 
 
             // NOTE: This warning no longer required as all maps are built on top of a Terrain piece - There may be empty blocks, but no holes.

@@ -105,9 +105,9 @@ GameObject:
   - component: {fileID: 33799291441153160}
   - component: {fileID: 23751278358599864}
   - component: {fileID: 95936670215506558}
-  - component: {fileID: 114347969805708730}
   - component: {fileID: 114351621581492382}
   - component: {fileID: 64337354498489754}
+  - component: {fileID: 114102915928199072}
   m_Layer: 0
   m_Name: 10m_Apartments
   m_TagString: Building
@@ -383,6 +383,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23069173956900104
 MeshRenderer:
@@ -414,6 +415,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23076967960511526
 MeshRenderer:
@@ -445,6 +447,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23124995683192904
 MeshRenderer:
@@ -476,6 +479,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23145628177662490
 MeshRenderer:
@@ -507,6 +511,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23243904454924780
 MeshRenderer:
@@ -538,6 +543,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23269062369703300
 MeshRenderer:
@@ -569,6 +575,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23446099834991136
 MeshRenderer:
@@ -600,6 +607,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23751278358599864
 MeshRenderer:
@@ -631,6 +639,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23801101279477638
 MeshRenderer:
@@ -662,6 +671,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33032334003099422
 MeshFilter:
@@ -764,7 +774,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114347969805708730
+--- !u!114 &114102915928199072
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -772,14 +782,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1686630664249174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6434cd491b3c4064e935759ec8014c97, type: 3}
+  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowDebug: 0
-  StartingStats:
-  - Type: 0
-    Subtype: 0
-    Value: 30
+  _Attributes:
+    _Values:
+    - Type: 1
+      Base: 20
+      Modifier: 0
 --- !u!114 &114351621581492382
 MonoBehaviour:
   m_ObjectHideFlags: 1

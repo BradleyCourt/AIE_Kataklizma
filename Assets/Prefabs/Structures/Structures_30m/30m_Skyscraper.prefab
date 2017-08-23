@@ -38,9 +38,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4024017583375606}
   - component: {fileID: 33620034381243840}
-  - component: {fileID: 114259345210632926}
   - component: {fileID: 114531398687363236}
   - component: {fileID: 65716300528419930}
+  - component: {fileID: 114423424727634488}
   m_Layer: 0
   m_Name: 30m_Skyscraper
   m_TagString: Building
@@ -105,6 +105,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33342562262666576
 MeshFilter:
@@ -149,7 +150,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114259345210632926
+--- !u!114 &114423424727634488
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -157,14 +158,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1861274135498148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6434cd491b3c4064e935759ec8014c97, type: 3}
+  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowDebug: 0
-  StartingStats:
-  - Type: 0
-    Subtype: 0
-    Value: 50
+  _Attributes:
+    _Values:
+    - Type: 0
+      Base: 20
+      Modifier: 0
 --- !u!114 &114531398687363236
 MonoBehaviour:
   m_ObjectHideFlags: 1
