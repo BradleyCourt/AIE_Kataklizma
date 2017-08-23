@@ -7,11 +7,12 @@ public class FireController : MonoBehaviour
 {
     
     public Transform BulletSpawn;
-    private MovementChecker movementChecker;
+    private PlayerController PlayerControl;
     private EntityAttributes Stats;
     public Patrol P;
     //public Transform Target;
     public GameObject Projectile;
+    public float PlayerIdletime = 0.2f;
     public float BulletSpeed = 3;
     public float CannonFire = 50f;
     public float MachineGun = 10f;
@@ -41,11 +42,11 @@ public class FireController : MonoBehaviour
         }
         else
         {
-            movementChecker = P.Target.GetComponent<MovementChecker>(); // TODO - setTatrget function
+            PlayerControl = P.Target.GetComponent<PlayerController>(); // TODO - setTatrget function
             Vector3 targetDir = P.Target.position - transform.position; 
             float step = BulletSpeed * Time.deltaTime;
 
-            if (movementChecker.IsStationary())
+            if (PlayerControl.IdleTime > PlayerIdletime)
             {
                 if (CanFire)
                 FireCannon();
