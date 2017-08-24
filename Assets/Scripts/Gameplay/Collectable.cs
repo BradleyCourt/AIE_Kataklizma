@@ -7,7 +7,7 @@ namespace Gameplay {
     public class Collectable : MonoBehaviour {
 
         public float RotationSpeed = 30;
-
+        
         [TagList]
         public List<string> CollectableBy;
 

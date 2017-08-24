@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: f3755222438cefa46ad26e1df56b087b
-timeCreated: 1503464876
+guid: b427803c3959cda42b174bcc3b44f78b
+timeCreated: 1503549892
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Road_Straight
+    100000: Road_Inter
     100002: //RootNode
-    400000: Road_Straight
+    400000: Road_Inter
     400002: //RootNode
-    2300000: Road_Straight
-    3300000: Road_Straight
-    4300000: Road_Straight
+    2300000: Road_Inter
+    3300000: Road_Inter
+    4300000: Road_Inter
   materials:
     importMaterials: 1
     materialName: 0
