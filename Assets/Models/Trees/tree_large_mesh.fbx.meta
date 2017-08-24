@@ -1,22 +1,17 @@
 fileFormatVersion: 2
-guid: e4ad6d5da8b3fc14191d3a0829ad93bf
-timeCreated: 1501117578
-licenseType: Free
+guid: 0cd0786930c4d9649833762ef7a10c39
+timeCreated: 1503552189
+licenseType: Pro
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Apartment_building
-    100004: floor_base_20m
-    400000: //RootNode
-    400002: Apartment_building
-    400004: floor_base_20m
-    2300000: Apartment_building
-    2300002: floor_base_20m
-    3300000: Apartment_building
-    3300002: floor_base_20m
-    4300000: floor_base_20m
-    4300002: Apartment_building
+    100000: polySurface29
+    100002: //RootNode
+    400000: polySurface29
+    400002: //RootNode
+    2300000: polySurface29
+    3300000: polySurface29
+    4300000: polySurface29
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -28,6 +23,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -38,14 +35,18 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
+    importVisibility: 1
     importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -61,6 +62,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
