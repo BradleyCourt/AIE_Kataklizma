@@ -107,7 +107,7 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-  m_NavMeshData: {fileID: 23800000, guid: 92f8d22739a76b04d843be3a603a95e4, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &12814326
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +564,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &801247258
 Prefab:
@@ -687,6 +687,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &858334479 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1431774962278804, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+    type: 2}
+  m_PrefabInternal: {fileID: 1492364823}
+--- !u!114 &858334487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858334479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6fe9e561dbff2a46a8c8320a35edad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SingleSelect: 8
+  MultiSelect: 4
 --- !u!1001 &873384395
 Prefab:
   m_ObjectHideFlags: 0
@@ -922,7 +940,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1329409291
 Prefab:
@@ -1058,7 +1076,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4601038429289164, guid: 7170cb3b08782054a9d06587d5e70636, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7170cb3b08782054a9d06587d5e70636, type: 2}
