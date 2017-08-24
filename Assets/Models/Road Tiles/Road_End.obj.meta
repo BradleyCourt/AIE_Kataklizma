@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 4d90e84be43ac384a9cd87754d1c1670
-timeCreated: 1503549817
+guid: 48c24e1d319a11e4fa6a518da912c44e
+timeCreated: 1503549892
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Road_Inter
+    100000: Road_End
     100002: //RootNode
-    400000: Road_Inter
+    400000: Road_End
     400002: //RootNode
-    2300000: Road_Inter
-    3300000: Road_Inter
-    4300000: Road_Inter
+    2300000: Road_End
+    3300000: Road_End
+    4300000: Road_End
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +39,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.05
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
