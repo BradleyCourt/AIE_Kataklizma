@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4917475016083876}
+  - component: {fileID: 114162500429955670}
   m_Layer: 0
   m_Name: Road_End
   m_TagString: Untagged
@@ -109,3 +110,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994246450933308}
   m_Mesh: {fileID: 4300000, guid: 48c24e1d319a11e4fa6a518da912c44e, type: 3}
+--- !u!114 &114162500429955670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1858776334286172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6225171eb144f194a9f4b0d76c6689fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Forward: 0
+  Back: 1
+  Left: 0
+  Right: 0
