@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Gameplay {
-
-    [RequireComponent(typeof(ObserverDirector))]
+    
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour {
 
@@ -36,6 +35,12 @@ namespace Gameplay {
             }
         }
 
+        private float _IdleTime;
+        public float IdleTime {
+            get { return _IdleTime; }
+            protected set { _IdleTime = value; }
+        }
+
         private AnimState State = AnimState.Idle;
 
         public float MoveSpeed = 5.0f;
@@ -47,221 +52,57 @@ namespace Gameplay {
 
         public bool IsControllable { get; set; }
 
-
-        private ObserverDirector Observers;
         private Rigidbody Rb;
+        private Camera ObserverCam;
+        private float ObserverTheta;
+        private float ObserverPhi;
+        public float ObserverDistance;
+        public Vector2 ObserverOffset;
+        
 
-        #region " Action: Jump "
+        //#region " Action: Jump "
 
-        public float JumpVel = 8.0F;
-        public float JumpCooldown = 0;
-        public float JumpDuration = 0.2f;
-        private bool IsJumpReady = true;
-        private bool CanJump {
-            get {
-                return IsJumpReady && IsGrounded && State == AnimState.Idle;
-            }
-        }
+        //public float JumpVel = 8.0F;
+        //public float JumpCooldown = 0;
+        //public float JumpDuration = 0.2f;
+        //private bool IsJumpReady = true;
+        //private bool CanJump {
+        //    get {
+        //        return IsJumpReady && IsGrounded && State == AnimState.Idle;
+        //    }
+        //}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        void DoJump() {
-            State = AnimState.Jumping;
-            IsJumpReady = false;
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        //void DoJump() {
+        //    State = AnimState.Jumping;
+        //    IsJumpReady = false;
 
-            // Setup delay for returning control "when it stops"
-            StartCoroutine(this.DelayedAction(JumpDuration,
-                () => {
-                    if (State == AnimState.Jumping) {
-                        State = AnimState.Idle;
-                    }
-                }));
+        //    // Setup delay for returning control "when it stops"
+        //    StartCoroutine(this.DelayedAction(JumpDuration,
+        //        () => {
+        //            if (State == AnimState.Jumping) {
+        //                State = AnimState.Idle;
+        //            }
+        //        }));
 
-            // Setup delay for cooldown "when it can be done again"
-            StartCoroutine(this.DelayedAction(JumpCooldown,
-                () => {
-                    IsJumpReady = true;
-                }));
+        //    // Setup delay for cooldown "when it can be done again"
+        //    StartCoroutine(this.DelayedAction(JumpCooldown,
+        //        () => {
+        //            IsJumpReady = true;
+        //        }));
 
-            Rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
-        }
-        #endregion
-
-        #region " Action: Charge "
-
-        public float ChargeSpeed = 7.5f;
-        public float ChargeCooldown = 5; // Time before next charge is available
-        public float ChargeDuration = 1.8f; // Time charge lasts for if not interrupted
-        private bool IsChargeReady = true;
-        private bool CanCharge {
-            get {
-                return IsChargeReady && IsGrounded && (State == AnimState.Idle || State == AnimState.Moving);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        void DoCharge() {
-            IsControllable = false;
-            IsChargeReady = false;
-            State = AnimState.Charging;
-
-            // Setup delay for returning control
-            StartCoroutine(this.DelayedAction(ChargeDuration,
-                () => {
-                    if (State == AnimState.Charging) { // If we're still 'charging' (ie, if we haven't hit anything already)
-                    State = AnimState.Idle;
-                        IsControllable = true;
-                    }
-                }));
-
-            // Setup delay for cooldown
-            StartCoroutine(this.DelayedAction(ChargeCooldown,
-                () => {
-                    IsChargeReady = true;
-                }));
-
-            // Do Charge
-        }
-
-        #endregion
-
-        #region " Action: Melee Attack "
-
-        public BoxCollider MeleeAttackZone;
-        public float MeleeAttackCooldown = 1;
-        public float MeleeAttackDuration = 0.3f;
-        public int MeleeAttackDamage = 10;
-        private bool IsMeleeAttackReady = true;
-        private bool CanMeleeAttack {
-            get {
-                return IsMeleeAttackReady && State == AnimState.Idle;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        void DoMeleeAttack() {
-            Debug.Log("Do Melee Attack!");
-
-            State = AnimState.Attacking;
-            IsMeleeAttackReady = false;
-
-            // Setup delay for returning control "when it stops"
-            StartCoroutine(this.DelayedAction(MeleeAttackDuration,
-                () => {
-                    if (State == AnimState.Attacking) {
-                        State = AnimState.Idle;
-                    }
-                }));
-
-            // Setup delay for cooldown "when it can be done again"
-            StartCoroutine(this.DelayedAction(MeleeAttackCooldown,
-                () => {
-                    IsMeleeAttackReady = true;
-                }));
-
-
-            // Render Zone
-            // FIXME: REmove Zone Render
-            var go = Instantiate(MeleeAttackZoneRenderer.gameObject, MeleeAttackZoneRenderer.transform.parent, false);
-            go.transform.parent = null;
-            go.GetComponent<MeshRenderer>().enabled = true;
-            Destroy(go, MeleeAttackDuration);
-
-            // Do Attack
-            var centreOffset = transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.center);
-
-            var centre = transform.position + centreOffset;
-            var size = MeleeAttackZone.size; // transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.size);
-
-            Collider[] targets = Physics.OverlapBox(centre, size, transform.rotation, ~8); // Anything that is NOT a PlayerAvatar layer
-
-            foreach (Collider target in targets) {
-                if (target.gameObject.tag == "Player") continue;
-
-
-                if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "Building") {
-                    var playerStats = target.GetComponent<EntityAttributes>();
-                    if (playerStats) {
-                        playerStats.RemoveHealth(MeleeAttackDamage);
-                    }
-                }
-            }
-        }
-        #endregion
-
-        #region " Action: Ranged Attack "
-
-        public BoxCollider RangedAttackZone; // fire breath attack
-        public float RangedAttackCooldown = 1;
-        public float RangedAttackDuration = 0.3f;
-        public int RangedAttackDamage = 15;
-        private bool IsRangedAttackReady = true;
-        private bool CanRangedAttack {
-            get {
-                return IsRangedAttackReady && State == AnimState.Idle;
-            }
-        }
-
-        void DoRangedAttack() {
-            Debug.Log("Do Ranged Attack!");
-
-            State = AnimState.Attacking;
-            IsRangedAttackReady = false;
-
-            // Setup delay for returning control "when it stops"
-            StartCoroutine(this.DelayedAction(RangedAttackDuration,
-                () => {
-                    if (State == AnimState.Attacking) {
-                        State = AnimState.Idle;
-                    }
-                }));
-
-            // Setup delay for cooldown "when it can be done again"
-            StartCoroutine(this.DelayedAction(RangedAttackCooldown,
-                () => {
-                    IsRangedAttackReady = true;
-                }));
-
-
-            // Render Zone
-            // FIXME: REmove Zone Render
-            var go = Instantiate(RangedAttackZoneRenderer.gameObject, RangedAttackZoneRenderer.transform.parent, false);
-            go.transform.parent = null;
-            go.GetComponent<MeshRenderer>().enabled = true;
-            Destroy(go, RangedAttackDuration);
-
-            // Do Attack
-            var centre = transform.position + transform.localToWorldMatrix.MultiplyVector(RangedAttackZone.center); ;
-            var size = RangedAttackZone.size;
-
-            Collider[] targets = Physics.OverlapBox(centre, size, transform.rotation, ~8); // Anything that is NOT a PlayerAvatar layer
-
-            foreach (Collider target in targets) {
-                if (target.gameObject.tag == "Player") continue;
-
-
-                if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "Building") {
-                    var playerStats = target.GetComponent<EntityAttributes>();
-                    if (playerStats) {
-                        playerStats.RemoveHealth(RangedAttackDamage);
-                    }
-                }
-            }
-
-        }
-
-        #endregion
+        //    Rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        //}
+        //#endregion
+       
 
 
         // Use this for initialization
         void Start() {
-            Observers = GetComponent<ObserverDirector>();
-            if (Observers == null) throw new System.ApplicationException("PlayerController requires an ObserverDirector sibling");
+            ObserverCam = GetComponentInChildren<Camera>();
+            if (ObserverCam == null) throw new System.ApplicationException(gameObject.name + " - PlayerController: Unable to locate required Camera child");
 
             Rb = GetComponent<Rigidbody>();
             if (Rb == null) throw new System.ApplicationException("PlayerController requires a Rigidbody sibling");
@@ -272,38 +113,18 @@ namespace Gameplay {
 
         // Update is called once per frame
         void Update() {
-
-            // Process input
-            if (IsControllable) {
-                if (CanCharge && Input.GetButtonDown("Charge"))
-                    DoCharge();
-
-                if (CanMeleeAttack && Input.GetButtonDown("Fire1"))
-                    DoMeleeAttack();
-
-                if (CanRangedAttack && Input.GetButtonDown("Fire2"))
-                    DoRangedAttack();
-
-                if (CanJump && Input.GetButtonDown("Jump"))
-                    DoJump();
-
-
-            }
-
+            UpdateInputState();           
+            
             // Move character
-            Vector3 motion;
-            if (State != AnimState.Charging) {
-                motion = GetPlayerMotion() * ChargeSpeed;
-                Observers.Target.transform.LookAt(Observers.Target.transform.position + motion);
-            } else {
-                motion = transform.forward * ChargeSpeed;
-            }
+            Vector3 motion = GetPlayerMotion() * MoveSpeed;
+            transform.LookAt(transform.position + motion);
 
+            UpdateCamera();
 
             var velocity = Rb.velocity;
             velocity.x = 0;
             velocity.z = 0;
-            velocity += motion;
+            velocity += motion; 
 
             if (velocity.magnitude > 0)
                 Rb.velocity = velocity;
@@ -311,6 +132,43 @@ namespace Gameplay {
 
         }
 
+        void UpdateInputState() {
+            if (Input.GetMouseButtonDown(2)) { // Middle Mouse toggles mouse capture
+                if (Cursor.lockState != CursorLockMode.Locked) {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                } else {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
+            }
+        }
+        void UpdateCamera() {
+            if (Cursor.lockState == CursorLockMode.Locked) {
+
+                // Update Camera
+                ObserverTheta = Mathf.Repeat(ObserverTheta + Input.GetAxis("ViewHorizontal"), 360);
+                ObserverPhi = Mathf.Clamp(ObserverPhi + Input.GetAxis("ViewVertical"), 20, 70);
+            }
+
+
+            // Apply Camera
+            var yaw = Quaternion.Euler(0, ObserverTheta, 0);
+            var pitch = Quaternion.Euler(-ObserverPhi, 0, 0);
+
+            var offset = Vector3.forward * ObserverDistance;
+
+            offset = pitch * offset;
+            offset = yaw * offset;
+
+            // Rotate camera around target
+            ObserverCam.transform.position = (transform.position + offset);
+
+            // Point camera at target
+            ObserverCam.transform.LookAt(transform);
+            transform.Rotate(ObserverOffset.x, 0, 0, Space.Self);
+
+        }
 
         /// <summary>
         /// Apply captured motion to character.  Update character velocity.
@@ -319,16 +177,14 @@ namespace Gameplay {
 
             if (!IsControllable) return Vector3.zero; // Player-control disabled
 
-            var cameraDirection = Observers.Target.transform.position - Observers.Selected.Observer.transform.position;
+            var cameraDirection = transform.position - ObserverCam.transform.position;
 
             var characterFwd = new Vector3(cameraDirection.x, 0, cameraDirection.z).normalized;
             var characterRight = new Vector3(cameraDirection.z, 0, -cameraDirection.x).normalized;
 
             var motion = characterFwd * Input.GetAxis("MoveVertical") + characterRight * Input.GetAxis("MoveHorizontal");
             motion.Normalize();
-
-
-
+            
             return motion;
         }
 

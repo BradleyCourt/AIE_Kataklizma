@@ -193,6 +193,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23897959407788688
 MeshRenderer:
@@ -224,6 +225,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23961875919646254
 MeshRenderer:
@@ -255,6 +257,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33015270417310356
 MeshFilter:
@@ -289,10 +292,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 30
+  CollectableBy:
+  - Player
+  - Enemy
   Contents:
   - Type: 3
-    Subtype: 0
-    Value: 50
+    Base: 0
+    Modifier: 0
 --- !u!135 &135581058128679456
 SphereCollider:
   m_ObjectHideFlags: 1

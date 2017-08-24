@@ -20,17 +20,17 @@ public class ObserverDirector : MonoBehaviour {
     [HideInInspector]
     public Rigidbody TargetRb;
 
-    public List<ObserverDefinition> Observers;
+    public Camera ShoulderCam;
     
 	// Use this for initialization
 	void Start () {
-        if (Observers == null || Observers.Count < 1)
-            throw new System.InvalidOperationException("ObserverDirector REQUIRES at least one Observer Definition");
+        //if (Observers == null || Observers.Count < 1)
+        //    throw new System.InvalidOperationException("ObserverDirector REQUIRES at least one Observer Definition");
 
-        Selected = Observers[Random.Range(0, Observers.Count)];
-        Selected.Observer.Target = Target;
+        //Selected = Observers[Random.Range(0, Observers.Count)];
+        //Selected.Observer.Target = Target;
 
-        TargetRb = Target.GetComponent<Rigidbody>();
+        //TargetRb = Target.GetComponent<Rigidbody>();
         
 	}
 	
