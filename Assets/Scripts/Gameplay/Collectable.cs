@@ -8,7 +8,7 @@ namespace Gameplay {
 
         public float RotationSpeed = 30;
 
-        //[TagList]
+        [TagList]
         public List<string> CollectableBy;
 
         public List<ValueCollection.Value> Contents;
