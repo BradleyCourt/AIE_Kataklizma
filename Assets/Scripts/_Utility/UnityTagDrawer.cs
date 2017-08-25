@@ -5,7 +5,7 @@ using UnityEditor;
 // This class defines the TagList attribute, so that
 // it can be used in your regular MonoBehaviour scripts:
 
-public class TagListAttribute : PropertyAttribute
+public class UnityTagAttribute : PropertyAttribute
 {
 
 }
@@ -14,12 +14,12 @@ public class TagListAttribute : PropertyAttribute
 // in the inspector, when inspecting a GameObject with
 // a MonoBehaviour which uses the TagList attribute
 
-[CustomPropertyDrawer(typeof(TagListAttribute))]
-public class TagListDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(UnityTagAttribute))]
+public class UnityTagDrawer : PropertyDrawer
 {
-    TagListAttribute TagList
+    UnityTagAttribute TagList
     {
-        get { return ((TagListAttribute)attribute); }
+        get { return ((UnityTagAttribute)attribute); }
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
