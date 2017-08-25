@@ -9,74 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1858776334286172}
+  m_RootGameObject: {fileID: 1689453771956612}
   m_IsPrefabParent: 1
---- !u!1 &1858776334286172
+--- !u!1 &1689453771956612
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4917475016083876}
-  - component: {fileID: 114162500429955670}
+  - component: {fileID: 4426618417086724}
+  - component: {fileID: 33127555769035872}
+  - component: {fileID: 23662223159007192}
+  - component: {fileID: 95469551592781036}
   m_Layer: 0
-  m_Name: Road_End
+  m_Name: 20m_Apartment_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1994246450933308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4819437295789674}
-  - component: {fileID: 33676027261132170}
-  - component: {fileID: 23281842572977230}
-  m_Layer: 0
-  m_Name: Road_End
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4819437295789674
+--- !u!4 &4426618417086724
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1994246450933308}
+  m_GameObject: {fileID: 1689453771956612}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 59.03, y: 0, z: 39.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4917475016083876}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4917475016083876
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1858776334286172}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.28897, y: 0.3, z: 33.591827}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4819437295789674}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23281842572977230
+--- !u!23 &23662223159007192
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1994246450933308}
+  m_GameObject: {fileID: 1689453771956612}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 906135ff5cdaceb45af210b0fbab08f3, type: 2}
+  - {fileID: 2100000, guid: 73fbb762b03df7d4ebbc47f3cfdb6c01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,25 +74,27 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33676027261132170
+--- !u!33 &33127555769035872
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1994246450933308}
-  m_Mesh: {fileID: 4300000, guid: 48c24e1d319a11e4fa6a518da912c44e, type: 3}
---- !u!114 &114162500429955670
-MonoBehaviour:
+  m_GameObject: {fileID: 1689453771956612}
+  m_Mesh: {fileID: 4300000, guid: 3d354bfc3b5f910459037c8e82f1c71b, type: 3}
+--- !u!95 &95469551592781036
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1858776334286172}
+  m_GameObject: {fileID: 1689453771956612}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6225171eb144f194a9f4b0d76c6689fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Forward: 0
-  Back: 1
-  Left: 0
-  Right: 0
+  m_Avatar: {fileID: 9000000, guid: 3d354bfc3b5f910459037c8e82f1c71b, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1

@@ -7,7 +7,7 @@ namespace Gameplay {
     public class Collectable : MonoBehaviour {
 
         public float RotationSpeed = 30;
-
+        
         [TagList]
         public List<string> CollectableBy;
 
@@ -23,7 +23,7 @@ namespace Gameplay {
         }
 
         private void OnTriggerEnter(Collider other) {
-            if (other.gameObject.transform.root.tag == "Player") {
+            if (CollectableBy.Contains(other.gameObject.transform.root.tag)) {
                 var stats = other.gameObject.transform.root.GetComponent<EntityAttributes>();
 
                 foreach (var preset in Contents) {
@@ -31,7 +31,8 @@ namespace Gameplay {
                     stats[preset.Type, ValueSubtype.Modifier] += preset.Modifier;
                 }
 
-                Contents.Clear(); // Handle exceptional cases of multiple-triggering
+                // Handle exceptional cases of multiple-triggering
+                Contents.Clear(); 
 
                 Destroy(gameObject);
             }
