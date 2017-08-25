@@ -9,7 +9,7 @@ namespace MapGen {
         [System.Serializable]
         [System.Flags]
         public enum RoadConnections {
-            None = 0,
+          //None = 0,
             Front = 1,
             Back = 2,
             Left = 4,

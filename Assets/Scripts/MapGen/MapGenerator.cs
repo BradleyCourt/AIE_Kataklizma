@@ -8,6 +8,7 @@ namespace MapGen {
 
     public class MapGenerator : MonoBehaviour
     {
+       
 
 
         [Serializable]
@@ -58,6 +59,7 @@ namespace MapGen {
         /// 
         /// </summary>
         public List<SourceTilePreset> SourceTilePresets;
+        public List<GameObject> RoadTilePresets;
 
         /// <summary>
         ///
@@ -67,9 +69,108 @@ namespace MapGen {
             int columns = (int)bounds.x;
             int rows = (int)bounds.y;
 
-            // make an arry of gameobjects
+            // make an array of gameobjects
             GameObject[,] mapObjects = new GameObject[columns, rows];
 
+            AddRoads(mapObjects);
+            AddBuildings(mapObjects);
+
+        }
+
+        void AddRoads(GameObject[,] mapObjects)
+        {
+            int columns = (int)bounds.x;
+            int rows = (int)bounds.y;
+
+            bool[,] isRoad = new bool[columns, rows];
+
+            bool isVertical = false;
+            //add roads
+            for (int i = 0; i < 6; i++)
+            {
+                // get a random point
+                int indexX = UnityEngine.Random.Range(0, columns);
+                int indexY = UnityEngine.Random.Range(0, rows);
+
+                // move up and down* filling in road markers till we hit a road
+                int ix = indexX;
+                int iy = indexY;
+                if (isVertical)
+                {
+                    // go up
+                    while (iy < rows && isRoad[ix, iy] == false)
+                    {
+                        isRoad[ix, iy] = true;
+                        iy++;
+                    }
+                    // go back to start and go down
+                    iy = indexY;
+                    while (iy >= 0 && isRoad[ix, iy] == false)
+                    {
+                        isRoad[ix, iy] = true;
+                        iy--;
+                    }
+                }
+                else
+                {
+                    // go up
+                    while (ix < columns && isRoad[ix, iy] == false)
+                    {
+                        isRoad[ix, iy] = true;
+                        ix++;
+                    }
+                    // go back to start and go down
+                    ix = indexY;
+                    while (ix >= 0 && isRoad[ix, iy] == false)
+                    {
+                        isRoad[ix, iy] = true;
+                        ix--;
+                    }
+                }
+
+                
+                // flip the up/down directions
+                isVertical = !isVertical;
+
+
+            }
+
+            // quick printout (debug)
+            for (int c = 0; c < columns; c++)
+            {
+                string line = "";
+                for (int r = 0; r < rows; r++)
+                {
+                    line += isRoad[c, r] ? "o" : ".";
+                    
+                    // if returns "o" (that means a road is there, do this code 
+                    // {
+                    GameObject prefab = RoadTilePresets[0];
+
+                    GameObject go = Instantiate(prefab);
+                    go.transform.parent = transform;
+                    go.transform.localPosition = new Vector3(5 * c, 0, 5 * r); // TODO cheeky 5m hack, probably OK
+                    go.transform.localRotation = Quaternion.identity;
+                    go.name = "MapTile_" + c + "_" + r;
+
+                    mapObjects[c, r] = go; // fills array
+                    // }
+                }
+                print(line);
+            }
+
+
+            //fill in gameObjects
+          
+
+        }
+
+        void AddBuildings(GameObject[,] mapObjects)
+        {
+            int columns = (int)bounds.x;
+            int rows = (int)bounds.y;
+
+            // add buildings
             for (int c = 0; c < columns; c++)
             {
                 for (int r = 0; r < rows; r++)
@@ -101,14 +202,14 @@ namespace MapGen {
                                     }
                                 }
                             }
-                            if (fits) 
+                            if (fits)
                             {
                                 onesThatFit.Add(pre);
                             }
                         }
 
                         int index = UnityEngine.Random.Range(0, onesThatFit.Count);
-                        SourceTilePreset preset = onesThatFit[index]; 
+                        SourceTilePreset preset = onesThatFit[index];
                         GameObject prefab = preset.GetRandomTile();
 
                         // instansiates a prefab
@@ -130,7 +231,6 @@ namespace MapGen {
                     }
                 }
             }
-
         }
         void Start()
         {
