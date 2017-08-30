@@ -74,7 +74,6 @@ namespace MapGen {
 
             AddRoads(mapObjects);
             AddBuildings(mapObjects);
-
         }
 
         void AddRoads(GameObject[,] mapObjects)
@@ -84,11 +83,19 @@ namespace MapGen {
 
             bool[,] isRoad = new bool[columns, rows];
 
+            int numRoads = 24;
+
+            // prepick some starting values
+            int[] startX = new int[numRoads];
+            int[] startY = new int[numRoads];
+
+            // fill these in -TODO
+
             bool isVertical = false;
             //add roads
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < numRoads; i++)
             {
-                // get a random point
+                // get a random point (or use pre-picked values)
                 int indexX = UnityEngine.Random.Range(0, columns);
                 int indexY = UnityEngine.Random.Range(0, rows);
 
@@ -104,7 +111,7 @@ namespace MapGen {
                         iy++;
                     }
                     // go back to start and go down
-                    iy = indexY;
+                    iy = indexY-1;
                     while (iy >= 0 && isRoad[ix, iy] == false)
                     {
                         isRoad[ix, iy] = true;
@@ -120,7 +127,7 @@ namespace MapGen {
                         ix++;
                     }
                     // go back to start and go down
-                    ix = indexY;
+                    ix = indexX-1;
                     while (ix >= 0 && isRoad[ix, iy] == false)
                     {
                         isRoad[ix, iy] = true;
@@ -142,18 +149,21 @@ namespace MapGen {
                 for (int r = 0; r < rows; r++)
                 {
                     line += isRoad[c, r] ? "o" : ".";
-                    
+
                     // if returns "o" (that means a road is there, do this code 
                     // {
-                    GameObject prefab = RoadTilePresets[0];
+                    if (isRoad[c, r])
+                    {
+                        GameObject prefab = RoadTilePresets[0];
 
-                    GameObject go = Instantiate(prefab);
-                    go.transform.parent = transform;
-                    go.transform.localPosition = new Vector3(5 * c, 0, 5 * r); // TODO cheeky 5m hack, probably OK
-                    go.transform.localRotation = Quaternion.identity;
-                    go.name = "MapTile_" + c + "_" + r;
+                        GameObject go = Instantiate(prefab);
+                        go.transform.parent = transform;
+                        go.transform.localPosition = new Vector3(5 * c, 0, 5 * r); // TODO cheeky 5m hack, probably OK
+                        go.transform.localRotation = Quaternion.identity;
+                        go.name = "MapTile_" + c + "_" + r;
 
-                    mapObjects[c, r] = go; // fills array
+                        mapObjects[c, r] = go; // fills array
+                    }
                     // }
                 }
                 print(line);

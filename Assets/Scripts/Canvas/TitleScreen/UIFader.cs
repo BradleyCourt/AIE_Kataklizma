@@ -6,6 +6,7 @@ public class UIFader : MonoBehaviour {
 
     public GameObject text;
     public float AnimationTime = 2.0f;
+    public float fadeAmount;
 
     private bool FadeOut = true;
 
@@ -22,7 +23,7 @@ public class UIFader : MonoBehaviour {
         {
             if (FadeOut)
             {
-                var descr = LeanTween.alpha(text.GetComponent<RectTransform>(), 0.5f, AnimationTime);
+                LeanTween.alpha(text.GetComponent<RectTransform>(), fadeAmount, AnimationTime);
             }
             else
                 LeanTween.alpha(text.GetComponent<RectTransform>(), 1.0f, AnimationTime);
