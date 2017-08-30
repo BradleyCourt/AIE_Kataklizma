@@ -12,6 +12,9 @@ public class TSUIManager : MonoBehaviour
 	public GameObject background;
 	public GameObject PAKPanel;
 	public VideoPlayer channelSurfing;
+	public GameObject objectToRotate;
+	public int rotationSpeedSide;
+	public int rotationSpeedUp;
 	
 	// Use this for initialization
 	void Start () {
@@ -20,13 +23,11 @@ public class TSUIManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+		objectToRotate.transform.Rotate(0, rotationSpeedSide * Time.deltaTime, rotationSpeedUp * Time.deltaTime, Space.World);
 		if (buttonClicked == false && Input.anyKey)
 		{
-			
 			channelSurfing.Stop();
 			StartCoroutine("PlayVideo");
-			
-
 		}
 	}
 
@@ -39,5 +40,6 @@ public class TSUIManager : MonoBehaviour
 		yield return new WaitForSeconds(3);
 		breakingNews.Stop();
 		background.SetActive(true);
+		objectToRotate.SetActive(true);
 	}
 }
