@@ -52,7 +52,7 @@ vn 0.000000 1.000000 0.000000
 vn 0.000000 1.000000 0.000000
 s 1
 g Road_T
-usemtl Road_StraightSG
+usemtl initialShadingGroup
 f 10/1/1 11/2/2 3/4/3
 f 3/4/3 11/2/2 6/3/4
 f 6/3/4 11/2/2 16/6/5
