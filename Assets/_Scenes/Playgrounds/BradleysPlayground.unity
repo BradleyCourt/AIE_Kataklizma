@@ -1888,3 +1888,60 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00d8512ed0b80284ca1eaafddedba37c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2088064153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2088064155}
+  - component: {fileID: 2088064154}
+  m_Layer: 0
+  m_Name: 'Mapgen '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2088064154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2088064153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390b771cd418c2448bde8307de9f67fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounds: {x: 100, y: 100}
+  SourceTilePresets:
+  - Type: 1
+    Tiles:
+    - {fileID: 1643563966904716, guid: 7170cb3b08782054a9d06587d5e70636, type: 2}
+    - {fileID: 1643563966904716, guid: 7170cb3b08782054a9d06587d5e70636, type: 2}
+    - {fileID: 1643563966904716, guid: 7170cb3b08782054a9d06587d5e70636, type: 2}
+    - {fileID: 1643563966904716, guid: 7170cb3b08782054a9d06587d5e70636, type: 2}
+    - {fileID: 1034614153185756, guid: a6b013e5ee9a4074b9a499e149998467, type: 2}
+  - Type: 2
+    Tiles:
+    - {fileID: 1846581146321834, guid: 85d4008cb613d3347a5686b3f94caded, type: 2}
+  - Type: 3
+    Tiles:
+    - {fileID: 1428786979670910, guid: 41365dd9a1cd6ec4a9de825c914d17fd, type: 2}
+  RoadTilePresets:
+  - {fileID: 1584415378851204, guid: 918c2687f88379d4d8f86e01245960de, type: 2}
+--- !u!4 &2088064155
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2088064153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 39.22088, y: 15, z: -92.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

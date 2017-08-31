@@ -52,7 +52,7 @@ namespace MapGen {
         }
         public Vector2 bounds;
 
-        public Transform TileOrigin;
+        private Vector3 TileOrigin;
 
 
         /// <summary>
@@ -69,6 +69,8 @@ namespace MapGen {
             int columns = (int)bounds.x;
             int rows = (int)bounds.y;
 
+
+
             // make an array of gameobjects
             GameObject[,] mapObjects = new GameObject[columns, rows];
 
@@ -83,21 +85,59 @@ namespace MapGen {
 
             bool[,] isRoad = new bool[columns, rows];
 
-            int numRoads = 24;
+            int numRoads = 70;
 
             // prepick some starting values
-            int[] startX = new int[numRoads];
-            int[] startY = new int[numRoads];
+            List<int> indicesX = new List<int>(numRoads);
+            List<int> indicesY = new List<int>(numRoads);
 
             // fill these in -TODO
 
-            bool isVertical = false;
-            //add roads
+            int priorX = 0;
+            int priorY = 0;
+
             for (int i = 0; i < numRoads; i++)
             {
-                // get a random point (or use pre-picked values)
-                int indexX = UnityEngine.Random.Range(0, columns);
-                int indexY = UnityEngine.Random.Range(0, rows);
+                indicesX.Add( priorX += UnityEngine.Random.Range(3, 4) ); // Generaete offset from prior value, store in indeces and update prior value
+                indicesY.Add( priorY += UnityEngine.Random.Range(3, 4) );
+            }
+
+            //add roads
+
+            int verticalCount = 0;
+            int verticalWeight = 5;
+
+            for (int i = 0; i < numRoads; i++)
+            {
+                if (indicesX.Count == 0 || indicesY.Count == 0) break; // If run out of parallels, stop generating
+
+                bool isVertical = (UnityEngine.Random.Range(0, 100) < 50 - verticalCount);
+                int indexX, indexY;
+
+                if (isVertical)
+                {
+                    indexX = indicesX[UnityEngine.Random.Range(0, indicesX.Count)];
+                    indexY = UnityEngine.Random.Range(0, rows);
+
+                    indicesX.Remove(indexX);
+                    verticalCount += verticalWeight; // increase chance of horizontal
+                }
+                else
+                {
+                    // get a random point (or use pre-picked values)
+                    indexX = UnityEngine.Random.Range(0, columns);
+                    indexY = indicesY[UnityEngine.Random.Range(0, indicesY.Count)];
+
+                    indicesY.Remove(indexY);
+                    verticalWeight -= verticalWeight; // decrease chance of horizontal
+                }
+
+                if (indexX >= bounds.x || indexY >= bounds.y)
+                {
+                    i--;
+                    continue; // Conform to bounds
+                }
+
 
                 // move up and down* filling in road markers till we hit a road
                 int ix = indexX;
@@ -158,7 +198,7 @@ namespace MapGen {
 
                         GameObject go = Instantiate(prefab);
                         go.transform.parent = transform;
-                        go.transform.localPosition = new Vector3(5 * c, 0, 5 * r); // TODO cheeky 5m hack, probably OK
+                        go.transform.localPosition = new Vector3(5 * c + 2.5f, 0, 5 * r + 2.5f); // TODO cheeky 5m hack, probably OK
                         go.transform.localRotation = Quaternion.identity;
                         go.name = "MapTile_" + c + "_" + r;
 
@@ -166,7 +206,7 @@ namespace MapGen {
                     }
                     // }
                 }
-                print(line);
+               // print(line);
             }
 
 
@@ -244,7 +284,9 @@ namespace MapGen {
         }
         void Start()
         {
+            TileOrigin = transform.position + (new Vector3(5 * bounds.x * -0.5f, 0, 5 * bounds.y * -0.5f));
             GenerateGrid();
+
         }
     }
 }
