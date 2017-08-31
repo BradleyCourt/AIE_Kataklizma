@@ -1008,7 +1008,7 @@ Prefab:
     - target: {fileID: 114515371560155782, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
         type: 2}
       propertyPath: MultiSelect
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114515371560155782, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
         type: 2}
