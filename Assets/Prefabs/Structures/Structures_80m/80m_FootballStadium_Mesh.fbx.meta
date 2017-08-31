@@ -1,17 +1,15 @@
 fileFormatVersion: 2
-guid: b0a0a613166a4434d83d55b61338029c
-timeCreated: 1503552189
+guid: 5c076d48b5bf5554c94c7c9cfd62b565
+timeCreated: 1504154421
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: polySurface31
-    100002: //RootNode
-    400000: polySurface31
-    400002: //RootNode
-    2300000: polySurface31
-    3300000: polySurface31
-    4300000: polySurface31
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: FootballStadium_Mesh
     9500000: //RootNode
   materials:
     importMaterials: 1
