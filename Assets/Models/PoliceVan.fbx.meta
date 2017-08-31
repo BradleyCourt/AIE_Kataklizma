@@ -1,18 +1,62 @@
 fileFormatVersion: 2
-guid: b0a0a613166a4434d83d55b61338029c
-timeCreated: 1503552189
+guid: bde6a59dec67f6a45a9129270ef4cb88
+timeCreated: 1504156108
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: polySurface31
-    100002: //RootNode
-    400000: polySurface31
-    400002: //RootNode
-    2300000: polySurface31
-    3300000: polySurface31
-    4300000: polySurface31
-    9500000: //RootNode
+    100000: Bar1
+    100002: Bar2
+    100004: Body
+    100006: Mirror1
+    100008: Mirror2
+    100010: //RootNode
+    100012: Turret
+    100014: Wheel1
+    100016: Wheel2
+    100018: Wheel5
+    100020: Wheel6
+    400000: Bar1
+    400002: Bar2
+    400004: Body
+    400006: Mirror1
+    400008: Mirror2
+    400010: //RootNode
+    400012: Turret
+    400014: Wheel1
+    400016: Wheel2
+    400018: Wheel5
+    400020: Wheel6
+    2300000: Bar1
+    2300002: Bar2
+    2300004: Body
+    2300006: Mirror1
+    2300008: Mirror2
+    2300010: Turret
+    2300012: Wheel1
+    2300014: Wheel2
+    2300016: Wheel5
+    2300018: Wheel6
+    3300000: Bar1
+    3300002: Bar2
+    3300004: Body
+    3300006: Mirror1
+    3300008: Mirror2
+    3300010: Turret
+    3300012: Wheel1
+    3300014: Wheel2
+    3300016: Wheel5
+    3300018: Wheel6
+    4300000: Body
+    4300002: Wheel2
+    4300004: Bar1
+    4300006: Mirror1
+    4300008: Wheel1
+    4300010: Wheel6
+    4300012: Bar2
+    4300014: Mirror2
+    4300016: Wheel5
+    4300018: Turret
   materials:
     importMaterials: 1
     materialName: 0
@@ -82,7 +126,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
