@@ -52,9 +52,11 @@ namespace MapGen {
         }
         public Vector2 bounds;
 
-        private Vector3 TileOrigin;
+        private Vector3 TileOriginOffset;
 
-
+        private Transform Structures;
+        private Transform Roads;
+        
         /// <summary>
         /// 
         /// </summary>
@@ -197,8 +199,8 @@ namespace MapGen {
                         GameObject prefab = RoadTilePresets[0];
 
                         GameObject go = Instantiate(prefab);
-                        go.transform.parent = transform;
-                        go.transform.localPosition = new Vector3(5 * c + 2.5f, 0, 5 * r + 2.5f); // TODO cheeky 5m hack, probably OK
+                        go.transform.parent = Roads;
+                        go.transform.localPosition = TileOriginOffset + new Vector3(5 * c + 2.5f, 0, 5 * r + 2.5f); // TODO cheeky 5m hack, probably OK
                         go.transform.localRotation = Quaternion.identity;
                         go.name = "MapTile_" + c + "_" + r;
 
@@ -264,8 +266,8 @@ namespace MapGen {
 
                         // instansiates a prefab
                         GameObject go = Instantiate(prefab);
-                        go.transform.parent = transform;
-                        go.transform.localPosition = new Vector3(5 * c, 0, 5 * r); // TODO cheeky 5m hack, probably OK
+                        go.transform.parent = Structures;
+                        go.transform.localPosition = TileOriginOffset + new Vector3(5 * c, 0, 5 * r); // TODO cheeky 5m hack, probably OK
                         go.transform.localRotation = Quaternion.identity;
                         go.name = "MapTile_" + c + "_" + r;
 
@@ -284,9 +286,14 @@ namespace MapGen {
         }
         void Start()
         {
-            TileOrigin = transform.position + (new Vector3(5 * bounds.x * -0.5f, 0, 5 * bounds.y * -0.5f));
-            GenerateGrid();
 
+            Structures = transform.Find("Structures") ?? transform; // Find "Structures" child, else use "this" transform
+            Roads = transform.Find("Roads") ?? transform;
+
+            TileOriginOffset = new Vector3(5 * bounds.x * -0.5f, 0, 5 * bounds.y * -0.5f);
+            GenerateGrid();
+            
+            NavMeshGen.BuildNavMesh(Roads, new Bounds( transform.position, new Vector3(5 * bounds.x, 1,5 *  bounds.y)));
         }
     }
 }
