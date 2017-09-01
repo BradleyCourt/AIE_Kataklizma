@@ -10,11 +10,11 @@ public class TSUIManager : MonoBehaviour
 
 	public VideoPlayer breakingNews;
 	public GameObject background;
+    public GameObject menuHolder;
 	public GameObject PAKPanel;
 	public VideoPlayer channelSurfing;
-	public GameObject objectToRotate;
-	public int rotationSpeedSide;
-	public int rotationSpeedUp;
+    public GameObject Canvas;
+	
 	
 	// Use this for initialization
 	void Start () {
@@ -23,7 +23,7 @@ public class TSUIManager : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-		objectToRotate.transform.Rotate(0, rotationSpeedSide * Time.deltaTime, rotationSpeedUp * Time.deltaTime, Space.World);
+		
 		if (buttonClicked == false && Input.anyKey)
 		{
 			channelSurfing.Stop();
@@ -39,7 +39,12 @@ public class TSUIManager : MonoBehaviour
 		PAKPanel.SetActive(false);
 		yield return new WaitForSeconds(3);
 		breakingNews.Stop();
-		background.SetActive(true);
-		objectToRotate.SetActive(true);
+        background.SetActive(true);
+        yield return new WaitForSeconds(3);
+        LeanTween.scale(Canvas, Vector3.one * 0.7f, 1);
+        LeanTween.moveX(Canvas.GetComponent<RectTransform>(), -105, 1);
+        LeanTween.moveY(Canvas.GetComponent<RectTransform>(), 50, 1);
+        LeanTween.moveX(menuHolder.GetComponent<RectTransform>(), -100, 1);
+
 	}
 }
