@@ -17,6 +17,7 @@ public enum ValueType {
     Cooldown,
     Duration,
     Damage,
+    DamageReduction,
     Range,
 }
 
@@ -40,4 +41,10 @@ public enum FilterType {
     WhitelistAll,
     BlacklistAny,
     BlacklistAll,
+}
+
+public enum AbilityActivationType{
+    Normal,
+    Charged,
+    Channeled
 }

@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Scriptables;
 
 namespace Gameplay {
     
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour {
 
-        public MeshRenderer MeleeAttackZoneRenderer;
-        public MeshRenderer RangedAttackZoneRenderer;
+
 
         [System.Serializable]
         public struct Action {
@@ -52,13 +52,19 @@ namespace Gameplay {
 
         public bool IsControllable { get; set; }
 
+
+        public MeshRenderer MeleeAttackZoneRenderer;
+        public MeshRenderer RangedAttackZoneRenderer;
+
         private Rigidbody Rb;
         private Camera ObserverCam;
         private float ObserverTheta;
         private float ObserverPhi;
+
+        [Header("Observer Camera")]
         public float ObserverDistance;
         public Vector2 ObserverOffset;
-        
+
 
         //#region " Action: Jump "
 
@@ -96,7 +102,7 @@ namespace Gameplay {
         //    Rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         //}
         //#endregion
-       
+
 
 
         // Use this for initialization
