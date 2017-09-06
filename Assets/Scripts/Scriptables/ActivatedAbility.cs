@@ -75,7 +75,7 @@ namespace Scriptables {
         public bool CanUpdate { get { return false; } }
         public void Update() {
 
-            CooldownRemaining = Mathf.Max(CooldownRemaining - Time.deltaTime, 0);
+            //CooldownRemaining = Mathf.Max(CooldownRemaining - Time.deltaTime, 0);
             DurationRemaining = Mathf.Max(DurationRemaining - Time.deltaTime, 0);
             PrechargeRemaining = Mathf.Max(PrechargeRemaining - Time.deltaTime, 0);
             DelayRemaining = Mathf.Max(DelayRemaining - Time.deltaTime, 0);

@@ -11,9 +11,13 @@ public class TSUIManager : MonoBehaviour
 	public VideoPlayer breakingNews;
 	public GameObject background;
     public GameObject menuHolder;
+	public GameObject settingsHolder;
+	public GameObject unlocksHolder;
 	public GameObject PAKPanel;
 	public VideoPlayer channelSurfing;
     public GameObject Canvas;
+
+	public float menuSlideTime = 0.5f;
 	
 	
 	// Use this for initialization
@@ -45,6 +49,35 @@ public class TSUIManager : MonoBehaviour
         LeanTween.moveX(Canvas.GetComponent<RectTransform>(), -105, 1);
         LeanTween.moveY(Canvas.GetComponent<RectTransform>(), 50, 1);
         LeanTween.moveX(menuHolder.GetComponent<RectTransform>(), -100, 1);
+	}
 
+	public void SettingsTransition()
+	{
+		LeanTween.moveX(settingsHolder.GetComponent<RectTransform>(), -100, menuSlideTime);
+	}
+
+	public void NewGame()
+	{
+		
+	}
+
+	public void UnlocksTransition()
+	{
+		LeanTween.moveX(unlocksHolder.GetComponent<RectTransform>(), -100, menuSlideTime);
+	}
+
+	public void Quit()
+	{
+		
+	}
+
+	public void UnlocksBack()
+	{
+		LeanTween.moveX(unlocksHolder.GetComponent<RectTransform>(), 102.5f, menuSlideTime);
+	}
+
+	public void SettingsBack()
+	{
+		LeanTween.moveX(settingsHolder.GetComponent<RectTransform>(), 102.5f, menuSlideTime);
 	}
 }
