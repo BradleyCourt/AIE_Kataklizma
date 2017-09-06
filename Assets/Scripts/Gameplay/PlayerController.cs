@@ -63,7 +63,7 @@ namespace Gameplay {
 
         [Header("Observer Camera")]
         public float ObserverDistance;
-        public Vector2 ObserverOffset;
+        public float ObserverOffset;
 
 
         //#region " Action: Jump "
@@ -149,6 +149,7 @@ namespace Gameplay {
                 }
             }
         }
+
         void UpdateCamera() {
             if (Cursor.lockState == CursorLockMode.Locked) {
 
@@ -172,7 +173,7 @@ namespace Gameplay {
 
             // Point camera at target
             ObserverCam.transform.LookAt(transform);
-            transform.Rotate(ObserverOffset.x, 0, 0, Space.Self);
+            ObserverCam.transform.Rotate(ObserverOffset, 0, 0, Space.Self);
 
         }
 
