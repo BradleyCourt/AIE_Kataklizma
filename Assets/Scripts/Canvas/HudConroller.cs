@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Gameplay;
 
-namespace Canvas {
+namespace Kataklizma.Canvas {
     public class HudConroller : MonoBehaviour {
 
         [System.Serializable]

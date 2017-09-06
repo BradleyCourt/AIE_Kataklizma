@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Canvas {
+namespace Kataklizma.Canvas {
     public class SliderHook : MonoBehaviour {
 
         public Gameplay.EntityAttributes AttributeSource;
