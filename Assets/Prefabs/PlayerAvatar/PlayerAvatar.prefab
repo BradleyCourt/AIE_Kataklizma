@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 65045118609533416}
   - component: {fileID: 114749656060951336}
   - component: {fileID: 114515371560155782}
+  - component: {fileID: 114962660030173606}
   m_Layer: 8
   m_Name: PlayerAvatar
   m_TagString: Player
@@ -413,11 +414,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4afae1783198c47bd53de0dd866763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeleeAttackZoneRenderer: {fileID: 23852787939811370}
-  RangedAttackZoneRenderer: {fileID: 23672400348240054}
   MoveSpeed: 5
+  CuboidZonePrefab: {fileID: 1384093351775032, guid: aa1c794c57d8c8f47b00fb2ab345801f,
+    type: 2}
   ObserverDistance: 20
-  ObserverOffset: {x: 0, y: 0}
+  ObserverOffset: 0
+  MeleeAttackZone: {fileID: 65806479828675534}
+  MeleeAttackCooldown: 1
+  MeleeAttackDuration: 0.3
+  MeleeAttackDamage: 10
 --- !u!114 &114515371560155782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -430,8 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SingleSelect: 1
-  MultiSelect: 4
-  Layer: 0
+  MultiSelect: 1
 --- !u!114 &114749656060951336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -444,6 +448,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XpThresholds: 64000000f4010000d0070000
+--- !u!114 &114962660030173606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431774962278804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b03093323409cb4c9e5115ee61ad500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveAbilities: []
+  PassiveAbilities: []
+  MeleeAttackZone: {fileID: 0}
+  MeleeAttackCooldown: 1
+  MeleeAttackDuration: 0.3
+  MeleeAttackDamage: 10
 --- !u!124 &124414929930841198
 Behaviour:
   m_ObjectHideFlags: 1

@@ -53,8 +53,7 @@ namespace Gameplay {
         public bool IsControllable { get; set; }
 
 
-        public MeshRenderer MeleeAttackZoneRenderer;
-        public MeshRenderer RangedAttackZoneRenderer;
+        public GameObject CuboidZonePrefab;
 
         private Rigidbody Rb;
         private Camera ObserverCam;
@@ -65,6 +64,77 @@ namespace Gameplay {
         public float ObserverDistance;
         public float ObserverOffset;
 
+        #region " Action: Melee Attack "
+
+        [Header("Melee")]
+        public BoxCollider MeleeAttackZone;
+        public float MeleeAttackCooldown = 1;
+        public float MeleeAttackDuration = 0.3f;
+        public int MeleeAttackDamage = 10;
+        private bool IsMeleeAttackReady = true;
+        private bool CanMeleeAttack {
+            get {
+                return IsMeleeAttackReady && State == AnimState.Idle;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void DoMeleeAttack() {
+            Debug.Log("Do Melee Attack!");
+
+            State = AnimState.Attacking;
+            IsMeleeAttackReady = false;
+
+            // Setup delay for returning control "when it stops"
+            StartCoroutine(this.DelayedAction(MeleeAttackDuration,
+                () => {
+                    if (State == AnimState.Attacking) {
+                        State = AnimState.Idle;
+                    }
+                }));
+
+            // Setup delay for cooldown "when it can be done again"
+            StartCoroutine(this.DelayedAction(MeleeAttackCooldown,
+                () => {
+                    IsMeleeAttackReady = true;
+                }));
+
+
+
+
+            // Do Attack
+            var centreOffset = transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.center);
+
+            var centre = transform.position + centreOffset;
+            var size = MeleeAttackZone.size; // transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.size);
+
+
+            // Render Zone
+            // FIXME: REmove Zone Render
+            var go = Instantiate(CuboidZonePrefab.gameObject, centre, transform.rotation);
+            go.transform.localScale = MeleeAttackZone.size;
+
+            Destroy(go, MeleeAttackDuration);
+
+
+
+            Collider[] targets = Physics.OverlapBox(centre, size, transform.rotation, ~8); // Anything that is NOT a PlayerAvatar layer
+
+            foreach (Collider target in targets) {
+                if (target.gameObject.tag == "Player") continue;
+
+
+                if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "Building") {
+                    var playerStats = target.GetComponent<EntityAttributes>();
+                    if (playerStats) {
+                        playerStats.RemoveHealth(MeleeAttackDamage);
+                    }
+                }
+            }
+        }
+        #endregion
 
         //#region " Action: Jump "
 
@@ -119,8 +189,12 @@ namespace Gameplay {
 
         // Update is called once per frame
         void Update() {
-            UpdateInputState();           
-            
+            UpdateInputState();
+
+
+            if (CanMeleeAttack && Input.GetButtonDown("Fire1"))
+                DoMeleeAttack();
+
             // Move character
             Vector3 motion = GetPlayerMotion() * MoveSpeed;
             transform.LookAt(transform.position + motion);

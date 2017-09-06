@@ -72,10 +72,10 @@ GameObject:
   - component: {fileID: 195114975019714776}
   - component: {fileID: 114393045816876632}
   - component: {fileID: 114935773604788132}
-  - component: {fileID: 114752683481933478}
   - component: {fileID: 114557528770279968}
   - component: {fileID: 65524564211468122}
   - component: {fileID: 114966836682595030}
+  - component: {fileID: 114523889748675726}
   m_Layer: 0
   m_Name: DefenderTank
   m_TagString: Enemy
@@ -148,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658380437623820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -114.8, y: 0, z: -2.6}
+  m_LocalPosition: {x: 2.1158447, y: 0, z: 22.89264}
   m_LocalScale: {x: 1, y: 1, z: -1}
   m_Children:
   - {fileID: 4707228920340358}
@@ -199,6 +199,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23511035969399454
 MeshRenderer:
@@ -230,6 +231,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23557514976715432
 MeshRenderer:
@@ -261,6 +263,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33282014897943152
 MeshFilter:
@@ -327,6 +330,23 @@ MonoBehaviour:
   Elevator: {fileID: 4191567467085350}
   P: {fileID: 0}
   Mode: 1
+--- !u!114 &114523889748675726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658380437623820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowDebug: 0
+  _Attributes:
+    _Values:
+    - Type: 1
+      Base: 25
+      Modifier: 0
 --- !u!114 &114557528770279968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,22 +364,6 @@ MonoBehaviour:
   LocalGravity: 0
   MaxFallSpeed: 1
   TimeToLive: 0.2
---- !u!114 &114752683481933478
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1658380437623820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6434cd491b3c4064e935759ec8014c97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowDebug: 1
-  StartingStats:
-  - Type: 0
-    Subtype: 0
-    Value: 20
 --- !u!114 &114935773604788132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,6 +392,7 @@ MonoBehaviour:
   BulletSpawn: {fileID: 4024779338508326}
   P: {fileID: 114935773604788132}
   Projectile: {fileID: 1365751342155388, guid: fad373d9947e9c04589bb7089761b502, type: 2}
+  PlayerIdletime: 0.2
   BulletSpeed: 40
   CannonFire: 50
   MachineGun: 10
@@ -399,6 +404,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658380437623820}
   m_Enabled: 1
+  m_AgentTypeID: 0
   m_Radius: 1.25
   m_Speed: 3.5
   m_Acceleration: 8
