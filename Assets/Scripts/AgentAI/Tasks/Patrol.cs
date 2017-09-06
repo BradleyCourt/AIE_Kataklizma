@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Patrol : MonoBehaviour
 {
     [HideInInspector]
-    public float ChaseDist = 5;
+    public float ChaseDist = 15;
     public Transform Target;
     public GameObject NavPointCollection;
     private List<Transform> points = new List<Transform>();
@@ -69,7 +69,7 @@ public class Patrol : MonoBehaviour
         if (!agent.pathPending)
         {
             // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
-            if (dist > 10)
+            if (dist > 30)
             {
                 Target = null;
 
