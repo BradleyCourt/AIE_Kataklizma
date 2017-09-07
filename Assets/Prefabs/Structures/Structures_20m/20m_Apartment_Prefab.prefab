@@ -38,8 +38,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4839047561725182}
   - component: {fileID: 114969686941874500}
-  - component: {fileID: 65891739211122370}
   - component: {fileID: 114236113942091948}
+  - component: {fileID: 65367469690236510}
   m_Layer: 0
   m_Name: 20m_Apartment_Prefab
   m_TagString: Untagged
@@ -113,7 +113,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1042006874199284}
   m_Mesh: {fileID: 4300000, guid: fbf5074ea604832468dd72814d5cfdd9, type: 3}
---- !u!65 &65891739211122370
+--- !u!65 &65367469690236510
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -123,8 +123,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 17.654356, y: 24.1288, z: 17.600533}
-  m_Center: {x: -9.893117, y: 11.5644, z: -9.936056}
+  m_Size: {x: 17.947594, y: 23.55838, z: 18.090809}
+  m_Center: {x: 9.96216, y: 11.27919, z: 9.90794}
 --- !u!95 &95129246558398952
 Animator:
   serializedVersion: 3

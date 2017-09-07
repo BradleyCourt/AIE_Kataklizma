@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114098159257458572}
   - component: {fileID: 65155069461435442}
   - component: {fileID: 65254820323409980}
+  - component: {fileID: 114308240209435428}
   m_Layer: 0
   m_Name: 30m_Helipad_Prefab
   m_TagString: Untagged
@@ -171,3 +172,20 @@ MonoBehaviour:
     - Type: 0
       Base: 20
       Modifier: 0
+--- !u!114 &114308240209435428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878541635614608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnhideRubble: {fileID: 0}
+  SpawnRubble: {fileID: 0}
+  UseSceneGravity: 1
+  LocalGravity: 0.05
+  MaxFallSpeed: 1
+  TimeToLive: 1

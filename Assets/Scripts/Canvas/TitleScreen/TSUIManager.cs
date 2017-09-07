@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class TSUIManager : MonoBehaviour
 {
@@ -58,7 +59,8 @@ public class TSUIManager : MonoBehaviour
 
 	public void NewGame()
 	{
-		
+        SceneManager.LoadScene("Game");
+        print("loading game scene");
 	}
 
 	public void UnlocksTransition()

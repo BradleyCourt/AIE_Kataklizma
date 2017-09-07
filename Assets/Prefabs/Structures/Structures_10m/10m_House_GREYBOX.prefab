@@ -36,6 +36,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4811731127220602}
+  - component: {fileID: 114240645426652042}
+  - component: {fileID: 114314267113929254}
+  - component: {fileID: 65610067237807892}
   m_Layer: 0
   m_Name: 10m_House_GREYBOX
   m_TagString: Untagged
@@ -100,6 +103,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33079229868753510
 MeshFilter:
@@ -108,3 +112,49 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1519203203843366}
   m_Mesh: {fileID: 4300002, guid: e73d0647e3f06f64ba06da6e5d65ddf8, type: 3}
+--- !u!65 &65610067237807892
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846581146321834}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.746571, y: 7.931816, z: 8.837932}
+  m_Center: {x: 4.921234, y: 3.465908, z: 4.767175}
+--- !u!114 &114240645426652042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846581146321834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowDebug: 0
+  _Attributes:
+    _Values:
+    - Type: 1
+      Base: 20
+      Modifier: 0
+--- !u!114 &114314267113929254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846581146321834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnhideRubble: {fileID: 0}
+  SpawnRubble: {fileID: 0}
+  UseSceneGravity: 1
+  LocalGravity: 0.05
+  MaxFallSpeed: 1
+  TimeToLive: 1

@@ -27,11 +27,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 14d7c8b58d9c50643b0d9f52700ebcae, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0d6af189c9272024887512d8d357fcfe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicandGloss:
-        m_Texture: {fileID: 2800000, guid: afacf97b3c62c68478946b8e2bc93b91, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97a552d130f3be74cb24eb03dcbe6c56, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Occulusion:
@@ -41,9 +41,9 @@ Material:
     m_Floats:
     - _EmissiveAmplitude: 1
     - _Flashing: 0
-    - _Gloss: 0
-    - _Metallic: 1
-    - _Outline_Width: 0.05
+    - _Gloss: 1
+    - _Metallic: 0
+    - _Outline_Width: 0
     - _UseEmissiveTex: 0
     m_Colors:
     - _EmissiveColourOne: {r: 0, g: 0, b: 0, a: 1}

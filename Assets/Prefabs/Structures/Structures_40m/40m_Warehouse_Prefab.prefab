@@ -36,9 +36,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4303211582219130}
-  - component: {fileID: 65390947361034108}
   - component: {fileID: 114110702866583412}
-  - component: {fileID: 65094961070008788}
+  - component: {fileID: 114189059669625770}
+  - component: {fileID: 65862832872990110}
   m_Layer: 0
   m_Name: 40m_Warehouse_Prefab
   m_TagString: Untagged
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1841948969675056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 40, y: 0, z: 40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4303211582219130}
@@ -112,7 +112,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1841948969675056}
   m_Mesh: {fileID: 4300000, guid: 8ece7944233373b4f862d55ef4bd4143, type: 3}
---- !u!65 &65094961070008788
+--- !u!65 &65862832872990110
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -122,20 +122,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16.03732, y: 16.409767, z: 22.908447}
-  m_Center: {x: -31.921999, y: 7.7048836, z: -26.3288}
---- !u!65 &65390947361034108
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1997265242942306}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 24.54463, y: 16.409767, z: 37.74021}
-  m_Center: {x: -12.210256, y: 7.7048836, z: -18.912918}
+  m_Size: {x: 39.052742, y: 15.739288, z: 37.4898}
+  m_Center: {x: 19.94228, y: 7.369644, z: 20.875896}
 --- !u!114 &114110702866583412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,3 +141,20 @@ MonoBehaviour:
     - Type: 1
       Base: 20
       Modifier: 0
+--- !u!114 &114189059669625770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1997265242942306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnhideRubble: {fileID: 0}
+  SpawnRubble: {fileID: 0}
+  UseSceneGravity: 1
+  LocalGravity: 0.05
+  MaxFallSpeed: 1
+  TimeToLive: 1
