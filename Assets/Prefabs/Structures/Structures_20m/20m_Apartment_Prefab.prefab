@@ -40,9 +40,10 @@ GameObject:
   - component: {fileID: 114969686941874500}
   - component: {fileID: 114236113942091948}
   - component: {fileID: 65367469690236510}
+  - component: {fileID: 114696533072404274}
   m_Layer: 0
   m_Name: 20m_Apartment_Prefab
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +160,20 @@ MonoBehaviour:
   LocalGravity: 0.05
   MaxFallSpeed: 1
   TimeToLive: 1
+--- !u!114 &114696533072404274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1251098927418836}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectableRadius: 2
+  CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
+    type: 2}
 --- !u!114 &114969686941874500
 MonoBehaviour:
   m_ObjectHideFlags: 1
