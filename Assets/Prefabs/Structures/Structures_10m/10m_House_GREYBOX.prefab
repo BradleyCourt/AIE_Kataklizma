@@ -39,9 +39,10 @@ GameObject:
   - component: {fileID: 114240645426652042}
   - component: {fileID: 114314267113929254}
   - component: {fileID: 65610067237807892}
+  - component: {fileID: 114189118283554446}
   m_Layer: 0
   m_Name: 10m_House_GREYBOX
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,6 +125,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.746571, y: 7.931816, z: 8.837932}
   m_Center: {x: 4.921234, y: 3.465908, z: 4.767175}
+--- !u!114 &114189118283554446
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846581146321834}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectableRadius: 2
+  CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
+    type: 2}
 --- !u!114 &114240645426652042
 MonoBehaviour:
   m_ObjectHideFlags: 1

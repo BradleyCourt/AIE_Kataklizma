@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 65839383719837080}
   - component: {fileID: 114093390981970984}
   - component: {fileID: 114557338427315624}
+  - component: {fileID: 114085319650975658}
   m_Layer: 0
   m_Name: 05m_ModernHouse_Prefab
   m_TagString: Building
@@ -142,6 +143,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114085319650975658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1954407674272094}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectableRadius: 2
+  CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
+    type: 2}
 --- !u!114 &114093390981970984
 MonoBehaviour:
   m_ObjectHideFlags: 1
