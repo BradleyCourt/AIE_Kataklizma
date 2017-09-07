@@ -4,7 +4,8 @@ using UnityEngine;
 
 
 namespace MapGen {
-    public class TileConnection : MonoBehaviour {
+    public class TileConnection : MonoBehaviour
+    {
 
         [Tooltip("Positive Z")]
         public bool Forward;

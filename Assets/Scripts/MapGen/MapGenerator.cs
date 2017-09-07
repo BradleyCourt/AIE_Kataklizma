@@ -147,14 +147,14 @@ namespace MapGen {
                 if (isVertical)
                 {
                     // go up
-                    while (iy < rows && isRoad[ix, iy] == false)
+                    while (iy < rows && CanPlaceRoad(isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
                         iy++;
                     }
                     // go back to start and go down
                     iy = indexY-1;
-                    while (iy >= 0 && isRoad[ix, iy] == false)
+                    while (iy >= 0 && CanPlaceRoad(isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
                         iy--;
@@ -163,14 +163,14 @@ namespace MapGen {
                 else
                 {
                     // go up
-                    while (ix < columns && isRoad[ix, iy] == false)
+                    while (ix < columns && CanPlaceRoad(isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
                         ix++;
                     }
                     // go back to start and go down
                     ix = indexX-1;
-                    while (ix >= 0 && isRoad[ix, iy] == false)
+                    while (ix >= 0 && CanPlaceRoad(isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
                         ix--;
@@ -196,6 +196,46 @@ namespace MapGen {
                     // {
                     if (isRoad[c, r])
                     {
+                        // Check adjacent tiles for other roads
+                        var LeftCheck = c > 0 && isRoad[c - 1, r];
+                        var RightCheck = c < isRoad.GetLength(0) - 1 && isRoad[c + 1, r]; // should work tm (get length)
+                        var BottomCheck = r > 0 && isRoad[c, r - 1];
+                        var TopCheck = r < isRoad.GetLength(1) - 1 && isRoad[c, r + 1];
+
+                        var adjacents = 0;
+                        if (LeftCheck) adjacents++;
+                        if (RightCheck) adjacents++;
+                        if (BottomCheck) adjacents++;
+                        if (TopCheck) adjacents++;
+
+                        switch (adjacents)
+                        {
+                            case 4:
+                                // intersection
+                                break;
+                            case 3:
+                                // Tee
+                                break;
+                            case 2:
+                                // Inline or Corner?
+                                if (LeftCheck == RightCheck) // straight!
+                                {
+
+                                }
+                                else // Corner!
+                                    ;
+                                break;
+                            case 1:
+                                // Dead-end
+                                break;
+                            default:
+                                //throw new System.InvalidProgramException("Brad Fucked up!");
+                                break;
+                        }
+
+                        // Find correct prefab and orientation
+
+                        // Instantiate:
                         GameObject prefab = RoadTilePresets[0];
 
                         GameObject go = Instantiate(prefab);
@@ -215,6 +255,11 @@ namespace MapGen {
             //fill in gameObjects
           
 
+        }
+
+        private bool CanPlaceRoad(bool[,] isRoad, int ix, int iy, int crossChance)
+        {
+            return (isRoad[ix, iy] == false || UnityEngine.Random.Range(0, 100) < crossChance);
         }
 
         void AddBuildings(GameObject[,] mapObjects)
