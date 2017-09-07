@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Gameplay;
 
 namespace Kataklizma.Canvas {
     public class SliderHook : MonoBehaviour {
 
-        public Gameplay.EntityAttributes AttributeSource;
+        public EntityAttributes AttributeSource;
 
         private UnityEngine.UI.Slider Widget;
 
