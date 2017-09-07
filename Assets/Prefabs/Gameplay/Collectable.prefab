@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1681145591969438}
   m_LocalRotation: {x: 0.019129822, y: -0.06757698, z: -0.15746045, w: 0.9850247}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4961991161289884}
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1786709654690586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.952, y: 0.408, z: -9.237213}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4035954092421022}
@@ -227,7 +227,7 @@ MonoBehaviour:
   - Enemy
   Contents:
   - Type: 4
-    Base: 646.92
+    Base: 10
     Modifier: 0
 --- !u!135 &135581058128679456
 SphereCollider:
@@ -239,5 +239,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.04
-  m_Center: {x: 0, y: 1.03, z: 0}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.5, z: 0}

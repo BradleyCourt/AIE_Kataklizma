@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 65254820323409980}
   - component: {fileID: 114308240209435428}
   - component: {fileID: 114511366872456380}
+  - component: {fileID: 208147802648004370}
   m_Layer: 0
   m_Name: 30m_Helipad_Prefab
   m_TagString: Building
@@ -170,7 +171,7 @@ MonoBehaviour:
   ShowDebug: 0
   _Attributes:
     _Values:
-    - Type: 0
+    - Type: 1
       Base: 20
       Modifier: 0
 --- !u!114 &114308240209435428
@@ -204,3 +205,18 @@ MonoBehaviour:
   CollectableRadius: 2
   CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
     type: 2}
+--- !u!208 &208147802648004370
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878541635614608}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 20, y: 20, z: 20}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
