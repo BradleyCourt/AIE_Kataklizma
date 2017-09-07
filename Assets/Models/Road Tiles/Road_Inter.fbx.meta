@@ -1,17 +1,15 @@
 fileFormatVersion: 2
-guid: 6fe07fe22a60153428b0b76bb5dc6b87
-timeCreated: 1503549892
-licenseType: Pro
+guid: 634d808b7ab853e46a359bc570afee23
+timeCreated: 1504744884
+licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Road_Straight
-    100002: //RootNode
-    400000: Road_Straight
-    400002: //RootNode
-    2300000: Road_Straight
-    3300000: Road_Straight
-    4300000: Road_Straight
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Road_Inter
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +37,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.05
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

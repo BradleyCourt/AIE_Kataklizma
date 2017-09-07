@@ -1,17 +1,15 @@
 fileFormatVersion: 2
-guid: e5815402d359d8f4893dbff0de0af398
-timeCreated: 1504144853
-licenseType: Pro
+guid: 16305e1521efb78469614b2cc6a779cc
+timeCreated: 1504744883
+licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Road_T
-    100002: //RootNode
-    400000: Road_T
-    400002: //RootNode
-    2300000: Road_T
-    3300000: Road_T
-    4300000: Road_T
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Road_Inter
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +37,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.05
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
