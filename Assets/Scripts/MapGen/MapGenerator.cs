@@ -203,48 +203,32 @@ namespace MapGen {
                         var TopCheck = r < isRoad.GetLength(1) - 1 && isRoad[c, r + 1];
 
                         var adjacents = 0;
-                        if (LeftCheck) adjacents++;
-                        if (RightCheck) adjacents++;
-                        if (BottomCheck) adjacents++;
-                        if (TopCheck) adjacents++;
+                        if (LeftCheck) adjacents+=1;
+                        if (RightCheck) adjacents+=2;
+                        if (BottomCheck) adjacents+=4;
+                        if (TopCheck) adjacents+=8;
 
-                        switch (adjacents)
+                        // make sure these indices match in the inspector or it wont work!!!
+                        // tile indexs should be 0 = end, 1 = turn, 2 = straight, 3 = Tjunction, 4 = intersection. -1 means nothing at all
+
+                        int[] tiles ={-1, 0, 0, 2,
+                                       0, 1, 1, 3,
+                                       };
+                        float[] angles = { 0, 0, 90,};
+
+                        if (adjacents != 0)
                         {
-                            case 4:
-                                // intersection
-                                break;
-                            case 3:
-                                // Tee
-                                break;
-                            case 2:
-                                // Inline or Corner?
-                                if (LeftCheck == RightCheck) // straight!
-                                {
+                            // Instantiate:
+                            GameObject prefab = RoadTilePresets[adjacents];
 
-                                }
-                                else // Corner!
-                                    ;
-                                break;
-                            case 1:
-                                // Dead-end
-                                break;
-                            default:
-                                //throw new System.InvalidProgramException("Brad Fucked up!");
-                                break;
+                            GameObject go = Instantiate(prefab);
+                            go.transform.parent = Roads;
+                            go.transform.localPosition = TileOriginOffset + new Vector3(5 * c + 2.5f, 0, 5 * r + 2.5f); // TODO cheeky 5m hack, probably OK
+                            go.transform.localEulerAngles = new Vector3(0, angles[adjacents], 0);
+                            go.name = "MapTile_" + c + "_" + r;
+
+                            mapObjects[c, r] = go; // fills array
                         }
-
-                        // Find correct prefab and orientation
-
-                        // Instantiate:
-                        GameObject prefab = RoadTilePresets[0];
-
-                        GameObject go = Instantiate(prefab);
-                        go.transform.parent = Roads;
-                        go.transform.localPosition = TileOriginOffset + new Vector3(5 * c + 2.5f, 0, 5 * r + 2.5f); // TODO cheeky 5m hack, probably OK
-                        go.transform.localRotation = Quaternion.identity;
-                        go.name = "MapTile_" + c + "_" + r;
-
-                        mapObjects[c, r] = go; // fills array
                     }
                     // }
                 }
