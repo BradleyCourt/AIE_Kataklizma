@@ -97,6 +97,9 @@ namespace Kataklizma.Gameplay.Character {
 
             public string ChargingAnimation;
             public string ChannelingAnimation;
+
+            public AbilityActivationType ActivationType = AbilityActivationType.Normal;
+
             public float ChargeTime;
             public float ChannelTime;
             public float CleanupTime;
@@ -107,7 +110,25 @@ namespace Kataklizma.Gameplay.Character {
             public float RemainingChargeTime { get; set; }
             public float RemainingChannelTime { get; set; }
             public float RemainingCleanupTime { get; set; }
-            public float RemainingCooldownTime { get; set; }
+
+            protected float _CooldownTimeRemaining;
+            public float RemainingCooldownTime {
+                get {
+                    return _CooldownTimeRemaining;
+                }
+                set {
+                    if (_CooldownTimeRemaining != value) {
+                        var old = _CooldownTimeRemaining;
+
+                        _CooldownTimeRemaining = value;
+
+                        if (old == 0 || value == 0)
+                            RaiseCooldownStateChanged(value != 0);                        
+                    }
+                }
+            }
+
+            public float PercentCharged { get { return 1.0f - (RemainingChargeTime / ChargeTime); } }
 
             /// <summary>
             /// Returns boolean to show if charge cycle is complete (ChargeTime)
@@ -120,7 +141,20 @@ namespace Kataklizma.Gameplay.Character {
                         ActivationStage = Stage.Charging;
                         break;
                     case Stage.Charging:
+                        if (!triggerState) {
+                            if (ActivationType == AbilityActivationType.PartialCharge) { // Incomplete Charge, but keep current values (useful as a prep-timer, too)
+                                return true;
+                            }
+                            else if (ActivationType == AbilityActivationType.FullCharge) { // Incomplete Charge, revert to Ready stage
+                                ActivationStage = Stage.Ready; 
+                                RemainingChargeTime = ChargeTime;
+                                return true;
+                            }
+                        }
+
+                        // Tick down charge timer
                         RemainingChargeTime = Mathf.Max(RemainingChargeTime - Time.deltaTime, 0);
+                                               
                         break;
                     default:
                         //throw new System.InvalidOperationException("CharacterManager::ActivatedAbility::Charge(): Invalid AnimationStage.");
@@ -138,14 +172,21 @@ namespace Kataklizma.Gameplay.Character {
                     case Stage.Charging:
                         // Start Cooldown
                         RemainingCooldownTime = CooldownTime;
-                        RaiseCooldownStarted();
 
                         // Begin Discharging (Channeling)
                         RemainingChannelTime = ChargeTime;
                         ActivationStage = Stage.Channelling;
                         break;
                     case Stage.Channelling:
+                        if (!triggerState) {
+                            if (ActivationType == AbilityActivationType.Channelled) { // Incomplete Channel, force completion.
+                                return true;
+                            }
+                        }
+
+                        // Tick down Channel timer
                         RemainingChannelTime = Mathf.Max(RemainingChargeTime - Time.deltaTime, 0);
+
                         break;
                     default:
                         //throw new System.InvalidOperationException("CharacterManager::ActivatedAbility::Channel(): Invalid AnimationStage.");
@@ -158,7 +199,7 @@ namespace Kataklizma.Gameplay.Character {
             /// <summary>
             /// Returns boolean to show if cleanup cycle is complete (CleanupTime)
             /// </summary>
-            public bool End(bool triggerState) {
+            public bool End() {
                 switch (ActivationStage) {
                     case Stage.Ready: // Stage = "Ready"
                         // Irrelevant
@@ -189,9 +230,9 @@ namespace Kataklizma.Gameplay.Character {
 
             public event System.Action<object, bool> CooldownStateChanged;
 
-            protected void RaiseCooldownStarted() {
+            protected void RaiseCooldownStateChanged(bool isCooling) {
                 if (CooldownStateChanged != null)
-                    CooldownStateChanged(this, (RemainingCooldownTime != 0));
+                    CooldownStateChanged(this, isCooling);
             }
 
             public void UpdateCooldown( float deltaTime ) {
