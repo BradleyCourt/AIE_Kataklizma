@@ -255,8 +255,13 @@ MonoBehaviour:
     Tiles:
     - {fileID: 1878541635614608, guid: 936db8a55b4bd434886eb6decbc2a92d, type: 2}
   RoadTilePresets:
-    End: {fileID: 1021192304127646, guid: d1063f866d7d8db45942f33dcb73b419, type: 2}
-    Turn: {fileID: 1058480083302316, guid: 112c80919de292146beb503645ff48b1, type: 2}
-    Straight: {fileID: 1869687094050442, guid: ec8ad3c7b8b2558449a85b65cc594744, type: 2}
-    Tee: {fileID: 1341815001043210, guid: 2b508ffa5b0b10b449109172b5454865, type: 2}
-    Inter: {fileID: 1715133271137580, guid: 954f01d61bdaa7b41b4ac49a7d1f0429, type: 2}
+    End:
+    - {fileID: 1021192304127646, guid: d1063f866d7d8db45942f33dcb73b419, type: 2}
+    Turn:
+    - {fileID: 1058480083302316, guid: 112c80919de292146beb503645ff48b1, type: 2}
+    Straight:
+    - {fileID: 1869687094050442, guid: ec8ad3c7b8b2558449a85b65cc594744, type: 2}
+    Tee:
+    - {fileID: 1341815001043210, guid: 2b508ffa5b0b10b449109172b5454865, type: 2}
+    Inter:
+    - {fileID: 1715133271137580, guid: 954f01d61bdaa7b41b4ac49a7d1f0429, type: 2}

@@ -13,22 +13,22 @@ namespace MapGen
         [System.Serializable]
         public struct RoadPrefabs
         {
-            public GameObject End;
-            public GameObject Turn;
-            public GameObject Straight;
-            public GameObject Tee;
-            public GameObject Inter;
+            public List<GameObject> End;
+            public List<GameObject> Inter;
+            public List<GameObject> Straight;
+            public List<GameObject> Tee;
+            public List<GameObject> Turn;
 
             public GameObject this[int index] {
                 get
                 {
                     switch (index)
                     {
-                        case 0: return End;
-                        case 1: return Turn;
-                        case 2: return Straight;
-                        case 3: return Tee;
-                        case 4: return Inter;
+                        case 0: return End[UnityEngine.Random.Range(0, End.Count)];
+                        case 1: return Turn[UnityEngine.Random.Range(0, Turn.Count)];
+                        case 2: return Straight[UnityEngine.Random.Range(0, Straight.Count)];
+                        case 3: return Tee[UnityEngine.Random.Range(0, Tee.Count)];
+                        case 4: return Inter[UnityEngine.Random.Range(0, Inter.Count)];
                         default: throw new System.IndexOutOfRangeException();
                     }
                 }
