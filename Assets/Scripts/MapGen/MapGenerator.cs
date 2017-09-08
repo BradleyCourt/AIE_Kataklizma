@@ -401,13 +401,22 @@ namespace MapGen
         void Start()
         {
 
+            // Generate Roads
+            // Fill buildings
+            // Genenerate Road and Skyway Navmeshes
+
+
             Structures = transform.Find("Structures") ?? transform; // Find "Structures" child, else use "this" transform
             Roads = transform.Find("Roads") ?? transform;
+            var Skyway = transform.Find("Skyway");
 
             TileOriginOffset = new Vector3(5 * bounds.x * -0.5f, 0, 5 * bounds.y * -0.5f);
             GenerateGrid();
 
             NavMeshGen.BuildNavMesh(Roads, new Bounds(transform.position, new Vector3(5 * bounds.x, 1, 5 * bounds.y)));
+
+            if (Skyway != null )
+                NavMeshGen.BuildNavMesh(Skyway, new Bounds(Skyway.transform.position, new Vector3(5 * bounds.x, 1, 5 * bounds.y)));
         }
     }
 }
