@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: d23d912201eebf1498ba294659bd54ba
+timeCreated: 1504759729
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_R
+    100004: Body
+    100006: Gun
+    100008: Leg_L
+    100010: Leg_R
+    100012: //RootNode
+    100014: Missile_L
+    100016: Missile_R
+    100018: Shoulder_L
+    100020: Shoulder_R
+    100022: Thigh_L
+    100024: Thigh_R
+    100026: transform2
+    100028: transform3
+    100030: Waist
+    400000: Arm_L
+    400002: Arm_R
+    400004: Body
+    400006: Gun
+    400008: Leg_L
+    400010: Leg_R
+    400012: //RootNode
+    400014: Missile_L
+    400016: Missile_R
+    400018: Shoulder_L
+    400020: Shoulder_R
+    400022: Thigh_L
+    400024: Thigh_R
+    400026: transform2
+    400028: transform3
+    400030: Waist
+    2300000: Arm_L
+    2300002: Arm_R
+    2300004: Body
+    2300006: Gun
+    2300008: Leg_L
+    2300010: Leg_R
+    2300012: Missile_L
+    2300014: Missile_R
+    2300016: Shoulder_L
+    2300018: Shoulder_R
+    2300020: Thigh_L
+    2300022: Thigh_R
+    2300024: Waist
+    3300000: Arm_L
+    3300002: Arm_R
+    3300004: Body
+    3300006: Gun
+    3300008: Leg_L
+    3300010: Leg_R
+    3300012: Missile_L
+    3300014: Missile_R
+    3300016: Shoulder_L
+    3300018: Shoulder_R
+    3300020: Thigh_L
+    3300022: Thigh_R
+    3300024: Waist
+    4300000: Arm_R
+    4300002: Waist
+    4300004: Missile_R
+    4300006: Leg_R
+    4300008: Thigh_R
+    4300010: Shoulder_R
+    4300012: Gun
+    4300014: Body
+    4300016: Shoulder_L
+    4300018: Arm_L
+    4300020: Leg_L
+    4300022: Missile_L
+    4300024: Thigh_L
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 5
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
