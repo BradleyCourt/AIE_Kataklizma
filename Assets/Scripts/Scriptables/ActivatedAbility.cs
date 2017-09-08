@@ -6,20 +6,16 @@ using UnityEngine;
 namespace Scriptables {
 
     [CreateAssetMenu(fileName ="Activatable", menuName = "Mutators/Active")]
-    public class ActivatedAbility : ScriptableObject {
+    public abstract class ActivatedAbility : ScriptableObject {
 
 
 
         public enum ActivationState {
             Ready,
-            Charging,
             Preparing,
             Active,
             Cooldown
         }
-
-        [Tooltip("Style of Activation")]
-        public AbilityActivationType ActivationType = AbilityActivationType.Normal;
 
         [Tooltip("Number of stored activations")]
         public float Activations = 1;

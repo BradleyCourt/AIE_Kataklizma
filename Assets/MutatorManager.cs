@@ -25,19 +25,6 @@ namespace Gameplay {
                 var trigger = "Fire" + (i + 1);
                 if (ability == null) continue;
 
-                switch (ability.ActivationType) {
-                    case AbilityActivationType.Normal:
-                        ActivateNormalAbility(ability, trigger);
-                        break;
-                    case AbilityActivationType.Channeled:
-                        ActivateChanneledAbility(ability, trigger);
-                        break;
-                    case AbilityActivationType.Charged:
-                        ActivateChargedAbility(ability, trigger);
-                        break;
-
-                }
-
             }
 
         }

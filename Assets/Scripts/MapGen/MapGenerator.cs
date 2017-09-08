@@ -281,7 +281,7 @@ namespace MapGen
                 string line = "";
                 for (int r = 0; r < rows; r++)
                 {
-                   // line += isRoad[c, r] ? "o" : ".";
+                    line += isRoad[c, r] ? "o" : ".";
 
                     // if returns "o" (that means a road is there, do this code 
                     // {
@@ -317,13 +317,9 @@ namespace MapGen
                     }
                     // }
                 }
-                Debug.Log(line);
+                //Debug.Log(line);
             }
-
-
-            //fill in gameObjects
-
-
+            
         }
 
         private bool CanPlaceRoad(bool[,] isRoad, int ix, int iy, int crossChance)

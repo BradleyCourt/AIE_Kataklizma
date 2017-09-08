@@ -44,7 +44,7 @@ public enum FilterType {
 }
 
 public enum AbilityActivationType{
-    Normal,
-    Charged,
-    Channeled
+    Instant,
+    Charge,
+    Channel
 }
