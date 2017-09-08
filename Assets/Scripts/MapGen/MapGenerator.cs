@@ -4,12 +4,55 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace MapGen {
+namespace MapGen
+{
 
     public class MapGenerator : MonoBehaviour
     {
-       
 
+        [System.Serializable]
+        public struct RoadPrefabs
+        {
+            public GameObject End;
+            public GameObject Turn;
+            public GameObject Straight;
+            public GameObject Tee;
+            public GameObject Inter;
+
+            public GameObject this[int index] {
+                get
+                {
+                    switch (index)
+                    {
+                        case 0: return End;
+                        case 1: return Turn;
+                        case 2: return Straight;
+                        case 3: return Tee;
+                        case 4: return Inter;
+                        default: throw new System.IndexOutOfRangeException();
+                    }
+                }
+            }
+        }
+
+        public enum RoadType
+        {
+            _Invalid = -1,
+            End = 0,
+            Turn = 1,
+            Straight = 2,
+            Tee = 3,
+            Inter = 4
+        }
+
+        public enum RoadRotation
+        {
+            _Invalid = -1,
+            Turn000 = 0,
+            Turn090 = 90,
+            Turn180 = 180,
+            Turn270 = 270,
+        }
 
         [Serializable]
         public enum TileType
@@ -56,12 +99,13 @@ namespace MapGen {
 
         private Transform Structures;
         private Transform Roads;
-        
+
         /// <summary>
         /// 
         /// </summary>
         public List<SourceTilePreset> SourceTilePresets;
-        public List<GameObject> RoadTilePresets;
+
+        public RoadPrefabs RoadTilePresets;
 
         /// <summary>
         ///
@@ -100,8 +144,8 @@ namespace MapGen {
 
             for (int i = 0; i < numRoads; i++)
             {
-                indicesX.Add( priorX += UnityEngine.Random.Range(3, 4) ); // Generaete offset from prior value, store in indeces and update prior value
-                indicesY.Add( priorY += UnityEngine.Random.Range(3, 4) );
+                indicesX.Add(priorX += UnityEngine.Random.Range(3, 4)); // Generaete offset from prior value, store in indeces and update prior value
+                indicesY.Add(priorY += UnityEngine.Random.Range(3, 4));
             }
 
             //add roads
@@ -153,7 +197,7 @@ namespace MapGen {
                         iy++;
                     }
                     // go back to start and go down
-                    iy = indexY-1;
+                    iy = indexY - 1;
                     while (iy >= 0 && CanPlaceRoad(isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
@@ -169,7 +213,7 @@ namespace MapGen {
                         ix++;
                     }
                     // go back to start and go down
-                    ix = indexX-1;
+                    ix = indexX - 1;
                     while (ix >= 0 && CanPlaceRoad(isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
@@ -177,12 +221,59 @@ namespace MapGen {
                     }
                 }
 
-                
+
                 // flip the up/down directions
                 isVertical = !isVertical;
 
 
             }
+
+
+            // make sure these indices match in the inspector or it wont work!!!
+            // tile indexs should be 0 = end, 1 = turn, 2 = straight, 3 = Tjunction, 4 = intersection. -1 means nothing at all
+
+            // use the correct tiles to make the map gen look natural
+            // first index = null
+            RoadType[] tiles = {
+                            RoadType._Invalid,
+                            RoadType.End,  // Tile 1
+                            RoadType.End,  // Tile 2
+                            RoadType.Straight,  // Tile 3
+                            RoadType.End, // Tile 4
+                            RoadType.Turn, // Tile 5
+                            RoadType.Turn,  // Tile 6
+                            RoadType.Tee,  // Tile 7
+                            RoadType.End,  // Tile 8
+                            RoadType.Turn, // Tile 9
+                            RoadType.Turn,  // Tile 10
+                            RoadType.Tee,  // Tile 11
+                            RoadType.Straight,  // Tile 12
+                            RoadType.Tee,  // Tile 13
+                            RoadType.Tee,  // Tile 14
+                            RoadType.Inter, // Tile 15
+                        };
+
+            // have angles match the rotation of the pieces listed above
+            // first index = null
+
+            RoadRotation[] angles = {
+                            RoadRotation._Invalid,
+                            RoadRotation.Turn090,  // Tile 1
+                            RoadRotation.Turn270,  // Tile 2
+                            RoadRotation.Turn270,  // Tile 3
+                            RoadRotation.Turn000,  // Tile 4
+                            RoadRotation.Turn000,  // Tile 5
+                            RoadRotation.Turn270,  // Tile 6
+                            RoadRotation.Turn180,  // Tile 7
+                            RoadRotation.Turn180,  // Tile 8
+                            RoadRotation.Turn090,  // Tile 9
+                            RoadRotation.Turn180,  // Tile 10
+                            RoadRotation.Turn000,  // Tile 11
+                            RoadRotation.Turn000,  // Tile 12
+                            RoadRotation.Turn270,  // Tile 13
+                            RoadRotation.Turn090,  // Tile 14
+                            RoadRotation.Turn270,  // Tile 15
+                        };
 
             // quick printout (debug)
             for (int c = 0; c < columns; c++)
@@ -190,7 +281,7 @@ namespace MapGen {
                 string line = "";
                 for (int r = 0; r < rows; r++)
                 {
-                    line += isRoad[c, r] ? "o" : ".";
+                   // line += isRoad[c, r] ? "o" : ".";
 
                     // if returns "o" (that means a road is there, do this code 
                     // {
@@ -202,29 +293,23 @@ namespace MapGen {
                         var BottomCheck = r > 0 && isRoad[c, r - 1];
                         var TopCheck = r < isRoad.GetLength(1) - 1 && isRoad[c, r + 1];
 
-                        var adjacents = 0;
-                        if (LeftCheck) adjacents+=1;
-                        if (RightCheck) adjacents+=2;
-                        if (BottomCheck) adjacents+=4;
-                        if (TopCheck) adjacents+=8;
+                        var connections = 0;
+                        if (LeftCheck) connections |= 1;
+                        if (RightCheck) connections |= 2;
+                        if (BottomCheck) connections |= 4;
+                        if (TopCheck) connections |= 8;
 
-                        // make sure these indices match in the inspector or it wont work!!!
-                        // tile indexs should be 0 = end, 1 = turn, 2 = straight, 3 = Tjunction, 4 = intersection. -1 means nothing at all
-
-                        int[] tiles ={-1, 0, 0, 2,
-                                       0, 1, 1, 3,
-                                       };
-                        float[] angles = { 0, 0, 90,};
-
-                        if (adjacents != 0)
+                        connections &= 15; // Mask to first 4 bits
+                        
+                        if (connections != 0)
                         {
                             // Instantiate:
-                            GameObject prefab = RoadTilePresets[adjacents];
+                            GameObject prefab = RoadTilePresets[(int)tiles[connections]];
 
                             GameObject go = Instantiate(prefab);
                             go.transform.parent = Roads;
                             go.transform.localPosition = TileOriginOffset + new Vector3(5 * c + 2.5f, 0, 5 * r + 2.5f); // TODO cheeky 5m hack, probably OK
-                            go.transform.localEulerAngles = new Vector3(0, angles[adjacents], 0);
+                            go.transform.localEulerAngles = new Vector3(0, (int)angles[connections], 0);
                             go.name = "MapTile_" + c + "_" + r;
 
                             mapObjects[c, r] = go; // fills array
@@ -232,12 +317,12 @@ namespace MapGen {
                     }
                     // }
                 }
-               // print(line);
+                Debug.Log(line);
             }
 
 
             //fill in gameObjects
-          
+
 
         }
 
@@ -321,8 +406,8 @@ namespace MapGen {
 
             TileOriginOffset = new Vector3(5 * bounds.x * -0.5f, 0, 5 * bounds.y * -0.5f);
             GenerateGrid();
-            
-            NavMeshGen.BuildNavMesh(Roads, new Bounds( transform.position, new Vector3(5 * bounds.x, 1,5 *  bounds.y)));
+
+            NavMeshGen.BuildNavMesh(Roads, new Bounds(transform.position, new Vector3(5 * bounds.x, 1, 5 * bounds.y)));
         }
     }
 }

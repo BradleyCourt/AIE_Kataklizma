@@ -48,7 +48,7 @@ GameObject:
   m_Layer: 8
   m_Name: PlayerAvatar
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: c0fa58091049bd24394fa15b0b6d4c5a, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -138,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431774962278804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: 12.01}
+  m_LocalPosition: {x: -0.1, y: 0, z: -241.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4409023538388950}
@@ -168,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1577257734890234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.82, z: -10.97}
+  m_LocalPosition: {x: 0, y: 3.82, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4439188968153136}
@@ -422,7 +422,7 @@ MonoBehaviour:
   MeleeAttackZone: {fileID: 65806479828675534}
   MeleeAttackCooldown: 1
   MeleeAttackDuration: 0.3
-  MeleeAttackDamage: 10
+  MeleeAttackDamage: 25
 --- !u!114 &114515371560155782
 MonoBehaviour:
   m_ObjectHideFlags: 1
