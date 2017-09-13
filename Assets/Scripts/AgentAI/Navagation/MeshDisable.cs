@@ -9,7 +9,7 @@ public class MeshDisable : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        NavMeshGen.BuildNavMesh(transform, new Bounds(transform.position, Size));
+        //NavMeshGen.BuildNavMesh(transform, new Bounds(transform.position, Size));
 
         this.GetComponent<MeshRenderer>().enabled = false;
 
