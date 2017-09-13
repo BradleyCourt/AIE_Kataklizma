@@ -23,12 +23,17 @@ public class Patrol : MonoBehaviour
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
         // approaches a destination point).
-        agent.autoBraking = false;
+        //agent.autoBraking = false;
 
         GotoNextPoint();
         player = GameObject.FindGameObjectWithTag("Player");
 
-        agent.SetDestination(player.transform.position);
+        //agent.SetDestination(player.transform.position);
+    }
+
+    void GotoNextPoint()
+    {
+
 
         if (NavPointCollection == null) throw new System.ApplicationException(gameObject + " - Patrol: NavPointCollection cannot be empty");
         if (NavPointCollection.transform.childCount < 1) throw new System.ApplicationException(gameObject.name + " - Patrol: NavPointCollection must have children");
@@ -37,11 +42,7 @@ public class Patrol : MonoBehaviour
         {
             points.Add(NavPointCollection.transform.GetChild(idx));
         }
-    }
 
-
-    void GotoNextPoint()
-    {
         // Do nothing if the array is empty
         if (points.Count == 0)
             return;
@@ -54,7 +55,7 @@ public class Patrol : MonoBehaviour
 
         // Goto the selected destination
         agent.destination = points[destPoint].position;
-        agent.Resume();
+        agent.isStopped = false;
         // Pull random element from array:
         //var selected = points[Random.Range(0, points.Length)];
     }
@@ -62,6 +63,8 @@ public class Patrol : MonoBehaviour
 
     void Update()
     {
+         if (!agent.isOnNavMesh) return;
+
         // Choose the next destination point when the agent gets
         // close to the current one.
         float dist = Vector3.Distance(transform.position, player.transform.position);
@@ -83,7 +86,8 @@ public class Patrol : MonoBehaviour
                 agent.SetDestination(player.transform.position);
                 //  Target = player.transform;
                 TargetPlayer(ChaseDist);
-                agent.Resume();
+                //agent.Resume();
+                agent.isStopped = false;
             }
             else
             {
@@ -91,7 +95,8 @@ public class Patrol : MonoBehaviour
                 Target = player.transform;
 
                 // stop and fire
-                agent.Stop(); // we're within 5m so stop
+                //agent.Stop(); // we're within 5m so stop
+                agent.isStopped = true;
 
                 // if within 3 metres, move away
                 // else if player is stationary, shoot cannon

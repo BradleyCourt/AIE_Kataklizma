@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -393,6 +393,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1151985273889978, guid: 2fa320d798ae89240832a61599cae4e5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2fa320d798ae89240832a61599cae4e5, type: 2}
   m_IsPrefabParent: 0
@@ -442,6 +446,28 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &223395190 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1798666976140320, guid: 1eee7d4f52ab0ea4ab382dcf02b40389,
+    type: 2}
+  m_PrefabInternal: {fileID: 2089365569}
+--- !u!114 &223395191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223395190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowDebug: 0
+  _Attributes:
+    _Values:
+    - Type: 1
+      Base: 20
+      Modifier: 0
 --- !u!1 &318197541
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +886,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: e8e5aacfa2fed534491e5da1a0db271a, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &1188721253
 Terrain:
   m_ObjectHideFlags: 0
@@ -918,7 +944,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4239718365708672, guid: 041ce4122f0c48844b3d541b738a1519, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 26.94
+      value: 24.9
       objectReference: {fileID: 0}
     - target: {fileID: 4239718365708672, guid: 041ce4122f0c48844b3d541b738a1519, type: 2}
       propertyPath: m_LocalPosition.z
@@ -943,6 +969,26 @@ Prefab:
     - target: {fileID: 4239718365708672, guid: 041ce4122f0c48844b3d541b738a1519, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697254755892880, guid: 041ce4122f0c48844b3d541b738a1519,
+        type: 2}
+      propertyPath: NavPointCollection
+      value: 
+      objectReference: {fileID: 1154513777}
+    - target: {fileID: 195952662951176792, guid: 041ce4122f0c48844b3d541b738a1519,
+        type: 2}
+      propertyPath: m_WalkableMask
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 195952662951176792, guid: 041ce4122f0c48844b3d541b738a1519,
+        type: 2}
+      propertyPath: m_BaseOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 195952662951176792, guid: 041ce4122f0c48844b3d541b738a1519,
+        type: 2}
+      propertyPath: m_AgentTypeID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 041ce4122f0c48844b3d541b738a1519, type: 2}
@@ -1124,7 +1170,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1548970319759470, guid: 041ce4122f0c48844b3d541b738a1519,
     type: 2}
   m_PrefabInternal: {fileID: 1435167301}
---- !u!114 &2002230843
+--- !u!114 &2002230848
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1132,67 +1178,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2002230842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
+  m_Script: {fileID: 11500000, guid: 25b9caf09da73094ea2bdde04ee0e68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
-  UseSceneGravity: 0
-  LocalGravity: 0
-  MaxFallSpeed: 1
-  TimeToLive: 0.2
---- !u!114 &2002230844
-MonoBehaviour:
+  WarpNearestTo: {x: 0, y: 25, z: 0}
+--- !u!136 &2002230849
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2002230842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowDebug: 0
-  _Attributes:
-    _Values:
-    - Type: 1
-      Base: 20
-      Modifier: 0
---- !u!114 &2002230845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2002230842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52872e06b6a5a74fb59db86f91d7d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChaseDist: 5
-  Target: {fileID: 0}
-  NavPointCollection: {fileID: 1154513777}
---- !u!195 &2002230846
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2002230842}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_Radius: 0.8478317
+  m_Height: 1.6956635
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.24151516, z: 0.34783173}
 --- !u!1001 &2089365569
 Prefab:
   m_ObjectHideFlags: 0
