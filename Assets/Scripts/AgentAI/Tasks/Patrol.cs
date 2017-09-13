@@ -28,7 +28,12 @@ public class Patrol : MonoBehaviour
         GotoNextPoint();
         player = GameObject.FindGameObjectWithTag("Player");
 
-        agent.SetDestination(player.transform.position);
+        //agent.SetDestination(player.transform.position);
+    }
+
+    void GotoNextPoint()
+    {
+
 
         if (NavPointCollection == null) throw new System.ApplicationException(gameObject + " - Patrol: NavPointCollection cannot be empty");
         if (NavPointCollection.transform.childCount < 1) throw new System.ApplicationException(gameObject.name + " - Patrol: NavPointCollection must have children");
@@ -38,10 +43,6 @@ public class Patrol : MonoBehaviour
             points.Add(NavPointCollection.transform.GetChild(idx));
         }
 
-    }
-
-    void GotoNextPoint()
-    {
         // Do nothing if the array is empty
         if (points.Count == 0)
             return;
