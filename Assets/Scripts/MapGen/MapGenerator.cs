@@ -54,22 +54,12 @@ namespace MapGen
             Turn270 = 270,
         }
 
-        [Serializable]
-        public enum TileType
-        {
-            NONE,
-            Tile5m,
-            Tile10m,
-            Tile20m,
-            Tile30m,
-            Tile40m,
-            TileRoad
-        }
+
 
         [Serializable]
         public class SourceTilePreset
         {
-            public TileType Type;
+            public MapTileType Type;
             public List<GameObject> Tiles;
 
             public GameObject GetRandomTile()
@@ -82,11 +72,11 @@ namespace MapGen
             {
                 switch (Type)
                 {
-                    case TileType.Tile5m: return 1;
-                    case TileType.Tile10m: return 2;
-                    case TileType.Tile20m: return 4;
-                    case TileType.Tile30m: return 6;
-                    case TileType.Tile40m: return 8;
+                    case MapTileType.Tile5m: return 1;
+                    case MapTileType.Tile10m: return 2;
+                    case MapTileType.Tile20m: return 4;
+                    case MapTileType.Tile30m: return 6;
+                    case MapTileType.Tile40m: return 8;
 
                         // TODO  all other sizes
                 }
