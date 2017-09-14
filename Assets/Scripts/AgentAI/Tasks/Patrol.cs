@@ -32,16 +32,7 @@ public class Patrol : MonoBehaviour
 
     void GotoNextPoint()
     {
-        
-        // TODO integrate this with the POI system that will be made soon
-        //if (NavPointCollection == null) throw new System.ApplicationException(gameObject + " - Patrol: NavPointCollection cannot be empty");
-        //if (NavPointCollection.transform.childCount < 1) throw new System.ApplicationException(gameObject.name + " - Patrol: NavPointCollection must have children");
-
-        //for (var idx = 0; idx < NavPointCollection.transform.childCount; idx++)
-        //{
-        //    points.Add(NavPointCollection.transform.GetChild(idx));
-        //}
-
+        // if points is empty, give it points
         if (points == null )
             points = new List<Gameplay.MapGen.PointOfInterest>(FindObjectsOfType<Gameplay.MapGen.PointOfInterest>());
 
@@ -58,8 +49,7 @@ public class Patrol : MonoBehaviour
         // Goto the selected destination
         agent.destination = points[destPoint].transform.position;
         agent.isStopped = false;
-        // Pull random element from array:
-        //var selected = points[Random.Range(0, points.Length)];
+        // Pull random element from array
     }
 
 
@@ -92,7 +82,6 @@ public class Patrol : MonoBehaviour
                 agent.SetDestination(player.transform.position);
                 //  Target = player.transform;
                 TargetPlayer(ChaseDist);
-                agent.isStopped = false;
             }
             else
             {
