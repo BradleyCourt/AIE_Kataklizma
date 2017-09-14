@@ -19,9 +19,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4383993992774674}
+  - component: {fileID: 114865773701475820}
   m_Layer: 0
   m_Name: Road_Tee_Prefab
-  m_TagString: Untagged
+  m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,3 +110,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1716369367419514}
   m_Mesh: {fileID: 4300000, guid: 9dd50cb9c20c89a489c87a392e396ef7, type: 3}
+--- !u!114 &114865773701475820
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1341815001043210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f047c0506c828428a5e55a78b63a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

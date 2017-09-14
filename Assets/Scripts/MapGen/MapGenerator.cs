@@ -89,7 +89,6 @@ namespace MapGen
 
         private Transform Structures;
         private Transform Roads;
-
         /// <summary>
         /// 
         /// </summary>
@@ -293,7 +292,7 @@ namespace MapGen
                         
                         if (connections != 0)
                         {
-                            // Instantiate:
+                            // Instantiate:               
                             GameObject prefab = RoadTilePresets[(int)tiles[connections]];
 
                             GameObject go = Instantiate(prefab);

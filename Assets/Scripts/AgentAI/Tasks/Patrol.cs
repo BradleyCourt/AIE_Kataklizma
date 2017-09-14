@@ -9,7 +9,7 @@ public class Patrol : MonoBehaviour
     public float ChaseDist = 15;
     public Transform Target;
     public GameObject NavPointCollection;
-    private List<Transform> points = new List<Transform>();
+    private List<Gameplay.MapGen.PointOfInterest> points = null;
     private int destPoint = 0;
     private NavMeshAgent agent;
     private GameObject player;
@@ -25,7 +25,6 @@ public class Patrol : MonoBehaviour
         // approaches a destination point).
         //agent.autoBraking = false;
 
-        GotoNextPoint();
         player = GameObject.FindGameObjectWithTag("Player");
 
         //agent.SetDestination(player.transform.position);
@@ -33,15 +32,18 @@ public class Patrol : MonoBehaviour
 
     void GotoNextPoint()
     {
+        
+        // TODO integrate this with the POI system that will be made soon
+        //if (NavPointCollection == null) throw new System.ApplicationException(gameObject + " - Patrol: NavPointCollection cannot be empty");
+        //if (NavPointCollection.transform.childCount < 1) throw new System.ApplicationException(gameObject.name + " - Patrol: NavPointCollection must have children");
 
+        //for (var idx = 0; idx < NavPointCollection.transform.childCount; idx++)
+        //{
+        //    points.Add(NavPointCollection.transform.GetChild(idx));
+        //}
 
-        if (NavPointCollection == null) throw new System.ApplicationException(gameObject + " - Patrol: NavPointCollection cannot be empty");
-        if (NavPointCollection.transform.childCount < 1) throw new System.ApplicationException(gameObject.name + " - Patrol: NavPointCollection must have children");
-
-        for (var idx = 0; idx < NavPointCollection.transform.childCount; idx++)
-        {
-            points.Add(NavPointCollection.transform.GetChild(idx));
-        }
+        if (points == null )
+            points = new List<Gameplay.MapGen.PointOfInterest>(FindObjectsOfType<Gameplay.MapGen.PointOfInterest>());
 
         // Do nothing if the array is empty
         if (points.Count == 0)
@@ -54,7 +56,7 @@ public class Patrol : MonoBehaviour
 
 
         // Goto the selected destination
-        agent.destination = points[destPoint].position;
+        agent.destination = points[destPoint].transform.position;
         agent.isStopped = false;
         // Pull random element from array:
         //var selected = points[Random.Range(0, points.Length)];
@@ -65,6 +67,9 @@ public class Patrol : MonoBehaviour
     {
          if (!agent.isOnNavMesh) return;
 
+        if (agent.destination == transform.position) // No set destination
+            GotoNextPoint();
+
         // Choose the next destination point when the agent gets
         // close to the current one.
         float dist = Vector3.Distance(transform.position, player.transform.position);
@@ -72,10 +77,11 @@ public class Patrol : MonoBehaviour
         if (!agent.pathPending)
         {
             // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
+          
             if (dist > 30)
             {
                 Target = null;
-
+                // TODO using the POI system, if target is not in range, select a random point and traverse to that point
                 // very far away, keep patrolling
                 if (agent.remainingDistance < 0.1f)
                     GotoNextPoint();
@@ -86,7 +92,6 @@ public class Patrol : MonoBehaviour
                 agent.SetDestination(player.transform.position);
                 //  Target = player.transform;
                 TargetPlayer(ChaseDist);
-                //agent.Resume();
                 agent.isStopped = false;
             }
             else
