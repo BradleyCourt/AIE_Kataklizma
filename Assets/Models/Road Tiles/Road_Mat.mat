@@ -41,7 +41,7 @@ Material:
     m_Floats:
     - _EmissiveAmplitude: 1
     - _Flashing: 0
-    - _Gloss: 1
+    - _Gloss: 0
     - _Metallic: 0
     - _Outline_Width: 0
     - _UseEmissiveTex: 0
