@@ -57,48 +57,52 @@ public class Patrol : MonoBehaviour
     {
          if (!agent.isOnNavMesh) return;
 
-        if (agent.destination == transform.position) // No set destination
+        if (Vector3.Distance(agent.destination, transform.position) < 2) // No set destination
             GotoNextPoint();
 
         // Choose the next destination point when the agent gets
         // close to the current one.
         float dist = Vector3.Distance(transform.position, player.transform.position);
 
-        if (!agent.pathPending)
-        {
-            // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
+            if (!agent.pathPending)
+            {
+                // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
           
-            if (dist > 30)
-            {
-                Target = null;
-                // TODO using the POI system, if target is not in range, select a random point and traverse to that point
-                // very far away, keep patrolling
-                if (agent.remainingDistance < 0.1f)
-                    GotoNextPoint();
+                if (dist > 30)
+                {
+                    Target = null;
+                    // TODO using the POI system, if target is not in range, select a random point and traverse to that point
+                    // very far away, keep patrolling
+                    Debug.DrawRay(transform.position, agent.destination - transform.position, Color.yellow);
+
+                    if (agent.remainingDistance < 0.1f)
+                        GotoNextPoint();
+                }
+                else if (dist > ChaseDist)
+                {
+                    // move closer to player
+                    agent.SetDestination(player.transform.position);
+                    //  Target = player.transform;
+                    TargetPlayer(ChaseDist);
+                }
+                else if (dist < ChaseDist)
+                {
+                    //shoot mah chalie sheen gun
+                    //GotoNextPoint();
+                    Target = player.transform;
+
+
+                    // stop and fire
+                    //agent.Stop(); // we're within 5m so stop
+                    // TODO COMMENT BACK IN WHEN INTEGRATING TANK SHELL FIRE agent.isStopped = true;
+
+                    // if within 3 metres, move away
+                    // else if player is stationary, shoot cannon
+
+
+                }
+
             }
-            else if (dist > ChaseDist)
-            {
-                // move closer to player
-                agent.SetDestination(player.transform.position);
-                //  Target = player.transform;
-                TargetPlayer(ChaseDist);
-            }
-            else
-            {
-                //shoot mah chalie sheen gun
-                Target = player.transform;
-
-                // stop and fire
-                //agent.Stop(); // we're within 5m so stop
-                agent.isStopped = true;
-
-                // if within 3 metres, move away
-                // else if player is stationary, shoot cannon
-
-
-            }
-
-        }
     }
 
     void SetDestination(Vector3 pt)
