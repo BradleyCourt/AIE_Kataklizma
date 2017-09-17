@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4943791084823514}
   m_Layer: 0
   m_Name: Road_Straight_Prefab
-  m_TagString: Untagged
+  m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8de40d77f4891214391f4da498ea5cd9, type: 2}
+  - {fileID: 2100000, guid: 707efc08ae9447146bd35148bafc6b56, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

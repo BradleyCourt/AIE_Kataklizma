@@ -49,3 +49,14 @@ public enum AbilityActivationType{
     PartialCharge,
     Channelled
 }
+
+[System.Serializable]
+public enum MapTileType {
+    NONE,
+    Tile5m,
+    Tile10m,
+    Tile20m,
+    Tile30m,
+    Tile40m,
+    TileRoad
+}

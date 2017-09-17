@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 124414929930841198}
   - component: {fileID: 92037362266093666}
   - component: {fileID: 81439995373122960}
+  - component: {fileID: 114913449467081796}
   m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
@@ -138,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431774962278804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0, z: -241.51}
+  m_LocalPosition: {x: -0.1, y: 0.64, z: -240.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4409023538388950}
@@ -199,12 +200,12 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -335,7 +336,7 @@ Rigidbody:
   m_GameObject: {fileID: 1431774962278804}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 5
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -448,6 +449,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XpThresholds: 64000000f4010000d0070000
+--- !u!114 &114913449467081796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577257734890234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 25f10718ccc26ab4dbb1ab52b84ffa2d, type: 2}
 --- !u!114 &114962660030173606
 MonoBehaviour:
   m_ObjectHideFlags: 1
