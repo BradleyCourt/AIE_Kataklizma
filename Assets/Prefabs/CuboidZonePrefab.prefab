@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33078034365136836}
   - component: {fileID: 23078307486033350}
   m_Layer: 8
-  m_Name: CuboidZone
+  m_Name: CuboidZonePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

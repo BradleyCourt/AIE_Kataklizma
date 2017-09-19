@@ -8,25 +8,10 @@ namespace Gameplay {
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour {
 
-
-
         [System.Serializable]
-        public struct Action {
-            public float Cooldown;
-            public float Duration;
-            [HideInInspector]
-            public bool IsReady;
-
-            public System.Func<bool> CanPerform;
-        }
-
-        [System.Serializable]
-        enum AnimState {
-            Idle,
-            Moving,
-            Jumping,
-            Attacking,
-            Charging,
+        public class AbilitySlot {
+            public string TriggerName;
+            public ActivatedAbility Ability;
         }
 
         private bool IsGrounded {
@@ -41,19 +26,17 @@ namespace Gameplay {
             protected set { _IdleTime = value; }
         }
 
-        private AnimState State = AnimState.Idle;
-
         public float MoveSpeed = 5.0f;
-        private bool CanMove {
-            get {
-                return State == AnimState.Idle;
-            }
-        }
+
 
         public bool IsControllable { get; set; }
 
 
         public GameObject CuboidZonePrefab;
+
+        
+        protected AbilitySlot ActiveAbility = null;
+        public List<AbilitySlot> Abilities;
 
         private Rigidbody Rb;
         private Camera ObserverCam;
@@ -63,79 +46,7 @@ namespace Gameplay {
         [Header("Observer Camera")]
         public float ObserverDistance;
         public float ObserverOffset;
-
-        #region " Action: Melee Attack "
-
-        [Header("Melee")]
-        public BoxCollider MeleeAttackZone;
-        public float MeleeAttackCooldown = 1;
-        public float MeleeAttackDuration = 0.3f;
-        public int MeleeAttackDamage = 10;
-        private bool IsMeleeAttackReady = true;
-        private bool CanMeleeAttack {
-            get {
-                return IsMeleeAttackReady && State == AnimState.Idle;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        void DoMeleeAttack() {
-            Debug.Log("Do Melee Attack!");
-
-            State = AnimState.Attacking;
-            IsMeleeAttackReady = false;
-
-            // Setup delay for returning control "when it stops"
-            StartCoroutine(this.DelayedAction(MeleeAttackDuration,
-                () => {
-                    if (State == AnimState.Attacking) {
-                        State = AnimState.Idle;
-                    }
-                }));
-
-            // Setup delay for cooldown "when it can be done again"
-            StartCoroutine(this.DelayedAction(MeleeAttackCooldown,
-                () => {
-                    IsMeleeAttackReady = true;
-                }));
-
-
-
-
-            // Do Attack
-            var centreOffset = transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.center);
-
-            var centre = transform.position + centreOffset;
-            var size = MeleeAttackZone.size; // transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.size);
-
-
-            // Render Zone
-            // FIXME: REmove Zone Render
-            var go = Instantiate(CuboidZonePrefab.gameObject, centre, transform.rotation);
-            go.transform.localScale = MeleeAttackZone.size;
-
-            Destroy(go, MeleeAttackDuration);
-
-
-
-            Collider[] targets = Physics.OverlapBox(centre, size, transform.rotation, ~8); // Anything that is NOT a PlayerAvatar layer
-
-            foreach (Collider target in targets) {
-                if (target.gameObject.tag == "Player") continue;
-
-
-                if (target.gameObject.tag == "Enemy" || target.gameObject.tag == "Building") {
-                    var playerStats = target.GetComponent<EntityAttributes>();
-                    if (playerStats) {
-                        playerStats.RemoveHealth(MeleeAttackDamage);
-                    }
-                }
-            }
-        }
-        #endregion
-
+        
         //#region " Action: Jump "
 
         //public float JumpVel = 8.0F;
@@ -176,6 +87,8 @@ namespace Gameplay {
 
 
         // Use this for initialization
+
+
         void Start() {
             ObserverCam = GetComponentInChildren<Camera>();
             if (ObserverCam == null) throw new System.ApplicationException(gameObject.name + " - PlayerController: Unable to locate required Camera child");
@@ -191,9 +104,45 @@ namespace Gameplay {
         void Update() {
             UpdateInputState();
 
+            //Debug.Log("Trigger State (Fire1) : " + Input.GetButton("Fire1").ToString());
+            var showLog = false;
+            var sb = new System.Text.StringBuilder(gameObject.name + " - PlayerController::Update() : ");
+            
+            if ( ActiveAbility != null ) {
+                sb.Append("Active[" + ActiveAbility.TriggerName + "|" + Input.GetButton(ActiveAbility.TriggerName) + "]");
+                showLog = true;
 
-            if (CanMeleeAttack && Input.GetButtonDown("Fire1"))
-                DoMeleeAttack();
+                var continuing = false;
+                if ( ActiveAbility.Ability.ActivationState != AbilityActivationState.Cleanup)
+                    continuing = ActiveAbility.Ability.OnUpdate(Input.GetButton(ActiveAbility.TriggerName));
+
+                sb.Append(", cont[" + continuing + "]");
+
+                var ended = false;
+                if (!continuing) {
+                    ended = ActiveAbility.Ability.OnEnd();
+                    sb.Append(", ended[" + ended + "]");
+                }
+
+                if (ended)
+                    ActiveAbility = null;
+                
+            }
+
+            if ( ActiveAbility == null ) {
+                foreach (var slot in Abilities) {
+                    if ( slot.Ability.CanActivate && Input.GetButton(slot.TriggerName)) {
+                        sb.Append("Triggered[" + slot.TriggerName + "]");
+                        showLog = true;
+                        if (slot.Ability.OnBegin()) {
+                            sb.Append(", Began");
+                            ActiveAbility = slot;
+                        }
+                    }
+                }
+            }
+
+            Debug.Log(sb.ToString());
 
             // Move character
             Vector3 motion = GetPlayerMotion() * MoveSpeed;
@@ -272,19 +221,19 @@ namespace Gameplay {
 
         void OnTriggerEnter(Collider col) {
 
-            if (State == AnimState.Charging) {
-                if (col.gameObject.tag == "Enemy") {
-                    State = AnimState.Idle;
-                }
-            }
+            //if (State == AnimState.Charging) {
+            //    if (col.gameObject.tag == "Enemy") {
+            //        State = AnimState.Idle;
+            //    }
+            //}
         }
 
 
         private void OnCollisionEnter(Collision collision) {
-            if (State == AnimState.Charging) {
-                State = AnimState.Idle;
-                IsControllable = true;
-            }
+            //if (State == AnimState.Charging) {
+            //    State = AnimState.Idle;
+            //    IsControllable = true;
+            //}
         }
 
         //    void OnDrawGizmos() {

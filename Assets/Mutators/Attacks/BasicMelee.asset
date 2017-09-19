@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b99b645b8b021643b4b428f51f1f770, type: 3}
+  m_Name: BasicMelee
+  m_EditorClassIdentifier: 
+  ChargeTime: 1
+  ChannelTime: 1
+  ManifestCount: 1
+  CleanupTime: 1
+  OnlyCleanupChanneling: 1
+  CooldownTime: 2
+  CooldownStartsWhen: 2
+  ActivationZone: {fileID: 11400000, guid: 3e37b07c88bef5a4588fb89041a75b49, type: 2}
+  Effects:
+    _Values:
+    - Type: 12
+      Base: 10
+      Modifier: 0
+  CanAffectTags:
+  - Building
+  - Enemy
+  Owner: {fileID: 0}
+  ActivationState: 0
+  ChargeRemaining: 0
+  ChannelRemaining: 0
+  CleanupEnds: 157.27373
+  CooldownEnds: 150.34552
+  ZoneRendererPrefab: {fileID: 1384093351775032, guid: aa1c794c57d8c8f47b00fb2ab345801f,
+    type: 2}
