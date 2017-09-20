@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114431374138933350}
   - component: {fileID: 65628731180706456}
   - component: {fileID: 114530964497581432}
+  - component: {fileID: 114471596430026350}
   m_Layer: 0
   m_Name: 80m_FootballStadium_Prefab
   m_TagString: Untagged
@@ -159,6 +160,19 @@ MonoBehaviour:
     - Type: 0
       Base: 20
       Modifier: 0
+--- !u!114 &114471596430026350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1913110297970878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 0
+  RequiresSocketing: 0
 --- !u!114 &114530964497581432
 MonoBehaviour:
   m_ObjectHideFlags: 1
