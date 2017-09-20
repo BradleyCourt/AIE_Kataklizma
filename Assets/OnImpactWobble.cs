@@ -41,7 +41,7 @@ public class OnImpactWobble : MonoBehaviour {
     /// <param name="damage">The hit power the building is struct by.</param>
     public void WobbleImpactPoint(Vector3 direction, float damage)
     {
-        maxMoveDistance = 0;
+        maxMoveDistance = 0; //Snap when timer runs out depending on the distance it can move variable maxMoveDistance
     }
     public Vector3 hitDirection = new Vector3(1, 0, 1);
     public float maxMoveDistance = 0;
@@ -54,47 +54,36 @@ public class OnImpactWobble : MonoBehaviour {
             swap = Time.time + hitDuration;
             MeshModifierLoop = false;
         }
-        if (Time.time < swap)// && vertCount <= vertices.Length)
+        if (Time.time < swap)
         {
-            //foreach(Vector3 vert in vertices)
-            //{
-
-            //}
-            //maxMoveDistance = vertices[]
             Vector3 aVert;
-            float angle;/* = Scale.x * verte*/
+            float angle;
             while(vertCount < vertices.Length)
             {
                 aVert = vertices[vertCount];
                 angle = Scale.x * vertOriginalCoordinates[vertCount].y + Time.time * Scale.y;
                 vertices[vertCount] = vertOriginalCoordinates[vertCount] + Mathf.Sin(angle) * hitDirection/*Vector3.right*/;
-                //vertices[LocateAndControlRayTestTemp] = new Vector3(0, 0, 0);
                 float newMove = Vector3.Distance(aVert, vertices[vertCount]);
                 if(newMove > maxMoveDistance)
                 {
                     maxMoveDistance = newMove;
-
                 }
                 vertCount++;
             }
-//            vertices[LocateAndControlRayTestTemp] = new Vector3(0,0,0); //New transform position;
-
             vertCount = 0;
             mesh.vertices = vertices;
             mesh.RecalculateBounds();
-            //mesh.RecalculateBounds();
         }
-        else// if(restoreVariable)
+        else
         {
             bool returnVariable = true;
             MeshModifierLoop = false;
             vertCount = 0;
 
 
-            float angle;/* = Scale.x * verte*/
+            float angle;
             while (vertCount < vertices.Length)
             {
-                //if()
                 if (vertices[vertCount] != vertOriginalCoordinates[vertCount])
                 {
                     float vertCompair = Vector3.Distance(vertices[vertCount], vertOriginalCoordinates[vertCount]);
@@ -111,17 +100,8 @@ public class OnImpactWobble : MonoBehaviour {
 
 
                 }
-                //vertices[LocateAndControlRayTestTemp] = new Vector3(0, 0, 0);
                 vertCount++;
             }
-
-            //while (LocateAndControlRayTestTemp < vertices.Length)
-            //{
-            //    //angle = Scale.x * vertOriginalCoordinates[LocateAndControlRayTestTemp].y + Time.time * Scale.y;
-            //    vertices[LocateAndControlRayTestTemp] = vertOriginalCoordinates[LocateAndControlRayTestTemp];// + Mathf.Sin(angle) * Vector3.right;
-            //    //vertices[LocateAndControlRayTestTemp] = new Vector3(0, 0, 0);
-            //    LocateAndControlRayTestTemp++;
-            //}
             vertCount = 0;
             mesh.vertices = vertices;
             mesh.RecalculateBounds();
@@ -131,14 +111,8 @@ public class OnImpactWobble : MonoBehaviour {
                 maxMoveDistance = 0;
             }
         }
-        //if(MeshModifierLoop && LocateAndControlRayTestTemp >= vertices.Length)
-        //{
-        //    mesh.RecalculateBounds();
-        //}
-    }
-
-    void FixedUpdate()
-    {
 
     }
+
+
 }
