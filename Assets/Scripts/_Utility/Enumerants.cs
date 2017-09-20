@@ -43,11 +43,19 @@ public enum FilterType {
     BlacklistAll,
 }
 
-public enum AbilityActivationType{
-    Normal,
-    FullCharge,
-    PartialCharge,
-    Channelled
+[System.Serializable]
+[System.Flags]
+public enum AbilityActivationTriggerType {
+    None = 0,
+    Charge = 1,
+    Channel = 2
+}
+
+public enum AbilityActivationState {
+    Ready,
+    Charging,
+    Channeling,
+    Cleanup,
 }
 
 [System.Serializable]

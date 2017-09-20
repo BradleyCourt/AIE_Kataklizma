@@ -13,10 +13,10 @@ public class BreakingNewsMover : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector3.right);
-        if(breakingNews.localPosition.x >= 530)
+        if(breakingNews.localPosition.x >= 500)
         {
             float oldY = breakingNews.localPosition.y;
-            transform.localPosition = new Vector3(-530, oldY, 0);
+            transform.localPosition = new Vector3(-620, oldY, 0);
         }
     }
 }
