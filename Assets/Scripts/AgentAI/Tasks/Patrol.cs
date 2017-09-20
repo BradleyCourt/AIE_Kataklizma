@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 public class Patrol : MonoBehaviour
 {
-    [HideInInspector]
+    
     public float ChaseDist = 15;
+    public float MinApproach = 5;
     public Transform Target;
     public GameObject NavPointCollection;
     private List<Gameplay.MapGen.PointOfInterest> points = null;
@@ -55,54 +56,48 @@ public class Patrol : MonoBehaviour
 
     void Update()
     {
-         if (!agent.isOnNavMesh) return;
+        if (!agent.isOnNavMesh) return;
 
-        if (Vector3.Distance(agent.destination, transform.position) < 2) // No set destination
+        if (agent.destination == transform.position) // No set destination
             GotoNextPoint();
 
         // Choose the next destination point when the agent gets
         // close to the current one.
         float dist = Vector3.Distance(transform.position, player.transform.position);
 
-            if (!agent.pathPending)
+        if (!agent.pathPending)
+        {
+            // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
+
+            if (dist > ChaseDist)
             {
-                // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
-          
-                if (dist > 30)
-                {
-                    Target = null;
-                    // TODO using the POI system, if target is not in range, select a random point and traverse to that point
-                    // very far away, keep patrolling
-                    Debug.DrawRay(transform.position, agent.destination - transform.position, Color.yellow);
+                Target = null;
+                // TODO using the POI system, if target is not in range, select a random point and traverse to that point
+                // very far away, keep patrolling
+                Debug.DrawRay(transform.position, agent.destination - transform.position, Color.yellow);
 
-                    if (agent.remainingDistance < 0.1f)
-                        GotoNextPoint();
-                }
-                else if (dist > ChaseDist)
-                {
-                    // move closer to player
-                    agent.SetDestination(player.transform.position);
-                    //  Target = player.transform;
-                    TargetPlayer(ChaseDist);
-                }
-                else if (dist < ChaseDist)
-                {
-                    //shoot mah chalie sheen gun
-                    //GotoNextPoint();
-                    Target = player.transform;
+                
+                if (agent.remainingDistance < 0.1f)
+                    GotoNextPoint();
+            }
+            else if (dist < MinApproach) // Too close, back off
+            {
+                Target = player.transform;
 
-
-                    // stop and fire
-                    //agent.Stop(); // we're within 5m so stop
-                    // TODO COMMENT BACK IN WHEN INTEGRATING TANK SHELL FIRE agent.isStopped = true;
-
-                    // if within 3 metres, move away
-                    // else if player is stationary, shoot cannon
-
-
-                }
+                TargetPlayer(ChaseDist);
 
             }
+            else // Target in potential-visible range, but outside "Min" distance so should get closer!
+            {
+                // move closer to player
+                agent.SetDestination(player.transform.position);
+
+                //  Target = player.transform;
+                TargetPlayer(ChaseDist);
+            }
+
+
+        }
     }
 
     void SetDestination(Vector3 pt)

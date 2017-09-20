@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Obsolete]
 public class HeliChase : MonoBehaviour
 {
     public Transform Target;
@@ -29,14 +30,14 @@ public class HeliChase : MonoBehaviour
         float dist = Vector3.Distance(transform.position, player.transform.position);
         // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
 
-        if (dist > 100)
+        if (dist > ChaseDist)
         {
             Target = null;
             // TODO using the POI system, if target is not in range, select a random point and traverse to that point
             // very far away, keep patrolling
             Debug.DrawRay(transform.position, agent.destination - transform.position, Color.yellow);
         }
-        else if (dist > ChaseDist)
+        else 
         {
             // move closer to player
             agent.SetDestination(player.transform.position);
@@ -54,6 +55,7 @@ public class HeliChase : MonoBehaviour
 
         if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, ChaseDist))
         {
+            //Debug.Log(gameObject.name + " - HeliChase::TargetPlayer(): Hit [" + hit.collider.gameObject.tag + "]");
             if (hit.collider.gameObject.tag == "Player")
             {
                 Target = hit.collider.gameObject.transform;
