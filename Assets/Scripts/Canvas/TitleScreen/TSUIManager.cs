@@ -15,9 +15,9 @@ public class TSUIManager : MonoBehaviour
 	public GameObject settingsHolder;
 	public GameObject unlocksHolder;
 	public GameObject PAKPanel;
-	public VideoPlayer channelSurfing;
     public GameObject Canvas;
     public GameObject Static;
+    public GameObject titleStatic;
 
 	public float menuSlideTime = 0.5f;
 	
@@ -32,7 +32,6 @@ public class TSUIManager : MonoBehaviour
 		
 		if (buttonClicked == false && Input.anyKey)
 		{
-			channelSurfing.Stop();
 			StartCoroutine("PlayVideo");
 		}
 	}
@@ -40,10 +39,11 @@ public class TSUIManager : MonoBehaviour
 	IEnumerator PlayVideo()
 	{
 		breakingNews.Play();
-		print("should be playing");
 		buttonClicked = true;
 		PAKPanel.SetActive(false);
-		yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.2f);
+        titleStatic.SetActive(false);
+        yield return new WaitForSeconds(2.2f);
 		breakingNews.Stop();
         background.SetActive(true);
         yield return new WaitForSeconds(3);
@@ -55,7 +55,7 @@ public class TSUIManager : MonoBehaviour
 
     IEnumerator StaticReset()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(20);
         Static.SetActive(true);
         var movers = FindObjectsOfType<ObjectMover>();
 
