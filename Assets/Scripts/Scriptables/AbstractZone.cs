@@ -12,6 +12,6 @@ namespace Scriptables {
         /// </summary>
         /// <param name="origin"></param>
         /// <returns></returns>
-        public abstract Transform[] ZoneCast(Transform origin);
+        public abstract Collider[] OverlapZone(Transform origin, int layerMask = ~8);
     }
 }

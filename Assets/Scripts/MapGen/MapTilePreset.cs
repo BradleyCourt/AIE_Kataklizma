@@ -6,7 +6,6 @@ namespace MapGen {
     public class MapTilePreset : MonoBehaviour{
 
         public MapTileType Size;
-        public bool RequiresSocketing;
-        
+                
     }
 }

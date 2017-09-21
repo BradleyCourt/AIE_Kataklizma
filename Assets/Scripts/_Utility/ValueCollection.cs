@@ -97,7 +97,7 @@ public partial class ValueCollection  {
         }
         set {
 
-            if ( subtype == ValueSubtype.Derived ) throw new System.InvalidOperationException("ValueCollection[].Set: Cannot set EntityStat (" + type.ToString() + ") value directly.  MUST set Base or Modifier instead.");
+            //if ( subtype == ValueSubtype.Derived ) throw new System.InvalidOperationException("ValueCollection[].Set: Cannot set EntityStat (" + type.ToString() + ") value directly.  MUST set Base or Modifier instead.");
 
             // Find list entry:
             var storedValue = Fetch(type);
@@ -121,7 +121,9 @@ public partial class ValueCollection  {
                     storedValue.Modifier = value;
                     break;
                 default:
-                    throw new System.ApplicationException("ValueCollection[].Set: Invalid Subtype value.");
+                    old = storedValue.Derived;
+                    storedValue.Base = value / (1 + storedValue.Modifier);
+                    break;
             }
 
             // Raise "ValueChanged" event only if value actually changed
