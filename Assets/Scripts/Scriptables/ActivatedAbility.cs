@@ -155,15 +155,6 @@ namespace Scriptables {
 
             var origin = Owner;
 
-            // Render Zone
-            // FIXME: REmove Zone Render
-            var zone = ActivationZone as CuboidZone;
-            var go = Instantiate(ZoneRendererPrefab, origin.TransformPoint(zone.Bounds.center), origin.rotation);
-            go.transform.localScale = Vector3.Scale(zone.Bounds.extents, origin.localScale);
-
-            Destroy(go, 1);
-
-
             var hits = ActivationZone.OverlapZone(origin);
             foreach (var hit in hits) {
                 if (!CanAffectTags.Contains(hit.tag)) continue; // Unrecognised Tag

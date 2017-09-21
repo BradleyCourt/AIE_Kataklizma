@@ -11,6 +11,8 @@ namespace Scriptables {
 
         public Bounds Bounds;
 
+        public GameObject DebuggingPrefab;
+
         /// <summary>
         /// Discover all Colliders within zone
         /// </summary>
@@ -22,6 +24,20 @@ namespace Scriptables {
 
             var centre = origin.TransformPoint(Bounds.center);
             var size = Vector3.Scale(Bounds.extents, origin.localScale);
+
+
+#if DEBUG
+            if (DebuggingPrefab != null) {
+                // Render Zone
+                // FIXME: REmove Zone Render
+                var go = Instantiate(DebuggingPrefab, centre, origin.rotation);
+                go.transform.localScale = size;
+
+                Destroy(go, 1);
+            }
+#endif
+
+
 
             return Physics.OverlapBox(centre, size, origin.rotation, layerMask);
             
