@@ -66,5 +66,6 @@ public enum MapTileType {
     Tile20m,
     Tile30m,
     Tile40m,
-    TileRoad
+    TileRoad,
+    Tile80m,
 }
