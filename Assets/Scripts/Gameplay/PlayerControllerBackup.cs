@@ -178,7 +178,7 @@ namespace Gameplay {
             var size = MeleeAttackZone.size; // transform.localToWorldMatrix.MultiplyVector(MeleeAttackZone.size);
 
             Collider[] targets = Physics.OverlapBox(centre, size, transform.rotation, ~8); // Anything that is NOT a PlayerAvatar layer
-
+            
             foreach (Collider target in targets) {
                 if (target.gameObject.tag == "Player") continue;
 

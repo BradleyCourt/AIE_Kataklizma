@@ -54,5 +54,15 @@ namespace Gameplay {
 
             // NOTE: "Object Death" no longer needs a broadcast.  Attach an event listener instead.
         }
+
+        public void ApplyEffect(ValueType type, float value) {
+            switch (type) {
+                case ValueType.Damage:
+                    var effectiveDamage = Mathf.Max(value - this[ValueType.DamageReduction], 0);
+                    effectiveDamage = Mathf.Min(effectiveDamage, this[ValueType.Health]);
+                    this[ValueType.Health] -= effectiveDamage;
+                    break;
+            }
+        }
     }
 }
