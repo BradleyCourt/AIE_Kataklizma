@@ -9,7 +9,7 @@ public class ObjectMover : MonoBehaviour
 	public Vector3 startingPos;
 	// Use this for initialization
 	void Start () {
-		
+        startingPos = transform.position;
 	}
 	
 	// Update is called once per frame

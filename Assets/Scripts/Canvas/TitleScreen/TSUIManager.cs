@@ -17,13 +17,14 @@ public class TSUIManager : MonoBehaviour
 	public GameObject PAKPanel;
 	public VideoPlayer channelSurfing;
     public GameObject Canvas;
+    public GameObject Static;
 
 	public float menuSlideTime = 0.5f;
 	
 	
 	// Use this for initialization
 	void Start () {
-		
+        StartCoroutine("StaticReset");
 	}
 	
 	// Update is called once per frame
@@ -51,6 +52,21 @@ public class TSUIManager : MonoBehaviour
         LeanTween.moveY(Canvas.GetComponent<RectTransform>(), 50, 1);
         LeanTween.moveX(menuHolder.GetComponent<RectTransform>(), -100, 1);
 	}
+
+    IEnumerator StaticReset()
+    {
+        yield return new WaitForSeconds(10);
+        Static.SetActive(true);
+        var movers = FindObjectsOfType<ObjectMover>();
+
+        foreach (var mover in movers)
+            mover.ResetPos();
+        yield return new WaitForSeconds(0.3f);
+        Static.SetActive(false);
+        StartCoroutine("StaticReset");
+
+        
+    }
 
 	public void SettingsTransition()
 	{
