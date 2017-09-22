@@ -70,19 +70,25 @@ namespace MapGen
 
             public int getWidth()
             {
-                switch (Type)
-                {
-                    case MapTileType.Tile5m: return 1;
-                    case MapTileType.Tile10m: return 2;
-                    case MapTileType.Tile20m: return 4;
-                    case MapTileType.Tile30m: return 6;
-                    case MapTileType.Tile40m: return 8;
-
-                        // TODO  all other sizes
-                }
-                return -1; // this should never happen!
+                return getTileWidth(Type);
             }
         }
+
+        public static int getTileWidth(MapTileType Type)
+        {
+            switch (Type)
+            {
+                case MapTileType.Tile5m: return 1;
+                case MapTileType.Tile10m: return 2;
+                case MapTileType.Tile20m: return 4;
+                case MapTileType.Tile30m: return 6;
+                case MapTileType.Tile40m: return 8;
+                case MapTileType.Tile80m: return 16;
+                    // TODO  all other sizes
+            }
+            return -1; // this should never happen!
+        }
+
         public Vector2 bounds;
 
         private Vector3 TileOriginOffset;
@@ -93,6 +99,7 @@ namespace MapGen
         /// 
         /// </summary>
         public List<SourceTilePreset> SourceTilePresets;
+   
 
         public RoadPrefabs RoadTilePresets;
 
@@ -109,8 +116,58 @@ namespace MapGen
             // make an array of gameobjects
             GameObject[,] mapObjects = new GameObject[columns, rows];
 
+            AddPremadeBuildings(mapObjects);
             AddRoads(mapObjects);
             AddBuildings(mapObjects);
+         
+        }
+
+        void AddPremadeBuildings(GameObject[,] mapObjects)
+        {
+            // we assume that all MapTilePresets belong to this grid because theres only one per scene
+            MapTilePreset[] presets = FindObjectsOfType<MapTilePreset>();
+
+            foreach (MapTilePreset preset in presets)
+            {
+                Vector3 pos = preset.transform.position;
+                int width = getTileWidth(preset.Size);
+                
+
+                // snap rotation to a 90 degrees value, assuming all buildings are children of the grid
+                preset.transform.localEulerAngles = new Vector3(0, Mathf.Floor((int)(preset.transform.localEulerAngles.y / 90.0f)) * 90.0f, 0);
+
+                Vector3 oppositeCorner = pos + (preset.transform.right + preset.transform.forward) * width * 5;
+
+                // snap the position to the grid
+                int[] indices = WorldToIndex(pos);
+
+                // snap the object to the grid
+                preset.transform.position = IndexToWorld(indices[0], indices[1]);
+
+
+
+                int[] indices2 = WorldToIndex(oppositeCorner);
+
+                // find the minimum value of the bounds
+                int startX = Mathf.Min(indices[0], indices2[0]);
+                int startY = Mathf.Min(indices[1], indices2[1]);
+
+                startX = Mathf.Max(startX, 0);
+                startY = Mathf.Max(startY, 0);
+
+                var endX = Mathf.Min(mapObjects.GetLength(0), startX + width);
+                var endY = Mathf.Min(mapObjects.GetLength(1), startY + width);
+
+                // fill in squares in gameobject array
+
+                for (var c = startX; c < endX ; c++)
+                    for (var r = startY; r < endY; r++)
+                        mapObjects[c, r] = preset.gameObject;
+
+
+
+
+            }
         }
 
         void AddRoads(GameObject[,] mapObjects)
@@ -180,14 +237,14 @@ namespace MapGen
                 if (isVertical)
                 {
                     // go up
-                    while (iy < rows && CanPlaceRoad(isRoad, ix, iy, 30))
+                    while (iy < rows && CanPlaceRoad(mapObjects, isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
                         iy++;
                     }
                     // go back to start and go down
                     iy = indexY - 1;
-                    while (iy >= 0 && CanPlaceRoad(isRoad, ix, iy, 30))
+                    while (iy >= 0 && CanPlaceRoad(mapObjects, isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
                         iy--;
@@ -196,24 +253,19 @@ namespace MapGen
                 else
                 {
                     // go up
-                    while (ix < columns && CanPlaceRoad(isRoad, ix, iy, 30))
+                    while (ix < columns && CanPlaceRoad(mapObjects, isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
                         ix++;
                     }
                     // go back to start and go down
                     ix = indexX - 1;
-                    while (ix >= 0 && CanPlaceRoad(isRoad, ix, iy, 30))
+                    while (ix >= 0 && CanPlaceRoad(mapObjects, isRoad, ix, iy, 30))
                     {
                         isRoad[ix, iy] = true;
                         ix--;
                     }
                 }
-
-
-                // flip the up/down directions
-                isVertical = !isVertical;
-
 
             }
 
@@ -274,7 +326,7 @@ namespace MapGen
 
                     // if returns "o" (that means a road is there, do this code 
                     // {
-                    if (isRoad[c, r])
+                    if (isRoad[c, r] && mapObjects[c,r] == null)
                     {
                         // Check adjacent tiles for other roads
                         var LeftCheck = c > 0 && isRoad[c - 1, r];
@@ -297,7 +349,7 @@ namespace MapGen
 
                             GameObject go = Instantiate(prefab);
                             go.transform.parent = Roads;
-                            go.transform.localPosition = TileOriginOffset + new Vector3(5 * c + 2.5f, 0, 5 * r + 2.5f); // TODO cheeky 5m hack, probably OK
+                            go.transform.localPosition = IndexToWorld(c,r) + new Vector3(2.5f, 0, 2.5f); // TODO cheeky 5m hack, probably OK
                             go.transform.localEulerAngles = new Vector3(0, (int)angles[connections], 0);
                             go.name = "MapTile_" + c + "_" + r;
 
@@ -311,9 +363,28 @@ namespace MapGen
             
         }
 
-        private bool CanPlaceRoad(bool[,] isRoad, int ix, int iy, int crossChance)
+        Vector3 IndexToWorld(int c, int r)
         {
-            return (isRoad[ix, iy] == false || UnityEngine.Random.Range(0, 100) < crossChance);
+            return TileOriginOffset + new Vector3(5 * c, 0, 5 * r);
+        }
+
+        int[] WorldToIndex(Vector3 pos)
+        {
+            int[] indices = new int[2];
+
+            pos -= TileOriginOffset;
+
+            // 0.5f's here mean we round off instead of rounding down
+            indices[0] = (int)(Mathf.Floor(pos.x) / 5);
+            indices[1] = (int)(Mathf.Floor(pos.z) / 5);
+            
+            return indices;
+        }
+
+
+        private bool CanPlaceRoad(GameObject[,] mapObjects, bool[,] isRoad, int ix, int iy, int crossChance)
+        {
+            return (mapObjects == null || mapObjects[ix,iy] == null) && (isRoad[ix, iy] == false || UnityEngine.Random.Range(0, 100) < crossChance);
         }
 
         void AddBuildings(GameObject[,] mapObjects)
@@ -379,7 +450,7 @@ namespace MapGen
                                 mapObjects[c + i, r + j] = go; // fills array
                             }
                         }
-                    }
+                   } 
                 }
             }
         }

@@ -15,15 +15,16 @@ public class TSUIManager : MonoBehaviour
 	public GameObject settingsHolder;
 	public GameObject unlocksHolder;
 	public GameObject PAKPanel;
-	public VideoPlayer channelSurfing;
     public GameObject Canvas;
+    public GameObject Static;
+    public GameObject titleStatic;
 
 	public float menuSlideTime = 0.5f;
 	
 	
 	// Use this for initialization
 	void Start () {
-		
+        StartCoroutine("StaticReset");
 	}
 	
 	// Update is called once per frame
@@ -31,7 +32,6 @@ public class TSUIManager : MonoBehaviour
 		
 		if (buttonClicked == false && Input.anyKey)
 		{
-			channelSurfing.Stop();
 			StartCoroutine("PlayVideo");
 		}
 	}
@@ -39,10 +39,11 @@ public class TSUIManager : MonoBehaviour
 	IEnumerator PlayVideo()
 	{
 		breakingNews.Play();
-		print("should be playing");
 		buttonClicked = true;
 		PAKPanel.SetActive(false);
-		yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.2f);
+        titleStatic.SetActive(false);
+        yield return new WaitForSeconds(2.2f);
 		breakingNews.Stop();
         background.SetActive(true);
         yield return new WaitForSeconds(3);
@@ -51,6 +52,21 @@ public class TSUIManager : MonoBehaviour
         LeanTween.moveY(Canvas.GetComponent<RectTransform>(), 50, 1);
         LeanTween.moveX(menuHolder.GetComponent<RectTransform>(), -100, 1);
 	}
+
+    IEnumerator StaticReset()
+    {
+        yield return new WaitForSeconds(20);
+        Static.SetActive(true);
+        var movers = FindObjectsOfType<ObjectMover>();
+
+        foreach (var mover in movers)
+            mover.ResetPos();
+        yield return new WaitForSeconds(0.3f);
+        Static.SetActive(false);
+        StartCoroutine("StaticReset");
+
+        
+    }
 
 	public void SettingsTransition()
 	{

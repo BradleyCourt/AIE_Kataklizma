@@ -12,6 +12,9 @@ namespace Gameplay {
         public class AbilitySlot {
             public string TriggerName;
             public ActivatedAbility Ability;
+
+            public bool CanActivate { get { return Ability != null && Ability.CanActivate; } }
+
         }
 
         private bool IsGrounded {
@@ -28,100 +31,64 @@ namespace Gameplay {
 
         public float MoveSpeed = 5.0f;
 
-
         public bool IsControllable { get; set; }
 
-
         public GameObject CuboidZonePrefab;
-
         
         protected AbilitySlot ActiveAbility = null;
         public List<AbilitySlot> Abilities;
 
         private Rigidbody Rb;
-        private Camera ObserverCam;
-        private float ObserverTheta;
-        private float ObserverPhi;
 
-        [Header("Observer Camera")]
-        public float ObserverDistance;
-        public float ObserverOffset;
-        
-        //#region " Action: Jump "
+        [System.Serializable]
+        public struct ObserverOptions {
+            public float Distance;
+            public Vector3 Focus;
 
-        //public float JumpVel = 8.0F;
-        //public float JumpCooldown = 0;
-        //public float JumpDuration = 0.2f;
-        //private bool IsJumpReady = true;
-        //private bool CanJump {
-        //    get {
-        //        return IsJumpReady && IsGrounded && State == AnimState.Idle;
-        //    }
-        //}
+            [HideInInspector]
+            public Camera Camera;
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //void DoJump() {
-        //    State = AnimState.Jumping;
-        //    IsJumpReady = false;
+            [HideInInspector]
+            public float Theta;
+            [HideInInspector]
+            public float Phi;
+        }
 
-        //    // Setup delay for returning control "when it stops"
-        //    StartCoroutine(this.DelayedAction(JumpDuration,
-        //        () => {
-        //            if (State == AnimState.Jumping) {
-        //                State = AnimState.Idle;
-        //            }
-        //        }));
-
-        //    // Setup delay for cooldown "when it can be done again"
-        //    StartCoroutine(this.DelayedAction(JumpCooldown,
-        //        () => {
-        //            IsJumpReady = true;
-        //        }));
-
-        //    Rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
-        //}
-        //#endregion
-
-
-
-        // Use this for initialization
+        public ObserverOptions Observer;
 
 
         void Start() {
-            ObserverCam = GetComponentInChildren<Camera>();
-            if (ObserverCam == null) throw new System.ApplicationException(gameObject.name + " - PlayerController: Unable to locate required Camera child");
+            Observer.Camera = GetComponentInChildren<Camera>();
+            if (Observer.Camera == null) throw new System.ApplicationException(gameObject.name + " - PlayerController: Unable to locate required Camera child");
 
             Rb = GetComponent<Rigidbody>();
-            if (Rb == null) throw new System.ApplicationException("PlayerController requires a Rigidbody sibling");
+            if (Rb == null) throw new System.ApplicationException(gameObject.name + " - PlayerController requires a Rigidbody sibling");
 
             IsControllable = true;
+
+            foreach (var slot in Abilities) {
+                if (slot.Ability != null) {
+                    slot.Ability.Bind(transform);
+                    slot.Ability.Reset();
+                }
+            }
         }
 
 
         // Update is called once per frame
         void Update() {
             UpdateInputState();
+                        
 
-            //Debug.Log("Trigger State (Fire1) : " + Input.GetButton("Fire1").ToString());
-            var showLog = false;
-            var sb = new System.Text.StringBuilder(gameObject.name + " - PlayerController::Update() : ");
-            
             if ( ActiveAbility != null ) {
-                sb.Append("Active[" + ActiveAbility.TriggerName + "|" + Input.GetButton(ActiveAbility.TriggerName) + "]");
-                showLog = true;
-
                 var continuing = false;
                 if ( ActiveAbility.Ability.ActivationState != AbilityActivationState.Cleanup)
                     continuing = ActiveAbility.Ability.OnUpdate(Input.GetButton(ActiveAbility.TriggerName));
-
-                sb.Append(", cont[" + continuing + "]");
+                
 
                 var ended = false;
                 if (!continuing) {
                     ended = ActiveAbility.Ability.OnEnd();
-                    sb.Append(", ended[" + ended + "]");
                 }
 
                 if (ended)
@@ -131,18 +98,13 @@ namespace Gameplay {
 
             if ( ActiveAbility == null ) {
                 foreach (var slot in Abilities) {
-                    if ( slot.Ability.CanActivate && Input.GetButton(slot.TriggerName)) {
-                        sb.Append("Triggered[" + slot.TriggerName + "]");
-                        showLog = true;
+                    if ( slot.CanActivate && Input.GetButton(slot.TriggerName)) {
                         if (slot.Ability.OnBegin()) {
-                            sb.Append(", Began");
                             ActiveAbility = slot;
                         }
                     }
                 }
             }
-
-            Debug.Log(sb.ToString());
 
             // Move character
             Vector3 motion = GetPlayerMotion() * MoveSpeed;
@@ -157,9 +119,12 @@ namespace Gameplay {
 
             if (velocity.magnitude > 0)
                 Rb.velocity = velocity;
+
             Rb.angularVelocity = Vector3.zero;
 
         }
+
+
 
         void UpdateInputState() {
             if (Input.GetMouseButtonDown(2)) { // Middle Mouse toggles mouse capture
@@ -177,26 +142,25 @@ namespace Gameplay {
             if (Cursor.lockState == CursorLockMode.Locked) {
 
                 // Update Camera
-                ObserverTheta = Mathf.Repeat(ObserverTheta + Input.GetAxis("ViewHorizontal"), 360);
-                ObserverPhi = Mathf.Clamp(ObserverPhi + Input.GetAxis("ViewVertical"), 20, 70);
+                Observer.Theta = Mathf.Repeat(Observer.Theta + Input.GetAxis("ViewHorizontal"), 360);
+                Observer.Phi = Mathf.Clamp(Observer.Phi + Input.GetAxis("ViewVertical"), 20, 70);
             }
 
 
             // Apply Camera
-            var yaw = Quaternion.Euler(0, ObserverTheta, 0);
-            var pitch = Quaternion.Euler(-ObserverPhi, 0, 0);
+            var yaw = Quaternion.Euler(0, Observer.Theta, 0);
+            var pitch = Quaternion.Euler(-Observer.Phi, 0, 0);
 
-            var offset = Vector3.forward * ObserverDistance;
+            var offset = Vector3.forward * Observer.Distance;
 
             offset = pitch * offset;
             offset = yaw * offset;
 
             // Rotate camera around target
-            ObserverCam.transform.position = (transform.position + offset);
+            Observer.Camera.transform.position = (transform.position + offset);
 
             // Point camera at target
-            ObserverCam.transform.LookAt(transform);
-            ObserverCam.transform.Rotate(ObserverOffset, 0, 0, Space.Self);
+            Observer.Camera.transform.LookAt(transform.TransformPoint(Observer.Focus));
 
         }
 
@@ -207,7 +171,7 @@ namespace Gameplay {
 
             if (!IsControllable) return Vector3.zero; // Player-control disabled
 
-            var cameraDirection = transform.position - ObserverCam.transform.position;
+            var cameraDirection = transform.position - Observer.Camera.transform.position;
 
             var characterFwd = new Vector3(cameraDirection.x, 0, cameraDirection.z).normalized;
             var characterRight = new Vector3(cameraDirection.z, 0, -cameraDirection.x).normalized;
@@ -221,42 +185,12 @@ namespace Gameplay {
 
         void OnTriggerEnter(Collider col) {
 
-            //if (State == AnimState.Charging) {
-            //    if (col.gameObject.tag == "Enemy") {
-            //        State = AnimState.Idle;
-            //    }
-            //}
+
         }
 
 
         private void OnCollisionEnter(Collision collision) {
-            //if (State == AnimState.Charging) {
-            //    State = AnimState.Idle;
-            //    IsControllable = true;
-            //}
+
         }
-
-        //    void OnDrawGizmos() {
-
-        //        Gizmos.color = new Color(1, 0, 0, 0.5f);
-
-        //        if (State == AnimState.Attacking) {
-        //            Gizmos.matrix = gameObject.transform.localToWorldMatrix;
-
-        //            if (!IsMeleeAttackReady) {
-        //                var centre = MeleeAttackZone.center;
-        //                var size = MeleeAttackZone.size;
-
-        //                Gizmos.DrawCube(centre, size);
-        //            }
-        //            if (!IsRangedAttackReady) {
-        //                var centre = RangedAttackZone.center;
-        //                var size = RangedAttackZone.size;
-
-        //                Gizmos.DrawCube(centre, size);
-        //            }
-        //        }
-
-        //    }
     }
 }

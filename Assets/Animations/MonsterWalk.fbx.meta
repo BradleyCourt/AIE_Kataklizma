@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: 0eec569041092bd4bbe5ad33c1d94fac
+timeCreated: 1505954015
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: ankle_L_JNT
+    100002: ankle_R_JNT
+    100004: chest_JNT
+    100006: elbow_L_JNT
+    100008: elbow_R_JNT
+    100010: finger1_L_END
+    100012: finger1_L_JNT
+    100014: finger1_R_END
+    100016: finger1_R_JNT
+    100018: foot_L_JNT
+    100020: foot_R_JNT
+    100022: hand_L_JNT
+    100024: hand_R_JNT
+    100026: head_END
+    100028: head_JNT
+    100030: jaw_END
+    100032: jaw_JNT
+    100034: //RootNode
+    100036: Kataklizma_FinalForm
+    100038: knee_L_JNT
+    100040: knee_R_JNT
+    100042: neck_JNT
+    100044: pinky_L_END
+    100046: pinky_L_JNT
+    100048: pinky_R_END
+    100050: pinky_R_JNT
+    100052: root_JNT
+    100054: tail1_JNT
+    100056: tail2_JNT
+    100058: tail_END
+    100060: thigh_L_JNT
+    100062: thigh_R_JNT
+    100064: thumb_L_END
+    100066: thumb_L_JNT
+    100068: thumb_R_END
+    100070: thumb_R_JNT
+    100072: toe_L_END
+    100074: toe_R_END
+    100076: uparm_L_JNT
+    100078: uparm_R_JNT
+    100080: wrist_L_END
+    100082: wrist_L_JNT
+    100084: wrist_R_END
+    100086: wrist_R_JNT
+    400000: ankle_L_JNT
+    400002: ankle_R_JNT
+    400004: chest_JNT
+    400006: elbow_L_JNT
+    400008: elbow_R_JNT
+    400010: finger1_L_END
+    400012: finger1_L_JNT
+    400014: finger1_R_END
+    400016: finger1_R_JNT
+    400018: foot_L_JNT
+    400020: foot_R_JNT
+    400022: hand_L_JNT
+    400024: hand_R_JNT
+    400026: head_END
+    400028: head_JNT
+    400030: jaw_END
+    400032: jaw_JNT
+    400034: //RootNode
+    400036: Kataklizma_FinalForm
+    400038: knee_L_JNT
+    400040: knee_R_JNT
+    400042: neck_JNT
+    400044: pinky_L_END
+    400046: pinky_L_JNT
+    400048: pinky_R_END
+    400050: pinky_R_JNT
+    400052: root_JNT
+    400054: tail1_JNT
+    400056: tail2_JNT
+    400058: tail_END
+    400060: thigh_L_JNT
+    400062: thigh_R_JNT
+    400064: thumb_L_END
+    400066: thumb_L_JNT
+    400068: thumb_R_END
+    400070: thumb_R_JNT
+    400072: toe_L_END
+    400074: toe_R_END
+    400076: uparm_L_JNT
+    400078: uparm_R_JNT
+    400080: wrist_L_END
+    400082: wrist_L_JNT
+    400084: wrist_R_END
+    400086: wrist_R_JNT
+    4300000: Kataklizma_FinalForm
+    7400000: Walk Cycle
+    9500000: //RootNode
+    13700000: Kataklizma_FinalForm
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk Cycle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 29be0d6cb2dcb644f8648da24d09a74c,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -72,12 +72,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4782020921387870}
   - component: {fileID: 136287828744338364}
-  - component: {fileID: 114100818621899764}
   - component: {fileID: 114174140682352030}
   - component: {fileID: 195569597559897600}
-  - component: {fileID: 114527840718388340}
   - component: {fileID: 114282211111162002}
   - component: {fileID: 114176690958759812}
+  - component: {fileID: 114238614297154642}
   m_Layer: 0
   m_Name: Heli
   m_TagString: Untagged
@@ -328,18 +327,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1604759912339854}
   m_Mesh: {fileID: 4300006, guid: 25272611e0af07741838220c0b18eaad, type: 3}
---- !u!114 &114100818621899764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1593274314268264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8318555661033e3418bf54bbd78acabb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 0}
 --- !u!114 &114174140682352030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,6 +356,21 @@ MonoBehaviour:
     - Type: 1
       Base: 50
       Modifier: 0
+--- !u!114 &114238614297154642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1593274314268264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52872e06b6a5a74fb59db86f91d7d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChaseDist: 50
+  MinApproach: 30
+  Target: {fileID: 0}
+  NavPointCollection: {fileID: 0}
 --- !u!114 &114282211111162002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,20 +400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 800
---- !u!114 &114527840718388340
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1593274314268264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52872e06b6a5a74fb59db86f91d7d76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChaseDist: 5
-  Target: {fileID: 0}
-  NavPointCollection: {fileID: 0}
 --- !u!114 &114922650354106606
 MonoBehaviour:
   m_ObjectHideFlags: 1
