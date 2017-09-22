@@ -8,7 +8,9 @@ public class CarBounce : MonoBehaviour {
     public float timeToTop = 0.7f;
     public float fastResetTime = 0.2f;
     public float fullResetTime = 1.0f;
+    public bool PlayOnce = true;
     public bool loop = false;
+
     public LeanTweenType moveTypeOnHop = LeanTweenType.easeOutCubic;
     public LeanTweenType scaleTypeOnHop = LeanTweenType.easeOutSine;
     public LeanTweenType moveTypeOnSlam = LeanTweenType.easeOutBack;
@@ -23,7 +25,7 @@ public class CarBounce : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (loop && !animating)
+        if ((PlayOnce || loop ) && !animating)
             Activate();
 	}
 
@@ -37,6 +39,7 @@ public class CarBounce : MonoBehaviour {
     void Hop()
     {
         animating = true;
+        PlayOnce = false;
         LeanTween.moveLocalY(gameObject, jumpHeight, timeToTop).setEase(moveTypeOnHop);
         LeanTween.scaleY(gameObject, scaleAmount, timeToTop).setEase(scaleTypeOnHop).setOnComplete(Slam);
     }
