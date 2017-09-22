@@ -11,7 +11,7 @@ namespace Scriptables {
 
         public Bounds Bounds;
 
-        public GameObject DebuggingPrefab;
+        //public GameObject DebuggingPrefab;
 
         /// <summary>
         /// Discover all Colliders within zone
@@ -27,13 +27,13 @@ namespace Scriptables {
 
 
 #if DEBUG
-            if (DebuggingPrefab != null) {
+            var prefab = Instantiate(Resources.Load<GameObject>("CuboidZonePrefab"), centre, origin.rotation);
+            if (prefab != null) {
                 // Render Zone
-                // FIXME: REmove Zone Render
-                var go = Instantiate(DebuggingPrefab, centre, origin.rotation);
-                go.transform.localScale = size;
+                //var go = Instantiate(prefab, centre, origin.rotation);
+                prefab.transform.localScale = size;
 
-                Destroy(go, 1);
+                Destroy(prefab, 1);
             }
 #endif
 

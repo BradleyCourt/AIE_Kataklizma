@@ -58,6 +58,20 @@ public enum AbilityActivationState {
     Cleanup,
 }
 
+[System.Serializable] 
+public enum CharacterBindPoint {
+    NONE,
+    Forehead,
+    Mouth,
+    Torso,
+    LeftHand,
+    RightHand,
+    LeftFoot,
+    RightFoot,
+    Tail
+        
+}
+
 [System.Serializable]
 public enum MapTileType {
     NONE,

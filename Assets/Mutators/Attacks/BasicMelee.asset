@@ -15,23 +15,18 @@ MonoBehaviour:
   ChannelTime: 1
   ManifestCount: 1
   CleanupTime: 0
-  OnlyCleanupChanneling: 1
+  ChargeCausesCleanup: 0
   CooldownTime: 1
   CooldownStartsWhen: 3
   ActivationZone: {fileID: 11400000, guid: 3e37b07c88bef5a4588fb89041a75b49, type: 2}
   Effects:
     _Values:
     - Type: 12
-      Base: 10
+      Base: 15
       Modifier: 0
   CanAffectTags:
   - Building
   - Enemy
   Owner: {fileID: 0}
-  ActivationState: 0
-  ChargeRemaining: 0
-  ChannelRemaining: 0.884033
-  CleanupEnds: 285.42773
-  CooldownEnds: 286.42773
   ZoneRendererPrefab: {fileID: 1384093351775032, guid: aa1c794c57d8c8f47b00fb2ab345801f,
     type: 2}

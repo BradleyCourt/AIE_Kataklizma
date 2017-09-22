@@ -14,3 +14,5 @@ MonoBehaviour:
   Bounds:
     m_Center: {x: 0, y: 2.25, z: 1.77}
     m_Extent: {x: 4, y: 3.5, z: 3.1}
+  DebuggingPrefab: {fileID: 1384093351775032, guid: aa1c794c57d8c8f47b00fb2ab345801f,
+    type: 2}
