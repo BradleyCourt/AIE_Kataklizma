@@ -119,6 +119,7 @@ namespace Gameplay {
 
             if (velocity.magnitude > 0)
                 Rb.velocity = velocity;
+
             Rb.angularVelocity = Vector3.zero;
 
         }
