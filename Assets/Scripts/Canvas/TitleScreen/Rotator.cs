@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour {
     public GameObject objectToRotate;
-    public int rotationSpeedSide;
-    public int rotationSpeedUp;
+    public float yAngle;
+    public float zAngle;
+    public float xAngle;
     // Use this for initialization
     void Start () {
 		
@@ -13,6 +14,6 @@ public class Rotator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        objectToRotate.transform.Rotate(0, rotationSpeedSide * Time.deltaTime, rotationSpeedUp * Time.deltaTime);
+        objectToRotate.transform.Rotate(xAngle, yAngle, zAngle);
     }
 }

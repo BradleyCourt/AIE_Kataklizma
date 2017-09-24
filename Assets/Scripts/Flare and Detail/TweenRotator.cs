@@ -13,13 +13,13 @@ public class TweenRotator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown("space"))
+		if(Input.GetKeyDown("o"))
         {
             RotateTo();
         }
 	}
 
-    void RotateTo()
+    public void RotateTo()
     {
        // LeanTween.rotateX(gameObject, endRotation, time).setEase(LeanTweenType.easeInExpo);
         LeanTween.rotateAroundLocal(gameObject, Vector3.right, rotation, time).setEase(LeanTweenType.easeInExpo);
