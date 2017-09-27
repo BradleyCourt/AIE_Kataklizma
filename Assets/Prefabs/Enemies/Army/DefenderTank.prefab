@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 65799743259822910}
   - component: {fileID: 114700255968927568}
   - component: {fileID: 114714840220514194}
+  - component: {fileID: 114237091901308530}
   m_Layer: 0
   m_Name: DefenderTank
   m_TagString: Enemy
@@ -160,8 +161,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1798666976140320}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 75.83904, y: -63.35327, z: -20.414501}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4551150750794464}
@@ -315,6 +316,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114237091901308530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1798666976140320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b9caf09da73094ea2bdde04ee0e68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WarpNearestTo: {x: 0, y: 0, z: 0}
 --- !u!114 &114601030989153186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,8 +340,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChaseDist: 5
+  MinApproach: 5
   Target: {fileID: 0}
   NavPointCollection: {fileID: 0}
+  NavTimeout: 2
 --- !u!114 &114687187979416212
 MonoBehaviour:
   m_ObjectHideFlags: 1

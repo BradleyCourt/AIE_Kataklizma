@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 53d7a2064d82dba46ae748000c6b4c88
+timeCreated: 1506490959
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Building
+    100002: Clock1
+    100004: Clock2
+    100006: Door1
+    100008: Door2
+    100010: entranceBlock
+    100012: Grass
+    100014: Ground
+    100016: //RootNode
+    100018: SchoolSign
+    100020: WindowFrames1
+    100022: WindowFrames10
+    100024: WindowFrames11
+    100026: WindowFrames12
+    100028: WindowFrames2
+    100030: WindowFrames3
+    100032: WindowFrames4
+    100034: WindowFrames5
+    100036: WindowFrames6
+    100038: WindowFrames7
+    100040: WindowFrames8
+    100042: WindowFrames9
+    400000: Building
+    400002: Clock1
+    400004: Clock2
+    400006: Door1
+    400008: Door2
+    400010: entranceBlock
+    400012: Grass
+    400014: Ground
+    400016: //RootNode
+    400018: SchoolSign
+    400020: WindowFrames1
+    400022: WindowFrames10
+    400024: WindowFrames11
+    400026: WindowFrames12
+    400028: WindowFrames2
+    400030: WindowFrames3
+    400032: WindowFrames4
+    400034: WindowFrames5
+    400036: WindowFrames6
+    400038: WindowFrames7
+    400040: WindowFrames8
+    400042: WindowFrames9
+    2300000: Building
+    2300002: Clock1
+    2300004: Clock2
+    2300006: Door1
+    2300008: Door2
+    2300010: entranceBlock
+    2300012: Grass
+    2300014: Ground
+    2300016: SchoolSign
+    2300018: WindowFrames1
+    2300020: WindowFrames10
+    2300022: WindowFrames11
+    2300024: WindowFrames12
+    2300026: WindowFrames2
+    2300028: WindowFrames3
+    2300030: WindowFrames4
+    2300032: WindowFrames5
+    2300034: WindowFrames6
+    2300036: WindowFrames7
+    2300038: WindowFrames8
+    2300040: WindowFrames9
+    3300000: Building
+    3300002: Clock1
+    3300004: Clock2
+    3300006: Door1
+    3300008: Door2
+    3300010: entranceBlock
+    3300012: Grass
+    3300014: Ground
+    3300016: SchoolSign
+    3300018: WindowFrames1
+    3300020: WindowFrames10
+    3300022: WindowFrames11
+    3300024: WindowFrames12
+    3300026: WindowFrames2
+    3300028: WindowFrames3
+    3300030: WindowFrames4
+    3300032: WindowFrames5
+    3300034: WindowFrames6
+    3300036: WindowFrames7
+    3300038: WindowFrames8
+    3300040: WindowFrames9
+    4300000: Clock1
+    4300002: Clock2
+    4300004: Building
+    4300006: WindowFrames1
+    4300008: WindowFrames2
+    4300010: WindowFrames3
+    4300012: WindowFrames4
+    4300014: WindowFrames5
+    4300016: WindowFrames6
+    4300018: WindowFrames7
+    4300020: WindowFrames8
+    4300022: WindowFrames9
+    4300024: WindowFrames10
+    4300026: WindowFrames11
+    4300028: WindowFrames12
+    4300030: Door1
+    4300032: Door2
+    4300034: Ground
+    4300036: entranceBlock
+    4300038: Grass
+    4300040: SchoolSign
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 50
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
