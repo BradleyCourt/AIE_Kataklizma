@@ -15,6 +15,9 @@ public class Patrol : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject player;
 
+    public float NavTimeout = 2;
+    protected float NavRescanAfter;
+
 
     void Start()
     {
@@ -29,6 +32,8 @@ public class Patrol : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         //agent.SetDestination(player.transform.position);
+
+        NavRescanAfter = Time.time;
     }
 
     void GotoNextPoint()
@@ -48,8 +53,14 @@ public class Patrol : MonoBehaviour
 
 
         // Goto the selected destination
-        agent.destination = points[destPoint].transform.position;
+        var projectedPoint = points[destPoint].transform.position;
+        projectedPoint.y = transform.position.y;
+
+        agent.destination = projectedPoint;
         agent.isStopped = false;
+
+        NavRescanAfter = Time.time + NavTimeout;
+
         // Pull random element from array
     }
 
@@ -60,24 +71,26 @@ public class Patrol : MonoBehaviour
 
         if (agent.destination == transform.position) // No set destination
             GotoNextPoint();
-
+        
         // Choose the next destination point when the agent gets
         // close to the current one.
         float dist = Vector3.Distance(transform.position, player.transform.position);
 
+        
+
         if (!agent.pathPending)
         {
+            
             // TODO - do we have line of sight? if we dont have line of sight, keep patrolling, if we do have line of sight, skip to the second step
 
-            if (dist > ChaseDist)
+            if (dist > ChaseDist || !PlayerVisible())
             {
                 Target = null;
                 // TODO using the POI system, if target is not in range, select a random point and traverse to that point
                 // very far away, keep patrolling
                 Debug.DrawRay(transform.position, agent.destination - transform.position, Color.yellow);
 
-                
-                if (agent.remainingDistance < 0.1f)
+                if (agent.remainingDistance < 0.1f || (agent.velocity.magnitude < 1.0f && Time.time >= NavRescanAfter))
                     GotoNextPoint();
             }
             else if (dist < MinApproach) // Too close, back off
@@ -104,6 +117,18 @@ public class Patrol : MonoBehaviour
     {
 
     }
+
+    public bool PlayerVisible()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, ChaseDist))
+        {
+            return (hit.collider.gameObject.tag == "Player");
+        }
+        return false;
+    }
+
     void TargetPlayer(float ChaseDist)
     {
         RaycastHit hit;
@@ -115,6 +140,7 @@ public class Patrol : MonoBehaviour
                 Target = hit.collider.gameObject.transform;
                 Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.red);
 
+                NavRescanAfter = Time.time + NavTimeout;
             }
         }
     }
