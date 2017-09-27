@@ -81,19 +81,10 @@ namespace Gameplay {
                         
 
             if ( ActiveAbility != null ) {
-                var continuing = false;
-                if ( ActiveAbility.Ability.ActivationState != AbilityActivationState.Cleanup)
-                    continuing = ActiveAbility.Ability.OnUpdate(Input.GetButton(ActiveAbility.TriggerName));
-                
+                var continuing = ActiveAbility.Ability.OnUpdate(Input.GetButton(ActiveAbility.TriggerName));
 
-                var ended = false;
-                if (!continuing) {
-                    ended = ActiveAbility.Ability.OnEnd();
-                }
-
-                if (ended)
-                    ActiveAbility = null;
-                
+                if (!continuing)
+                    ActiveAbility = null;                
             }
 
             if ( ActiveAbility == null ) {
@@ -115,10 +106,12 @@ namespace Gameplay {
             var velocity = Rb.velocity;
             velocity.x = 0;
             velocity.z = 0;
-            velocity += motion; 
+            velocity += motion;
 
-            if (velocity.magnitude > 0)
+            if (velocity.magnitude > 0) {
+
                 Rb.velocity = velocity;
+            }
 
             Rb.angularVelocity = Vector3.zero;
 

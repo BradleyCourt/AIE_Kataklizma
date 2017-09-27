@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1431774962278804}
   m_IsPrefabParent: 1
+--- !u!1 &1116923256154168
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4994547045616556}
+  m_Layer: 0
+  m_Name: MouthOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1333855727375314
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +76,7 @@ GameObject:
   - component: {fileID: 4409023538388950}
   - component: {fileID: 33609606209852694}
   - component: {fileID: 23787908918829636}
+  - component: {fileID: 114219627051419622}
   m_Layer: 0
   m_Name: Monster_Kat_Form3
   m_TagString: Untagged
@@ -127,7 +143,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4994547045616556}
   m_Father: {fileID: 4439188968153136}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -138,7 +155,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431774962278804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11172485, y: 0, z: 6.3024597}
+  m_LocalPosition: {x: 0.11172485, y: -0.1, z: 6.3024597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4409023538388950}
@@ -173,6 +190,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4439188968153136}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4994547045616556
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116923256154168}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.494, z: 1.609}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4409023538388950}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20455419231775106
 Camera:
@@ -403,6 +433,25 @@ MonoBehaviour:
     - Type: 6
       Base: 1
       Modifier: 0
+--- !u!114 &114219627051419622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1473529067518996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bf1f2175cd976499a838856a5ab5f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Forehead: {fileID: 0}
+  Mouth: {fileID: 4994547045616556}
+  Torso: {fileID: 0}
+  LeftHand: {fileID: 0}
+  RightHand: {fileID: 0}
+  LeftFoot: {fileID: 0}
+  RightFoot: {fileID: 0}
+  Tail: {fileID: 0}
 --- !u!114 &114296767256596916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -421,7 +470,7 @@ MonoBehaviour:
   - TriggerName: Fire1
     Ability: {fileID: 11400000, guid: 7a0f692a4be484442a1fe2c389d93f6b, type: 2}
   - TriggerName: Fire2
-    Ability: {fileID: 0}
+    Ability: {fileID: 11400000, guid: d9f10b2effb625f4f84958173a6beeb1, type: 2}
   - TriggerName: Fire3
     Ability: {fileID: 0}
   - TriggerName: Jump
