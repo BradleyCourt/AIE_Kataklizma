@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Skyscraper
+  m_Shader: {fileID: 4800000, guid: c0a190a5aefe0694f8dcc71912618494, type: 3}
+  m_ShaderKeywords: _USEEMISSIVETEX_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _EmissiveMasks:
+        m_Texture: {fileID: 2800000, guid: 781c6aae9140b7649890e934ff4efab6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissiveTexture:
+        m_Texture: {fileID: 2800000, guid: b088ed6450fa3ee41859606dcb46f7e2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicandGloss:
+        m_Texture: {fileID: 2800000, guid: e41767787501ed743b5aaf004ad92395, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Occulusion:
+        m_Texture: {fileID: 2800000, guid: cf8210d70c5ad0b4ea73adb95fc38505, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _EmissiveAmplitude: 1
+    - _Flashing: 0
+    - _Gloss: 1
+    - _Metallic: 1
+    - _Outline_Width: 0.02334099
+    - _UseEmissiveTex: 1
+    m_Colors:
+    - _EmissiveColourOne: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissiveColourTwo: {r: 0, g: 0, b: 0, a: 1}
+    - _Outline_Color: {r: 0, g: 0, b: 0, a: 1}
