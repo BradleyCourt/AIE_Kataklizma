@@ -168,22 +168,35 @@ MonoBehaviour:
   SourceTilePresets:
   - Type: 1
     Tiles:
+    - {fileID: 1034614153185756, guid: a6b013e5ee9a4074b9a499e149998467, type: 2}
     - {fileID: 1954407674272094, guid: 2b90dadfe0a8cf2489d8d9b4c790ed82, type: 2}
+  - Type: 2
+    Tiles:
+    - {fileID: 1341848804607808, guid: c4c3dd0c7a468b4488798b62369c0f60, type: 2}
+    - {fileID: 1872029372634516, guid: 8c7199f345fe9c042b65f9728eb2fc0c, type: 2}
+    - {fileID: 1872029372634516, guid: 8c7199f345fe9c042b65f9728eb2fc0c, type: 2}
   - Type: 3
     Tiles:
+    - {fileID: 1114823761554102, guid: cbefd89b6d9382048bb9324ae8767ce5, type: 2}
+    - {fileID: 1114823761554102, guid: cbefd89b6d9382048bb9324ae8767ce5, type: 2}
     - {fileID: 1251098927418836, guid: a08e6679bd79c78408c6c0e0f411760c, type: 2}
-  - Type: 3
-    Tiles:
+    - {fileID: 1251098927418836, guid: a08e6679bd79c78408c6c0e0f411760c, type: 2}
     - {fileID: 1251098927418836, guid: a08e6679bd79c78408c6c0e0f411760c, type: 2}
   - Type: 4
     Tiles:
+    - {fileID: 1097645406115588, guid: 8ebdc5f566901484194e4757fc086847, type: 2}
     - {fileID: 1878541635614608, guid: 936db8a55b4bd434886eb6decbc2a92d, type: 2}
+    - {fileID: 1878541635614608, guid: 936db8a55b4bd434886eb6decbc2a92d, type: 2}
+    - {fileID: 1968215083114586, guid: d9371c7f7fbdbe84fa8b780a712a93f5, type: 2}
   - Type: 5
     Tiles:
+    - {fileID: 1572986258081380, guid: 55473fb8a8386e44ba85c285e9cb5921, type: 2}
     - {fileID: 1997265242942306, guid: 82ad9df690242894b8e762cbcf7c2068, type: 2}
-  - Type: 2
+    - {fileID: 1645457123841460, guid: 053f9adef67b57a4b94065c5d1048efd, type: 2}
+  - Type: 7
     Tiles:
-    - {fileID: 1872029372634516, guid: 8c7199f345fe9c042b65f9728eb2fc0c, type: 2}
+    - {fileID: 1913110297970878, guid: 925406970c8508441906abdf6a7e3819, type: 2}
+    - {fileID: 1132928933664656, guid: e71ef4c7ea5b30641bd993e717a1e960, type: 2}
   RoadTilePresets:
     End:
     - {fileID: 1021192304127646, guid: d1063f866d7d8db45942f33dcb73b419, type: 2}
@@ -501,6 +514,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 54262551434740080, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54262551434740080, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
   m_IsPrefabParent: 0
@@ -536,6 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropPod: {fileID: 1604173637517886, guid: 1f6b0208bafb68e46b163e957ffbb30c, type: 2}
   target: {fileID: 2147226318}
+  height: 40
 --- !u!23 &2147226320
 MeshRenderer:
   m_ObjectHideFlags: 0
