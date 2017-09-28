@@ -38,7 +38,8 @@ namespace Gameplay {
         protected AbilitySlot ActiveAbility = null;
         public List<AbilitySlot> Abilities;
 
-        private Rigidbody Rb;
+        protected Rigidbody Rb;
+        protected Animator CharacterAnimator;
 
         [System.Serializable]
         public struct ObserverOptions {
@@ -64,6 +65,9 @@ namespace Gameplay {
             Rb = GetComponent<Rigidbody>();
             if (Rb == null) throw new System.ApplicationException(gameObject.name + " - PlayerController requires a Rigidbody sibling");
 
+            CharacterAnimator = GetComponentInChildren<Animator>();
+            if (CharacterAnimator == null) Debug.LogWarning(gameObject.name + " - PlayerController::Start(): Unable to locate Animation component in child.");
+
             IsControllable = true;
 
             foreach (var slot in Abilities) {
@@ -81,19 +85,10 @@ namespace Gameplay {
                         
 
             if ( ActiveAbility != null ) {
-                var continuing = false;
-                if ( ActiveAbility.Ability.ActivationState != AbilityActivationState.Cleanup)
-                    continuing = ActiveAbility.Ability.OnUpdate(Input.GetButton(ActiveAbility.TriggerName));
-                
+                var continuing = ActiveAbility.Ability.OnUpdate(Input.GetButton(ActiveAbility.TriggerName));
 
-                var ended = false;
-                if (!continuing) {
-                    ended = ActiveAbility.Ability.OnEnd();
-                }
-
-                if (ended)
-                    ActiveAbility = null;
-                
+                if (!continuing)
+                    ActiveAbility = null;                
             }
 
             if ( ActiveAbility == null ) {
@@ -101,6 +96,7 @@ namespace Gameplay {
                     if ( slot.CanActivate && Input.GetButton(slot.TriggerName)) {
                         if (slot.Ability.OnBegin()) {
                             ActiveAbility = slot;
+                            break;
                         }
                     }
                 }
@@ -115,10 +111,15 @@ namespace Gameplay {
             var velocity = Rb.velocity;
             velocity.x = 0;
             velocity.z = 0;
-            velocity += motion; 
+            velocity += motion;
 
-            if (velocity.magnitude > 0)
+            
+
+            if (velocity.magnitude > 0) {
                 Rb.velocity = velocity;
+            }
+
+            CharacterAnimator.SetFloat("WalkSpeed", motion.magnitude / MoveSpeed);
 
             Rb.angularVelocity = Vector3.zero;
 

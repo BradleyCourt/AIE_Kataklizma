@@ -13,20 +13,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChargeTime: 0
   ChannelTime: 1
-  ManifestCount: 1
   CleanupTime: 0
-  ChargeCausesCleanup: 0
+  ManifestCount: 1
   CooldownTime: 1
   CooldownStartsWhen: 3
+  ChargeCausesCleanup: 0
+  CanCancelCharge: 0
+  CanCancelChannel: 0
   ActivationZone: {fileID: 11400000, guid: 3e37b07c88bef5a4588fb89041a75b49, type: 2}
+  ActivationAnchor: 0
   Effects:
-    _Values:
-    - Type: 12
-      Base: 15
-      Modifier: 0
+  - Type: 12
+    Base: 10
+    Modifier: 0
   CanAffectTags:
   - Building
   - Enemy
-  Owner: {fileID: 0}
-  ZoneRendererPrefab: {fileID: 1384093351775032, guid: aa1c794c57d8c8f47b00fb2ab345801f,
-    type: 2}
+  Animation:
+    OnCharging: 
+    OnChannelling: 
+    OnCleanup: 
+    OnManifest: 
+  ParticleEffect: {fileID: 0}

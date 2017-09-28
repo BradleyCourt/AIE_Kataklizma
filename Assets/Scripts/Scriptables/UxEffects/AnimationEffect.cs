@@ -6,13 +6,8 @@ using UnityEngine;
 
 namespace Scriptables {
     [CreateAssetMenu(fileName = "AnimationEffect", menuName = "Kataklizma/Effects/Animation Effect")]
-    public class AnimationEffect : UxEffect {
+    public class AnimationEffect : ScriptedEffect {
 
         public string AnimationName;
-
-        public override void OnBegin() { }
-        public override void OnUpdate() { }
-        public override void OnEnd() { }
-
     }
 }
