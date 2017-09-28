@@ -25,9 +25,15 @@ namespace Gameplay {
         }
 
         private void OnStatsValueChanged(UnityEngine.Object sender, ValueType type, ValueSubtype subtype, float old) {
+
             if ( type == ValueType.Health && Stats[ValueType.Health] <= 0 && !HasSpawned ) {
                 HasSpawned = true;
-                
+
+                if (CollectablePrefab == null) {
+                    Debug.LogWarning(gameObject.name + " - SpawnOnDeath: CollectablePrefab is null");
+                    return;
+                }
+
                 // Spawn Collectables
 
                 // foreach (prefab)

@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     public Gameplay.EntityAttributes playerAttributes;    // Reference to the player's heatlh.
     public GameObject enemy;                // The enemy prefab to be spawned.
     public float spawnTime = 3f;            // How long between each spawn.
-
+    public int SpawnCount;
     
     private List<Gameplay.MapGen.PointOfInterest> points = null;// List of all points of interests
 
@@ -21,6 +21,8 @@ public class EnemyManager : MonoBehaviour
 
     void Spawn()
     {
+        if (transform.childCount >= SpawnCount) return;
+
         // if points is empty, give it points
         if (points == null || points.Count == 0)
             points = new List<Gameplay.MapGen.PointOfInterest>(FindObjectsOfType<Gameplay.MapGen.PointOfInterest>());
@@ -36,6 +38,7 @@ public class EnemyManager : MonoBehaviour
 
             return;
         }
+
 
         // Find a random index between zero and one less than the number of spawn points.
 

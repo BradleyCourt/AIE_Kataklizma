@@ -43,7 +43,11 @@ namespace Gameplay {
 
         [System.Serializable]
         public struct ObserverOptions {
-            public float Distance;
+            [Tooltip("Min (x) and Max (y) Distance")]
+            public Vector2 Range;
+            [Tooltip("Min (x) and Max (y) Elevation")]
+            public Vector2 Elevation;
+
             public Vector3 Focus;
 
             [HideInInspector]
@@ -53,6 +57,9 @@ namespace Gameplay {
             public float Theta;
             [HideInInspector]
             public float Phi;
+            [HideInInspector]
+            public float Distance;
+
         }
 
         public ObserverOptions Observer;
@@ -76,6 +83,9 @@ namespace Gameplay {
                     slot.Ability.Reset();
                 }
             }
+
+            Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
         }
 
 
@@ -143,8 +153,9 @@ namespace Gameplay {
             if (Cursor.lockState == CursorLockMode.Locked) {
 
                 // Update Camera
+                Observer.Distance = Mathf.Clamp(Observer.Distance + Input.GetAxis("ViewZoom"), Observer.Range.x, Observer.Range.y);
                 Observer.Theta = Mathf.Repeat(Observer.Theta + Input.GetAxis("ViewHorizontal"), 360);
-                Observer.Phi = Mathf.Clamp(Observer.Phi + Input.GetAxis("ViewVertical"), 20, 70);
+                Observer.Phi = Mathf.Clamp(Observer.Phi + Input.GetAxis("ViewVertical"), Observer.Elevation.x, Observer.Elevation.y);
             }
 
 

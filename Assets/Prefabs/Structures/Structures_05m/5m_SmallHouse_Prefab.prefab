@@ -123,7 +123,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.2421637, y: 3.3181791, z: 4.2529106}
+  m_Size: {x: 3.2421637, y: 5.22, z: 4.2529106}
   m_Center: {x: 2.329783, y: 1.1590896, z: 2.8148441}
 --- !u!95 &95941706326014460
 Animator:
@@ -158,6 +158,9 @@ MonoBehaviour:
     _Values:
     - Type: 1
       Base: 10
+      Modifier: 0
+    - Type: 13
+      Base: 7
       Modifier: 0
 --- !u!114 &114212709720062080
 MonoBehaviour:

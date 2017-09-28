@@ -176,3 +176,6 @@ MonoBehaviour:
     - Type: 1
       Base: 10
       Modifier: 0
+    - Type: 13
+      Base: 8
+      Modifier: 0

@@ -160,6 +160,9 @@ MonoBehaviour:
     - Type: 1
       Base: 20
       Modifier: 0
+    - Type: 13
+      Base: 5
+      Modifier: 0
 --- !u!114 &114152325541840018
 MonoBehaviour:
   m_ObjectHideFlags: 1
