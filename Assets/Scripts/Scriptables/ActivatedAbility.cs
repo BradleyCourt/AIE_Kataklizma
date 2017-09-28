@@ -20,19 +20,28 @@ namespace Scriptables {
         public float ChargeTime; 
         public float ChannelTime;
 
-        [Tooltip("If ChannelTime is non-zero, the number of times the effect should 'manifest' while channeling")]
-        public int ManifestCount;
+
         public float CleanupTime;
 
-        [Tooltip("Is Cleanup Time required only after Channeling starts, Otherwise Cleanup is ALWAYS required")]
-        public bool ChargeCausesCleanup;
-        public float CooldownTime;
+        [Tooltip("If ChannelTime is non-zero, the number of times the effect should 'manifest' while channeling")]
+        public int ManifestCount;
 
+        [Space]
+        public float CooldownTime;
+        
+        [Tooltip("Setting \"Cooldown Starts When Ready\" will disable cooldowns")]
         public AbilityActivationState CooldownStartsWhen = AbilityActivationState.Channeling;
+
+        [Space]
+        public bool ChargeCausesCleanup;
+        public bool CanCancelCharge;
+        public bool CanCancelChannel;
 
         [Header("Gameplay Effects")]
         public AbstractZone ActivationZone;
-        public ValueCollection Effects;
+        public CharacterBindPoint ActivationAnchor;
+
+        public List<ValueCollection.Value> Effects;
 
         [UnityTag]
         [Tooltip("List of Tags that this ability will (attempt to) affect")]
@@ -40,11 +49,16 @@ namespace Scriptables {
 
         [Header("UX Effects")]
         public AnimationOptions Animation;
+        public ScriptedEffect ParticleEffect;
+        
 
         protected Transform Owner { get; set; }
         protected Animation OwnerAnimator { get; set; }
+        protected CharacterBindOrigins OwnerOrigins;
 
         public AbilityActivationState ActivationState { get; protected set; }
+
+        
 
         public float ChargeRemaining { get; protected set; }
         public float ChannelRemaining { get; protected set; }
@@ -78,7 +92,8 @@ namespace Scriptables {
             if (owner == null) Unbind();
 
             Owner = owner;
-            OwnerAnimator = Owner.GetComponent<Animation>();
+            OwnerAnimator = Owner.GetComponentInChildren<Animation>();
+            OwnerOrigins = Owner.GetComponentInChildren<CharacterBindOrigins>();
         }
 
         public void Unbind() {
@@ -88,6 +103,7 @@ namespace Scriptables {
         }
 
         public void Reset() {
+            ActivationState = AbilityActivationState.Ready;
             ChargeRemaining = ChargeTime;
             ChannelRemaining = ChannelTime;
             CleanupEnds = Time.time;
@@ -99,48 +115,86 @@ namespace Scriptables {
         /// </summary>
         /// <returns></returns>
         public bool OnBegin() {
-            //if (ActivationState != AbilityActivationState.Ready) return false;  // Strictly speaking this should be a CanActivate check, but we're ignoring the cooldown.
-
-            OnBeginCharge();
-
-            return true;
+            return OnBeginCharge();
         }
 
-        protected void OnBeginCharge() {
+        protected bool OnBeginCharge() {
             if (CooldownStartsWhen == AbilityActivationState.Charging)
                 CooldownEnds = Time.time + CooldownTime;
+
+            var result = false;
 
             if (ChargeTime > 0) { // Requires Charging
                 ActivationState = AbilityActivationState.Charging;
                 ChargeRemaining = ChargeTime;
                 WasTriggerDown = false;
+
+                // Do Animation
+                if (OwnerAnimator != null && !string.IsNullOrEmpty(Animation.OnCharging))
+                    OwnerAnimator.Play(Animation.OnCharging);
+
+                // Do Ux Effects
+                // Do Gameplay Effect
+
+                result = true;
             }
             else {
                 // Go straight to channeling
-                OnBeginChannel();
+                result = OnBeginChannel();
             }
+            return result;
         }
 
-        protected void OnBeginChannel() {
+
+        protected bool OnBeginChannel() {
             if (CooldownStartsWhen == AbilityActivationState.Channeling)
                 CooldownEnds = Time.time + CooldownTime;
 
             OnManifest();
 
+            var result = false;
             if (ChannelTime > 0) { // Has Channel Time
                 ActivationState = AbilityActivationState.Channeling;
                 ChannelRemaining = ChannelTime;
                 WasTriggerDown = false;
+
+                // Do Animation
+                if (OwnerAnimator != null && !string.IsNullOrEmpty(Animation.OnChannelling))
+                    OwnerAnimator.Play(Animation.OnChannelling);
+
+                // Do Ux Effects
+                if ( ParticleEffect != null ) {
+                    if (OwnerOrigins == null) {
+                        Debug.LogError(Owner.gameObject.name + " - ActivatedAbility::OnChannel(): Prefab Effect requires child with CharacterBindOrigins component");
+                    }
+                    else {
+                        var effect = ParticleEffect as PrefabEffect;
+                        if (OwnerOrigins[effect.Location] == null) {
+                            Debug.LogError(Owner.gameObject.name + " - ActivatedAbility::OnChannel(): Character Bind Origin [" + effect.Location.ToString() + "] is not set");
+                        }
+                        else {
+
+                            var go = Instantiate(effect.Prefab, OwnerOrigins[effect.Location]);
+                            Destroy(go, ChannelTime);
+                        }
+                    }
+                }
+
+                // Do Gameplay Effect
+
+                result = true;
             }
             else { // No Channel Time
-                OnManifest();
-                OnBeginCleanup();
+                result = OnBeginCleanup();
             }
+            return result;
         }
 
-        protected void OnBeginCleanup() {
+        protected bool OnBeginCleanup() {
             if (CooldownStartsWhen == AbilityActivationState.Cleanup)
                 CooldownEnds = Time.time + CooldownTime;
+
+            var result = false;
 
             // Has a cleanup time and (is channelling or (is charging and charging causes cleanup))
             var requireCleanup = CleanupTime > 0 && (ActivationState == AbilityActivationState.Channeling || (ActivationState == AbilityActivationState.Charging && ChargeCausesCleanup));    
@@ -149,12 +203,24 @@ namespace Scriptables {
                 // Do Cleanup
                 ActivationState = AbilityActivationState.Cleanup;
                 CleanupEnds = Time.time + CleanupTime;
+
+                // Do Animation
+                if (OwnerAnimator != null && !string.IsNullOrEmpty(Animation.OnCleanup))
+                    OwnerAnimator.Play(Animation.OnCleanup);
+
+                // Do Ux Effects
+                // Do Gameplay Effects
+
+                result = true;
             }
             else {
                 // No Cleanup
                 ActivationState = AbilityActivationState.Ready;
                 CleanupEnds = Time.time;
+
+                result = false;
             }
+            return result;
         }
 
         /// <summary>
@@ -167,6 +233,14 @@ namespace Scriptables {
 
             //  Do Something
 
+
+            // Do Animation
+            if (OwnerAnimator != null && !string.IsNullOrEmpty(Animation.OnManifest))
+                OwnerAnimator.Play(Animation.OnManifest);
+
+            // Do Ux Effects
+            // Do Gameplay Effects
+
             var origin = Owner;
 
             var hits = ActivationZone.OverlapZone(origin);
@@ -176,10 +250,8 @@ namespace Scriptables {
                 var attribs = hit.GetComponent<Gameplay.EntityAttributes>();
                 if (attribs == null) continue; // No Attribute set to affect
 
-                foreach (var effect in Effects._Values)
+                foreach (var effect in Effects)
                     attribs.ApplyEffect(effect.Type, effect.Derived);
-
-                //attribs.RemoveHealth(Effects[ValueType.Damage]);
             }
         }
 
@@ -191,43 +263,54 @@ namespace Scriptables {
         public bool OnUpdate(bool triggerState) {
             var triggerReleased = IsTriggerReleased(triggerState);
 
+            var result = false;
+
             switch (ActivationState) {
                 case AbilityActivationState.Ready:
-                    return false;
+                    result = false;
+                    break;
                 case AbilityActivationState.Charging:
                     ChargeRemaining = Mathf.Max(ChargeRemaining - Time.deltaTime, 0);
 
-                    if (ChargeRemaining == 0 || triggerReleased)
-                        OnBeginChannel();
+                    if (ChargeRemaining == 0 || (CanCancelCharge && triggerReleased))
+                        result = OnBeginChannel();
+                    else
+                        result = true;
 
-                    return true;
+                    break;
                 case AbilityActivationState.Channeling:
                     ChannelRemaining = Mathf.Max(ChannelRemaining - Time.deltaTime, 0);
 
-                    if (ManifestCount > 1 && NextManifestAt <= Time.time) {
+                    if (ManifestCount > 1 && NextManifestAt <= Time.time) 
                         OnManifest();
-                    }
+                                        
+                    if (ChannelRemaining == 0 || (CanCancelChannel && triggerReleased) )
+                        result = OnBeginCleanup();
+                    else
+                        result = true;
 
-                    if (ChannelRemaining == 0 || triggerReleased) {
-                        OnBeginCleanup();
-                        return false;
-                    }
-
-                    return true;
+                    break;                    
                 case AbilityActivationState.Cleanup:
-                    return false;
+
+                    result = Time.time < CleanupEnds;
+                    
+                    if (!result) { // if Cleanup is finished
+                        ActivationState = AbilityActivationState.Ready;
+                    }
+
+                    break;
             }
-            return false;
+
+            return result;
         }
 
         /// <summary>
-        /// Returns True when cleanup sequence is complete
+        /// Force-End 'cancel' the current activation state
         /// </summary>
-        /// <returns></returns>
-        public bool OnEnd() {
+        public void OnEnd() {
             switch (ActivationState) {
                 case AbilityActivationState.Ready:
-                    return true;
+                    break;
                 case AbilityActivationState.Charging:
                     OnBeginCleanup();
                     break;
@@ -235,15 +318,9 @@ namespace Scriptables {
                     OnBeginCleanup();
                     break;
                 case AbilityActivationState.Cleanup:
-                    if (Time.time >= CleanupEnds) {
-                        ActivationState = AbilityActivationState.Ready;
-                        return true;
-                    }
                     break;
                     
             }
-
-            return Time.time >= CleanupEnds;
         }
 
 

@@ -7,13 +7,9 @@ using UnityEngine;
 namespace Scriptables {
 
     [CreateAssetMenu(fileName = "AudioEffect", menuName = "Kataklizma/Effects/Audio Effect")]
-    public class AudioEffect : UxEffect {
+    public class AudioEffect : ScriptedEffect {
 
         public string AudioName;
-
-        public override void OnBegin() { }
-        public override void OnUpdate() { }
-        public override void OnEnd() { }
 
     }
 }
