@@ -40,9 +40,10 @@ GameObject:
   - component: {fileID: 114812016574421822}
   - component: {fileID: 114113940418601162}
   - component: {fileID: 65295992749404160}
+  - component: {fileID: 114321309576816604}
   m_Layer: 0
   m_Name: 20m_BurgerBar_prefab
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,8 +124,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18.862595, y: 15.403259, z: 18.22947}
-  m_Center: {x: 9.933304, y: 7.2016296, z: 10.239651}
+  m_Size: {x: 8.815636, y: 8.035225, z: 8.1614685}
+  m_Center: {x: 4.9098244, y: 3.5176125, z: 5.2056503}
 --- !u!95 &95096213300537598
 Animator:
   serializedVersion: 3
@@ -159,6 +160,19 @@ MonoBehaviour:
   LocalGravity: 0.05
   MaxFallSpeed: 1
   TimeToLive: 1
+--- !u!114 &114321309576816604
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1932820765753484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectableRadius: 2
+  CollectablePrefab: {fileID: 0}
 --- !u!114 &114812016574421822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,6 +187,6 @@ MonoBehaviour:
   ShowDebug: 0
   _Attributes:
     _Values:
-    - Type: 0
+    - Type: 1
       Base: 20
       Modifier: 0
