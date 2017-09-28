@@ -38,7 +38,8 @@ namespace Gameplay {
         protected AbilitySlot ActiveAbility = null;
         public List<AbilitySlot> Abilities;
 
-        private Rigidbody Rb;
+        protected Rigidbody Rb;
+        protected Animator CharacterAnimator;
 
         [System.Serializable]
         public struct ObserverOptions {
@@ -63,6 +64,9 @@ namespace Gameplay {
 
             Rb = GetComponent<Rigidbody>();
             if (Rb == null) throw new System.ApplicationException(gameObject.name + " - PlayerController requires a Rigidbody sibling");
+
+            CharacterAnimator = GetComponentInChildren<Animator>();
+            if (CharacterAnimator == null) Debug.LogWarning(gameObject.name + " - PlayerController::Start(): Unable to locate Animation component in child.");
 
             IsControllable = true;
 
@@ -109,10 +113,13 @@ namespace Gameplay {
             velocity.z = 0;
             velocity += motion;
 
-            if (velocity.magnitude > 0) {
+            
 
+            if (velocity.magnitude > 0) {
                 Rb.velocity = velocity;
             }
+
+            CharacterAnimator.SetFloat("WalkSpeed", motion.magnitude / MoveSpeed);
 
             Rb.angularVelocity = Vector3.zero;
 
