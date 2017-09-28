@@ -189,7 +189,7 @@ MonoBehaviour:
   ShowDebug: 0
   _Attributes:
     _Values:
-    - Type: 0
+    - Type: 1
       Base: 20
       Modifier: 0
 --- !u!208 &208283851561536896
