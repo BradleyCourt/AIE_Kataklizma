@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public Gameplay.EntityAttributes playerAttributes;    // Reference to the player's heatlh.
-    public GameObject Tank;          // The enemy tank prefab to be spawned.
-    public GameObject Aircraft;      // The enemy aircraft prefab to be spawned.
+    public GameObject enemy;                // The enemy prefab to be spawned.
     public float spawnTime = 3f;            // How long between each spawn.
 
+    
     private List<Gameplay.MapGen.PointOfInterest> points = null;// List of all points of interests
 
 
@@ -19,7 +19,7 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    void SpawnTank()
+    void Spawn()
     {
         // if points is empty, give it points
         if (points == null || points.Count == 0)
@@ -44,10 +44,8 @@ public class EnemyManager : MonoBehaviour
         //Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
         var poi = points[Random.Range(0, points.Count)];
-        var go = Instantiate(Tank, poi.transform.position, poi.transform.rotation, transform);
+        var go = Instantiate(enemy, poi.transform.position, poi.transform.rotation, transform);
         go.GetComponent<WarpOnce>().WarpNearestTo = poi.transform.position;
 
-
     }
-
 }

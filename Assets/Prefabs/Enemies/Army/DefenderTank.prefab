@@ -378,6 +378,11 @@ MonoBehaviour:
   CannonFire: 50
   MachineGun: 10
   Cooldown: 2
+  MachineGunROF: 2
+  MachineGunEffects:
+  - Type: 12
+    Base: 4
+    Modifier: 0
 --- !u!114 &114714840220514194
 MonoBehaviour:
   m_ObjectHideFlags: 1

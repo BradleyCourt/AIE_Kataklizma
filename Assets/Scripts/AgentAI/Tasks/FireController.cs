@@ -20,6 +20,10 @@ public class FireController : MonoBehaviour
     private bool CanFire;
     private bool shooting;
 
+    public float MachineGunROF;
+    public List<ValueCollection.Value> MachineGunEffects;
+
+    protected float MachineGunNext;
 
     // Use this for initialization
     void Start()
@@ -30,7 +34,8 @@ public class FireController : MonoBehaviour
         // gun delay
         P = GetComponent<Patrol>();
         CanFire = true;
-        
+
+        MachineGunNext = Time.time;
     }
 
     // Update is called once per frame
@@ -64,6 +69,13 @@ public class FireController : MonoBehaviour
     {
         // Shooting machine gun, and draweing ray in scene view
         //P.Target.GetComponent<EntityAttributes>().RemoveHealth(MachineGun * Time.deltaTime);
+        //P.Target.GetComponent<EntityAttributes>().ApplyEffect(ValueType.Damage, MachineGun * Time.deltaTime);
+        if (MachineGunNext <= Time.time)
+        {
+            MachineGunNext = Time.time + (1.0f / MachineGunROF);
+            P.Target.GetComponent<EntityAttributes>().ApplyEffects(MachineGunEffects);
+        }
+
         Debug.DrawRay(transform.position, targetDir, Color.red);
     }
 

@@ -49,10 +49,15 @@ namespace Gameplay {
         }
 
 
-        public void RemoveHealth(float Damage) {
-            this[ValueType.Health, ValueSubtype.Base] -= Damage;
+        public void RemoveHealth(float Damage)
+        {
+            throw new System.NotImplementedException(gameObject.name + " - EntityAttributes::RemoveHealth(): This call is deprecated, use ApplyEffect instead");
+        }
 
-            // NOTE: "Object Death" no longer needs a broadcast.  Attach an event listener instead.
+        public void ApplyEffects( IEnumerable<ValueCollection.Value> effects )
+        {
+            foreach (var effect in effects)
+                ApplyEffect(effect.Type, effect.Derived);
         }
 
         public void ApplyEffect(ValueType type, float value) {
