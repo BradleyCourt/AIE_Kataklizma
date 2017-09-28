@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Name: BasicBreath
   m_EditorClassIdentifier: 
   ChargeTime: 1
-  ChannelTime: 3
+  ChannelTime: 4
+  CleanupTime: 2
   ManifestCount: 4
-  CleanupTime: 1
-  ChargeCausesCleanup: 0
-  CooldownTime: 5
+  CooldownTime: 1
   CooldownStartsWhen: 3
+  ChargeCausesCleanup: 0
+  CanCancelCharge: 0
+  CanCancelChannel: 0
   ActivationZone: {fileID: 11400000, guid: 78a0e0198ff5d4244a71f7dfa543c437, type: 2}
   ActivationAnchor: 2
   Effects:

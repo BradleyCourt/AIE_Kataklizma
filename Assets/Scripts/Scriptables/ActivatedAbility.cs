@@ -20,14 +20,22 @@ namespace Scriptables {
         public float ChargeTime; 
         public float ChannelTime;
 
+
+        public float CleanupTime;
+
         [Tooltip("If ChannelTime is non-zero, the number of times the effect should 'manifest' while channeling")]
         public int ManifestCount;
-        public float CleanupTime;
-        public bool ChargeCausesCleanup;
-        public float CooldownTime;
 
+        [Space]
+        public float CooldownTime;
+        
         [Tooltip("Setting \"Cooldown Starts When Ready\" will disable cooldowns")]
         public AbilityActivationState CooldownStartsWhen = AbilityActivationState.Channeling;
+
+        [Space]
+        public bool ChargeCausesCleanup;
+        public bool CanCancelCharge;
+        public bool CanCancelChannel;
 
         [Header("Gameplay Effects")]
         public AbstractZone ActivationZone;
@@ -84,7 +92,7 @@ namespace Scriptables {
             if (owner == null) Unbind();
 
             Owner = owner;
-            OwnerAnimator = Owner.GetComponent<Animation>();
+            OwnerAnimator = Owner.GetComponentInChildren<Animation>();
             OwnerOrigins = Owner.GetComponentInChildren<CharacterBindOrigins>();
         }
 
@@ -95,6 +103,7 @@ namespace Scriptables {
         }
 
         public void Reset() {
+            ActivationState = AbilityActivationState.Ready;
             ChargeRemaining = ChargeTime;
             ChannelRemaining = ChannelTime;
             CleanupEnds = Time.time;
@@ -155,9 +164,20 @@ namespace Scriptables {
 
                 // Do Ux Effects
                 if ( ParticleEffect != null ) {
-                    var effect = ParticleEffect as PrefabEffect;
-                    var go = Instantiate(effect.Prefab, OwnerOrigins[effect.Location]);
-                    Destroy(go, ChannelTime);
+                    if (OwnerOrigins == null) {
+                        Debug.LogError(Owner.gameObject.name + " - ActivatedAbility::OnChannel(): Prefab Effect requires child with CharacterBindOrigins component");
+                    }
+                    else {
+                        var effect = ParticleEffect as PrefabEffect;
+                        if (OwnerOrigins[effect.Location] == null) {
+                            Debug.LogError(Owner.gameObject.name + " - ActivatedAbility::OnChannel(): Character Bind Origin [" + effect.Location.ToString() + "] is not set");
+                        }
+                        else {
+
+                            var go = Instantiate(effect.Prefab, OwnerOrigins[effect.Location]);
+                            Destroy(go, ChannelTime);
+                        }
+                    }
                 }
 
                 // Do Gameplay Effect
@@ -243,33 +263,45 @@ namespace Scriptables {
         public bool OnUpdate(bool triggerState) {
             var triggerReleased = IsTriggerReleased(triggerState);
 
+            var result = false;
+
             switch (ActivationState) {
                 case AbilityActivationState.Ready:
-                    return false;
+                    result = false;
+                    break;
                 case AbilityActivationState.Charging:
                     ChargeRemaining = Mathf.Max(ChargeRemaining - Time.deltaTime, 0);
 
-                    if (ChargeRemaining == 0 || triggerReleased)
-                        OnBeginChannel();
+                    if (ChargeRemaining == 0 || (CanCancelCharge && triggerReleased))
+                        result = OnBeginChannel();
+                    else
+                        result = true;
 
-                    return true;
+                    break;
                 case AbilityActivationState.Channeling:
                     ChannelRemaining = Mathf.Max(ChannelRemaining - Time.deltaTime, 0);
 
-                    if (ManifestCount > 1 && NextManifestAt <= Time.time) {
+                    if (ManifestCount > 1 && NextManifestAt <= Time.time) 
                         OnManifest();
-                    }
+                                        
+                    if (ChannelRemaining == 0 || (CanCancelChannel && triggerReleased) )
+                        result = OnBeginCleanup();
+                    else
+                        result = true;
 
-                    if (ChannelRemaining == 0 || triggerReleased) {
-                        return OnBeginCleanup();
-                    }
-
-                    return true;
+                    break;                    
                 case AbilityActivationState.Cleanup:
-                    return Time.time < CleanupEnds;
+
+                    result = Time.time < CleanupEnds;
+                    
+                    if (!result) { // if Cleanup is finished
+                        ActivationState = AbilityActivationState.Ready;
+                    }
+
+                    break;
             }
 
-            return false;
+            return result;
         }
 
         /// <summary>

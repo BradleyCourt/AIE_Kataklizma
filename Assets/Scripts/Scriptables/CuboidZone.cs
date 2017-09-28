@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Scriptables {
 
-    [CreateAssetMenu(fileName = "CuboidZone", menuName = "Volumes/Cuboid Zone")]
+    [CreateAssetMenu(fileName = "CuboidZone", menuName = "Kataklizma/Zones/Cuboid Zone")]
     public class CuboidZone : AbstractZone {
 
         public Bounds Bounds;

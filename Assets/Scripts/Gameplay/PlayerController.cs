@@ -92,6 +92,7 @@ namespace Gameplay {
                     if ( slot.CanActivate && Input.GetButton(slot.TriggerName)) {
                         if (slot.Ability.OnBegin()) {
                             ActiveAbility = slot;
+                            break;
                         }
                     }
                 }
