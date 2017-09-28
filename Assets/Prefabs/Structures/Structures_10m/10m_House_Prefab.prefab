@@ -155,6 +155,9 @@ MonoBehaviour:
   ShowDebug: 0
   _Attributes:
     _Values:
-    - Type: 0
-      Base: 10
+    - Type: 1
+      Base: 20
+      Modifier: 0
+    - Type: 13
+      Base: 5
       Modifier: 0
