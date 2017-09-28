@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 65894292079613416}
   m_Layer: 0
   m_Name: 10m_House_Prefab
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,6 +155,6 @@ MonoBehaviour:
   ShowDebug: 0
   _Attributes:
     _Values:
-    - Type: 0
+    - Type: 1
       Base: 10
       Modifier: 0
