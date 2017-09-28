@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: FireBreath
   m_EditorClassIdentifier: 
   Location: 2
-  Prefab: {fileID: 1481817889259168, guid: b94e58f3a5f923b4888573bbad3ca0be, type: 2}
+  Prefab: {fileID: 1481817889259168, guid: ee5d53db42322bb4c9c2af962ebc8294, type: 2}
   RequiresLocalScale: 1
