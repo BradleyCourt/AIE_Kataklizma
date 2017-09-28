@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b00f0290b1e87604f81a04232aec016b
-timeCreated: 1506489883
+guid: 0c6997fa9ee547b40a2c4a928ebdc6e9
+timeCreated: 1506572836
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Bridge_Straight
+    4300000: SmallHouse
     9500000: //RootNode
   materials:
     importMaterials: 1

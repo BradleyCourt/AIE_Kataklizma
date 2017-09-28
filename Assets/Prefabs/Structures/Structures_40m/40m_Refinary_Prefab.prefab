@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4686487559575098}
   - component: {fileID: 65598366630650904}
+  - component: {fileID: 114999260140378782}
+  - component: {fileID: 114414202518747752}
   m_Layer: 0
   m_Name: 40m_Refinary_Prefab
   m_TagString: Untagged
@@ -122,3 +124,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 40.155262, y: 20.762299, z: 38.826424}
   m_Center: {x: 19.577631, y: 9.881149, z: 20.077198}
+--- !u!114 &114414202518747752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645457123841460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnhideRubble: {fileID: 0}
+  SpawnRubble: {fileID: 0}
+  UseSceneGravity: 1
+  LocalGravity: 0.05
+  MaxFallSpeed: 1
+  TimeToLive: 1
+--- !u!114 &114999260140378782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645457123841460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowDebug: 0
+  _Attributes:
+    _Values:
+    - Type: 1
+      Base: 20
+      Modifier: 0

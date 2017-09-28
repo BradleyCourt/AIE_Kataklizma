@@ -1,15 +1,49 @@
 fileFormatVersion: 2
-guid: b00f0290b1e87604f81a04232aec016b
-timeCreated: 1506489883
+guid: 21ca82983b80cbc47b5d41f716b11efe
+timeCreated: 1506574293
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: polySurface158
+    100004: polySurface243
+    100006: polySurface243 1
+    100008: polySurface244
+    100010: polySurface245
+    100012: polySurface246
+    100014: polySurface256
+    100016: polySurface257
+    100018: polySurface258
+    100020: transform88
+    100022: transform89
+    100024: transform90
+    100026: transform91
+    100028: transform92
+    100030: transform93
+    100032: transform94
+    100034: transform95
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Bridge_Straight
+    400002: polySurface158
+    400004: polySurface243
+    400006: polySurface243 1
+    400008: polySurface244
+    400010: polySurface245
+    400012: polySurface246
+    400014: polySurface256
+    400016: polySurface257
+    400018: polySurface258
+    400020: transform88
+    400022: transform89
+    400024: transform90
+    400026: transform91
+    400028: transform92
+    400030: transform93
+    400032: transform94
+    400034: transform95
+    2300000: polySurface243
+    3300000: polySurface243
+    4300000: polySurface243
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -38,7 +72,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 5
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
     importVisibility: 1

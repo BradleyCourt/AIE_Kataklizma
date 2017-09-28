@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Shader Forge_WaterShader
+  m_Shader: {fileID: 4800000, guid: 2c6b61e4cf3b94b43b1ebbd5f3056e3c, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Caustic:
+        m_Texture: {fileID: 2800000, guid: 470d9e061e0d5e24594da03b24ec6b6e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterNormal_01:
+        m_Texture: {fileID: 2800000, guid: 9670ecd2bb1328c4f82e8f4ea2410265, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterNormal_02:
+        m_Texture: {fileID: 2800000, guid: 81190e016d91368438302544ce7ed309, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_1934:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AmountofDistortion: 0.179
+    - _Contrast: 13.5
+    - _Cutoff: 0.5
+    - _DepthBlend: 2.8
+    - _DepthBlendDistance: 1.1
+    - _FoamContrast: 1.2
+    - _FoamDepthBlednDistance: 1.04
+    - _FoamDepthBlendDistance: 1.32
+    - _FoamOpacity: 1
+    - _Gloss: 1
+    - _Opacity: 0.137
+    - _Reflection: 1
+    - _WaterDepthBlendDistance: 4
+    - _WaterOpacity: 0.937
+    - _node_1223: 0
+    m_Colors:
+    - _DeepWaterColour: {r: 0.0688257, g: 0.47510955, b: 0.49264705, a: 1}
+    - _FoamColour: {r: 1, g: 1, b: 1, a: 1}
+    - _ShallowWaterColour: {r: 0.17852503, g: 0.9338235, b: 0.9025697, a: 1}
+    - _WaterColour: {r: 0, g: 1, b: 1, a: 1}

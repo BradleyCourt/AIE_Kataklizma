@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 5ce473ff8b81f814ba2b37e707e34cab
+timeCreated: 1504142884
+licenseType: Pro
+ShaderImporter:
+  defaultTextures:
+  - _Caustic: {fileID: 2800000, guid: 470d9e061e0d5e24594da03b24ec6b6e, type: 3}
+  - _FoamMasks: {fileID: 2800000, guid: beeb04059f66eca4785873d1a8bd662c, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
