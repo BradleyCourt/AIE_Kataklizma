@@ -2,13 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
-// This class defines the TagList attribute, so that
-// it can be used in your regular MonoBehaviour scripts:
 
-public class UnityTagAttribute : PropertyAttribute
-{
-
-}
 
 // This defines how the TagList should be drawn
 // in the inspector, when inspecting a GameObject with

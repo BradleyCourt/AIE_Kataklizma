@@ -309,7 +309,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   time: 1
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 1005622789871308, guid: e79dc1bcb49119d4ea53beb076d99cd0,
+    type: 2}
 --- !u!114 &114829644940467804
 MonoBehaviour:
   m_ObjectHideFlags: 1

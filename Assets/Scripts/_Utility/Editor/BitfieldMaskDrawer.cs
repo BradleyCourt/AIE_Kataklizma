@@ -4,11 +4,6 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class BitfieldMaskAttribute : UnityEngine.PropertyAttribute {
-    public int AllowedValues = ~0;
-    public bool ShowZeroValue = true;
-    public bool ShowCompoundValue = true;
-}
 
 [CustomPropertyDrawer(typeof(BitfieldMaskAttribute))]
 public class BitfieldMaskDrawer : PropertyDrawer {
