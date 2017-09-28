@@ -36,6 +36,7 @@ namespace Scriptables {
         public bool ChargeCausesCleanup;
         public bool CanCancelCharge;
         public bool CanCancelChannel;
+        public bool LockMovement;
 
         [Header("Gameplay Effects")]
         public AbstractZone ActivationZone;
@@ -71,7 +72,7 @@ namespace Scriptables {
 
         public bool CanActivate { get { return ActivationState == AbilityActivationState.Ready && Time.time >= CooldownEnds; } }
         
-        protected float ManifestDelay {  get { return ChannelTime <= 1 ? 0 : ChannelTime / (ManifestCount - 1); } }
+        protected float ManifestDelay {  get { return ManifestCount <= 1 ? 0 : ChannelTime / ManifestCount; } }
 
         protected bool IsTriggerReleased(bool triggerState) {
             var result = (WasTriggerDown && !triggerState);
@@ -175,6 +176,8 @@ namespace Scriptables {
                         else {
 
                             var go = Instantiate(effect.Prefab, OwnerOrigins[effect.Location]);
+                            if (effect.RequiresLocalScale)
+                                go.transform.localScale = Owner.transform.localScale;
                             Destroy(go, ChannelTime);
                         }
                     }
@@ -241,9 +244,16 @@ namespace Scriptables {
             // Do Ux Effects
             // Do Gameplay Effects
 
-            var origin = Owner;
+            Transform origin = null;
+
+            if (OwnerOrigins != null)
+                origin = OwnerOrigins[ActivationAnchor];
+            
+            if (origin == null)
+                origin = Owner;
 
             var hits = ActivationZone.OverlapZone(origin);
+
             foreach (var hit in hits) {
                 if (!CanAffectTags.Contains(hit.tag)) continue; // Unrecognised Tag
 

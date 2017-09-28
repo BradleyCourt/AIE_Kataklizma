@@ -23,7 +23,7 @@ namespace Scriptables {
             //throw new NotImplementedException();
 
             var centre = origin.TransformPoint(Bounds.center);
-            var size = Vector3.Scale(Bounds.extents, origin.localScale);
+            var size = Vector3.Scale(Bounds.extents, origin.lossyScale);
 
 
 #if DEBUG

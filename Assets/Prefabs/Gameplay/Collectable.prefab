@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 135581058128679456}
   m_Layer: 0
   m_Name: Collectable
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 1681145591969438}
   m_LocalRotation: {x: 0.019129822, y: -0.06757698, z: -0.15746045, w: 0.9850247}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4961991161289884}
   - {fileID: 4584931336957044}
@@ -227,7 +227,7 @@ MonoBehaviour:
   - Enemy
   Contents:
   - Type: 4
-    Base: 10
+    Base: 500
     Modifier: 0
 --- !u!135 &135581058128679456
 SphereCollider:

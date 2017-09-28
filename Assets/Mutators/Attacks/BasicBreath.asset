@@ -11,15 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b99b645b8b021643b4b428f51f1f770, type: 3}
   m_Name: BasicBreath
   m_EditorClassIdentifier: 
-  ChargeTime: 1
+  ChargeTime: 0
   ChannelTime: 4
-  CleanupTime: 2
+  CleanupTime: 0.2
   ManifestCount: 4
   CooldownTime: 1
   CooldownStartsWhen: 3
   ChargeCausesCleanup: 0
   CanCancelCharge: 0
   CanCancelChannel: 0
+  LockMovement: 1
   ActivationZone: {fileID: 11400000, guid: 78a0e0198ff5d4244a71f7dfa543c437, type: 2}
   ActivationAnchor: 2
   Effects:

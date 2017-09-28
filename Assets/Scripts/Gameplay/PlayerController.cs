@@ -115,7 +115,7 @@ namespace Gameplay {
 
             
 
-            if (velocity.magnitude > 0) {
+            if (motion.magnitude > 0) {
                 Rb.velocity = velocity;
             }
 
@@ -171,6 +171,7 @@ namespace Gameplay {
         Vector3 GetPlayerMotion() {
 
             if (!IsControllable) return Vector3.zero; // Player-control disabled
+            if (ActiveAbility != null && ActiveAbility.Ability.LockMovement) return Vector3.zero; // Current Ability is preventing movement
 
             var cameraDirection = transform.position - Observer.Camera.transform.position;
 

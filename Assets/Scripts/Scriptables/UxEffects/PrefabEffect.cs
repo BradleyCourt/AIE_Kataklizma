@@ -11,6 +11,7 @@ namespace Scriptables {
 
         public CharacterBindPoint Location;
         public GameObject Prefab;
+        public bool RequiresLocalScale;
 
     }
 }

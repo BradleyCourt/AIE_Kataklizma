@@ -8,6 +8,7 @@ TagManager:
   - Building
   - Terrain
   - Road
+  - Collectable
   layers:
   - Default
   - TransparentFX
