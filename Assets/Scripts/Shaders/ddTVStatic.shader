@@ -62,7 +62,11 @@ Shader "ddShaders/ddTVStatic"
 
 			fragmentInput vert(vertexInput i)
 			{
+				
+
 				fragmentInput o;
+				UNITY_INITIALIZE_OUTPUT(fragmentInput, o);
+
 				o.position = UnityObjectToClipPos(i.vertex);
 				o.texcoord0 = i.texcoord0;
 
@@ -72,6 +76,7 @@ Shader "ddShaders/ddTVStatic"
 				o.camDist.x = distance(_WorldSpaceCameraPos.xyz, modelOrigin.xyz);
 
 				o.camDist.x = lerp(1.0, o.camDist.x, _ScaleWithZoom);
+				//o.camDist.y = 0;
 
 				o.screenPos = ComputeScreenPos(i.vertex);
 

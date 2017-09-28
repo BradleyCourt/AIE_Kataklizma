@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114212709720062080}
   m_Layer: 0
   m_Name: 5m_SmallHouse_Prefab
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.2421637, y: 3.3181791, z: 4.2529106}
+  m_Size: {x: 3.2421637, y: 5.22, z: 4.2529106}
   m_Center: {x: 2.329783, y: 1.1590896, z: 2.8148441}
 --- !u!95 &95941706326014460
 Animator:
