@@ -339,8 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52872e06b6a5a74fb59db86f91d7d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChaseDist: 5
-  MinApproach: 5
+  ChaseDist: 15
+  MinApproach: -1
   Target: {fileID: 0}
   NavPointCollection: {fileID: 0}
   NavTimeout: 2
