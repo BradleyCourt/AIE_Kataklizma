@@ -91,6 +91,9 @@ namespace Gameplay {
 
         // Update is called once per frame
         void Update() {
+            if ( Input.GetKey(KeyCode.Escape))
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Title_Menu");
+
             UpdateInputState();
                         
 
