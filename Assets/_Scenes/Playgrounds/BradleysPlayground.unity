@@ -1769,14 +1769,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1506860436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1506860435}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e8540c94dcb948408da0eb59ecc130b, type: 3}
   m_Name: 
@@ -1784,6 +1784,7 @@ MonoBehaviour:
   playerAttributes: {fileID: 0}
   enemy: {fileID: 0}
   spawnTime: 3
+  SpawnCount: 0
 --- !u!4 &1506860437
 Transform:
   m_ObjectHideFlags: 0
