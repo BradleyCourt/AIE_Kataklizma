@@ -156,8 +156,5 @@ MonoBehaviour:
   _Attributes:
     _Values:
     - Type: 1
-      Base: 20
-      Modifier: 0
-    - Type: 13
-      Base: 5
+      Base: 10
       Modifier: 0
