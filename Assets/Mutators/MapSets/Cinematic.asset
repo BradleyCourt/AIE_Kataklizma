@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9c7468dbf63ba3469f8e3bdbda5d34a, type: 3}
-  m_Name: Test
+  m_Name: Cinematic
   m_EditorClassIdentifier: 
   Roads:
     End:
@@ -33,7 +33,25 @@ MonoBehaviour:
   Structures:
   - Size: 1
     Tiles:
+    - {fileID: 1034614153185756, guid: a6b013e5ee9a4074b9a499e149998467, type: 2}
+    - {fileID: 1954407674272094, guid: 2b90dadfe0a8cf2489d8d9b4c790ed82, type: 2}
+    - {fileID: 1954407674272094, guid: 2b90dadfe0a8cf2489d8d9b4c790ed82, type: 2}
     - {fileID: 1046029153478328, guid: 13a96316b5188ca44b3d553eba9ee16c, type: 2}
   - Size: 2
     Tiles:
+    - {fileID: 1932820765753484, guid: d20b1552a71f1d34e904c15789ccdfa4, type: 2}
+    - {fileID: 1797576069286800, guid: 7705228be38c7a64ea13f410f7baf8b4, type: 2}
+    - {fileID: 1797576069286800, guid: 7705228be38c7a64ea13f410f7baf8b4, type: 2}
+    - {fileID: 1452910394916176, guid: 632eaeeb5b3146445bb2155aac4edb65, type: 2}
+    - {fileID: 1452910394916176, guid: 632eaeeb5b3146445bb2155aac4edb65, type: 2}
+    - {fileID: 1452910394916176, guid: 632eaeeb5b3146445bb2155aac4edb65, type: 2}
     - {fileID: 1872029372634516, guid: 8c7199f345fe9c042b65f9728eb2fc0c, type: 2}
+    - {fileID: 1872029372634516, guid: 8c7199f345fe9c042b65f9728eb2fc0c, type: 2}
+    - {fileID: 1872029372634516, guid: 8c7199f345fe9c042b65f9728eb2fc0c, type: 2}
+  - Size: 4
+    Tiles:
+    - {fileID: 1251098927418836, guid: a08e6679bd79c78408c6c0e0f411760c, type: 2}
+  - Size: 6
+    Tiles:
+    - {fileID: 1878541635614608, guid: 936db8a55b4bd434886eb6decbc2a92d, type: 2}
+    - {fileID: 1878541635614608, guid: 936db8a55b4bd434886eb6decbc2a92d, type: 2}
