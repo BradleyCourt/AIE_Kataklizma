@@ -85,9 +85,14 @@ namespace Gameplay {
             }
 
             Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false;
+            Cursor.visible = false;
         }
 
+        void OnDestroy() {
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
 
         // Update is called once per frame
         void Update() {
