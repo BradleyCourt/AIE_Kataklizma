@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using UnityEngine;
 namespace MapGen
 {
 
-    public class MapMaker : MonoBehaviour
+    public class CinematicMapMaker : MonoBehaviour
     {
         public Scriptables.MapTileCollection SourceTiles;
 
@@ -25,6 +26,7 @@ namespace MapGen
         protected Transform Skyway;
         protected Transform Structures;
         protected Transform Roads;
+        protected Transform Roadblocks;
 
         protected const float TileWidth = 5;
         protected const float TileHeight = 5;
@@ -36,6 +38,7 @@ namespace MapGen
         public GameObject[,] TileMap { get; protected set; }
         public bool[,] RoadMap { get; protected set; }
 
+        const float AnimTime = 0.2f;
         #region " Utility "
         Vector3 IndexToWorld(int c, int r) {
             return TileOriginOffset + new Vector3(5 * c, 0, 5 * r);
@@ -56,24 +59,31 @@ namespace MapGen
         }
         #endregion
 
-        void DiscoverStructures()
+        IEnumerator DiscoverStructures()
         {
             // we assume that all MapTilePresets belong to this grid because theres only one per scene
             MapTilePreset[] presets = FindObjectsOfType<MapTilePreset>();
 
             foreach (MapTilePreset preset in presets) {
                 Vector3 pos = preset.transform.position;
-
-                // snap rotation to a 90 degrees value, assuming all buildings are children of the grid
-                preset.transform.localEulerAngles = new Vector3(0, Mathf.Round((preset.transform.localEulerAngles.y / 90.0f)) * 90.0f, 0);
-
-                Vector3 oppositeCorner = pos + (preset.transform.right + preset.transform.forward) * (int)(preset.Size) * 5;
-
+                
                 // snap origin to grid
                 int[] indices = WorldToIndex(pos);
 
                 // snap orientation to grid
-                preset.transform.position = IndexToWorld(indices[0], indices[1]);
+                //preset.transform.position = IndexToWorld(indices[0], indices[1]);
+                LeanTween.move(preset.gameObject, IndexToWorld(indices[0], indices[1]), AnimTime * 5).setEase(LeanTweenType.easeInOutBounce);
+                yield return new WaitForSeconds(AnimTime * 5);
+                
+
+                
+
+                // snap rotation to a 90 degrees value, assuming all buildings are children of the grid
+                //preset.transform.localEulerAngles = new Vector3(0, Mathf.Floor((int)(preset.transform.localEulerAngles.y / 90.0f)) * 90.0f, 0);
+                LeanTween.rotateLocal(preset.gameObject, new Vector3(0, Mathf.Round(preset.transform.localEulerAngles.y / 90.0f) * 90.0f, 0), AnimTime * 5).setEase(LeanTweenType.easeInOutBounce);
+                yield return new WaitForSeconds(AnimTime * 5);
+
+                Vector3 oppositeCorner = pos + (preset.transform.right + preset.transform.forward) * (int)(preset.Size) * 5;
 
                 // Find opposite corner
                 int[] indices2 = WorldToIndex(oppositeCorner);
@@ -99,7 +109,7 @@ namespace MapGen
         }
 
 
-        void GenerateStructures() {
+        IEnumerator GenerateStructures() {
 
             // add buildings
             for (int c = 0; c < Columns; c++) {
@@ -110,6 +120,7 @@ namespace MapGen
                     var onesThatFit = new List<Scriptables.MapTileCollection.StructurePrefabs>();
                     var slots = new Queue<int>();
                     var totalSlots = 0;
+
 
                     foreach (var pre in SourceTiles.Structures) {
                         // does it fit?
@@ -129,7 +140,7 @@ namespace MapGen
                                     fits = false;
                             }
                         }
-                        
+
                         if (fits) {
                             onesThatFit.Add(pre);
                             slots.Enqueue(pre.Tiles.Count);
@@ -137,7 +148,7 @@ namespace MapGen
                         }
                     }
 
-                    
+
                     int slot = UnityEngine.Random.Range(0, totalSlots);
 
                     var index = 0;
@@ -184,18 +195,26 @@ namespace MapGen
                             TileMap[c + i, r + j] = go; // fills array
                         }
                     }
+
+                    yield return new WaitForSeconds(AnimTime/4f);
                 }
 
             }
         }
 
-        void GenerateRoads() {
+        IEnumerator GenerateRoads() {
 
-            GenerateRoadMap();
-            GenerateRoadTiles();
+            yield return GenerateRoadMap();
+            yield return GenerateRoadTiles();
         }
 
-        void GenerateRoadMap() {
+        IEnumerator GenerateRoadMap() {
+            var roadblocks = Instantiate(Resources.Load<GameObject>("EmptyPrefab"), transform);
+            roadblocks.name = "Roadblocks";
+            Roadblocks = roadblocks.transform;
+
+            var cuboidZone = Resources.Load<GameObject>("CuboidZonePrefab");
+
             // prepick some starting values
             List<int> indicesX = new List<int>(RoadLimit);
             List<int> indicesY = new List<int>(RoadLimit);
@@ -250,12 +269,14 @@ namespace MapGen
                     // go up
                     while (iy < Rows && CanPlaceRoad(ix, iy, 30)) {
                         RoadMap[ix, iy] = true;
+                        yield return CreateRoadblock(ix, iy, roadblocks, cuboidZone);
                         iy++;
                     }
                     // go back to start and go down
                     iy = indexY - 1;
                     while (iy >= 0 && CanPlaceRoad(ix, iy, 30)) {
                         RoadMap[ix, iy] = true;
+                        yield return CreateRoadblock(ix, iy, roadblocks, cuboidZone);
                         iy--;
                     }
                 }
@@ -263,19 +284,31 @@ namespace MapGen
                     // go up
                     while (ix < Columns && CanPlaceRoad(ix, iy, 30)) {
                         RoadMap[ix, iy] = true;
+                        yield return CreateRoadblock(ix, iy, roadblocks, cuboidZone);
                         ix++;
                     }
                     // go back to start and go down
                     ix = indexX - 1;
                     while (ix >= 0 && CanPlaceRoad(ix, iy, 30)) {
+
                         RoadMap[ix, iy] = true;
+                        yield return CreateRoadblock(ix, iy, roadblocks, cuboidZone);
                         ix--;
                     }
                 }
-
             }
         }
-        void GenerateRoadTiles() {
+
+        IEnumerator CreateRoadblock(int x, int y, GameObject collection, GameObject prefab) {
+            GameObject go = Instantiate(prefab, collection.transform);
+            go.transform.localPosition = IndexToWorld(x, y) + new Vector3(2.5f, 0, 2.5f);
+            go.transform.localScale = new Vector3(5, 1, 5);
+
+            go.name += "Roadblock [" + x.ToString("N") + "," + y.ToString("N") + "]";
+            yield return new WaitForSeconds(AnimTime / 10f);
+        }
+
+        IEnumerator GenerateRoadTiles() {
             // make sure these indices match in the inspector or it wont work!!!
             // tile indexs should be 0 = end, 1 = turn, 2 = straight, 3 = Tjunction, 4 = intersection. -1 means nothing at all
 
@@ -358,24 +391,28 @@ namespace MapGen
 
                             TileMap[c, r] = go; // fills array
                         }
+
+                        yield return new WaitForSeconds(AnimTime / 20.0f);
                     }
+
                 }
             }
+            if (Roadblocks != null) Destroy(Roadblocks.gameObject);
         }
 
+        IEnumerator DoWork() {
+            yield return new WaitForSeconds(0.2f);
 
-
-        public void Start()
-        {
             Columns = (int)(Size.x / 5);
             Rows = (int)(Size.y / 5);
 
             TileMap = new GameObject[Columns, Rows];
             TileOriginOffset = new Vector3(5 * Columns * -0.5f, 0, 5 * Rows * -0.5f);
 
-            DiscoverStructures();
+            // Start Coroutines
+            yield return DiscoverStructures();
 
-            if ( MakeRoads ) {
+            if (MakeRoads) {
                 RoadMap = new bool[Columns, Rows];
 
                 // Make Parent
@@ -384,10 +421,8 @@ namespace MapGen
                 Roads = go.transform;
 
                 // Populate Roads
-                GenerateRoads();
+                yield return GenerateRoads();
             }
-
-
             // Make Structures
             {
                 // Make Parent
@@ -396,11 +431,11 @@ namespace MapGen
                 Structures = go.transform;
 
                 // Poluate Structures
-                GenerateStructures();
+                yield return GenerateStructures();
             }
 
 
-            if ( MakeSkyway ) {
+            if (MakeSkyway) {
                 // Make Skyway (Has no children, so leave at top-level)
                 var go = Instantiate(Resources.Load<GameObject>("SkywayPrefab"), transform);
                 go.name = "Skyway";
@@ -412,13 +447,18 @@ namespace MapGen
             }
 
 
-            if ( MakeRoadNavmesh && Roads != null ) {
+            if (MakeRoadNavmesh && Roads != null) {
                 NavMeshGen.BuildNavMesh(Roads, new Bounds(transform.position, new Vector3(5 * Columns, 1, 5 * Rows)));
             }
 
-            if ( Skyway != null ) { // Always generate NavMesh if Skyway exists
+            if (Skyway != null) { // Always generate NavMesh if Skyway exists
                 NavMeshGen.BuildNavMesh(Skyway, new Bounds(Skyway.transform.position, new Vector3(5 * Columns, 1, 5 * Rows)));
             }
+        }
+
+        public void Start()
+        {
+            StartCoroutine(DoWork());
         }
     }
 }
