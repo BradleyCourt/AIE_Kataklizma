@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114471596430026350}
   m_Layer: 0
   m_Name: 80m_FootballStadium_Prefab
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Size: 5
+  Size: 16
 --- !u!114 &114530964497581432
 MonoBehaviour:
   m_ObjectHideFlags: 1

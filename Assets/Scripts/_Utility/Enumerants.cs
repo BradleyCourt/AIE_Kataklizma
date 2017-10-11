@@ -75,11 +75,28 @@ public enum CharacterBindPoint {
 [System.Serializable]
 public enum MapTileType {
     NONE,
-    Tile5m,
-    Tile10m,
-    Tile20m,
-    Tile30m,
-    Tile40m,
-    TileRoad,
-    Tile80m,
+    Tile5m = 1,
+    Tile10m = 2,
+    Tile20m = 4,
+    Tile30m = 6,
+    Tile40m = 8,  
+    Tile80m = 16,
+    TileRoad = 255,
+}
+
+public enum RoadType {
+    _Invalid = -1,
+    End = 0,
+    Turn = 1,
+    Straight = 2,
+    Tee = 3,
+    Inter = 4
+}
+
+public enum RoadRotation {
+    _Invalid = -1,
+    Turn000 = 0,
+    Turn090 = 90,
+    Turn180 = 180,
+    Turn270 = 270,
 }
