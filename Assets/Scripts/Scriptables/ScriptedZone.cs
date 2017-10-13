@@ -5,7 +5,11 @@ using System.Text;
 using UnityEngine;
 
 namespace Scriptables {
-    public abstract class AbstractZone : ScriptableObject {
+    public abstract class ScriptedZone : ScriptableObject {
+
+        [UnityTag]
+        [Tooltip("List of Tags that this ability will (attempt to) affect")]
+        public List<string> CanAffectTags;
 
         /// <summary>
         /// Find all transforms in Zone

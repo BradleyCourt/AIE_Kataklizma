@@ -7,8 +7,9 @@ using UnityEngine;
 namespace Scriptables {
 
     [CreateAssetMenu(fileName = "CuboidZone", menuName = "Kataklizma/Zones/Cuboid Zone")]
-    public class CuboidZone : AbstractZone {
+    public class CuboidZone : ScriptedZone {
 
+        [Space]
         public Bounds Bounds;
 
         //public GameObject DebuggingPrefab;
@@ -33,13 +34,13 @@ namespace Scriptables {
                 //var go = Instantiate(prefab, centre, origin.rotation);
                 prefab.transform.localScale = size;
 
-                Destroy(prefab, 1);
+                Destroy(prefab, 0.8f);
             }
 #endif
 
 
 
-            return Physics.OverlapBox(centre, size, origin.rotation, layerMask);
+            return Physics.OverlapBox(centre, size, origin.rotation, layerMask).Where(m => CanAffectTags.Contains( m.tag )).ToArray();
             
         }
     }

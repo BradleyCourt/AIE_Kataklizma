@@ -14,11 +14,19 @@ MonoBehaviour:
   Roads:
     End:
     - {fileID: 1021192304127646, guid: d1063f866d7d8db45942f33dcb73b419, type: 2}
+    - {fileID: 1021192304127646, guid: d1063f866d7d8db45942f33dcb73b419, type: 2}
+    - {fileID: 1021192304127646, guid: d1063f866d7d8db45942f33dcb73b419, type: 2}
     - {fileID: 1038451183882516, guid: e7baffddf63e82943a751a9a3e866213, type: 2}
     Inter:
     - {fileID: 1715133271137580, guid: 954f01d61bdaa7b41b4ac49a7d1f0429, type: 2}
+    - {fileID: 1715133271137580, guid: 954f01d61bdaa7b41b4ac49a7d1f0429, type: 2}
+    - {fileID: 1715133271137580, guid: 954f01d61bdaa7b41b4ac49a7d1f0429, type: 2}
     - {fileID: 1020398806163230, guid: 503a6c93a4db40f41a4ca88cce4b36b3, type: 2}
     Straight:
+    - {fileID: 1869687094050442, guid: ec8ad3c7b8b2558449a85b65cc594744, type: 2}
+    - {fileID: 1869687094050442, guid: ec8ad3c7b8b2558449a85b65cc594744, type: 2}
+    - {fileID: 1869687094050442, guid: ec8ad3c7b8b2558449a85b65cc594744, type: 2}
+    - {fileID: 1869687094050442, guid: ec8ad3c7b8b2558449a85b65cc594744, type: 2}
     - {fileID: 1869687094050442, guid: ec8ad3c7b8b2558449a85b65cc594744, type: 2}
     - {fileID: 1226859486568244, guid: 38dbfd0b43d995748af2ea6931db1777, type: 2}
     - {fileID: 1601577583339274, guid: 0acf93385c9f7b942bc48037562a3ec2, type: 2}
@@ -26,6 +34,8 @@ MonoBehaviour:
     - {fileID: 1256836437832624, guid: d0cfc136354d5f045b2cdb929d0bd6f2, type: 2}
     - {fileID: 1121592483193844, guid: c0794330364974d498c032485e5d6abb, type: 2}
     Tee:
+    - {fileID: 1341815001043210, guid: 2b508ffa5b0b10b449109172b5454865, type: 2}
+    - {fileID: 1341815001043210, guid: 2b508ffa5b0b10b449109172b5454865, type: 2}
     - {fileID: 1341815001043210, guid: 2b508ffa5b0b10b449109172b5454865, type: 2}
     - {fileID: 1100330387221510, guid: b719a306a31b0f44698e904f1b9c359e, type: 2}
     Turn:

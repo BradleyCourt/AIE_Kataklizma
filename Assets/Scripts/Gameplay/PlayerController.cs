@@ -11,7 +11,7 @@ namespace Gameplay {
         [System.Serializable]
         public class AbilitySlot {
             public string TriggerName;
-            public ActivatedAbility Ability;
+            public ScriptedAbility Ability;
 
             public bool CanActivate { get { return Ability != null && Ability.CanActivate; } }
 
@@ -65,6 +65,9 @@ namespace Gameplay {
         public ObserverOptions Observer;
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         void Start() {
             Observer.Camera = GetComponentInChildren<Camera>();
             if (Observer.Camera == null) throw new System.ApplicationException(gameObject.name + " - PlayerController: Unable to locate required Camera child");
@@ -88,13 +91,18 @@ namespace Gameplay {
             Cursor.visible = false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void OnDestroy() {
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
 
-        // Update is called once per frame
+        /// <summary>
+        /// 
+        /// </summary>
         void Update() {
             if ( Input.GetKey(KeyCode.Escape))
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Title_Menu");
@@ -144,7 +152,9 @@ namespace Gameplay {
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         void UpdateInputState() {
             if (Input.GetMouseButtonDown(2)) { // Middle Mouse toggles mouse capture
                 if (Cursor.lockState != CursorLockMode.Locked) {
@@ -157,6 +167,9 @@ namespace Gameplay {
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         void UpdateCamera() {
             if (Cursor.lockState == CursorLockMode.Locked) {
 

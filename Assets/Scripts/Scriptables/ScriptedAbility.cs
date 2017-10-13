@@ -5,22 +5,35 @@ using UnityEngine;
 
 namespace Scriptables {
 
-    [CreateAssetMenu(fileName ="Activatable", menuName = "Mutators/Active")]
-    public class ActivatedAbility : ScriptableObject {
-
+    [CreateAssetMenu(fileName ="Mutator", menuName = "Mutators/Ability")]
+    public class ScriptedAbility : ScriptableObject {
+        
         [System.Serializable]
-        public struct AnimationOptions {
-            public string OnCharging;
-            public string OnChannelling;
-            public string OnCleanup;
-            public string OnManifest;
+        public struct EffectOptions {
+            [Tooltip("Always Active, \"Status Effect\" Types.")]
+            public List<ScriptedEffect> Lifetime;
+            public List<ScriptedEffect> OnCharging;
+            public List<ScriptedEffect> OnChannelling;
+            public List<ScriptedEffect> OnCleanup;
+            public List<ScriptedEffect> OnManifest;
+
+            public List<ScriptedEffect> AllEffects {
+                get {
+                    var result = new List<ScriptedEffect>();
+                    result.AddRange(Lifetime);
+                    result.AddRange(OnCharging);
+                    result.AddRange(OnChannelling);
+                    result.AddRange(OnCleanup);
+                    result.AddRange(OnManifest);
+
+                    return result;
+                }
+            }
         }
 
-        [Header("Timers")]
+        [Space]
         public float ChargeTime; 
         public float ChannelTime;
-
-
         public float CleanupTime;
 
         [Tooltip("If ChannelTime is non-zero, the number of times the effect should 'manifest' while channeling")]
@@ -29,33 +42,45 @@ namespace Scriptables {
         [Space]
         public float CooldownTime;
         
-        [Tooltip("Setting \"Cooldown Starts When Ready\" will disable cooldowns")]
-        public AbilityActivationState CooldownStartsWhen = AbilityActivationState.Channeling;
+        public AbilityActivationState CooldownStartsAfter = AbilityActivationState.Channeling;
 
         [Space]
+        [Tooltip("PlayerController will immediately re-activate this ability when cooldown ends")]
+        public bool ContinuousActivation;
+
+        [Space]
+        [Tooltip("Cleanup timer starts after a cancelled charge, else only starts after cancelled or completed channel")]
         public bool ChargeCausesCleanup;
         public bool CanCancelCharge;
         public bool CanCancelChannel;
+
+        [Space]
         public bool LockMovement;
-
-        [Header("Gameplay Effects")]
-        public AbstractZone ActivationZone;
-        public CharacterBindPoint ActivationAnchor;
-
-        public List<ValueCollection.Value> Effects;
-
-        [UnityTag]
-        [Tooltip("List of Tags that this ability will (attempt to) affect")]
-        public List<string> CanAffectTags;
-
-        [Header("UX Effects")]
-        public AnimationOptions Animation;
-        public ScriptedEffect ParticleEffect;
+        public bool LockRotation;
+        public bool AlignToCamera;
+      
         
+        [Space]
+        public CharacterBindPoint AreaAnchor;
+
+        [Tooltip("A Null AoE will result in zero \"others\" but can still affect self")]
+        public ScriptedZone AreaOfEffect;
+
+        [Space]
+        public EffectOptions Effects;
+
+        protected CharacterBindOrigins _OwnerOrigins;
+        protected CharacterBindOrigins OwnerOrigins {
+            get {
+                if (Owner == null) return null;
+                if (_OwnerOrigins == null)
+                    _OwnerOrigins = Owner.GetComponentInChildren<CharacterBindOrigins>();
+
+                return _OwnerOrigins;
+            }
+        }
 
         protected Transform Owner { get; set; }
-        protected Animation OwnerAnimator { get; set; }
-        protected CharacterBindOrigins OwnerOrigins;
 
         public AbilityActivationState ActivationState { get; protected set; }
 
@@ -83,7 +108,7 @@ namespace Scriptables {
         }
 
 
-        public ActivatedAbility CloneAndBind(Transform owner) {
+        public ScriptedAbility CloneAndBind(Transform owner) {
             var result = Instantiate(this);
             result.Bind(owner);
             return result;
@@ -93,14 +118,22 @@ namespace Scriptables {
             if (owner == null) Unbind();
 
             Owner = owner;
-            OwnerAnimator = Owner.GetComponentInChildren<Animation>();
-            OwnerOrigins = Owner.GetComponentInChildren<CharacterBindOrigins>();
+
+            foreach ( var effect in Effects.AllEffects) {
+                if (effect == null) continue;
+                effect.Bind(Owner);
+            }
         }
 
         public void Unbind() {
             if (Owner == null) return;
 
             Owner = null;
+
+            foreach (var effect in Effects.AllEffects) {
+                if (effect == null) continue;
+                effect.Unbind();
+            }
         }
 
         public void Reset() {
@@ -120,27 +153,25 @@ namespace Scriptables {
         }
 
         protected bool OnBeginCharge() {
-            if (CooldownStartsWhen == AbilityActivationState.Charging)
+            if (CooldownStartsAfter == AbilityActivationState.Ready)
                 CooldownEnds = Time.time + CooldownTime;
 
             var result = false;
-
-            if (ChargeTime > 0) { // Requires Charging
+            
+            if (ChargeTime > 0) { // Has Charge Time
                 ActivationState = AbilityActivationState.Charging;
                 ChargeRemaining = ChargeTime;
-                WasTriggerDown = false;
+                WasTriggerDown = false; // Reset Trigger latch
 
-                // Do Animation
-                if (OwnerAnimator != null && !string.IsNullOrEmpty(Animation.OnCharging))
-                    OwnerAnimator.Play(Animation.OnCharging);
 
-                // Do Ux Effects
-                // Do Gameplay Effect
+                // Do Ux Effects & Gameplay Effects
+                ApplyEffects(Effects.OnCharging, ChargeTime);
 
                 result = true;
             }
             else {
                 // Go straight to channeling
+                RemoveEffects(Effects.OnCharging);
                 result = OnBeginChannel();
             }
             return result;
@@ -148,42 +179,20 @@ namespace Scriptables {
 
 
         protected bool OnBeginChannel() {
-            if (CooldownStartsWhen == AbilityActivationState.Channeling)
+            if (CooldownStartsAfter == AbilityActivationState.Charging)
                 CooldownEnds = Time.time + CooldownTime;
-
+            
             OnManifest();
 
             var result = false;
             if (ChannelTime > 0) { // Has Channel Time
                 ActivationState = AbilityActivationState.Channeling;
                 ChannelRemaining = ChannelTime;
-                WasTriggerDown = false;
+                WasTriggerDown = false; // Reset Trigger Latch
 
-                // Do Animation
-                if (OwnerAnimator != null && !string.IsNullOrEmpty(Animation.OnChannelling))
-                    OwnerAnimator.Play(Animation.OnChannelling);
 
-                // Do Ux Effects
-                if ( ParticleEffect != null ) {
-                    if (OwnerOrigins == null) {
-                        Debug.LogError(Owner.gameObject.name + " - ActivatedAbility::OnChannel(): Prefab Effect requires child with CharacterBindOrigins component");
-                    }
-                    else {
-                        var effect = ParticleEffect as PrefabEffect;
-                        if (OwnerOrigins[effect.Location] == null) {
-                            Debug.LogError(Owner.gameObject.name + " - ActivatedAbility::OnChannel(): Character Bind Origin [" + effect.Location.ToString() + "] is not set");
-                        }
-                        else {
-
-                            var go = Instantiate(effect.Prefab, OwnerOrigins[effect.Location]);
-                            if (effect.RequiresLocalScale)
-                                go.transform.localScale = Owner.transform.localScale;
-                            Destroy(go, ChannelTime);
-                        }
-                    }
-                }
-
-                // Do Gameplay Effect
+                // Do Ux Effects & Gameplay Effects
+                ApplyEffects(Effects.OnChannelling, ChannelTime);
 
                 result = true;
             }
@@ -194,8 +203,8 @@ namespace Scriptables {
         }
 
         protected bool OnBeginCleanup() {
-            if (CooldownStartsWhen == AbilityActivationState.Cleanup)
-                CooldownEnds = Time.time + CooldownTime;
+            if (CooldownStartsAfter == AbilityActivationState.Channeling || CooldownStartsAfter == AbilityActivationState.Cleanup)
+                CooldownEnds = Time.time + CooldownTime + (CooldownStartsAfter == AbilityActivationState.Cleanup ? CleanupTime : 0);
 
             var result = false;
 
@@ -207,12 +216,10 @@ namespace Scriptables {
                 ActivationState = AbilityActivationState.Cleanup;
                 CleanupEnds = Time.time + CleanupTime;
 
-                // Do Animation
-                if (OwnerAnimator != null && !string.IsNullOrEmpty(Animation.OnCleanup))
-                    OwnerAnimator.Play(Animation.OnCleanup);
+                // Do Ux & Gameplay Eff
+                ApplyEffects(Effects.OnCleanup, CleanupTime);
+                
 
-                // Do Ux Effects
-                // Do Gameplay Effects
 
                 result = true;
             }
@@ -231,40 +238,47 @@ namespace Scriptables {
         /// </summary>
         protected void OnManifest() {
             NextManifestAt = Time.time + ManifestDelay;
+            ApplyEffects(Effects.OnManifest, ManifestDelay);
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        protected void ApplyEffects(IEnumerable<ScriptedEffect> effects, float timeToLive = float.PositiveInfinity) {
             if (Owner == null) return;
 
-            //  Do Something
+            var data = new ScriptedEffect.Params();
 
+            data.Duration = timeToLive;
 
-            // Do Animation
-            if (OwnerAnimator != null && !string.IsNullOrEmpty(Animation.OnManifest))
-                OwnerAnimator.Play(Animation.OnManifest);
+            // Find Effect Origin and Discover Hits
+            if (AreaOfEffect != null) {
+                Transform origin = null;
 
-            // Do Ux Effects
-            // Do Gameplay Effects
+                if (OwnerOrigins != null)
+                    origin = OwnerOrigins[AreaAnchor];
 
-            Transform origin = null;
+                if (origin == null)
+                    origin = Owner;
 
-            if (OwnerOrigins != null)
-                origin = OwnerOrigins[ActivationAnchor];
-            
-            if (origin == null)
-                origin = Owner;
+                data.Hits = AreaOfEffect.OverlapZone(origin);
+            }
 
-            var hits = ActivationZone.OverlapZone(origin);
-
-            foreach (var hit in hits) {
-                if (!CanAffectTags.Contains(hit.tag)) continue; // Unrecognised Tag
-
-                var attribs = hit.GetComponent<Gameplay.EntityAttributes>();
-                if (attribs == null) continue; // No Attribute set to affect
-
-                foreach (var effect in Effects)
-                    attribs.ApplyEffect(effect.Type, effect.Derived);
+            foreach (var effect in effects) {
+                if (effect == null) continue;
+                effect.Apply(data);
             }
         }
 
+        
+        protected void RemoveEffects(IEnumerable<ScriptedEffect> effects) {
+            if (Owner == null) return;
+
+            foreach (var effect in effects) {
+                if (effect == null) continue;
+                effect.Remove();
+            }
+        }
 
         /// <summary>
         /// Returns True if continuing
@@ -306,6 +320,7 @@ namespace Scriptables {
                     
                     if (!result) { // if Cleanup is finished
                         ActivationState = AbilityActivationState.Ready;
+                        RemoveEffects(Effects.OnCleanup);
                     }
 
                     break;

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Scriptables {
 
     [CreateAssetMenu(fileName = "AudioEffect", menuName = "Kataklizma/Effects/Audio Effect")]
-    public class AudioEffect : ScriptedEffect {
+    public class AudioEffect : AnchoredEffect {
 
         public string AudioName;
 
