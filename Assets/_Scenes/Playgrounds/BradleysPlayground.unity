@@ -207,6 +207,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &25933856 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1835734282506530, guid: bf7ef5baec46c75488b97f820356e6fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 216655982}
+--- !u!114 &25933857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 25933856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9947aa657e807e84e922b323664bfff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockOnTime: 0
+  Rocket: {fileID: 1797576069286800, guid: 7705228be38c7a64ea13f410f7baf8b4, type: 2}
+  RocketPos: {fileID: 1839849194}
+  RocketSpeed: 0
+  TargettingCircle: {fileID: 1794536252761560, guid: a66127f6d0fc4bb428c0886107721a02,
+    type: 2}
 --- !u!1001 &31019824
 Prefab:
   m_ObjectHideFlags: 0
@@ -1810,6 +1832,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1839849193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1839849194}
+  m_Layer: 0
+  m_Name: Gunpos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1839849194
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1839849193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.82, z: 2.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 216655983}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1848020950
 Prefab:
