@@ -13,7 +13,7 @@ public class FireController : MonoBehaviour
     public Patrol P;
     //public Transform Target;
     public GameObject Projectile;
-    public float PlayerIdletime = 0.2f;
+    public float PlayerIdletime = 3f;
     public float BulletSpeed = 3;
     public float CannonFire = 50f;
     public float MachineGun = 10f;
@@ -113,8 +113,6 @@ public class FireController : MonoBehaviour
 
     IEnumerator FireSequence()
     {
-        // spawn target object TODO
-
 
         yield return new WaitForSeconds(Cooldown);
 
