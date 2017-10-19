@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Gameplay;
+using System;
 
 public class FireController : MonoBehaviour
 {
@@ -47,17 +48,20 @@ public class FireController : MonoBehaviour
         }
         else
         {
-            PlayerControl = P.Target.GetComponent<PlayerController>(); // TODO - setTatrget function
+            PlayerControl = P.Target.GetComponent<PlayerController>(); // TODO - setTarget function
             Vector3 targetDir = P.Target.position - transform.position; 
             float step = BulletSpeed * Time.deltaTime;
 
+            //if the player is idle longer than the allocated amount of time
             if (PlayerControl.IdleTime > PlayerIdletime)
             {
                 if (CanFire)
                 FireCannon();
             }
-         
+            else
             {
+                // if not firing the cannon, fire the machine gun
+                if(CanFire)
                 FireMachineGun(targetDir);
             }
 
@@ -83,15 +87,46 @@ public class FireController : MonoBehaviour
     {
         //shoot the cannon ball;
         CanFire = false;
-        StartCoroutine(this.DelayedAction(Cooldown,
-            () => {
-                CanFire = true;
-            }));
+        StartCoroutine(FireSequence());
+        //StartCoroutine(this.DelayedAction(Cooldown,
+        //    () => {
 
+        //        //place target
+
+
+        //        CanFire = true;
+
+        //        GameObject go = Instantiate(Projectile, BulletSpawn.position, BulletSpawn.rotation);
+        //        go.GetComponent<Rigidbody>().velocity = BulletSpawn.forward * BulletSpeed;
+        //        Destroy(go, 3);
+
+        //        return;
+        //        yield return new WaitForSeconds(Cooldown);
+        //    }));
+
+
+        //GameObject go = Instantiate(Projectile, BulletSpawn.position, BulletSpawn.rotation);
+        //go.GetComponent<Rigidbody>().v*elocity = BulletSpawn.forward * BulletSpeed;
+        //Destroy(go, 3);
+
+    }
+
+    IEnumerator FireSequence()
+    {
+        // spawn target object TODO
+
+
+        yield return new WaitForSeconds(Cooldown);
+
+        CanFire = true;
 
         GameObject go = Instantiate(Projectile, BulletSpawn.position, BulletSpawn.rotation);
         go.GetComponent<Rigidbody>().velocity = BulletSpawn.forward * BulletSpeed;
-
         Destroy(go, 3);
+
+        yield return new WaitForSeconds(Cooldown);
+
+        // do other stuff...
     }
+
 }
