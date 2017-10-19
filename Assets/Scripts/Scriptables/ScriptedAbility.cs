@@ -7,7 +7,13 @@ namespace Scriptables {
 
     [CreateAssetMenu(fileName ="Mutator", menuName = "Mutators/Ability")]
     public class ScriptedAbility : ScriptableObject {
-        
+
+
+        [Header("Unlock Progression")]
+        public int RequiredLevel;
+        public List<ScriptedAbility> Prerequisites;
+        public List<ScriptedAbility> Precluders;
+
         [System.Serializable]
         public struct EffectOptions {
             [Tooltip("Always Active, \"Status Effect\" Types.")]
@@ -31,7 +37,7 @@ namespace Scriptables {
             }
         }
 
-        [Space]
+        [Header("Timers")]
         public float ChargeTime; 
         public float ChannelTime;
         public float CleanupTime;
