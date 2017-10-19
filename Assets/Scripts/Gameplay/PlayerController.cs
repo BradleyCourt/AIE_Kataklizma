@@ -23,10 +23,9 @@ namespace Gameplay {
             }
         }
 
-        private float _IdleTime;
+        private float LastActive;
         public float IdleTime {
-            get { return _IdleTime; }
-            protected set { _IdleTime = value; }
+            get { return Time.time - LastActive; }
         }
 
         public float MoveSpeed = 5.0f;
@@ -144,6 +143,9 @@ namespace Gameplay {
             if (motion.magnitude > 0) {
                 Rb.velocity = velocity;
             }
+
+            if (!Mathf.Approximately(Rb.velocity.magnitude, 0))
+                LastActive = Time.time;
 
             CharacterAnimator.SetFloat("WalkSpeed", motion.magnitude / MoveSpeed);
 
