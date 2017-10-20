@@ -7,7 +7,7 @@ public class HeliFire : MonoBehaviour {
     public float LockOnTime; // helicopter 2 secs, tank 0 secs for now
     float TimeLockedOn; // dynamic data, how long we've been locked on
 
-    Patrol P;
+    public Patrol P;
     public GameObject Rocket; // define the object of what a rocket is
     public Transform RocketPos; //position of which rockets are fired from
     public float RocketSpeed; // speed of rockets
@@ -27,7 +27,7 @@ public class HeliFire : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
+        
         if (P.Target != null)
         {
             if (CanFire)
@@ -74,6 +74,7 @@ public class HeliFire : MonoBehaviour {
 
         // paint the reticle
         CanFire = false;
+        
 
         GameObject reticle = Instantiate(TargettingCircle);
         reticle.transform.position = target.transform.position;
