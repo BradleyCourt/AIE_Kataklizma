@@ -43,11 +43,11 @@ namespace Scriptables {
         /// <param name="origin"></param>
         /// <param name="layerMask">Default: Ignore "PlayerAvater" layers</param>
         /// <returns></returns>
-        public override Collider[] OverlapZone(Transform origin, int layerMask = ~8) {
+        public override Collider[] OverlapZone(Vector3 position, Quaternion rotation, int layerMask = ~8) {
 
             if (!OffsetsKnown) FindOffsets();
 
-            var derivedOrigin = origin.position + origin.TransformVector(OriginDelta);
+            var derivedOrigin = position + (rotation * OriginDelta);
 
             var range = Physics.OverlapSphere(derivedOrigin, SphereRadius, layerMask);
 
@@ -59,7 +59,7 @@ namespace Scriptables {
 
                 // Check collider is within angle and min range
                 var direction = (collider.transform.position - derivedOrigin).normalized;
-                var dot = Vector3.Dot(direction, origin.forward);
+                var dot = Vector3.Dot(direction, (rotation * Vector3.forward));
 
                 if (dot < ConeDotMinimum || direction.magnitude < OriginDelta.z) continue;
 

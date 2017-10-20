@@ -10,6 +10,7 @@ namespace Scriptables {
     public class SpheroidZone : ScriptedZone {
 
         [Space]
+        public Vector3 Centre;
         public Vector3 Radii;
 
         protected bool OffsetsKnown = false;
@@ -31,9 +32,9 @@ namespace Scriptables {
         /// <param name="origin"></param>
         /// <param name="layerMask">Default: Ignore "PlayerAvater" layers</param>
         /// <returns></returns>
-        public override Collider[] OverlapZone(Transform origin, int layerMask = ~8) {
+        public override Collider[] OverlapZone(Vector3 position, Quaternion rotation, int layerMask = ~8) {
             
-            var range = Physics.OverlapSphere(origin.position, PrimeRadius, layerMask);
+            var range = Physics.OverlapSphere(position + Centre, PrimeRadius, layerMask);
 
             var results = new List<Collider>();
 
@@ -41,8 +42,9 @@ namespace Scriptables {
                 if (collider == null) continue;
                 if (!CanAffectTags.Contains(collider.gameObject.tag)) continue;
 
-                var worldOffset = collider.transform.position - origin.position;
-                var localOffset = origin.transform.InverseTransformVector(worldOffset);
+                var worldOffset = collider.transform.position - position;
+                //var localOffset = origin.transform.InverseTransformVector(worldOffset);
+                var localOffset = Quaternion.Inverse(rotation) * worldOffset;
 
                 // From https://stackoverflow.com/questions/17770555/how-to-check-if-a-point-is-inside-an-ellipsoid
                 // (x/a)^2 + (y/b)^2 + (z/c)^2 <= 1

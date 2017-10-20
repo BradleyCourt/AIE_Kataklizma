@@ -11,6 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b23597cc2d58454aaba092fd3c5b551, type: 3}
   m_Name: BasicBreath
   m_EditorClassIdentifier: 
+  RequiredLevel: 0
+  Prerequisites: []
+  Precluders: []
   ChargeTime: 0
   ChannelTime: 3
   CleanupTime: 0.2
@@ -24,7 +27,7 @@ MonoBehaviour:
   LockMovement: 1
   LockRotation: 0
   AlignToCamera: 1
-  AreaAnchor: 2
+  AreaAnchor: 3
   AreaOfEffect: {fileID: 11400000, guid: 78a0e0198ff5d4244a71f7dfa543c437, type: 2}
   Effects:
     Lifetime:

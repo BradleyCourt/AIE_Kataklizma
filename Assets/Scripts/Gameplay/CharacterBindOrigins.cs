@@ -20,7 +20,7 @@ public class CharacterBindOrigins : MonoBehaviour {
             switch (binding) {
                 case CharacterBindPoint.Forehead: return Forehead;
                 case CharacterBindPoint.Mouth: return Mouth;
-                case CharacterBindPoint.Torso: return Forehead;
+                case CharacterBindPoint.Torso: return Torso;
                 case CharacterBindPoint.LeftHand: return LeftHand;
                 case CharacterBindPoint.RightHand: return RightHand;
                 case CharacterBindPoint.LeftFoot: return LeftFoot;

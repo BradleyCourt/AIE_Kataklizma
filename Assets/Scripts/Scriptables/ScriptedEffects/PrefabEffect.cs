@@ -35,7 +35,7 @@ namespace Scriptables {
                         Debug.LogError(Owner.gameObject.name + " - PrefabEffect::Apply(): Tried to apply but instance already active");
                     }
 
-                    Instance = Instantiate(Prefab, OwnerOrigins[Anchor]);
+                    Instance = Instantiate(Prefab, OwnerOrigins[Anchor].position, Owner.rotation, OwnerOrigins[Anchor]);
 
                     if (RequiresLocalScale)
                         Instance.transform.localScale = Owner.transform.localScale;

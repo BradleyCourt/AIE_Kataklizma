@@ -6,13 +6,14 @@ using UnityEngine;
 
 namespace Scriptables {
 
-    [CreateAssetMenu(fileName = "Mutator", menuName = "Mutators/Effects/AttributeEffect")]
+    [CreateAssetMenu(fileName = "AttributeEffect", menuName = "Kataklizma/Effects/AttributeEffect")]
     public class AttributeEffect : ScriptedEffect {
 
 
-        
+
         //public ValueSubtype AffectType;
-        public bool AffectsSelf;
+        public bool AffectsSelf = false;
+        public bool AffectsOthers = true;
         public List<ValueCollection.Value> Effects;
 
         protected Gameplay.EntityAttributes _SelfAttributes;
@@ -38,7 +39,7 @@ namespace Scriptables {
                 SelfAttributes.ApplyEffects(Effects);
             }
 
-            if (data.Hits != null) {
+            if (AffectsOthers && data.Hits != null) {
                 foreach (var hit in data.Hits) {
                     var attribs = hit.GetComponent<Gameplay.EntityAttributes>();
                     if (attribs == null) continue; // No Attribute set to affect

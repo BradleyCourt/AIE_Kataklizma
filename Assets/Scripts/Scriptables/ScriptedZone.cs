@@ -9,13 +9,16 @@ namespace Scriptables {
 
         [UnityTag]
         [Tooltip("List of Tags that this ability will (attempt to) affect")]
-        public List<string> CanAffectTags;
+        public List<string> CanAffectTags = new List<string> { "Building", "Enemy" };
+
 
         /// <summary>
-        /// Find all transforms in Zone
+        /// 
         /// </summary>
-        /// <param name="origin"></param>
+        /// <param name="position"></param>
+        /// <param name="rotation"></param>
+        /// <param name="layerMask"></param>
         /// <returns></returns>
-        public abstract Collider[] OverlapZone(Transform origin, int layerMask = ~8);
+        public abstract Collider[] OverlapZone(Vector3 position, Quaternion rotation, int layerMask = ~8);
     }
 }

@@ -34,8 +34,11 @@ namespace Gameplay {
 
         public GameObject CuboidZonePrefab;
         
-        protected AbilitySlot ActiveAbility = null;
+        protected AbilitySlot UserActivatedAbility = null;
+        protected List<ScriptedAbility> SystemActiveAbilities = new List<ScriptedAbility>();
+
         public List<AbilitySlot> Abilities;
+        
 
         protected Rigidbody Rb;
         protected Animator CharacterAnimator;
@@ -103,29 +106,58 @@ namespace Gameplay {
         /// 
         /// </summary>
         void Update() {
-            if ( Input.GetKey(KeyCode.Escape))
+            if (Input.GetKey(KeyCode.Escape))
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Title_Menu");
 
             UpdateInputState();
                         
-
-            if ( ActiveAbility != null ) {
-                var continuing = ActiveAbility.Ability.OnUpdate(Input.GetButton(ActiveAbility.TriggerName));
+            // Chech currently-active player-activated ability
+            if ( UserActivatedAbility != null ) {
+                var continuing = UserActivatedAbility.Ability.OnUpdate(Input.GetButton(UserActivatedAbility.TriggerName));
 
                 if (!continuing)
-                    ActiveAbility = null;                
+                    UserActivatedAbility = null;                
             }
 
-            if ( ActiveAbility == null ) {
-                foreach (var slot in Abilities) {
-                    if ( slot.CanActivate && Input.GetButton(slot.TriggerName)) {
+            var deactivate = new List<ScriptedAbility>();
+
+            // Check currently-active "system"-activated ablities (Continuous Activations)
+            foreach (var ability in SystemActiveAbilities) {
+                var continuing = ability.OnUpdate(false);
+
+                if (!continuing)
+                    deactivate.Add(ability);
+
+            }
+
+            // Remove any abilities in deactivate list from SystemActiveAbilities
+            foreach (var stopped in deactivate)
+                SystemActiveAbilities.Remove(stopped);
+
+
+            // Check all abilities if they can and should activate
+            foreach (var slot in Abilities) {
+                if (slot.Ability == null) continue;
+                if (slot.Ability.ContinuousActivation ) { // System Activated
+                    if (SystemActiveAbilities.Contains(slot.Ability)) continue; // Ability is already active
+
+                    if ( slot.CanActivate) {
                         if (slot.Ability.OnBegin()) {
-                            ActiveAbility = slot;
-                            break;
+                            SystemActiveAbilities.Add(slot.Ability);
+                        }
+                    }
+                }
+                else { // Player Activated
+                    if (UserActivatedAbility != null) continue; // Player already has an active ability
+
+                    if (slot.CanActivate && Input.GetButton(slot.TriggerName)) {
+                        if (slot.Ability.OnBegin()) {
+                            UserActivatedAbility = slot;
                         }
                     }
                 }
             }
+            
 
             // Move character
             Vector3 motion = GetPlayerMotion() * MoveSpeed;
@@ -205,7 +237,7 @@ namespace Gameplay {
         Vector3 GetPlayerMotion() {
 
             if (!IsControllable) return Vector3.zero; // Player-control disabled
-            if (ActiveAbility != null && ActiveAbility.Ability.LockMovement) return Vector3.zero; // Current Ability is preventing movement
+            if (UserActivatedAbility != null && UserActivatedAbility.Ability.LockMovement) return Vector3.zero; // Current Ability is preventing movement
 
             var cameraDirection = transform.position - Observer.Camera.transform.position;
 

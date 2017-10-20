@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Scriptables {
 
-    [CreateAssetMenu(fileName ="Mutator", menuName = "Mutators/Ability")]
+    [CreateAssetMenu(fileName ="Ability", menuName = "Kataklizma/New Ability")]
     public class ScriptedAbility : ScriptableObject {
 
 
@@ -16,6 +16,7 @@ namespace Scriptables {
 
         [System.Serializable]
         public struct EffectOptions {
+
             [Tooltip("Always Active, \"Status Effect\" Types.")]
             public List<ScriptedEffect> Lifetime;
             public List<ScriptedEffect> OnCharging;
@@ -224,8 +225,6 @@ namespace Scriptables {
 
                 // Do Ux & Gameplay Eff
                 ApplyEffects(Effects.OnCleanup, CleanupTime);
-                
-
 
                 result = true;
             }
@@ -250,8 +249,9 @@ namespace Scriptables {
         /// <summary>
         /// 
         /// </summary>
-        protected void ApplyEffects(IEnumerable<ScriptedEffect> effects, float timeToLive = float.PositiveInfinity) {
+        protected void ApplyEffects(List<ScriptedEffect> effects, float timeToLive = float.PositiveInfinity) {
             if (Owner == null) return;
+            if (effects == null || effects.Count == 0) return;
 
             var data = new ScriptedEffect.Params();
 
@@ -267,7 +267,7 @@ namespace Scriptables {
                 if (origin == null)
                     origin = Owner;
 
-                data.Hits = AreaOfEffect.OverlapZone(origin);
+                data.Hits = AreaOfEffect.OverlapZone(origin.position, Owner.rotation);
             }
 
             foreach (var effect in effects) {
@@ -277,8 +277,9 @@ namespace Scriptables {
         }
 
         
-        protected void RemoveEffects(IEnumerable<ScriptedEffect> effects) {
+        protected void RemoveEffects(List<ScriptedEffect> effects) {
             if (Owner == null) return;
+            if (effects == null || effects.Count == 0) return;
 
             foreach (var effect in effects) {
                 if (effect == null) continue;
