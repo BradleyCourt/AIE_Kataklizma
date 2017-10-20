@@ -144,7 +144,7 @@ namespace Gameplay {
                 Rb.velocity = velocity;
             }
 
-            if (!Mathf.Approximately(Rb.velocity.magnitude, 0))
+            if (Rb.velocity.magnitude < 0.0001f)
                 LastActive = Time.time;
 
             CharacterAnimator.SetFloat("WalkSpeed", motion.magnitude / MoveSpeed);
