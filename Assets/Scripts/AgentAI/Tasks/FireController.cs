@@ -19,7 +19,6 @@ public class FireController : MonoBehaviour
     public float MachineGun = 10f;
     public float Cooldown = 2f;
     private bool CanFire;
-    private bool shooting;
 
     public float MachineGunROF;
     public List<ValueCollection.Value> MachineGunEffects;
@@ -56,13 +55,13 @@ public class FireController : MonoBehaviour
             if (PlayerControl.IdleTime > PlayerIdletime)
             {
                 if (CanFire)
-                FireCannon();
+                    StartCoroutine(FireSequence());
             }
             else
             {
                 // if not firing the cannon, fire the machine gun
                 if(CanFire)
-                FireMachineGun(targetDir);
+                    FireMachineGun(targetDir);
             }
 
 
@@ -83,48 +82,19 @@ public class FireController : MonoBehaviour
         Debug.DrawRay(transform.position, targetDir, Color.red);
     }
 
-    void FireCannon()
-    {
-        //shoot the cannon ball;
-        CanFire = false;
-        StartCoroutine(FireSequence());
-        //StartCoroutine(this.DelayedAction(Cooldown,
-        //    () => {
-
-        //        //place target
-
-
-        //        CanFire = true;
-
-        //        GameObject go = Instantiate(Projectile, BulletSpawn.position, BulletSpawn.rotation);
-        //        go.GetComponent<Rigidbody>().velocity = BulletSpawn.forward * BulletSpeed;
-        //        Destroy(go, 3);
-
-        //        return;
-        //        yield return new WaitForSeconds(Cooldown);
-        //    }));
-
-
-        //GameObject go = Instantiate(Projectile, BulletSpawn.position, BulletSpawn.rotation);
-        //go.GetComponent<Rigidbody>().v*elocity = BulletSpawn.forward * BulletSpeed;
-        //Destroy(go, 3);
-
-    }
 
     IEnumerator FireSequence()
     {
-
-        yield return new WaitForSeconds(Cooldown);
-
-        CanFire = true;
+        CanFire = false;
 
         GameObject go = Instantiate(Projectile, BulletSpawn.position, BulletSpawn.rotation);
         go.GetComponent<Rigidbody>().velocity = BulletSpawn.forward * BulletSpeed;
-        Destroy(go, 3);
-
+      
         yield return new WaitForSeconds(Cooldown);
 
         // do other stuff...
+
+        CanFire = true;
     }
 
 }
