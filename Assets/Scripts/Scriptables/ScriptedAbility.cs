@@ -9,6 +9,9 @@ namespace Scriptables {
     public class ScriptedAbility : ScriptableObject {
 
 
+        public int weight;
+        public Sprite icon;
+
         [Header("Unlock Progression")]
         public int RequiredLevel;
         public List<ScriptedAbility> Prerequisites;

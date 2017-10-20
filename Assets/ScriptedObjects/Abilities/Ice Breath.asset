@@ -9,34 +9,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b23597cc2d58454aaba092fd3c5b551, type: 3}
-  m_Name: BasicBreath
+  m_Name: Ice Breath
   m_EditorClassIdentifier: 
-  weight: 8
-  icon: {fileID: 21300008, guid: 5b32c2d36abe44540bed74c1f787033b, type: 3}
+  weight: 1
+  icon: {fileID: 21300000, guid: 492b9988436bd45049a9a6bc52ac8fb0, type: 3}
   RequiredLevel: 0
   Prerequisites: []
   Precluders: []
   ChargeTime: 0
-  ChannelTime: 3
-  CleanupTime: 0.2
-  ManifestCount: 3
-  CooldownTime: 1
+  ChannelTime: 0
+  CleanupTime: 0
+  ManifestCount: 0
+  CooldownTime: 0
   CooldownStartsAfter: 2
   ContinuousActivation: 0
   ChargeCausesCleanup: 0
   CanCancelCharge: 0
   CanCancelChannel: 0
-  LockMovement: 1
+  LockMovement: 0
   LockRotation: 0
-  AlignToCamera: 1
-  AreaAnchor: 3
-  AreaOfEffect: {fileID: 11400000, guid: 78a0e0198ff5d4244a71f7dfa543c437, type: 2}
+  AlignToCamera: 0
+  AreaAnchor: 0
+  AreaOfEffect: {fileID: 0}
   Effects:
-    Lifetime:
-    - {fileID: 0}
+    Lifetime: []
     OnCharging: []
-    OnChannelling:
-    - {fileID: 11400000, guid: 3e8130e031f69824f9a2ae6581fa0ebc, type: 2}
+    OnChannelling: []
     OnCleanup: []
-    OnManifest:
-    - {fileID: 11400000, guid: ddca94c6fb2159d4caa732665b929f9f, type: 2}
+    OnManifest: []

@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: 83b65b9cc71a26c47b5bc115b07949e2
+timeCreated: 1508474333
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Base
+    100002: BaseWheel1
+    100004: BaseWheel2
+    100006: BaseWheel3
+    100008: BaseWheel4
+    100010: DoubleWindows1
+    100012: DoubleWindows2
+    100014: //RootNode
+    100016: LicencePlate1
+    100018: LicencePlate2
+    100020: LightsBig1
+    100022: LightsBig2
+    100024: LightsSmall1
+    100026: LightsSmall2
+    100028: WheelRims1
+    100030: WheelRims2
+    100032: WheelRims3
+    100034: WheelRims4
+    100036: Wheels1
+    100038: Wheels2
+    100040: Wheels3
+    100042: Wheels4
+    100044: WindowBack
+    100046: WindowsFront1
+    100048: WindowsFront2
+    100050: WindowSide1
+    100052: WindowSide2
+    100054: WindowSide3
+    100056: WindowSide4
+    400000: Base
+    400002: BaseWheel1
+    400004: BaseWheel2
+    400006: BaseWheel3
+    400008: BaseWheel4
+    400010: DoubleWindows1
+    400012: DoubleWindows2
+    400014: //RootNode
+    400016: LicencePlate1
+    400018: LicencePlate2
+    400020: LightsBig1
+    400022: LightsBig2
+    400024: LightsSmall1
+    400026: LightsSmall2
+    400028: WheelRims1
+    400030: WheelRims2
+    400032: WheelRims3
+    400034: WheelRims4
+    400036: Wheels1
+    400038: Wheels2
+    400040: Wheels3
+    400042: Wheels4
+    400044: WindowBack
+    400046: WindowsFront1
+    400048: WindowsFront2
+    400050: WindowSide1
+    400052: WindowSide2
+    400054: WindowSide3
+    400056: WindowSide4
+    2300000: Base
+    2300002: BaseWheel1
+    2300004: BaseWheel2
+    2300006: BaseWheel3
+    2300008: BaseWheel4
+    2300010: DoubleWindows1
+    2300012: DoubleWindows2
+    2300014: LicencePlate1
+    2300016: LicencePlate2
+    2300018: LightsBig1
+    2300020: LightsBig2
+    2300022: LightsSmall1
+    2300024: LightsSmall2
+    2300026: WheelRims1
+    2300028: WheelRims2
+    2300030: WheelRims3
+    2300032: WheelRims4
+    2300034: Wheels1
+    2300036: Wheels2
+    2300038: Wheels3
+    2300040: Wheels4
+    2300042: WindowBack
+    2300044: WindowsFront1
+    2300046: WindowsFront2
+    2300048: WindowSide1
+    2300050: WindowSide2
+    2300052: WindowSide3
+    2300054: WindowSide4
+    3300000: Base
+    3300002: BaseWheel1
+    3300004: BaseWheel2
+    3300006: BaseWheel3
+    3300008: BaseWheel4
+    3300010: DoubleWindows1
+    3300012: DoubleWindows2
+    3300014: LicencePlate1
+    3300016: LicencePlate2
+    3300018: LightsBig1
+    3300020: LightsBig2
+    3300022: LightsSmall1
+    3300024: LightsSmall2
+    3300026: WheelRims1
+    3300028: WheelRims2
+    3300030: WheelRims3
+    3300032: WheelRims4
+    3300034: Wheels1
+    3300036: Wheels2
+    3300038: Wheels3
+    3300040: Wheels4
+    3300042: WindowBack
+    3300044: WindowsFront1
+    3300046: WindowsFront2
+    3300048: WindowSide1
+    3300050: WindowSide2
+    3300052: WindowSide3
+    3300054: WindowSide4
+    4300000: Base
+    4300002: WindowsFront1
+    4300004: LightsBig2
+    4300006: WindowSide2
+    4300008: LightsSmall2
+    4300010: Wheels2
+    4300012: WheelRims2
+    4300014: BaseWheel4
+    4300016: WindowSide4
+    4300018: WindowSide1
+    4300020: DoubleWindows2
+    4300022: WindowSide3
+    4300024: DoubleWindows1
+    4300026: WindowBack
+    4300028: LicencePlate1
+    4300030: LicencePlate2
+    4300032: BaseWheel3
+    4300034: WheelRims1
+    4300036: Wheels1
+    4300038: WheelRims3
+    4300040: Wheels3
+    4300042: Wheels4
+    4300044: WheelRims4
+    4300046: BaseWheel1
+    4300048: BaseWheel2
+    4300050: LightsSmall1
+    4300052: LightsBig1
+    4300054: WindowsFront2
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 70
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
