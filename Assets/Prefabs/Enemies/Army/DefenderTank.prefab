@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52872e06b6a5a74fb59db86f91d7d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChaseDist: 15
+  ChaseDist: 25
   MinApproach: -1
   Target: {fileID: 0}
   NavPointCollection: {fileID: 0}
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletSpawn: {fileID: 4600654624149160}
   P: {fileID: 114601030989153186}
-  Projectile: {fileID: 1365751342155388, guid: fad373d9947e9c04589bb7089761b502, type: 2}
+  Projectile: {fileID: 1389926456137462, guid: 6a4fc5d98ba27ea438e92fe5c7be55d3, type: 2}
   PlayerIdletime: 0.2
   BulletSpeed: 40
   CannonFire: 50
