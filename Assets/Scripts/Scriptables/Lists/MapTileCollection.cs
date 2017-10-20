@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Scriptables {
 
-    [CreateAssetMenu(fileName ="MapTiles", menuName = "Kataklizma/Mapping/Tile Collection")]
+    [CreateAssetMenu(fileName ="MapTiles", menuName = "Kataklizma/Sets/Map Tile Collection")]
     public class MapTileCollection : ScriptableObject {
 
         [System.Serializable]

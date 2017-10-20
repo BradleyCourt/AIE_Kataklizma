@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropPod: {fileID: 1547286824228778, guid: 1f6b0208bafb68e46b163e957ffbb30c, type: 2}
   target: {fileID: 1794536252761560}
-  height: 400
+  height: -5.03
 --- !u!114 &114645980481151040
 MonoBehaviour:
   m_ObjectHideFlags: 1

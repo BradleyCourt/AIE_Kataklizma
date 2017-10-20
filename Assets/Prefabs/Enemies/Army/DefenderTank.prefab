@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 65799743259822910}
   - component: {fileID: 114700255968927568}
   - component: {fileID: 114714840220514194}
-  - component: {fileID: 114237091901308530}
   m_Layer: 0
   m_Name: DefenderTank
   m_TagString: Enemy
@@ -107,7 +106,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1902537319704556}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.005542159, z: -0, w: 0.9999847}
   m_LocalPosition: {x: -0, y: 0.6968383, z: 0}
   m_LocalScale: {x: 1, y: 1, z: -1}
   m_Children:
@@ -134,7 +133,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1170086981238480}
-  m_LocalRotation: {x: 0.11589068, y: 0, z: 0, w: 0.993262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.32725483, z: -0.49559984}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -316,18 +315,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114237091901308530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1798666976140320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25b9caf09da73094ea2bdde04ee0e68f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WarpNearestTo: {x: 0, y: 0, z: 0}
 --- !u!114 &114601030989153186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -357,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Traversor: {fileID: 4449193058262688}
   Elevator: {fileID: 4580078806503496}
-  P: {fileID: 0}
+  P: {fileID: 114601030989153186}
   Mode: 1
 --- !u!114 &114700255968927568
 MonoBehaviour:
@@ -430,7 +417,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
