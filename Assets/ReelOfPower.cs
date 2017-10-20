@@ -16,6 +16,7 @@ public class ReelOfPower : MonoBehaviour {
 
     public float positionInReel = 0;
 
+    public float MotionRate = 5;
     // Use this for initialization
     void Start ()
     {
@@ -70,10 +71,10 @@ public class ReelOfPower : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        positionInReel += Time.deltaTime;
+        positionInReel += MotionRate * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.K))
-            positionInReel -= 4*Time.deltaTime;
+        //if (Input.GetKey(KeyCode.K))
+        //    positionInReel -= 4*Time.deltaTime;
 
         int startIndex = (int)positionInReel;
 
