@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Scriptables;
+//using UnityEngine.EventSystems;
 
-public class ReelOfPower : MonoBehaviour {
+public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
+{
 
     public ScriptedAbility[] abilities;
     public ScriptedAbility[] reelAbilities;
@@ -19,18 +21,40 @@ public class ReelOfPower : MonoBehaviour {
     public float RateForStarting = 15f;
     float rateTurnDownTime;
     public float MotionRate = 0f;
+    public float currentRate;
 
     public bool stopped = true;
-    // Use this for initialization
+
+    /// <summary>
+    /// Is a powerUp avalible? How do we check it is?
+    /// </summary>
+
+    public bool powerUpAvalible;
+    public bool canPlayWheelOfPower = true;
+    public bool abilitySelectionRequired = false;
+    public Button playButton;
+
+    public static bool powerSelectedAndRestart = false;
+    bool recognizedGlobalMessage;
+    //This Michael is definatly struggling to communicate to the Identitys... OR know how to.
+
     public void Action()
     {
-        stopped = false;
-        MotionRate = RateForStarting;
-
-        ReelOfPower[] reels = transform.parent.GetComponentsInChildren<ReelOfPower>();
-        foreach (ReelOfPower reel in reels)
+        if (powerUpAvalible && canPlayWheelOfPower)
         {
-            reel.MotionRate = reel.RateForStarting;
+            if(playButton != null)
+            {
+                playButton.interactable = false;
+            }
+            canPlayWheelOfPower = false;
+            stopped = false;
+            MotionRate = RateForStarting;
+
+            ReelOfPower[] reels = transform.parent.GetComponentsInChildren<ReelOfPower>();
+            foreach (ReelOfPower reel in reels)
+            {
+                reel.MotionRate = reel.RateForStarting;
+            }
         }
     }
 
@@ -92,7 +116,7 @@ public class ReelOfPower : MonoBehaviour {
         //rateTurnDownTime = MotionRate;
         //rateTurnDownTime = (rateTurnDownTime) % RateForStarting;
         positionInReel += MotionRate * Time.deltaTime;
-
+        currentRate = MotionRate * Time.deltaTime;
         //if (Input.GetKey(KeyCode.K))
         //    positionInReel -= 4*Time.deltaTime;
 
@@ -110,13 +134,25 @@ public class ReelOfPower : MonoBehaviour {
         }
 
         Vector3 pos = transform.position;
-        if (MotionRate == 0)
+        float gentalRate = 1.0f;
+        if (/*MotionRate == 0 || */MotionRate < gentalRate)
         {
-            Debug.Log("Return Faction: " + fraction);
+            //Debug.Log("Return Faction: " + fraction);
             // keep moving slowly until we snap
             if (fraction > 0.01f)
-                positionInReel += 0.1f * Time.deltaTime;
+            {
+                currentRate = (MotionRate + gentalRate) * Time.deltaTime;
+                positionInReel += gentalRate * Time.deltaTime;
+            }
+            else if (currentRate == 0f)
+            {
+                stopped = true;
+            }
 
+            if(MotionRate > 0) //To allow it to stop according to rates.
+            {
+                MotionRate = 0;
+            }
             //if(pos.y > startPosition + 0.01f /*|| pos.y < startPosition - 0.1f*/ /*&& fraction < 1.1f*/)
             //{
                 //float customRate
