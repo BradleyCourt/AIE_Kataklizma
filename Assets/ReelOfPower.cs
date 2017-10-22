@@ -12,6 +12,9 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
     public ScriptedAbility[] reelAbilities;
 
     public Image[] images;
+    public static ReelOfPower[] acknowledged;
+
+    public int powerUpAbility_Index = 1;
 
     public float startPosition;
     public float offset;
@@ -28,6 +31,7 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
     /// <summary>
     /// Is a powerUp avalible? How do we check it is?
     /// </summary>
+    public int powerUpsAvalible = 1;
 
     public bool powerUpAvalible;
     public bool canPlayWheelOfPower = true;
@@ -35,8 +39,13 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
     public Button playButton;
 
     public static bool powerSelectedAndRestart = false;
-    bool recognizedGlobalMessage;
+    bool recognizedGlobalMessage = false;
     //This Michael is definatly struggling to communicate to the Identitys... OR know how to.
+
+    public void powerChosen()
+    {
+        powerUpsAvalible--;
+    }
 
     public void Action()
     {
@@ -97,8 +106,13 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
         images = new Image[tempImages.Length - 1];
         foreach (Image image in tempImages)
         {
+            //if (image.gameObject.GetComponent("PowerupIdentity") != null)
+            //{
+            //    clickableIcon = image.gameObject;//.GetComponent<PowerupIdentity>();
+            //}
             if (image.gameObject != gameObject)
             {
+
                 images[index] = image;
                 index++;
             }

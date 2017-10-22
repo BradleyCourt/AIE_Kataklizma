@@ -13,6 +13,7 @@ public class PowerupIdentity : MonoBehaviour, IPointerEnterHandler, IPointerExit
     Image image;
     public bool highlighted = false;
     public bool interactable = false;
+    public static bool lockButtons = false;
 
     public void Start()
     {
@@ -48,6 +49,7 @@ public class PowerupIdentity : MonoBehaviour, IPointerEnterHandler, IPointerExit
             if(Input.GetKey(KeyCode.Mouse0))
             {
                 image.sprite = clicked;
+                lockButtons = true;
             }
             else
             {
