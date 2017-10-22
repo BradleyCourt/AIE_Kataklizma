@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MapGen
 {
-
+    [System.Obsolete("Use MapMaker instead!")]
     public class MapGenerator : MonoBehaviour
     {
 

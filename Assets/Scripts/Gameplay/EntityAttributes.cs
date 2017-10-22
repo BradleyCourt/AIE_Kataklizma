@@ -62,10 +62,15 @@ namespace Gameplay {
 
         public void ApplyEffect(ValueType type, float value) {
             switch (type) {
+                case ValueType._NONE: break;
                 case ValueType.Damage:
-                    var effectiveDamage = Mathf.Max(value - this[ValueType.DamageReduction], 0);
-                    effectiveDamage = Mathf.Min(effectiveDamage, this[ValueType.Health]);
-                    this[ValueType.Health] -= effectiveDamage;
+                    this[ValueType.Health] -= Mathf.Clamp(value - this[ValueType.DamageReduction], 0, this[ValueType.Health]);
+                    break;
+                case ValueType.Health:
+                    this[ValueType.Health] += Mathf.Clamp(value, 0, this[ValueType.HealthMax] - this[ValueType.Health]);
+                    break;
+                default:
+                    Debug.LogWarning(gameObject.name + " - EntityAttributes::ApplyEffect(): Unknown value type: " + type.ToString());
                     break;
             }
         }

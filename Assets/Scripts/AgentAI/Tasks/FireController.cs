@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Gameplay;
+using System;
 
 public class FireController : MonoBehaviour
 {
@@ -12,13 +13,12 @@ public class FireController : MonoBehaviour
     public Patrol P;
     //public Transform Target;
     public GameObject Projectile;
-    public float PlayerIdletime = 0.2f;
+    public float PlayerIdletime = 3f;
     public float BulletSpeed = 3;
     public float CannonFire = 50f;
     public float MachineGun = 10f;
     public float Cooldown = 2f;
     private bool CanFire;
-    private bool shooting;
 
     public float MachineGunROF;
     public List<ValueCollection.Value> MachineGunEffects;
@@ -47,18 +47,21 @@ public class FireController : MonoBehaviour
         }
         else
         {
-            PlayerControl = P.Target.GetComponent<PlayerController>(); // TODO - setTatrget function
+            PlayerControl = P.Target.GetComponent<PlayerController>(); // TODO - setTarget function
             Vector3 targetDir = P.Target.position - transform.position; 
             float step = BulletSpeed * Time.deltaTime;
 
+            //if the player is idle longer than the allocated amount of time
             if (PlayerControl.IdleTime > PlayerIdletime)
             {
                 if (CanFire)
-                FireCannon();
+                    StartCoroutine(FireSequence());
             }
-         
+            else
             {
-                FireMachineGun(targetDir);
+                // if not firing the cannon, fire the machine gun
+                if(CanFire)
+                    FireMachineGun(targetDir);
             }
 
 
@@ -79,19 +82,19 @@ public class FireController : MonoBehaviour
         Debug.DrawRay(transform.position, targetDir, Color.red);
     }
 
-    void FireCannon()
-    {
-        //shoot the cannon ball;
-        CanFire = false;
-        StartCoroutine(this.DelayedAction(Cooldown,
-            () => {
-                CanFire = true;
-            }));
 
+    IEnumerator FireSequence()
+    {
+        CanFire = false;
 
         GameObject go = Instantiate(Projectile, BulletSpawn.position, BulletSpawn.rotation);
         go.GetComponent<Rigidbody>().velocity = BulletSpawn.forward * BulletSpeed;
+      
+        yield return new WaitForSeconds(Cooldown);
 
-        Destroy(go, 3);
+        // do other stuff...
+
+        CanFire = true;
     }
+
 }

@@ -21,4 +21,13 @@ public static partial class Extensions {
 
     }
 
+    public static T FindType<T>(this object[] lhs) where T : class {
+        T result = null;
+        foreach (var element in lhs) {
+            result = element as T;
+            if (result != null) break;
+        }
+
+        return result;
+    }
 }

@@ -45,8 +45,8 @@ namespace MapGen
 
             pos -= TileOriginOffset;
             
-            var c = (int)(Mathf.Floor(pos.x) / 5);
-            var r = (int)(Mathf.Floor(pos.z) / 5);
+            var c = (int)Mathf.Round(pos.x / 5);
+            var r = (int)Mathf.Round(pos.z / 5);
 
             return new int[] { c, r };
         }
@@ -65,7 +65,7 @@ namespace MapGen
                 Vector3 pos = preset.transform.position;
 
                 // snap rotation to a 90 degrees value, assuming all buildings are children of the grid
-                preset.transform.localEulerAngles = new Vector3(0, Mathf.Floor((int)(preset.transform.localEulerAngles.y / 90.0f)) * 90.0f, 0);
+                preset.transform.localEulerAngles = new Vector3(0, Mathf.Round((preset.transform.localEulerAngles.y / 90.0f)) * 90.0f, 0);
 
                 Vector3 oppositeCorner = pos + (preset.transform.right + preset.transform.forward) * (int)(preset.Size) * 5;
 
@@ -108,6 +108,8 @@ namespace MapGen
 
                     // find all the pieces that fit and store in a local list
                     var onesThatFit = new List<Scriptables.MapTileCollection.StructurePrefabs>();
+                    var slots = new Queue<int>();
+                    var totalSlots = 0;
 
                     foreach (var pre in SourceTiles.Structures) {
                         // does it fit?
@@ -130,13 +132,23 @@ namespace MapGen
                         
                         if (fits) {
                             onesThatFit.Add(pre);
+                            slots.Enqueue(pre.Tiles.Count);
+                            totalSlots += pre.Tiles.Count;
                         }
                     }
 
-                    int index = UnityEngine.Random.Range(0, onesThatFit.Count);
+                    
+                    int slot = UnityEngine.Random.Range(0, totalSlots);
+
+                    var index = 0;
+                    while (slots.Count > 0 && slot >= slots.Peek()) { // Roulette Selection
+                        slot -= slots.Dequeue();
+                        index++;
+                    }
+
                     var preset = onesThatFit[index];
 
-                    GameObject prefab = preset.GetRandomTile();
+                    GameObject prefab = preset.Tiles[slot];//.GetRandomTile();
 
                     // instansiates a prefab
                     GameObject go = Instantiate(prefab);

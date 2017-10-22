@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b23597cc2d58454aaba092fd3c5b551, type: 3}
+  m_Name: Ice Breath
+  m_EditorClassIdentifier: 
+  weight: 1
+  icon: {fileID: 21300000, guid: 492b9988436bd45049a9a6bc52ac8fb0, type: 3}
+  RequiredLevel: 0
+  Prerequisites: []
+  Precluders: []
+  ChargeTime: 0
+  ChannelTime: 0
+  CleanupTime: 0
+  ManifestCount: 0
+  CooldownTime: 0
+  CooldownStartsAfter: 2
+  ContinuousActivation: 0
+  ChargeCausesCleanup: 0
+  CanCancelCharge: 0
+  CanCancelChannel: 0
+  LockMovement: 0
+  LockRotation: 0
+  AlignToCamera: 0
+  AreaAnchor: 0
+  AreaOfEffect: {fileID: 0}
+  Effects:
+    Lifetime: []
+    OnCharging: []
+    OnChannelling: []
+    OnCleanup: []
+    OnManifest: []

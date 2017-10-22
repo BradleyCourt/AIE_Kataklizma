@@ -21,7 +21,6 @@ public enum ValueType {
     Range,
 }
 
-[System.Serializable]
 public enum ValueSubtype {
     Base,
     Modifier,
@@ -35,20 +34,11 @@ public enum DamageType {
 }
 
 
-[System.Serializable]
 public enum FilterType {
     WhitelistAny,
     WhitelistAll,
     BlacklistAny,
     BlacklistAll,
-}
-
-[System.Serializable]
-[System.Flags]
-public enum AbilityActivationTriggerType {
-    None = 0,
-    Charge = 1,
-    Channel = 2
 }
 
 public enum AbilityActivationState {
@@ -58,7 +48,11 @@ public enum AbilityActivationState {
     Cleanup,
 }
 
-[System.Serializable] 
+public enum AbilityActivationType {
+    Active,
+    Passive,    
+}
+
 public enum CharacterBindPoint {
     NONE,
     Forehead,
@@ -72,7 +66,6 @@ public enum CharacterBindPoint {
         
 }
 
-[System.Serializable]
 public enum MapTileType {
     NONE,
     Tile5m = 1,

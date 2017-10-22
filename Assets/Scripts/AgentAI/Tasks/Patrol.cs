@@ -18,7 +18,6 @@ public class Patrol : MonoBehaviour
     public float NavTimeout = 2;
     protected float NavRescanAfter;
 
-
     void Start()
     {
 
