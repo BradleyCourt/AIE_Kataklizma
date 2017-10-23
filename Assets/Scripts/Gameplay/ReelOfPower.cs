@@ -33,7 +33,7 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
     /// <summary>
     /// Is a powerUp avalible? How do we check it is?
     /// </summary>
-    public static int powerUpsAvalible = 5;
+    public static int powerUpsAvalible = 0;
 
     public bool powerUpAvalible;
     public bool canPlayWheelOfPower = true;
@@ -47,13 +47,27 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
 
     public static int selectionIdentity = 0;
 
+    public void levelUp()
+    {
+        powerUpsAvalible++;
+        if(!playButton.interactable)
+        {
+            playButton.interactable = true;
+        }
+    }
+
     public void powerChosen(int selection)
     {
+        powerUpsAvalible--;
         if(powerUpsAvalible >= 1)
         {
             playButton.interactable = true;
         }
-        powerUpsAvalible--;
+        else
+        {
+            playButton.interactable = false;
+        }
+
         foreach(PowerupIdentity PI in buttonsOfPower)
         {
             PI.enabled = false;
@@ -134,6 +148,17 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
 
                 images[index] = image;
                 index++;
+            }
+        }
+        if(playButton.interactable)
+        {
+            if(powerUpsAvalible >= 1)
+            {
+                playButton.interactable = true;
+            }
+            else
+            {
+                playButton.interactable = false;
             }
         }
         myButton = MyButtonOfPower.GetComponent<Button>();
