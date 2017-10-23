@@ -676,7 +676,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 307824546}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -996,7 +996,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 451824689}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -1230,7 +1230,7 @@ MonoBehaviour:
   powerUpAvalible: 0
   canPlayWheelOfPower: 1
   abilitySelectionRequired: 0
-  playButton: {fileID: 0}
+  playButton: {fileID: 2003023861}
   faction_OnePercentValue: 0
   factionPercent: 0
 --- !u!114 &655889922
@@ -1949,7 +1949,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1155216035}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -2611,7 +2611,7 @@ MonoBehaviour:
   powerUpAvalible: 0
   canPlayWheelOfPower: 1
   abilitySelectionRequired: 0
-  playButton: {fileID: 0}
+  playButton: {fileID: 2003023861}
   faction_OnePercentValue: 0
   factionPercent: 0
 --- !u!114 &1395264403
@@ -3499,7 +3499,7 @@ MonoBehaviour:
   powerUpAvalible: 0
   canPlayWheelOfPower: 1
   abilitySelectionRequired: 0
-  playButton: {fileID: 0}
+  playButton: {fileID: 2003023861}
   faction_OnePercentValue: 0
   factionPercent: 0
 --- !u!114 &1735679333
@@ -3682,7 +3682,7 @@ MonoBehaviour:
   powerUpAvalible: 0
   canPlayWheelOfPower: 1
   abilitySelectionRequired: 0
-  playButton: {fileID: 0}
+  playButton: {fileID: 2003023861}
   faction_OnePercentValue: 0
   factionPercent: 0
 --- !u!114 &1767981110
@@ -4286,7 +4286,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2066036052}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -4492,7 +4492,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2082694630}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 

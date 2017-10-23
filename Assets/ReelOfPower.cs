@@ -33,7 +33,7 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
     /// <summary>
     /// Is a powerUp avalible? How do we check it is?
     /// </summary>
-    public int powerUpsAvalible = 1;
+    public static int powerUpsAvalible = 5;
 
     public bool powerUpAvalible;
     public bool canPlayWheelOfPower = true;
@@ -49,6 +49,10 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
 
     public void powerChosen(int selection)
     {
+        if(powerUpsAvalible >= 1)
+        {
+            playButton.interactable = true;
+        }
         powerUpsAvalible--;
         foreach(PowerupIdentity PI in buttonsOfPower)
         {
@@ -60,12 +64,10 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
 
     public void Action()
     {
-        if (powerUpAvalible && canPlayWheelOfPower)
+        if (powerUpsAvalible >= 1/* && canPlayWheelOfPower*/)
         {
-            if(playButton != null)
-            {
-                playButton.interactable = false;
-            }
+            playButton.interactable = false;
+
             canPlayWheelOfPower = false;
             stopped = false;
             MotionRate = RateForStarting;
@@ -134,6 +136,7 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
                 index++;
             }
         }
+        myButton = MyButtonOfPower.GetComponent<Button>();
 
         startPosition = transform.position.y;
         offset = images[1].transform.position.y- images[0].transform.position.y;
@@ -141,9 +144,19 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
     }
     public float faction_OnePercentValue = 0;
     public float factionPercent = 0;
-	// Update is called once per frame
+    // Update is called once per frame
+
+    Button myButton;
 	void Update ()
     {
+        if(!playButton.interactable && stopped && powerUpsAvalible >= 1)
+        {
+            myButton.interactable = true;
+        }
+        else
+        {
+            myButton.interactable = false;
+        }
         //rateTurnDownTime = MotionRate;
         //rateTurnDownTime = (rateTurnDownTime) % RateForStarting;
         positionInReel += MotionRate * Time.deltaTime;
