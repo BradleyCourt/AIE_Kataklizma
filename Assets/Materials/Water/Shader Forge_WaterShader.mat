@@ -48,7 +48,7 @@ Material:
     - _Opacity: 0.137
     - _Reflection: 1
     - _WaterDepthBlendDistance: 4
-    - _WaterOpacity: 0.937
+    - _WaterOpacity: 1
     - _node_1223: 0
     m_Colors:
     - _DeepWaterColour: {r: 0.0688257, g: 0.47510955, b: 0.49264705, a: 1}
