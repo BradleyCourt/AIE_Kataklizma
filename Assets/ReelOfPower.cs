@@ -10,6 +10,8 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
 
     public ScriptedAbility[] abilities;
     public ScriptedAbility[] reelAbilities;
+    public PowerupIdentity MyButtonOfPower;
+    PowerupIdentity[] buttonsOfPower;
 
     public Image[] images;
     public static ReelOfPower[] acknowledged;
@@ -39,12 +41,21 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
     public Button playButton;
 
     public static bool powerSelectedAndRestart = false;
+    public static int detected;
     bool recognizedGlobalMessage = false;
     //This Michael is definatly struggling to communicate to the Identitys... OR know how to.
 
-    public void powerChosen()
+    public static int selectionIdentity = 0;
+
+    public void powerChosen(int selection)
     {
         powerUpsAvalible--;
+        foreach(PowerupIdentity PI in buttonsOfPower)
+        {
+            PI.enabled = false;
+        }
+
+        Debug.Log("PowerUp");
     }
 
     public void Action()
@@ -101,6 +112,12 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
         }
 
         Image[] tempImages= transform.GetComponentsInChildren<Image>();
+        buttonsOfPower = transform.parent.GetComponentsInChildren<PowerupIdentity>();
+        foreach(PowerupIdentity identityPI in buttonsOfPower)
+        {
+                identityPI.enabled = false;
+        }
+        //PowerupIdentity 
         // this list includes the reel, so copy everything else into an array
         index = 0;
         images = new Image[tempImages.Length - 1];
@@ -161,6 +178,7 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
             else if (currentRate == 0f)
             {
                 stopped = true;
+                //acknowledged[1] = gameObject.GetComponent<ReelOfPower>();
             }
 
             if(MotionRate > 0) //To allow it to stop according to rates.
@@ -190,6 +208,7 @@ public class ReelOfPower : MonoBehaviour/*, IPointerEnterHandler*/
         }
         else
         {
+            stopped = false;
             //slow it down over time
             MotionRate *= 0.98f;
             if (MotionRate < 0.1f)

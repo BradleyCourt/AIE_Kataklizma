@@ -600,8 +600,9 @@ GameObject:
   - component: {fileID: 307824549}
   - component: {fileID: 307824548}
   - component: {fileID: 307824550}
+  - component: {fileID: 307824551}
   m_Layer: 0
-  m_Name: ImageLocation (2)
+  m_Name: PowerSelection_Boxes(2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,11 +670,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d76948e6e39ef40b67b0d061f6b1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlight: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c, type: 3}
-  Dissabled: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
-  clicked: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
-  highlighted: 0
-  interactable: 1
+--- !u!114 &307824551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 307824546}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 307824548}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 655889921}
+        m_MethodName: powerChosen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &347177761
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,8 +920,9 @@ GameObject:
   - component: {fileID: 451824692}
   - component: {fileID: 451824691}
   - component: {fileID: 451824693}
+  - component: {fileID: 451824694}
   m_Layer: 0
-  m_Name: ImageLocation (1)
+  m_Name: PowerSelection_Boxes(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -940,11 +990,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d76948e6e39ef40b67b0d061f6b1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlight: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c, type: 3}
-  Dissabled: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
-  clicked: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
-  highlighted: 0
-  interactable: 1
+--- !u!114 &451824694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 451824689}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 451824691}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1767981109}
+        m_MethodName: powerChosen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &496790252
 Prefab:
   m_ObjectHideFlags: 0
@@ -1072,7 +1170,7 @@ GameObject:
   - component: {fileID: 655889922}
   - component: {fileID: 655889921}
   m_Layer: 0
-  m_Name: ReelOfPower_Mutator
+  m_Name: ReelOfPower_Mutator(2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1118,7 +1216,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca0a05aa5d065874d993bcf141f00b57, type: 2}
   - {fileID: 11400000, guid: 847f8bd5f818ad94faa1816bc4657f87, type: 2}
   reelAbilities: []
+  MyButtonOfPower: {fileID: 307824550}
   images: []
+  powerUpAbility_Index: 1
   startPosition: 0
   offset: 0
   positionInReel: 0
@@ -1126,6 +1226,7 @@ MonoBehaviour:
   MotionRate: 0
   currentRate: 0
   stopped: 1
+  powerUpsAvalible: 1
   powerUpAvalible: 0
   canPlayWheelOfPower: 1
   abilitySelectionRequired: 0
@@ -1772,8 +1873,9 @@ GameObject:
   - component: {fileID: 1155216038}
   - component: {fileID: 1155216037}
   - component: {fileID: 1155216039}
+  - component: {fileID: 1155216040}
   m_Layer: 0
-  m_Name: ImageLocation
+  m_Name: PowerSelection_Boxes(0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1841,11 +1943,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d76948e6e39ef40b67b0d061f6b1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlight: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c, type: 3}
-  Dissabled: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
-  clicked: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
-  highlighted: 0
-  interactable: 1
+--- !u!114 &1155216040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1155216035}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1155216037}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1735679332}
+        m_MethodName: powerChosen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1184086460
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,7 +2551,7 @@ GameObject:
   - component: {fileID: 1395264403}
   - component: {fileID: 1395264402}
   m_Layer: 0
-  m_Name: ReelOfPower_Mutator
+  m_Name: ReelOfPower_Mutator(3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2447,7 +2597,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca0a05aa5d065874d993bcf141f00b57, type: 2}
   - {fileID: 11400000, guid: 847f8bd5f818ad94faa1816bc4657f87, type: 2}
   reelAbilities: []
+  MyButtonOfPower: {fileID: 2082694634}
   images: []
+  powerUpAbility_Index: 1
   startPosition: 0
   offset: 0
   positionInReel: 0
@@ -2455,6 +2607,7 @@ MonoBehaviour:
   MotionRate: 0
   currentRate: 0
   stopped: 1
+  powerUpsAvalible: 1
   powerUpAvalible: 0
   canPlayWheelOfPower: 1
   abilitySelectionRequired: 0
@@ -2532,7 +2685,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca0a05aa5d065874d993bcf141f00b57, type: 2}
   - {fileID: 11400000, guid: 847f8bd5f818ad94faa1816bc4657f87, type: 2}
   reelAbilities: []
+  MyButtonOfPower: {fileID: 2066036056}
   images: []
+  powerUpAbility_Index: 1
   startPosition: 0
   offset: 0
   positionInReel: 0
@@ -2540,6 +2695,7 @@ MonoBehaviour:
   MotionRate: 0
   currentRate: 0
   stopped: 0
+  powerUpsAvalible: 1
   powerUpAvalible: 1
   canPlayWheelOfPower: 1
   abilitySelectionRequired: 0
@@ -3283,7 +3439,7 @@ GameObject:
   - component: {fileID: 1735679333}
   - component: {fileID: 1735679332}
   m_Layer: 0
-  m_Name: ReelOfPower_Mutator
+  m_Name: ReelOfPower_Mutator(0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3329,7 +3485,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca0a05aa5d065874d993bcf141f00b57, type: 2}
   - {fileID: 11400000, guid: 847f8bd5f818ad94faa1816bc4657f87, type: 2}
   reelAbilities: []
+  MyButtonOfPower: {fileID: 1155216039}
   images: []
+  powerUpAbility_Index: 1
   startPosition: 0
   offset: 0
   positionInReel: 0
@@ -3337,6 +3495,7 @@ MonoBehaviour:
   MotionRate: 0
   currentRate: 0
   stopped: 0
+  powerUpsAvalible: 1
   powerUpAvalible: 0
   canPlayWheelOfPower: 1
   abilitySelectionRequired: 0
@@ -3463,7 +3622,7 @@ GameObject:
   - component: {fileID: 1767981110}
   - component: {fileID: 1767981109}
   m_Layer: 0
-  m_Name: ReelOfPower_Mutator
+  m_Name: ReelOfPower_Mutator(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3509,7 +3668,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca0a05aa5d065874d993bcf141f00b57, type: 2}
   - {fileID: 11400000, guid: 847f8bd5f818ad94faa1816bc4657f87, type: 2}
   reelAbilities: []
+  MyButtonOfPower: {fileID: 451824693}
   images: []
+  powerUpAbility_Index: 1
   startPosition: 0
   offset: 0
   positionInReel: 0
@@ -3517,6 +3678,7 @@ MonoBehaviour:
   MotionRate: 0
   currentRate: 0
   stopped: 1
+  powerUpsAvalible: 1
   powerUpAvalible: 0
   canPlayWheelOfPower: 1
   abilitySelectionRequired: 0
@@ -4048,8 +4210,9 @@ GameObject:
   - component: {fileID: 2066036055}
   - component: {fileID: 2066036054}
   - component: {fileID: 2066036056}
+  - component: {fileID: 2066036057}
   m_Layer: 0
-  m_Name: ImageLocation (4)
+  m_Name: PowerSelection_Boxes(4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4117,11 +4280,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d76948e6e39ef40b67b0d061f6b1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlight: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c, type: 3}
-  Dissabled: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
-  clicked: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
-  highlighted: 0
-  interactable: 1
+--- !u!114 &2066036057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2066036052}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2066036054}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1406348395}
+        m_MethodName: powerChosen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &2066571866
 GameObject:
   m_ObjectHideFlags: 0
@@ -4205,8 +4416,9 @@ GameObject:
   - component: {fileID: 2082694633}
   - component: {fileID: 2082694632}
   - component: {fileID: 2082694634}
+  - component: {fileID: 2082694635}
   m_Layer: 0
-  m_Name: ImageLocation (3)
+  m_Name: PowerSelection_Boxes(3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4274,11 +4486,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d76948e6e39ef40b67b0d061f6b1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlight: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c, type: 3}
-  Dissabled: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
-  clicked: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
-  highlighted: 0
-  interactable: 1
+--- !u!114 &2082694635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2082694630}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: 0483be61d04dbc849bcf5c729821033c,
+      type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: b996e9a0f1e8680449be0e7c1e278350, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 197e925e929e68943a4f85d22d8774ea, type: 3}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2082694632}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1395264402}
+        m_MethodName: powerChosen
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &2112632104
 GameObject:
   m_ObjectHideFlags: 0
