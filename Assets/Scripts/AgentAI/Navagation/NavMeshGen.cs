@@ -7,9 +7,11 @@ using UnityEngine.AI;
 public class NavMeshGen : MonoBehaviour {
 
     public Vector3 Size;
+    public static List<NavMeshDataInstance> instances =  new List<NavMeshDataInstance>();
 
     void Start()
     {
+       
         BuildNavMesh(transform, new Bounds(transform.position, Size));
     }
 
@@ -25,7 +27,15 @@ public class NavMeshGen : MonoBehaviour {
         
         // Build the actual navmesh
         NavMeshData data = NavMeshBuilder.BuildNavMeshData(settings, results, bounds, Vector3.zero, Quaternion.identity);
-        NavMesh.AddNavMeshData(data);
+        instances.Add(NavMesh.AddNavMeshData(data));
+        
         //success = NavMeshBuilder.UpdateNavMeshData(data, settings, results, bounds);
+    }
+    public static void ClearNavMesh()
+    {
+        foreach(var instance in instances)
+            NavMesh.RemoveNavMeshData(instance);
+
+        instances.Clear();
     }
 }

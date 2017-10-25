@@ -107,7 +107,10 @@ namespace Gameplay {
         /// </summary>
         void Update() {
             if (Input.GetKey(KeyCode.Escape))
+            {
+                NavMeshGen.ClearNavMesh();    
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Title_Menu");
+            }
 
             UpdateInputState();
                         
