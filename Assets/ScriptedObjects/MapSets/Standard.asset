@@ -34,23 +34,26 @@ MonoBehaviour:
   - Size: 1
     Tiles:
     - {fileID: 1034614153185756, guid: a6b013e5ee9a4074b9a499e149998467, type: 2}
-    - {fileID: 1954407674272094, guid: 2b90dadfe0a8cf2489d8d9b4c790ed82, type: 2}
     - {fileID: 1046029153478328, guid: 13a96316b5188ca44b3d553eba9ee16c, type: 2}
   - Size: 2
     Tiles:
     - {fileID: 1932820765753484, guid: d20b1552a71f1d34e904c15789ccdfa4, type: 2}
     - {fileID: 1341848804607808, guid: c4c3dd0c7a468b4488798b62369c0f60, type: 2}
     - {fileID: 1797576069286800, guid: 7705228be38c7a64ea13f410f7baf8b4, type: 2}
-    - {fileID: 1846581146321834, guid: 85d4008cb613d3347a5686b3f94caded, type: 2}
     - {fileID: 1452910394916176, guid: 632eaeeb5b3146445bb2155aac4edb65, type: 2}
     - {fileID: 1872029372634516, guid: 8c7199f345fe9c042b65f9728eb2fc0c, type: 2}
   - Size: 4
     Tiles:
     - {fileID: 1251098927418836, guid: a08e6679bd79c78408c6c0e0f411760c, type: 2}
     - {fileID: 1114823761554102, guid: cbefd89b6d9382048bb9324ae8767ce5, type: 2}
-    - {fileID: 1428786979670910, guid: 41365dd9a1cd6ec4a9de825c914d17fd, type: 2}
   - Size: 6
     Tiles:
     - {fileID: 1097645406115588, guid: 8ebdc5f566901484194e4757fc086847, type: 2}
     - {fileID: 1878541635614608, guid: 936db8a55b4bd434886eb6decbc2a92d, type: 2}
-    - {fileID: 1254422790232632, guid: 82041c10a4a56fb46a9fddab636efa49, type: 2}
+    - {fileID: 1968215083114586, guid: d9371c7f7fbdbe84fa8b780a712a93f5, type: 2}
+  - Size: 8
+    Tiles:
+    - {fileID: 1226661465270384, guid: 7170eb3096631954b82df80a959cdd1b, type: 2}
+    - {fileID: 1645457123841460, guid: 053f9adef67b57a4b94065c5d1048efd, type: 2}
+    - {fileID: 1320205515849504, guid: 9e6c3ea4ac944be42bf734b47c898c4c, type: 2}
+    - {fileID: 1997265242942306, guid: 82ad9df690242894b8e762cbcf7c2068, type: 2}
