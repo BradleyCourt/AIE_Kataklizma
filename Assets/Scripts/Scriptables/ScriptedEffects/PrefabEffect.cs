@@ -32,7 +32,8 @@ namespace Scriptables {
                 }
                 else {
                     if ( Instance != null && Instance ) {
-                        Debug.LogError(Owner.gameObject.name + " - PrefabEffect::Apply(): Tried to apply but instance already active");
+                        Debug.LogWarning(Owner.gameObject.name + " - PrefabEffect::Apply(): Tried to apply but instance already active");
+                        return;
                     }
 
                     Instance = Instantiate(Prefab, OwnerOrigins[Anchor].position, Owner.rotation, OwnerOrigins[Anchor]);
