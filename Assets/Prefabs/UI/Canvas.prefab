@@ -153,6 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224747262343162406}
   - component: {fileID: 114793564233824846}
+  - component: {fileID: 114348946063464596}
   m_Layer: 5
   m_Name: XPBar
   m_TagString: Untagged
@@ -187,6 +188,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114348946063464596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909443905986960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3e767fd15d3384199e28673090e1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttributeSource: {fileID: 0}
+  ValueSource: 4
+  ValueMaxSource: 5
+  MinFollowsMax: 1
 --- !u!114 &114519632017629500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -552,7 +568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: 237}
+  m_AnchoredPosition: {x: -244, y: 237}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224654040234785762
@@ -608,7 +624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 396.3, y: 237}
+  m_AnchoredPosition: {x: 267, y: -227}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224896830201474036

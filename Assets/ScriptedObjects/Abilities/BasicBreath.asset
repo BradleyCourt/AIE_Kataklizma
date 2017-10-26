@@ -25,7 +25,7 @@ MonoBehaviour:
   ContinuousActivation: 0
   ChargeCausesCleanup: 0
   CanCancelCharge: 0
-  CanCancelChannel: 0
+  CanCancelChannel: 1
   LockMovement: 1
   LockRotation: 0
   AlignToCamera: 1
