@@ -601,6 +601,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 607803074}
+    - target: {fileID: 1835734282506530, guid: bf7ef5baec46c75488b97f820356e6fb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf7ef5baec46c75488b97f820356e6fb, type: 2}
   m_IsPrefabParent: 0
@@ -1791,7 +1795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84a28c849f6a074bad439077944b185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SourceTiles: {fileID: 11400000, guid: c7fedfddc8662604cbd80c19cfb8d784, type: 2}
+  SourceTiles: {fileID: 11400000, guid: 72c53fb77ac70ae4fad593ae400e815d, type: 2}
   Size: {x: 500, y: 500}
   MakeRoads: 1
   MakeRoadNavmesh: 1
@@ -2380,17 +2384,6 @@ Prefab:
     - target: {fileID: 1798666976140320, guid: 1eee7d4f52ab0ea4ab382dcf02b40389, type: 2}
       propertyPath: m_Name
       value: DefenderTank (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114700255968927568, guid: 1eee7d4f52ab0ea4ab382dcf02b40389,
-        type: 2}
-      propertyPath: Projectile
-      value: 
-      objectReference: {fileID: 1922908098057158, guid: d8b077ed9ff11c94696ec8ee41b31ae7,
-        type: 2}
-    - target: {fileID: 114700255968927568, guid: 1eee7d4f52ab0ea4ab382dcf02b40389,
-        type: 2}
-      propertyPath: BulletSpeed
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1eee7d4f52ab0ea4ab382dcf02b40389, type: 2}
