@@ -29,20 +29,29 @@ namespace Scriptables {
         /// <summary>
         /// Discover all Colliders within zone
         /// </summary>
-        /// <param name="origin"></param>
+        /// <param name="trs"></param>
         /// <param name="layerMask">Default: Ignore "PlayerAvater" layers</param>
         /// <returns></returns>
-        public override Collider[] OverlapZone(Vector3 position, Quaternion rotation, int layerMask = ~8) {
+        public override Collider[] OverlapZone(Matrix4x4 trs, int layerMask = ~8) {
+
+
+            // TODO: Add scaling
+            if (!ScaleWithAnchor) trs = Matrix4x4.TRS(trs.GetPosition(), trs.GetRotation(), Vector3.one);
             
-            var range = Physics.OverlapSphere(position + Centre, PrimeRadius, layerMask);
+            var position = trs.MultiplyPoint(Centre);
+            var rotation = trs.GetRotation();
+            var scale = ScaleWithAnchor ? trs.GetScale() : Vector3.one;
+
+            var inRange = Physics.OverlapSphere(position, PrimeRadius, layerMask);
 
             var results = new List<Collider>();
 
-            foreach (var collider in range) {
+            foreach (var collider in inRange) {
                 if (collider == null) continue;
                 if (!CanAffectTags.Contains(collider.gameObject.tag)) continue;
 
                 var worldOffset = collider.transform.position - position;
+
                 //var localOffset = origin.transform.InverseTransformVector(worldOffset);
                 var localOffset = Quaternion.Inverse(rotation) * worldOffset;
 
@@ -50,6 +59,7 @@ namespace Scriptables {
                 // (x/a)^2 + (y/b)^2 + (z/c)^2 <= 1
 
                 var scaledOffset = Vector3.Scale(localOffset, Ratios);
+                
 
                 if (scaledOffset.magnitude > 1) continue;
 

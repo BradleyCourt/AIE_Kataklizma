@@ -20,27 +20,30 @@ namespace Scriptables {
         /// <param name="origin"></param>
         /// <param name="layerMask">Default: Ignore "PlayerAvater" layers</param>
         /// <returns></returns>
-        public override Collider[] OverlapZone(Vector3 position, Quaternion rotation, int layerMask = ~8) {
+        public override Collider[] OverlapZone(Matrix4x4 trs, int layerMask = ~8) {
+            
+            var position = trs.MultiplyPoint(Bounds.center);
+            var rotation = trs.GetRotation();
+            var scale = trs.GetScale();
 
-            var centre = position + (rotation * Bounds.center);
-            var size = Bounds.extents;
-
+            var extents = Vector3.Scale(Bounds.extents, scale);
+            
 
 #if DEBUG
-            var prefab = Instantiate(Resources.Load<GameObject>("CuboidZonePrefab"), centre, rotation);
+            var prefab = Instantiate(Resources.Load<GameObject>("CuboidZonePrefab"), position, rotation);
             if (prefab != null) {
                 // Render Zone
-                //var go = Instantiate(prefab, centre, origin.rotation);
-                prefab.transform.localScale = 2 * size;
+                prefab.transform.localScale = extents;
 
                 Destroy(prefab, 0.8f);
             }
 #endif
+            
 
-
-
-            return Physics.OverlapBox(centre, Bounds.extents, rotation, layerMask).Where(m => CanAffectTags.Contains( m.tag )).ToArray();
+            return Physics.OverlapBox(position, extents/2, rotation, layerMask).Where(m => CanAffectTags.Contains( m.tag )).ToArray();
             
         }
+
+
     }
 }

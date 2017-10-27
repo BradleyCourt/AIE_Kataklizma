@@ -11,14 +11,14 @@ namespace Scriptables {
         [Tooltip("List of Tags that this ability will (attempt to) affect")]
         public List<string> CanAffectTags = new List<string> { "Building", "Enemy" };
 
+        public bool ScaleWithAnchor;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="position"></param>
-        /// <param name="rotation"></param>
+        /// <param name="trs">Translate, Rotate, Scale matrix</param>
         /// <param name="layerMask"></param>
         /// <returns></returns>
-        public abstract Collider[] OverlapZone(Vector3 position, Quaternion rotation, int layerMask = ~8);
+        public abstract Collider[] OverlapZone(Matrix4x4 trs, int layerMask = ~8);
     }
 }

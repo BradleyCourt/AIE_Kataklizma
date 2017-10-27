@@ -270,7 +270,7 @@ namespace Scriptables {
                 if (origin == null)
                     origin = Owner;
 
-                data.Hits = AreaOfEffect.OverlapZone(origin.position, Owner.rotation);
+                data.Hits = AreaOfEffect.OverlapZone(Matrix4x4.TRS(origin.position, Owner.rotation, origin.lossyScale));
             }
 
             foreach (var effect in effects) {
