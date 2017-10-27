@@ -19,6 +19,10 @@ public enum ValueType {
     Damage,
     DamageReduction,
     Range,
+    ContactDamage,
+    ContactDamageBonus,
+    WalkSpeed,
+    DashSpeed,
 }
 
 public enum ValueSubtype {

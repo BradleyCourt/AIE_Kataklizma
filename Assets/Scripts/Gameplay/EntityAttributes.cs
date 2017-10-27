@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace Gameplay {
 
@@ -54,25 +54,68 @@ namespace Gameplay {
             throw new System.NotImplementedException(gameObject.name + " - EntityAttributes::RemoveHealth(): This call is deprecated, use ApplyEffect instead");
         }
 
-        public void ApplyEffects( IEnumerable<ValueCollection.Value> effects )
-        {
-            foreach (var effect in effects)
-                ApplyEffect(effect.Type, effect.Derived);
+
+
+        public List<ValueCollection.Value> GetEffects(List<ValueType> types) {
+            var results = new List<ValueCollection.Value>();
+            var typesFound = new List<ValueType>();
+
+            foreach (var value in _Attributes._Values) {
+                if (types.Contains(value.Type)) {
+                    results.Add(value);
+                    typesFound.Add(value.Type);
+                }
+            }
+
+#if DEBUG
+            var excepted = types.Except(typesFound).ToList();
+            if (excepted.Count != 0)
+                Debug.LogWarning(gameObject.name + " - EntityAttributes.GetEffects(): Unable to find all requested types [" + string.Join(",", excepted.Select(m => m.ToString()).ToArray()) + "]");
+
+#endif
+            return results;
         }
 
-        public void ApplyEffect(ValueType type, float value) {
-            switch (type) {
+
+        #region " Apply Effects "
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="effects"></param>
+        public void ApplyEffects(IEnumerable<ValueCollection.Value> effects) {
+            foreach (var effect in effects)
+                ApplyEffect(effect);
+        }
+
+        public void ApplyEffect(ValueCollection.Value value) {
+
+            switch (value.Type) {
                 case ValueType._NONE: break;
                 case ValueType.Damage:
-                    this[ValueType.Health] -= Mathf.Clamp(value - this[ValueType.DamageReduction], 0, this[ValueType.Health]);
+                    this[ValueType.Health] -= Mathf.Clamp(value.Derived - this[ValueType.DamageReduction], 0, this[ValueType.Health]);
                     break;
                 case ValueType.Health:
-                    this[ValueType.Health] += Mathf.Clamp(value, 0, this[ValueType.HealthMax] - this[ValueType.Health]);
+                    this[ValueType.Health] += Mathf.Clamp(value.Derived, 0, this[ValueType.HealthMax] - this[ValueType.Health]);
+                    break;
+                case ValueType.ContactDamage:
+                    ApplyEffect(ValueType.Damage, value.Derived);
+                    break;
+                case ValueType.ContactDamageBonus:
+                    this[ValueType.ContactDamage, ValueSubtype.Base] += value.Base;
+                    this[ValueType.ContactDamage, ValueSubtype.Modifier] += value.Modifier;
                     break;
                 default:
-                    Debug.LogWarning(gameObject.name + " - EntityAttributes::ApplyEffect(): Unknown value type: " + type.ToString());
+                    Debug.LogWarning(gameObject.name + " - EntityAttributes::ApplyEffect(): Unknown value type: " + value.Type.ToString());
                     break;
             }
+
         }
+        
+
+        public void ApplyEffect(ValueType type, float value) {
+            ApplyEffect(new ValueCollection.Value { Type = type, Base = value });
+        }
+
+        #endregion
     }
 }
