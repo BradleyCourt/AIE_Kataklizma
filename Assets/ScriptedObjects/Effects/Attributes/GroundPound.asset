@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b23597cc2d58454aaba092fd3c5b551, type: 3}
-  m_Name: BasicMelee
+  m_Name: GroundPound
   m_EditorClassIdentifier: 
   weight: 0
   icon: {fileID: 0}
@@ -17,9 +17,9 @@ MonoBehaviour:
   Prerequisites: []
   Precluders: []
   ChargeTime: 0
-  ChannelTime: 1
-  CleanupTime: 0.2
-  ManifestCount: 1
+  ChannelTime: 0
+  CleanupTime: 0
+  ManifestCount: 0
   CooldownTime: 0
   CooldownStartsAfter: 2
   ContinuousActivation: 0
@@ -29,13 +29,11 @@ MonoBehaviour:
   LockMovement: 0
   LockRotation: 0
   AlignToCamera: 0
-  AreaAnchor: 3
-  AreaOfEffect: {fileID: 11400000, guid: 3e37b07c88bef5a4588fb89041a75b49, type: 2}
+  AreaAnchor: 0
+  AreaOfEffect: {fileID: 0}
   Effects:
     Lifetime: []
     OnCharging: []
-    OnChannelling:
-    - {fileID: 11400000, guid: 456b58185487a1f4cb22c899ea2ac1c4, type: 2}
+    OnChannelling: []
     OnCleanup: []
-    OnManifest:
-    - {fileID: 11400000, guid: ddca94c6fb2159d4caa732665b929f9f, type: 2}
+    OnManifest: []

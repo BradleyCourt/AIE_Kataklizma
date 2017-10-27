@@ -17,16 +17,16 @@ MonoBehaviour:
   Prerequisites: []
   Precluders: []
   ChargeTime: 0
-  ChannelTime: 0
-  CleanupTime: 0
-  ManifestCount: 0
+  ChannelTime: 0.05
+  CleanupTime: 0.2
+  ManifestCount: 1
   CooldownTime: 0
-  CooldownStartsAfter: 2
+  CooldownStartsAfter: 3
   ContinuousActivation: 0
   ChargeCausesCleanup: 0
   CanCancelCharge: 0
-  CanCancelChannel: 0
-  LockMovement: 0
+  CanCancelChannel: 1
+  LockMovement: 1
   LockRotation: 0
   AlignToCamera: 0
   AreaAnchor: 0
@@ -34,6 +34,7 @@ MonoBehaviour:
   Effects:
     Lifetime: []
     OnCharging: []
-    OnChannelling: []
+    OnChannelling:
+    - {fileID: 11400000, guid: dee7ae76fd686d5478cfe67ce96329f1, type: 2}
     OnCleanup: []
     OnManifest: []

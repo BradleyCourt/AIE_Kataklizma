@@ -51,6 +51,7 @@ MonoBehaviour:
     - {fileID: 1097645406115588, guid: 8ebdc5f566901484194e4757fc086847, type: 2}
     - {fileID: 1878541635614608, guid: 936db8a55b4bd434886eb6decbc2a92d, type: 2}
     - {fileID: 1968215083114586, guid: d9371c7f7fbdbe84fa8b780a712a93f5, type: 2}
+    - {fileID: 1256312310763154, guid: 0a356d325dfbb3240bfe9bd023493736, type: 2}
   - Size: 8
     Tiles:
     - {fileID: 1226661465270384, guid: 7170eb3096631954b82df80a959cdd1b, type: 2}

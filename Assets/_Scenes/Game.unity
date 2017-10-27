@@ -1371,7 +1371,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4609564169073696, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.052357975
+      value: -0.052357886
       objectReference: {fileID: 0}
     - target: {fileID: 4609564169073696, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
       propertyPath: m_LocalRotation.w
@@ -1382,6 +1382,23 @@ Prefab:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114296767256596916, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: Abilities.Array.data[1].Ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 1957387a49a559e49864a82b20ffcd40,
+        type: 2}
+    - target: {fileID: 114296767256596916, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: Abilities.Array.data[0].Ability
+      value: 
+      objectReference: {fileID: 11400000, guid: b72be1553b157554ba4da20fb38f3342,
+        type: 2}
+    - target: {fileID: 137102083026757756, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0fe256c1102125f4babd8459f5ef209f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
   m_IsPrefabParent: 0

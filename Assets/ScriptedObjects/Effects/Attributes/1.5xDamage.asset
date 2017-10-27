@@ -13,4 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AffectsSelf: 0
   AffectsOthers: 1
-  Effects: []
+  Effects:
+  - Type: 12
+    Base: 15
+    Modifier: 0.5

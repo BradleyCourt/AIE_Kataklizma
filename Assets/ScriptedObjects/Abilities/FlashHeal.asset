@@ -17,10 +17,10 @@ MonoBehaviour:
   Prerequisites: []
   Precluders: []
   ChargeTime: 0
-  ChannelTime: 0
-  CleanupTime: 0
-  ManifestCount: 0
-  CooldownTime: 0
+  ChannelTime: 1
+  CleanupTime: 0.2
+  ManifestCount: 1
+  CooldownTime: 5
   CooldownStartsAfter: 2
   ContinuousActivation: 0
   ChargeCausesCleanup: 0
@@ -36,4 +36,5 @@ MonoBehaviour:
     OnCharging: []
     OnChannelling: []
     OnCleanup: []
-    OnManifest: []
+    OnManifest:
+    - {fileID: 11400000, guid: cf0ac2886d8aaac46adf432217a89660, type: 2}

@@ -11,6 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc2d5bf42de1ad49abeacdfedf425fb, type: 3}
   m_Name: ChargedHeal
   m_EditorClassIdentifier: 
-  AffectsSelf: 0
-  AffectsOthers: 1
-  Effects: []
+  AffectsSelf: 1
+  AffectsOthers: 0
+  Effects:
+  - Type: 1
+    Base: 1
+    Modifier: 0
