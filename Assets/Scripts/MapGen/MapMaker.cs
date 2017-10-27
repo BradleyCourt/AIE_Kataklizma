@@ -420,6 +420,10 @@ namespace MapGen
                 NavMeshGen.BuildNavMesh(Skyway, new Bounds(Skyway.transform.position, new Vector3(5 * Columns, 1, 5 * Rows)));
             }
         }
+        void OnDestroy()
+        {
+            NavMeshGen.ClearNavMesh();
+        }
     }
 }
 

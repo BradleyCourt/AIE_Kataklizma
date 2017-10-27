@@ -14,6 +14,7 @@ MonoBehaviour:
   CanAffectTags:
   - Enemy
   - Building
+  ScaleWithAnchor: 1
   Bounds:
     m_Center: {x: 0, y: 0, z: 6}
     m_Extent: {x: 1, y: 1, z: 12}

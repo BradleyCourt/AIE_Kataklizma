@@ -36,6 +36,7 @@ public class NavMeshGen : MonoBehaviour {
         foreach(var instance in instances)
             NavMesh.RemoveNavMeshData(instance);
 
+        
         instances.Clear();
     }
 }
