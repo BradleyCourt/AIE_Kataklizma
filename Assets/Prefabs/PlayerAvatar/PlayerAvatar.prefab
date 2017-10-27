@@ -1268,7 +1268,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612280163498898}
-  m_LocalRotation: {x: -0.7010619, y: 0.71087474, z: -0.05235796, w: 0.020691605}
+  m_LocalRotation: {x: -0.7010619, y: 0.71087474, z: -0.052357946, w: 0.020691605}
   m_LocalPosition: {x: -0.002800439, y: 2.1940196, z: 0.026612196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1560,6 +1560,9 @@ MonoBehaviour:
     - Type: 6
       Base: 1
       Modifier: 0
+    - Type: 17
+      Base: 20
+      Modifier: 0
 --- !u!114 &114296767256596916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1571,9 +1574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4afae1783198c47bd53de0dd866763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 20
-  CuboidZonePrefab: {fileID: 1384093351775032, guid: aa1c794c57d8c8f47b00fb2ab345801f,
-    type: 2}
   Abilities:
   - TriggerName: Fire1
     Ability: {fileID: 11400000, guid: 2f47afb9ca7452d4bade4e90d0e853e6, type: 2}
@@ -1623,10 +1623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb86767d281be4438208908a75e66f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effects:
-  - Type: 12
-    Base: 2
-    Modifier: 0
+  CanAffectTags:
+  - Enemy
+  - Building
+  EffectsToApply: 0f000000
 --- !u!114 &114749656060951336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1638,7 +1638,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df017b7feb007241b2b15ecb9a66ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XpThresholds: 64000000f4010000d0070000
+  Levels:
+  - XpThreshold: 100
+    Effects:
+    - Type: 16
+      Base: 5
+      Modifier: 0
+  - XpThreshold: 500
+    Effects:
+    - Type: 16
+      Base: 0
+      Modifier: 1
+  - XpThreshold: 2000
+    Effects:
+    - Type: 16
+      Base: 0
+      Modifier: 2
 --- !u!114 &114762293060381324
 MonoBehaviour:
   m_ObjectHideFlags: 1
