@@ -360,9 +360,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletSpawn: {fileID: 4600654624149160}
   P: {fileID: 114601030989153186}
-  Projectile: {fileID: 1389926456137462, guid: 6a4fc5d98ba27ea438e92fe5c7be55d3, type: 2}
+  Projectile: {fileID: 1922908098057158, guid: d8b077ed9ff11c94696ec8ee41b31ae7, type: 2}
   PlayerIdletime: 0.2
-  BulletSpeed: 40
+  BulletSpeed: 10
   CannonFire: 50
   MachineGun: 10
   Cooldown: 2

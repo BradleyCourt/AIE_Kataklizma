@@ -99,6 +99,8 @@ namespace Gameplay {
             Stats[ValueType.ExperienceThreshold, ValueSubtype.Base] = CurrentXpThreshold;
 
             transform.localScale = Vector3.one * Mathf.Pow(2, Stats[ValueType.CharacterLevel] - 1);
+
+            GetComponent<ApplyOnContact>().Effects[0].Base *= 10;
         }
     }
 }

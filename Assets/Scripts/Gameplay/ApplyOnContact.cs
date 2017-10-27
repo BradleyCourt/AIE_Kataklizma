@@ -9,7 +9,7 @@ public class ApplyOnContact : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponent<EntityAttributes>() != null)
+        if(collision.gameObject.GetComponent<EntityAttributes>() != null && collision.gameObject.tag != "Enemy") // forces no longer deal friendly fire to their own units
        collision.gameObject.GetComponent<EntityAttributes>().ApplyEffects(Effects);
     }
 }
