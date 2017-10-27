@@ -116,10 +116,11 @@ namespace Gameplay {
 
             UpdateInputState();
 
-            //UpdateAbilities();
+            UpdateAbilities();
 
 
-            var moveSpeed = Attributes[ValueType.MoveSpeed];
+            var moveSpeed = Attributes[ValueType.WalkSpeed];
+
             // Move character
             Vector3 motion = GetPlayerMotion() * moveSpeed ;
 
@@ -147,7 +148,10 @@ namespace Gameplay {
             if (Rb.velocity.magnitude > 0.0005f)
                 LastActive = Time.time;
 
-            CharacterAnimator.SetFloat("WalkSpeed", motion.magnitude / moveSpeed);
+            if ( Mathf.Approximately(moveSpeed, 0.0f))
+                CharacterAnimator.SetFloat("WalkSpeed", 0);
+            else
+                CharacterAnimator.SetFloat("WalkSpeed", motion.magnitude / moveSpeed);
 
             Rb.angularVelocity = Vector3.zero;
 
@@ -205,7 +209,7 @@ namespace Gameplay {
         Vector3 GetPlayerMotion() {
 
             if (!IsControllable) return Vector3.zero; // Player-control disabled
-            
+            if (UserActivatedAbility != null && UserActivatedAbility.Ability.LockMovement) return Vector3.zero;
 
             var cameraDirection = transform.position - Observer.Camera.transform.position;
 
