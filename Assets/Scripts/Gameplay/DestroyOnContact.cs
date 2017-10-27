@@ -7,6 +7,6 @@ public class DestroyOnContact : MonoBehaviour
 {
     void OnCollisionEnter(Collision collision)
     { 
-       Destroy(gameObject);
+            Destroy(gameObject);
     }
 }
