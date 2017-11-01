@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4385871416443794}
   - component: {fileID: 65838409539560558}
   m_Layer: 0
-  m_Name: Microcar_prefab
+  m_Name: Microcar_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
