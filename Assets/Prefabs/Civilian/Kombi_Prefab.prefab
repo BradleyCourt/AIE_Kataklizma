@@ -70,6 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4872283606491082}
+  - component: {fileID: 65868002134309728}
   m_Layer: 0
   m_Name: Kombi_Prefab
   m_TagString: Untagged
@@ -2029,6 +2030,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1504083664138150}
   m_Mesh: {fileID: 4300008, guid: 83b65b9cc71a26c47b5bc115b07949e2, type: 3}
+--- !u!65 &65868002134309728
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1031246182699252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.1326284, y: 5.213166, z: 8.551975}
+  m_Center: {x: 3.218752, y: 2.106583, z: 3.7759876}
 --- !u!95 &95608626413727978
 Animator:
   serializedVersion: 3

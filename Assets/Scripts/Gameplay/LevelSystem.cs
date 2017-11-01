@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using UnityEngine.UI;
 
 namespace Gameplay {
@@ -10,8 +11,16 @@ namespace Gameplay {
 
         protected EntityAttributes Stats;
 
-        public List<int> XpThresholds;
+        [System.Serializable]
+        public struct LevelUpOptions {
 
+            public int XpThreshold;
+            public List<ValueCollection.Value> Effects;
+            //public List<Scriptables.ScriptedAbility> AddAbilities;
+        }
+
+        public List<LevelUpOptions> Levels;
+        
         protected int CurrentLevel {
             get { return (int)Stats[ValueType.CharacterLevel];  }
             set { Stats[ValueType.CharacterLevel, ValueSubtype.Base] = value; }
@@ -24,19 +33,19 @@ namespace Gameplay {
 
         public int PreviousXpThreshold {
             get {
-                if (CurrentLevel == 1 || XpThresholds.Count == 1) return 0;
-                if (CurrentLevel >= XpThresholds.Count) return XpThresholds[XpThresholds.Count - 2];
-                return XpThresholds[CurrentLevel - 2];
+                if (CurrentLevel == 1 || Levels.Count == 1) return 0;
+                if (CurrentLevel >= Levels.Count) return Levels[Levels.Count - 2].XpThreshold;
+                return Levels[CurrentLevel - 2].XpThreshold;
             }
         }
 
         public int CurrentXpThreshold {
             get {
-                return XpThresholds[Mathf.Min(CurrentLevel - 1, XpThresholds.Count - 1)];
+                return Levels[Mathf.Min(CurrentLevel - 1, Levels.Count - 1)].XpThreshold;
             }
         }
 
-        public bool HasMoreLevels { get { return CurrentLevel < XpThresholds.Count; } }
+        public bool HasMoreLevels { get { return CurrentLevel < Levels.Count; } }
 
 
         // Use this for initialization
@@ -45,15 +54,21 @@ namespace Gameplay {
             Stats = GetComponent<EntityAttributes>();
             if (Stats == null) throw new System.ApplicationException(gameObject.name + " - LevelSystem: Could not locate required EntityStats sibling.");
 
-            if (XpThresholds.Count < 1) throw new System.ApplicationException(gameObject.name + " - LevelSystem: XpThresholds cannot be empty.");
+            if (Levels.Count < 1) throw new System.ApplicationException(gameObject.name + " - LevelSystem: Levels cannot be empty.");
             
-            Stats.ValueChanged += OnPlayerStatsValueChanged;
+            
 
             Stats[ValueType.CharacterLevel, ValueSubtype.Base] = 1;
-            Stats[ValueType.ExperienceThreshold, ValueSubtype.Base] = CurrentXpThreshold;
+            //Stats[ValueType.ExperienceThreshold, ValueSubtype.Base] = CurrentXpThreshold;
+            DoLevelGained();
 
+            Stats.ValueChanged += OnPlayerStatsValueChanged;
         }
         
+        void OnDestroy() {
+            Stats.ValueChanged -= OnPlayerStatsValueChanged;
+        }
+
         // Update is called once per frame
         void Update() {
 
@@ -100,7 +115,7 @@ namespace Gameplay {
 
             transform.localScale = Vector3.one * Mathf.Pow(2, Stats[ValueType.CharacterLevel] - 1);
 
-            GetComponent<ApplyOnContact>().Effects[0].Base *= 10;
+            Stats.ApplyEffects(Levels[CurrentLevel-1].Effects);
         }
     }
 }
