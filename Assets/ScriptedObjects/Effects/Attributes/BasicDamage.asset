@@ -15,5 +15,5 @@ MonoBehaviour:
   AffectsOthers: 1
   Effects:
   - Type: 12
-    Base: 15
+    Base: 10
     Modifier: 0

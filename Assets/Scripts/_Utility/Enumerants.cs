@@ -57,6 +57,12 @@ public enum AbilityActivationType {
     Passive,    
 }
 
+public enum AbilityRotationMode {
+    None,
+    Camera,
+    World
+}
+
 public enum CharacterBindPoint {
     NONE,
     Forehead,

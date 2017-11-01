@@ -9,8 +9,6 @@ namespace Gameplay {
     [DisallowMultipleComponent]
     public class EntityAttributes : MonoBehaviour {
 
-        public bool ShowDebug;
-
         #region " Stats "
         public event System.Action<Object, ValueType, ValueSubtype, float> ValueChanged;
 
@@ -43,8 +41,6 @@ namespace Gameplay {
         }
 
         private void OnStatsValueChanged(object arg1, ValueType arg2, ValueSubtype arg3, float arg4) {
-            if ( ShowDebug )
-                Debug.Log(gameObject.name + " - EntityStats: Value Changed: " + arg2.ToString() + ", " + arg3.ToString() + ", " + arg4.ToString("N2") + " -> " + _Attributes[arg2, arg3].ToString("N2"));
             RaiseValueChanged(arg2, arg3, arg4);
         }
 

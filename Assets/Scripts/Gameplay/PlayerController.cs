@@ -66,6 +66,10 @@ namespace Gameplay {
 
         public ObserverOptions Observer;
 
+        protected bool InvertMoveHorizontal;
+        protected bool InvertMoveVertical;
+        protected bool InvertViewHorizontal;
+        protected bool InvertViewVertical;
 
         /// <summary>
         /// 
@@ -117,41 +121,42 @@ namespace Gameplay {
             UpdateInputState();
 
             UpdateAbilities();
-
-
+            
             var moveSpeed = Attributes[ValueType.WalkSpeed];
 
             // Move character
-            Vector3 motion = GetPlayerMotion() * moveSpeed ;
+            Vector3 motionIntent = GetPlayerMotionIntent() * moveSpeed ;
+            
 
-           // if (UserActivatedAbility == null || !UserActivatedAbility.Ability.AlignToCamera)
-                transform.LookAt(transform.position + motion);
-            //else
-                ; // Align to camera
-
+            if (UserActivatedAbility == null || UserActivatedAbility.Ability.LockRotation == AbilityRotationMode.None)
+                // Align to motion intent
+                transform.LookAt(transform.position + motionIntent);
+            else if (UserActivatedAbility.Ability.LockRotation == AbilityRotationMode.Camera) {
+                // Align to camera
+                transform.LookAt(transform.position + Vector3.ProjectOnPlane(Observer.Camera.transform.forward, Vector3.up));
+            } 
+            // "Lock to World" requires no interference
+            
             UpdateCamera();
-
-
-             
+            
             var velocity = Rb.velocity;
             velocity.x = 0;
             velocity.z = 0;
 
-            //if (UserActivatedAbility == null || !UserActivatedAbility.Ability.LockMovement) 
-                velocity += motion;
-            
+            if (UserActivatedAbility == null || !UserActivatedAbility.Ability.LockMovement) 
+                velocity += motionIntent;            
 
-            if (motion.magnitude > 0) {
+            if (motionIntent.magnitude > 0) {
                 Rb.velocity = velocity;
             }
 
             if (Rb.velocity.magnitude > 0.0005f)
                 LastActive = Time.time;
 
-            if ( Mathf.Approximately(moveSpeed, 0.0f))
+            if ( Mathf.Approximately(Rb.velocity.magnitude, 0.0f))
                 CharacterAnimator.SetFloat("WalkSpeed", 0);
             else
-                CharacterAnimator.SetFloat("WalkSpeed", motion.magnitude / moveSpeed);
+                CharacterAnimator.SetFloat("WalkSpeed", Rb.velocity.magnitude / moveSpeed);
 
             Rb.angularVelocity = Vector3.zero;
 
@@ -206,20 +211,20 @@ namespace Gameplay {
         /// <summary>
         /// Apply captured motion to character.  Update character velocity.
         /// </summary>
-        Vector3 GetPlayerMotion() {
+        Vector3 GetPlayerMotionIntent() {
 
             if (!IsControllable) return Vector3.zero; // Player-control disabled
-            if (UserActivatedAbility != null && UserActivatedAbility.Ability.LockMovement) return Vector3.zero;
+            //if (UserActivatedAbility != null && UserActivatedAbility.Ability.LockMovement) return Vector3.zero;
 
             var cameraDirection = transform.position - Observer.Camera.transform.position;
 
-            var characterFwd = new Vector3(cameraDirection.x, 0, cameraDirection.z).normalized;
-            var characterRight = new Vector3(cameraDirection.z, 0, -cameraDirection.x).normalized;
+            var characterFwd = Vector3.ProjectOnPlane(Observer.Camera.transform.forward, Vector3.up); //new Vector3(cameraDirection.x, 0, cameraDirection.z).normalized;
+            var characterRight = Vector3.ProjectOnPlane(Observer.Camera.transform.right, Vector3.up); //new Vector3(cameraDirection.z, 0, -cameraDirection.x).normalized;
 
-            var motion = characterFwd * Input.GetAxis("MoveVertical") + characterRight * Input.GetAxis("MoveHorizontal");
-            motion.Normalize();
+            var intent = characterFwd * Input.GetAxis("MoveVertical") * (InvertMoveVertical ? -1 : 1) + characterRight * Input.GetAxis("MoveHorizontal") * (InvertMoveHorizontal ? -1 : 1);
+            intent.Normalize();
             
-            return motion;
+            return intent;
         }
 
         protected void UpdateAbilities() {
