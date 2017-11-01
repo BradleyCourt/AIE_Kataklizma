@@ -66,9 +66,7 @@ namespace Scriptables {
 
         [Space]
         public bool LockMovement;
-        public bool LockRotation;
-        public bool AlignToCamera;
-      
+        public AbilityRotationMode LockRotation;      
         
         [Space]
         public CharacterBindPoint AreaAnchor;
