@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4894664337297220}
   - component: {fileID: 114642990637749756}
   m_Layer: 0
-  m_Name: CarSpawner
+  m_Name: RoadCarSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,4 +56,14 @@ MonoBehaviour:
   - {fileID: 1607823942346878, guid: 670c5bfc5e8c286429f287dbb8888b06, type: 2}
   - {fileID: 1843443736313472, guid: 6be3bee3465cbfb47a9d87aba629ae5a, type: 2}
   - {fileID: 1879137905728330, guid: 6063fd2698ce6ea48b038a80c9aad76d, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
   - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
