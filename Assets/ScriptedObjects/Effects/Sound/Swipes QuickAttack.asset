@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5a039bea83f47489fc5d42def8fc27, type: 3}
+  m_Name: Swipes QuickAttack
+  m_EditorClassIdentifier: 
+  Anchor: 1
+  Prefab: {fileID: 1560281442565072, guid: 10cc1444a6339024181c644bc6fd30b1, type: 2}
+  RequiresLocalScale: 0
