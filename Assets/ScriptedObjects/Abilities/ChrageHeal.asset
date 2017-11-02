@@ -28,7 +28,6 @@ MonoBehaviour:
   CanCancelChannel: 1
   LockMovement: 1
   LockRotation: 0
-  AlignToCamera: 0
   AreaAnchor: 0
   AreaOfEffect: {fileID: 0}
   Effects:
@@ -36,5 +35,6 @@ MonoBehaviour:
     OnCharging: []
     OnChannelling:
     - {fileID: 11400000, guid: dee7ae76fd686d5478cfe67ce96329f1, type: 2}
+    - {fileID: 11400000, guid: 3199517670c3a904591d63bb8d6f50cd, type: 2}
     OnCleanup: []
     OnManifest: []
