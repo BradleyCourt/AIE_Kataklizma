@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5a039bea83f47489fc5d42def8fc27, type: 3}
   m_Name: FireBreath
   m_EditorClassIdentifier: 
+  IsRemovable: 1
   Anchor: 2
   Prefab: {fileID: 1481817889259168, guid: ee5d53db42322bb4c9c2af962ebc8294, type: 2}
   RequiresLocalScale: 1

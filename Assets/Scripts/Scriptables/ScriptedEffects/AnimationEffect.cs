@@ -10,12 +10,12 @@ namespace Scriptables {
 
         public string AnimationName;
 
-        protected Animation _OwnerAnimator;
-        protected Animation OwnerAnimator {
+        protected Animator _OwnerAnimator;
+        protected Animator OwnerAnimator {
             get {
                 if (Owner == null) return null;
                 if (_OwnerAnimator == null)
-                    _OwnerAnimator = Owner.GetComponentInChildren<Animation>();
+                    _OwnerAnimator = Owner.GetComponentInChildren<Animator>();
 
                 return _OwnerAnimator;
             }
@@ -32,7 +32,7 @@ namespace Scriptables {
             base.Apply(data);
 
             if (OwnerAnimator != null && !string.IsNullOrEmpty(AnimationName))
-                OwnerAnimator.Play(AnimationName);
+                OwnerAnimator.SetTrigger(AnimationName);
         }
 
         public override void Remove() {
@@ -40,7 +40,8 @@ namespace Scriptables {
             base.Remove();
 
             if (OwnerAnimator != null && !string.IsNullOrEmpty(AnimationName))
-                OwnerAnimator.Stop(AnimationName);
+                //OwnerAnimator.Stop(AnimationName);
+                OwnerAnimator.ResetTrigger(AnimationName);
         }
     }
 }

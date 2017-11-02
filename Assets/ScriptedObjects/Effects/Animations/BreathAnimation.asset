@@ -8,9 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a5a039bea83f47489fc5d42def8fc27, type: 3}
-  m_Name: Swipes
+  m_Script: {fileID: 11500000, guid: 895781e9c93988f4f9246d1a6e2596a5, type: 3}
+  m_Name: BreathAnimation
   m_EditorClassIdentifier: 
-  Anchor: 2
-  Prefab: {fileID: 1560281442565072, guid: 8ffdf2c901ff971438e645b4d27bd4bf, type: 2}
-  RequiresLocalScale: 0
+  IsRemovable: 0
+  AnimationName: BreathAttack
