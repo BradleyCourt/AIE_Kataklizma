@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FixedHeighFollow : MonoBehaviour {
+public class FixedHeightFollow : MonoBehaviour {
 
     public Transform target;
     
