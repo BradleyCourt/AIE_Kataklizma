@@ -29,7 +29,7 @@ MonoBehaviour:
   LockMovement: 1
   LockRotation: 0
   AreaAnchor: 3
-  AreaOfEffect: {fileID: 11400000, guid: 78a0e0198ff5d4244a71f7dfa543c437, type: 2}
+  AreaOfEffect: {fileID: 11400000, guid: bce9ed9a428d0e64fb628e10bb4fb87e, type: 2}
   Effects:
     Lifetime: []
     OnCharging: []
@@ -39,4 +39,4 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 661d808b2852a5f4d8a3fd3a80e28806, type: 2}
     OnCleanup: []
     OnManifest:
-    - {fileID: 11400000, guid: ddca94c6fb2159d4caa732665b929f9f, type: 2}
+    - {fileID: 11400000, guid: 7dd0c8a00c3574341a79e5ca119def47, type: 2}
