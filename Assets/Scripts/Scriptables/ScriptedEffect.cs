@@ -17,6 +17,10 @@ namespace Scriptables {
         
         protected Transform Owner;
 
+        protected bool IsApplied;
+
+        public bool IsRemovable = true;
+
         public virtual bool Bind(Transform owner) {
             if (owner == null) { Unbind(); return false; }
 
@@ -31,7 +35,7 @@ namespace Scriptables {
             Owner = null;
         }
 
-        public virtual void Apply(Params data) { }
-        public virtual void Remove() { }
+        public virtual void Apply(Params data) { IsApplied = true; }
+        public virtual void Remove() { IsApplied = false; }
     }
 }

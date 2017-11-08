@@ -8,8 +8,8 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Shader Forge_WaterShader
   m_Shader: {fileID: 4800000, guid: 2c6b61e4cf3b94b43b1ebbd5f3056e3c, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -18,8 +18,44 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Caustic:
         m_Texture: {fileID: 2800000, guid: 470d9e061e0d5e24594da03b24ec6b6e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WaterNormal_01:
@@ -36,22 +72,39 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AmountofDistortion: 0.179
+    - _BumpScale: 1
     - _Contrast: 13.5
     - _Cutoff: 0.5
     - _DepthBlend: 2.8
     - _DepthBlendDistance: 1.1
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
     - _FoamContrast: 1.2
     - _FoamDepthBlednDistance: 1.04
     - _FoamDepthBlendDistance: 1.32
     - _FoamOpacity: 1
     - _Gloss: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
     - _Opacity: 0.137
+    - _Parallax: 0.02
     - _Reflection: 1
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
     - _WaterDepthBlendDistance: 4
     - _WaterOpacity: 1
+    - _ZWrite: 1
     - _node_1223: 0
     m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DeepWaterColour: {r: 0.0688257, g: 0.47510955, b: 0.49264705, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColour: {r: 1, g: 1, b: 1, a: 1}
     - _ShallowWaterColour: {r: 0.17852503, g: 0.9338235, b: 0.9025697, a: 1}
     - _WaterColour: {r: 0, g: 1, b: 1, a: 1}

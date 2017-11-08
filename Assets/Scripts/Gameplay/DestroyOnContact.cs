@@ -5,8 +5,18 @@ using UnityEngine;
 
 public class DestroyOnContact : MonoBehaviour
 {
+    public GameObject explosion;
+    protected bool runOnce = true;
+
     void OnCollisionEnter(Collision collision)
-    { 
-       Destroy(gameObject);
+    {
+        if (explosion != null && runOnce)
+        {
+            runOnce = false;
+            var go = Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(go, 2);
+        }
+
+        Destroy(gameObject);
     }
 }

@@ -19,6 +19,10 @@ public enum ValueType {
     Damage,
     DamageReduction,
     Range,
+    ContactDamage,
+    ContactDamageBonus,
+    WalkSpeed,
+    DashSpeed,
 }
 
 public enum ValueSubtype {
@@ -51,6 +55,12 @@ public enum AbilityActivationState {
 public enum AbilityActivationType {
     Active,
     Passive,    
+}
+
+public enum AbilityRotationMode {
+    None,
+    Camera,
+    World
 }
 
 public enum CharacterBindPoint {

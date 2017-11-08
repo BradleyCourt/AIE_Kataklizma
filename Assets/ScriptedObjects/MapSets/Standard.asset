@@ -35,6 +35,7 @@ MonoBehaviour:
     Tiles:
     - {fileID: 1034614153185756, guid: a6b013e5ee9a4074b9a499e149998467, type: 2}
     - {fileID: 1046029153478328, guid: 13a96316b5188ca44b3d553eba9ee16c, type: 2}
+    - {fileID: 1623410030333960, guid: fde59870d756e0649bcf8f039960d28b, type: 2}
   - Size: 2
     Tiles:
     - {fileID: 1932820765753484, guid: d20b1552a71f1d34e904c15789ccdfa4, type: 2}
@@ -51,6 +52,7 @@ MonoBehaviour:
     - {fileID: 1097645406115588, guid: 8ebdc5f566901484194e4757fc086847, type: 2}
     - {fileID: 1878541635614608, guid: 936db8a55b4bd434886eb6decbc2a92d, type: 2}
     - {fileID: 1968215083114586, guid: d9371c7f7fbdbe84fa8b780a712a93f5, type: 2}
+    - {fileID: 1696291305683356, guid: 0a356d325dfbb3240bfe9bd023493736, type: 2}
   - Size: 8
     Tiles:
     - {fileID: 1226661465270384, guid: 7170eb3096631954b82df80a959cdd1b, type: 2}

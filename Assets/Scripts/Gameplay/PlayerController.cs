@@ -6,6 +6,7 @@ using Scriptables;
 namespace Gameplay {
     
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(EntityAttributes))]
     public class PlayerController : MonoBehaviour {
 
         [System.Serializable]
@@ -28,11 +29,9 @@ namespace Gameplay {
             get { return Time.time - LastActive; }
         }
 
-        public float MoveSpeed = 5.0f;
+        //public float MoveSpeed = 5.0f;
 
         public bool IsControllable { get; set; }
-
-        public GameObject CuboidZonePrefab;
         
         protected AbilitySlot UserActivatedAbility = null;
         protected List<ScriptedAbility> SystemActiveAbilities = new List<ScriptedAbility>();
@@ -42,6 +41,7 @@ namespace Gameplay {
 
         protected Rigidbody Rb;
         protected Animator CharacterAnimator;
+        protected EntityAttributes Attributes;
 
         [System.Serializable]
         public struct ObserverOptions {
@@ -66,19 +66,26 @@ namespace Gameplay {
 
         public ObserverOptions Observer;
 
+        protected bool InvertMoveHorizontal;
+        protected bool InvertMoveVertical;
+        protected bool InvertViewHorizontal;
+        protected bool InvertViewVertical;
 
         /// <summary>
         /// 
         /// </summary>
         void Start() {
             Observer.Camera = GetComponentInChildren<Camera>();
-            if (Observer.Camera == null) throw new System.ApplicationException(gameObject.name + " - PlayerController: Unable to locate required Camera child");
+            if (Observer.Camera == null) Debug.LogError(gameObject.name + " - PlayerController: Unable to locate required Camera child");
 
             Rb = GetComponent<Rigidbody>();
-            if (Rb == null) throw new System.ApplicationException(gameObject.name + " - PlayerController requires a Rigidbody sibling");
+            if (Rb == null) Debug.LogError(gameObject.name + " - PlayerController::Start(): Unable to locate required Rigidbody sibling");
 
             CharacterAnimator = GetComponentInChildren<Animator>();
-            if (CharacterAnimator == null) Debug.LogWarning(gameObject.name + " - PlayerController::Start(): Unable to locate Animation component in child.");
+            if (CharacterAnimator == null) Debug.LogWarning(gameObject.name + " - PlayerController::Start(): Unable to locate Animation component in child");
+
+            Attributes = GetComponent<EntityAttributes>();
+            if (CharacterAnimator == null) Debug.LogError(gameObject.name + " - PlayerController::Start(): Unable to locate required EntityAttributes sibling");
 
             IsControllable = true;
 
@@ -108,81 +115,48 @@ namespace Gameplay {
         void Update() {
             if (Input.GetKey(KeyCode.Escape))
             {
-                NavMeshGen.ClearNavMesh();    
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Title_Menu");
             }
 
             UpdateInputState();
-                        
-            // Chech currently-active player-activated ability
-            if ( UserActivatedAbility != null ) {
-                var continuing = UserActivatedAbility.Ability.OnUpdate(Input.GetButton(UserActivatedAbility.TriggerName));
 
-                if (!continuing)
-                    UserActivatedAbility = null;                
-            }
-
-            var deactivate = new List<ScriptedAbility>();
-
-            // Check currently-active "system"-activated ablities (Continuous Activations)
-            foreach (var ability in SystemActiveAbilities) {
-                var continuing = ability.OnUpdate(false);
-
-                if (!continuing)
-                    deactivate.Add(ability);
-
-            }
-
-            // Remove any abilities in deactivate list from SystemActiveAbilities
-            foreach (var stopped in deactivate)
-                SystemActiveAbilities.Remove(stopped);
-
-
-            // Check all abilities if they can and should activate
-            foreach (var slot in Abilities) {
-                if (slot.Ability == null) continue;
-                if (slot.Ability.ContinuousActivation ) { // System Activated
-                    if (SystemActiveAbilities.Contains(slot.Ability)) continue; // Ability is already active
-
-                    if ( slot.CanActivate) {
-                        if (slot.Ability.OnBegin()) {
-                            SystemActiveAbilities.Add(slot.Ability);
-                        }
-                    }
-                }
-                else { // Player Activated
-                    if (UserActivatedAbility != null) continue; // Player already has an active ability
-
-                    if (slot.CanActivate && Input.GetButton(slot.TriggerName)) {
-                        if (slot.Ability.OnBegin()) {
-                            UserActivatedAbility = slot;
-                        }
-                    }
-                }
-            }
+            UpdateAbilities();
             
+            var moveSpeed = Attributes[ValueType.WalkSpeed];
 
             // Move character
-            Vector3 motion = GetPlayerMotion() * MoveSpeed;
-            transform.LookAt(transform.position + motion);
+            Vector3 motionIntent = GetPlayerMotionIntent() * moveSpeed ;
+            
 
+            if (UserActivatedAbility == null || UserActivatedAbility.Ability.LockRotation == AbilityRotationMode.None)
+                // Align to motion intent
+                transform.LookAt(transform.position + motionIntent);
+            else if (UserActivatedAbility.Ability.LockRotation == AbilityRotationMode.Camera) {
+                // Align to camera
+                transform.LookAt(transform.position + Vector3.ProjectOnPlane(Observer.Camera.transform.forward, Vector3.up));
+            } 
+            // "Lock to World" requires no interference
+            
             UpdateCamera();
-
+            
             var velocity = Rb.velocity;
             velocity.x = 0;
             velocity.z = 0;
-            velocity += motion;
 
-            
+            if (UserActivatedAbility == null || !UserActivatedAbility.Ability.LockMovement) 
+                velocity += motionIntent;            
 
-            if (motion.magnitude > 0) {
+            if (motionIntent.magnitude > 0) {
                 Rb.velocity = velocity;
             }
 
             if (Rb.velocity.magnitude > 0.0005f)
                 LastActive = Time.time;
 
-            CharacterAnimator.SetFloat("WalkSpeed", motion.magnitude / MoveSpeed);
+            if ( Mathf.Approximately(Rb.velocity.magnitude, 0.0f))
+                CharacterAnimator.SetFloat("WalkSpeed", 0);
+            else
+                CharacterAnimator.SetFloat("WalkSpeed", Rb.velocity.magnitude / moveSpeed);
 
             Rb.angularVelocity = Vector3.zero;
 
@@ -237,22 +211,70 @@ namespace Gameplay {
         /// <summary>
         /// Apply captured motion to character.  Update character velocity.
         /// </summary>
-        Vector3 GetPlayerMotion() {
+        Vector3 GetPlayerMotionIntent() {
 
             if (!IsControllable) return Vector3.zero; // Player-control disabled
-            if (UserActivatedAbility != null && UserActivatedAbility.Ability.LockMovement) return Vector3.zero; // Current Ability is preventing movement
+            //if (UserActivatedAbility != null && UserActivatedAbility.Ability.LockMovement) return Vector3.zero;
 
             var cameraDirection = transform.position - Observer.Camera.transform.position;
 
-            var characterFwd = new Vector3(cameraDirection.x, 0, cameraDirection.z).normalized;
-            var characterRight = new Vector3(cameraDirection.z, 0, -cameraDirection.x).normalized;
+            var characterFwd = Vector3.ProjectOnPlane(Observer.Camera.transform.forward, Vector3.up); //new Vector3(cameraDirection.x, 0, cameraDirection.z).normalized;
+            var characterRight = Vector3.ProjectOnPlane(Observer.Camera.transform.right, Vector3.up); //new Vector3(cameraDirection.z, 0, -cameraDirection.x).normalized;
 
-            var motion = characterFwd * Input.GetAxis("MoveVertical") + characterRight * Input.GetAxis("MoveHorizontal");
-            motion.Normalize();
+            var intent = characterFwd * Input.GetAxis("MoveVertical") * (InvertMoveVertical ? -1 : 1) + characterRight * Input.GetAxis("MoveHorizontal") * (InvertMoveHorizontal ? -1 : 1);
+            intent.Normalize();
             
-            return motion;
+            return intent;
         }
 
+        protected void UpdateAbilities() {
+            // Chech currently-active player-activated ability
+            if (UserActivatedAbility != null) {
+                var continuing = UserActivatedAbility.Ability.OnUpdate(Input.GetButton(UserActivatedAbility.TriggerName));
+
+                if (!continuing)
+                    UserActivatedAbility = null;
+            }
+
+            var deactivate = new List<ScriptedAbility>();
+
+            // Check currently-active "system"-activated ablities (Continuous Activations)
+            foreach (var ability in SystemActiveAbilities) {
+                var continuing = ability.OnUpdate(false);
+
+                if (!continuing)
+                    deactivate.Add(ability);
+
+            }
+
+            // Remove any abilities in deactivate list from SystemActiveAbilities
+            foreach (var stopped in deactivate)
+                SystemActiveAbilities.Remove(stopped);
+
+
+            // Check all abilities if they can and should activate
+            foreach (var slot in Abilities) {
+                if (slot.Ability == null) continue;
+                if (slot.Ability.ContinuousActivation) { // System Activated
+                    if (SystemActiveAbilities.Contains(slot.Ability)) continue; // Ability is already active
+
+                    if (slot.CanActivate) {
+                        if (slot.Ability.OnBegin()) {
+                            SystemActiveAbilities.Add(slot.Ability);
+                        }
+                    }
+                }
+                else { // Player Activated
+                    if (UserActivatedAbility != null) continue; // Player already has an active ability
+
+                    if (slot.CanActivate && Input.GetButton(slot.TriggerName)) {
+                        if (slot.Ability.OnBegin()) {
+                            UserActivatedAbility = slot;
+                        }
+                    }
+                }
+            }
+        }
 
         void OnTriggerEnter(Collider col) {
 

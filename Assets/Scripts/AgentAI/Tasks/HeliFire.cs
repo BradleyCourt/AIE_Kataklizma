@@ -32,6 +32,7 @@ public class HeliFire : MonoBehaviour {
         {
             if (CanFire)
             {
+                target = P.Target.gameObject;
                 StartCoroutine(FireSequence());
             }
             //TimeLockedOn += Time.deltaTime;

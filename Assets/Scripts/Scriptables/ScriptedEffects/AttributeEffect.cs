@@ -33,6 +33,9 @@ namespace Scriptables {
         /// </summary>
         /// <param name="data"></param>
         public override void Apply(Params data) {
+            if (IsRemovable && IsApplied) return; // Is already applied
+            base.Apply(data);
+
             if (Owner == null) return;
 
             if (AffectsSelf) {
@@ -47,6 +50,11 @@ namespace Scriptables {
                     attribs.ApplyEffects(Effects);
                 }
             }
+        }
+
+        public override void Remove() {
+            if (!IsRemovable || !IsApplied) return; // Is not removable/applied
+            base.Remove();
         }
     }
 }

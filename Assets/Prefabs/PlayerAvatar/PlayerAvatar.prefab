@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 65806479828675534}
   - component: {fileID: 65045118609533416}
   - component: {fileID: 114749656060951336}
+  - component: {fileID: 114583009035678324}
   m_Layer: 8
   m_Name: PlayerAvatar
   m_TagString: Player
@@ -1074,7 +1075,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431774962278804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11172485, y: -0.1, z: 6.3024597}
+  m_LocalPosition: {x: 30.2, y: 0.64, z: -107.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4272444309565150}
@@ -1267,7 +1268,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612280163498898}
-  m_LocalRotation: {x: -0.7010619, y: 0.71087474, z: -0.052357964, w: 0.020691605}
+  m_LocalRotation: {x: -0.70106184, y: 0.7108747, z: -0.052357882, w: 0.020691603}
   m_LocalPosition: {x: -0.002800439, y: 2.1940196, z: 0.026612196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1400,7 +1401,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.3647059, g: 0.6039216, b: 0.72156864, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1547,7 +1548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowDebug: 0
   _Attributes:
     _Values:
     - Type: 1
@@ -1558,6 +1558,9 @@ MonoBehaviour:
       Modifier: 0
     - Type: 6
       Base: 1
+      Modifier: 0
+    - Type: 17
+      Base: 20
       Modifier: 0
 --- !u!114 &114296767256596916
 MonoBehaviour:
@@ -1570,16 +1573,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4afae1783198c47bd53de0dd866763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 20
-  CuboidZonePrefab: {fileID: 1384093351775032, guid: aa1c794c57d8c8f47b00fb2ab345801f,
-    type: 2}
   Abilities:
   - TriggerName: Fire1
     Ability: {fileID: 11400000, guid: 2f47afb9ca7452d4bade4e90d0e853e6, type: 2}
   - TriggerName: Fire2
     Ability: {fileID: 11400000, guid: 1957387a49a559e49864a82b20ffcd40, type: 2}
   - TriggerName: Fire3
-    Ability: {fileID: 0}
+    Ability: {fileID: 11400000, guid: 9c263568e1a37434fb54e3dab0c81914, type: 2}
   - TriggerName: Jump
     Ability: {fileID: 0}
   - TriggerName: Sprint
@@ -1611,6 +1611,21 @@ MonoBehaviour:
   LeftFoot: {fileID: 4325406987474978}
   RightFoot: {fileID: 4383214827606694}
   Tail: {fileID: 4211989987967632}
+--- !u!114 &114583009035678324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431774962278804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eb86767d281be4438208908a75e66f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanAffectTags:
+  - Enemy
+  - Building
+  EffectsToApply: 0f000000
 --- !u!114 &114749656060951336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1622,7 +1637,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df017b7feb007241b2b15ecb9a66ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XpThresholds: 64000000f4010000d0070000
+  Levels:
+  - XpThreshold: 100
+    Effects:
+    - Type: 16
+      Base: 5
+      Modifier: 0
+  - XpThreshold: 500
+    Effects:
+    - Type: 16
+      Base: 0
+      Modifier: 1
+  - XpThreshold: 2000
+    Effects:
+    - Type: 16
+      Base: 0
+      Modifier: 2
 --- !u!114 &114762293060381324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1664,9 +1694,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.56
-  m_Height: 5.43
+  m_Height: 5
   m_Direction: 1
-  m_Center: {x: 0, y: 2.64, z: 0}
+  m_Center: {x: 0, y: 2.41, z: 0.08}
 --- !u!137 &137102083026757756
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1680,7 +1710,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 55a285d2ead5fc24690234b36e0fecab, type: 2}
+  - {fileID: 2100000, guid: 0fe256c1102125f4babd8459f5ef209f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
