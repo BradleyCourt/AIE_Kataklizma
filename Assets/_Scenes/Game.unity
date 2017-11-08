@@ -8514,6 +8514,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4208495038790148, guid: 67c96c3a796be9b478413d6f5ce0d4ce,
     type: 2}
   m_PrefabInternal: {fileID: 1418006050}
+--- !u!1001 &1831490802
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4416665469800012, guid: e79dc1bcb49119d4ea53beb076d99cd0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416665469800012, guid: e79dc1bcb49119d4ea53beb076d99cd0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416665469800012, guid: e79dc1bcb49119d4ea53beb076d99cd0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -121.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416665469800012, guid: e79dc1bcb49119d4ea53beb076d99cd0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416665469800012, guid: e79dc1bcb49119d4ea53beb076d99cd0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416665469800012, guid: e79dc1bcb49119d4ea53beb076d99cd0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416665469800012, guid: e79dc1bcb49119d4ea53beb076d99cd0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416665469800012, guid: e79dc1bcb49119d4ea53beb076d99cd0, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e79dc1bcb49119d4ea53beb076d99cd0, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1850024212 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4854596405097008, guid: d5490a90e2ca01b43a99741268956503,

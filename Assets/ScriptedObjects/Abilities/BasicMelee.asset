@@ -29,7 +29,7 @@ MonoBehaviour:
   LockMovement: 0
   LockRotation: 0
   AreaAnchor: 3
-  AreaOfEffect: {fileID: 0}
+  AreaOfEffect: {fileID: 11400000, guid: 3e37b07c88bef5a4588fb89041a75b49, type: 2}
   Effects:
     Lifetime: []
     OnCharging: []
