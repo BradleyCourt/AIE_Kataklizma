@@ -6,17 +6,17 @@ using UnityEngine;
 public class DestroyOnContact : MonoBehaviour
 {
     public GameObject explosion;
-    private bool check = true;
+    protected bool runOnce = true;
+
     void OnCollisionEnter(Collision collision)
-    { 
-        if(explosion != null && check != false)
+    {
+        if (explosion != null && runOnce)
         {
-            Transform test = gameObject.transform;
-            Instantiate(explosion, test);
-            print("explosion");
-            //Destroy(explosion, 2);
-            check = false;
+            runOnce = false;
+            var go = Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(go, 2);
         }
-            //Destroy(gameObject);
+
+        Destroy(gameObject);
     }
 }

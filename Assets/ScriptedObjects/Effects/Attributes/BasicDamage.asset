@@ -11,9 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc2d5bf42de1ad49abeacdfedf425fb, type: 3}
   m_Name: BasicDamage
   m_EditorClassIdentifier: 
+  IsRemovable: 0
   AffectsSelf: 0
   AffectsOthers: 1
   Effects:
   - Type: 12
-    Base: 10
+    Base: 20
     Modifier: 0

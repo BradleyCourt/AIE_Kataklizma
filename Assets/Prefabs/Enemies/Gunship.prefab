@@ -156,7 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowDebug: 0
   _Attributes:
     _Values:
     - Type: 1
@@ -191,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LockOnTime: 0
   P: {fileID: 0}
-  Rocket: {fileID: 1922908098057158, guid: d8b077ed9ff11c94696ec8ee41b31ae7, type: 2}
+  Rocket: {fileID: 1744910218477984, guid: 6a4fc5d98ba27ea438e92fe5c7be55d3, type: 2}
   RocketPos: {fileID: 4662458611535422}
   RocketSpeed: 100
   target: {fileID: 0}

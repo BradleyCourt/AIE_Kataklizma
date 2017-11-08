@@ -27,7 +27,7 @@ MonoBehaviour:
   CanCancelCharge: 0
   CanCancelChannel: 1
   LockMovement: 1
-  LockRotation: 0
+  LockRotation: 1
   AreaAnchor: 3
   AreaOfEffect: {fileID: 11400000, guid: 78a0e0198ff5d4244a71f7dfa543c437, type: 2}
   Effects:

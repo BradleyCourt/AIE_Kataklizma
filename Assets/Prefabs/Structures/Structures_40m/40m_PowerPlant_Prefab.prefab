@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 65724028087167204}
   m_Layer: 0
   m_Name: 40m_PowerPlant_Prefab
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +156,10 @@ MonoBehaviour:
   _Attributes:
     _Values:
     - Type: 1
-      Base: 20
+      Base: 30
+      Modifier: 0
+    - Type: 13
+      Base: 15
       Modifier: 0
 --- !u!114 &114861473638205118
 MonoBehaviour:

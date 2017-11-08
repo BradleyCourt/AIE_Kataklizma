@@ -8,12 +8,17 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemy;                // The enemy prefab to be spawned.
     public float spawnTime = 3f;            // How long between each spawn.
     public int SpawnCount;
-    
+    public float Elevation;
+
+    protected Vector3 ElevationV3;
+
     private List<Gameplay.MapGen.PointOfInterest> points = null;// List of all points of interests
 
 
     void Start()
     {
+        ElevationV3 = new Vector3(0, Elevation, 0);
+
         // Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
         InvokeRepeating("Spawn", spawnTime, spawnTime);
     }
@@ -47,8 +52,8 @@ public class EnemyManager : MonoBehaviour
         //Instantiate(enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
         var poi = points[Random.Range(0, points.Count)];
-        var go = Instantiate(enemy, poi.transform.position, poi.transform.rotation, transform);
-        go.GetComponent<WarpOnce>().WarpNearestTo = poi.transform.position;
+        var go = Instantiate(enemy, poi.transform.position + ElevationV3, poi.transform.rotation, transform);
+        go.GetComponent<WarpOnce>().WarpNearestTo = poi.transform.position + ElevationV3;
 
     }
 }

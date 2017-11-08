@@ -3577,7 +3577,7 @@ MonoBehaviour:
       Base: 10
       Modifier: 0
     - Type: 13
-      Base: 7
+      Base: 5
       Modifier: 0
 --- !u!114 &114418674746556490
 MonoBehaviour:

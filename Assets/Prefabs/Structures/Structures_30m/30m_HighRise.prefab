@@ -174,7 +174,10 @@ MonoBehaviour:
   _Attributes:
     _Values:
     - Type: 1
-      Base: 20
+      Base: 30
+      Modifier: 0
+    - Type: 13
+      Base: 12
       Modifier: 0
 --- !u!208 &208584181326277852
 NavMeshObstacle:
