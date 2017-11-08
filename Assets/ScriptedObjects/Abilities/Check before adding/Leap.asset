@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Leap
   m_EditorClassIdentifier: 
   weight: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d9998b2d25202c248a23800f5511ded3, type: 3}
   RequiredLevel: 0
   Prerequisites: []
   Precluders: []
@@ -21,18 +21,19 @@ MonoBehaviour:
   CleanupTime: 0
   ManifestCount: 0
   CooldownTime: 0
-  CooldownStartsAfter: 2
+  CooldownStartsAfter: 0
   ContinuousActivation: 0
   ChargeCausesCleanup: 0
   CanCancelCharge: 0
   CanCancelChannel: 0
-  LockMovement: 0
+  LockMovement: 1
   LockRotation: 0
-  AreaAnchor: 0
-  AreaOfEffect: {fileID: 0}
+  AreaAnchor: 6
+  AreaOfEffect: {fileID: 11400000, guid: a172ae59afe442c479f08102959978de, type: 2}
   Effects:
     Lifetime: []
     OnCharging: []
-    OnChannelling: []
+    OnChannelling:
+    - {fileID: 11400000, guid: 046befc6e5640af48b7dcde568f28d4a, type: 2}
     OnCleanup: []
     OnManifest: []

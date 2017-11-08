@@ -9,6 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 895781e9c93988f4f9246d1a6e2596a5, type: 3}
-  m_Name: PunchAnimation
+  m_Name: BreathAnimation
   m_EditorClassIdentifier: 
-  AnimationName: Punch
+  IsRemovable: 0
+  AnimationName: BreathAttack

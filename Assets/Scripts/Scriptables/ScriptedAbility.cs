@@ -179,7 +179,6 @@ namespace Scriptables {
             }
             else {
                 // Go straight to channeling
-                RemoveEffects(Effects.OnCharging);
                 result = OnBeginChannel();
             }
             return result;
@@ -189,7 +188,11 @@ namespace Scriptables {
         protected bool OnBeginChannel() {
             if (CooldownStartsAfter == AbilityActivationState.Charging)
                 CooldownEnds = Time.time + CooldownTime;
-            
+
+            // Remove any Charging effects
+            RemoveEffects(Effects.OnCharging);
+
+            // Manifest once
             OnManifest();
 
             var result = false;
@@ -214,6 +217,9 @@ namespace Scriptables {
             if (CooldownStartsAfter == AbilityActivationState.Channeling || CooldownStartsAfter == AbilityActivationState.Cleanup)
                 CooldownEnds = Time.time + CooldownTime + (CooldownStartsAfter == AbilityActivationState.Cleanup ? CleanupTime : 0);
 
+            // Remove any Channelling effects
+            RemoveEffects(Effects.OnChannelling);
+
             var result = false;
 
             // Has a cleanup time and (is channelling or (is charging and charging causes cleanup))
@@ -231,12 +237,17 @@ namespace Scriptables {
             }
             else {
                 // No Cleanup
-                ActivationState = AbilityActivationState.Ready;
-                CleanupEnds = Time.time;
-
-                result = false;
+                result = OnBeginEnd();
             }
             return result;
+        }
+
+
+        protected bool OnBeginEnd() {
+            ActivationState = AbilityActivationState.Ready;
+            RemoveEffects(Effects.OnCleanup);
+
+            return false;
         }
 
         /// <summary>
@@ -327,8 +338,7 @@ namespace Scriptables {
                     result = Time.time < CleanupEnds;
                     
                     if (!result) { // if Cleanup is finished
-                        ActivationState = AbilityActivationState.Ready;
-                        RemoveEffects(Effects.OnCleanup);
+                        OnBeginEnd();
                     }
 
                     break;
@@ -336,27 +346,5 @@ namespace Scriptables {
 
             return result;
         }
-
-        /// <summary>
-        /// Force-End 'cancel' the current activation state
-        /// </summary>
-        public void OnEnd() {
-            switch (ActivationState) {
-                case AbilityActivationState.Ready:
-                    break;
-                case AbilityActivationState.Charging:
-                    OnBeginCleanup();
-                    break;
-                case AbilityActivationState.Channeling:
-                    OnBeginCleanup();
-                    break;
-                case AbilityActivationState.Cleanup:
-                    break;
-                    
-            }
-        }
-
-
-
     }
 }

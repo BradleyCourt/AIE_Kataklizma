@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a5a039bea83f47489fc5d42def8fc27, type: 3}
-  m_Name: Swipes
+  m_Name: Tank Shoot
   m_EditorClassIdentifier: 
-  Anchor: 2
-  Prefab: {fileID: 1560281442565072, guid: 8ffdf2c901ff971438e645b4d27bd4bf, type: 2}
+  Anchor: 1
+  Prefab: {fileID: 1560281442565072, guid: 4e6733af7713c2640b8d24bc419dc7ff, type: 2}
   RequiresLocalScale: 0

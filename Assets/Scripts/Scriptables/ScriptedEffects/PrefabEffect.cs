@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Scriptables {
 
-    [CreateAssetMenu(fileName = "PrefabEffect", menuName = "Kataklizma/Effects/Particle Effect")]
+    [CreateAssetMenu(fileName = "PrefabEffect", menuName = "Kataklizma/Effects/Prefab Effect")]
     public class PrefabEffect : AnchoredEffect {
 
         public GameObject Prefab;
@@ -21,6 +21,8 @@ namespace Scriptables {
         /// </summary>
         /// <param name="data"></param>
         public override void Apply(Params data) {
+            if (IsRemovable && IsApplied) return; // Is already applied
+
             base.Apply(data);
 
             if (OwnerOrigins == null) {
@@ -41,13 +43,16 @@ namespace Scriptables {
                     if (RequiresLocalScale)
                         Instance.transform.localScale = Owner.transform.localScale;
 
-                    if (!float.IsInfinity(data.Duration))
+                    if (!IsRemovable && !float.IsInfinity(data.Duration)) {
                         Destroy(Instance, data.Duration);
+                    }
                 }
             }
         }
 
         public override void Remove() {
+            if (!IsRemovable || !IsApplied) return; // Is not removable/applied
+
             base.Remove();
 
             if (Instance != null && Instance) {
