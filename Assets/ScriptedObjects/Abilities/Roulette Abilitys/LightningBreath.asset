@@ -34,8 +34,8 @@ MonoBehaviour:
     Lifetime: []
     OnCharging: []
     OnChannelling:
+    - {fileID: 11400000, guid: 2838fb4216e299247af0f6fca3c40a2b, type: 2}
     - {fileID: 11400000, guid: 3b111fd212055d342a29655bff83ea20, type: 2}
-    - {fileID: 11400000, guid: c344fcc41a0357b4b86bbc28763e29b5, type: 2}
     - {fileID: 11400000, guid: 661d808b2852a5f4d8a3fd3a80e28806, type: 2}
     OnCleanup: []
     OnManifest:
