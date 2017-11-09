@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114014897797198778}
   - component: {fileID: 114152325541840018}
   - component: {fileID: 114637009648964354}
+  - component: {fileID: 205548958879915324}
   m_Layer: 0
   m_Name: 10m_ModernHouse_Prefab
   m_TagString: Building
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872029372634516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -301.72925, y: 164.30324, z: 499.20416}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4324306654327936}
@@ -193,3 +194,20 @@ MonoBehaviour:
   CollectableRadius: 2
   CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
     type: 2}
+--- !u!205 &205548958879915324
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872029372634516}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 2.4999998, y: 1.9719142, z: 2.4999998}
+  m_Size: 4.9999995
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.112906255
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23772779147706134}
+  m_Enabled: 1

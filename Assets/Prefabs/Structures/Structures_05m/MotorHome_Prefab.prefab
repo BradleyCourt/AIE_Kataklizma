@@ -632,6 +632,7 @@ GameObject:
   - component: {fileID: 65968387294778446}
   - component: {fileID: 114038537867129034}
   - component: {fileID: 114418674746556490}
+  - component: {fileID: 205629944339134456}
   m_Layer: 0
   m_Name: MotorHome_Prefab
   m_TagString: Building
@@ -926,7 +927,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623410030333960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -234.2729, y: -0.0036621094, z: 165.87405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4541503414786398}
@@ -3596,3 +3597,68 @@ MonoBehaviour:
   LocalGravity: 0.05
   MaxFallSpeed: 1
   TimeToLive: 1
+--- !u!205 &205629944339134456
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623410030333960}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 2.3097074, y: 0.91162795, z: 1.9520602}
+  m_Size: 4.1336675
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.049988553
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23700344825794450}
+    - renderer: {fileID: 23639066854172058}
+    - renderer: {fileID: 23098913217433654}
+    - renderer: {fileID: 23018987214688276}
+    - renderer: {fileID: 23571614626181628}
+    - renderer: {fileID: 23689658375033716}
+    - renderer: {fileID: 23554376954892524}
+    - renderer: {fileID: 23151058800470434}
+    - renderer: {fileID: 23359573776072868}
+    - renderer: {fileID: 23852713856674964}
+    - renderer: {fileID: 23854171465626100}
+    - renderer: {fileID: 23151316719841968}
+    - renderer: {fileID: 23049560385879550}
+    - renderer: {fileID: 23822861179832950}
+    - renderer: {fileID: 23719372641430192}
+    - renderer: {fileID: 23779648133777356}
+    - renderer: {fileID: 23199984432205186}
+    - renderer: {fileID: 23482715499299174}
+    - renderer: {fileID: 23764153474623472}
+    - renderer: {fileID: 23171413152877188}
+    - renderer: {fileID: 23728710244790744}
+    - renderer: {fileID: 23286103452390526}
+    - renderer: {fileID: 23838995551668166}
+    - renderer: {fileID: 23088159030850222}
+    - renderer: {fileID: 23487254628526964}
+    - renderer: {fileID: 23904065456760864}
+    - renderer: {fileID: 23054606940816730}
+    - renderer: {fileID: 23580847331823798}
+    - renderer: {fileID: 23736670950757398}
+    - renderer: {fileID: 23422305073334024}
+    - renderer: {fileID: 23766263224390340}
+    - renderer: {fileID: 23579825937099294}
+    - renderer: {fileID: 23797362634216724}
+    - renderer: {fileID: 23492575983317278}
+    - renderer: {fileID: 23067634200486650}
+    - renderer: {fileID: 23152379084325840}
+    - renderer: {fileID: 23083793425669692}
+    - renderer: {fileID: 23486131669150602}
+    - renderer: {fileID: 23045258702748276}
+    - renderer: {fileID: 23136809820933374}
+    - renderer: {fileID: 23943412193527858}
+    - renderer: {fileID: 23194797279425082}
+    - renderer: {fileID: 23152257504213508}
+    - renderer: {fileID: 23023807544445912}
+    - renderer: {fileID: 23398199417576550}
+    - renderer: {fileID: 23236108543872502}
+    - renderer: {fileID: 23268624814166334}
+    - renderer: {fileID: 23467682418581004}
+    - renderer: {fileID: 23282482766192464}
+  m_Enabled: 1

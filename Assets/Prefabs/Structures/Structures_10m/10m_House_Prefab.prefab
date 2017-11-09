@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114888015499315430}
   - component: {fileID: 114220919119185266}
   - component: {fileID: 65894292079613416}
+  - component: {fileID: 205389228018400486}
   m_Layer: 0
   m_Name: 10m_House_Prefab
   m_TagString: Building
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452910394916176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -303.04202, y: 109.26979, z: 417.7998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4610980045107330}
@@ -160,3 +161,20 @@ MonoBehaviour:
     - Type: 13
       Base: 7
       Modifier: 0
+--- !u!205 &205389228018400486
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452910394916176}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 4.8805523, y: 1.9127356, z: 5.718881}
+  m_Size: 6.882473
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.10872657
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23279675304159524}
+  m_Enabled: 1
