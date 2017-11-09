@@ -28,7 +28,6 @@ MonoBehaviour:
   CanCancelChannel: 0
   LockMovement: 0
   LockRotation: 0
-  AlignToCamera: 0
   AreaAnchor: 0
   AreaOfEffect: {fileID: 0}
   Effects:
