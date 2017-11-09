@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 65936570569295708}
   - component: {fileID: 114199964190535694}
   - component: {fileID: 114212709720062080}
+  - component: {fileID: 205394875108088454}
   m_Layer: 0
   m_Name: 5m_SmallHouse_Prefab
   m_TagString: Building
@@ -67,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1046029153478328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -214.74881, y: -0.0036621094, z: 135.30893}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4165985001714642}
@@ -178,3 +179,20 @@ MonoBehaviour:
   LocalGravity: 0.05
   MaxFallSpeed: 1
   TimeToLive: 1
+--- !u!205 &205394875108088454
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1046029153478328}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 2.48439, y: 1.3221419, z: 2.6592565}
+  m_Size: 3.9419718
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.04869184
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23402118873631912}
+  m_Enabled: 1

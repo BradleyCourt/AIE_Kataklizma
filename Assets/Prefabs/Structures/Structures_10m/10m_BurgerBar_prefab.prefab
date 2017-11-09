@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114113940418601162}
   - component: {fileID: 65295992749404160}
   - component: {fileID: 114321309576816604}
+  - component: {fileID: 205133542720320070}
   m_Layer: 0
   m_Name: 10m_BurgerBar_prefab
   m_TagString: Building
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1932820765753484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -245.40509, y: -0.0036621094, z: 174.50037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4954960098902840}
@@ -192,3 +193,20 @@ MonoBehaviour:
     - Type: 13
       Base: 7
       Modifier: 0
+--- !u!205 &205133542720320070
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1932820765753484}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 5.0755553, y: 3.7310517, z: 5.2320094}
+  m_Size: 9.3778715
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.105983496
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23237106113138744}
+  m_Enabled: 1
