@@ -50,6 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4747856769346522}
   - component: {fileID: 114366025271791836}
+  - component: {fileID: 205953995901651016}
   m_Layer: 0
   m_Name: Road_Inter_Prefab_With_Lights
   m_TagString: Road
@@ -4585,7 +4586,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020398806163230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -72.98859, y: -0.0036621094, z: 38.327057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4545486328067496}
@@ -6025,3 +6026,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f047c0506c828428a5e55a78b63a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!205 &205953995901651016
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020398806163230}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.0111095905, y: 1.3389845, z: 0.0128479}
+  m_Size: 6.2928762
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.14724557
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23769174660168844}
+    - renderer: {fileID: 23946719371017828}
+    - renderer: {fileID: 23023817807611918}
+    - renderer: {fileID: 23630092768446288}
+    - renderer: {fileID: 23211121504094726}
+    - renderer: {fileID: 23315332877335824}
+    - renderer: {fileID: 23662231222727680}
+    - renderer: {fileID: 23220258434867998}
+    - renderer: {fileID: 23666909690155292}
+    - renderer: {fileID: 23849471644590092}
+    - renderer: {fileID: 23833502082790318}
+    - renderer: {fileID: 23201811053102662}
+    - renderer: {fileID: 23842603651109430}
+    - renderer: {fileID: 23560073700126522}
+    - renderer: {fileID: 23739170849502930}
+    - renderer: {fileID: 23402626501688824}
+    - renderer: {fileID: 23740154542831058}
+  - screenRelativeHeight: 0.007925365
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23769174660168844}
+  m_Enabled: 1

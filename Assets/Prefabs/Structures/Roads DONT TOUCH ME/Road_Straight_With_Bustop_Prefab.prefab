@@ -53,6 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4677876571191290}
+  - component: {fileID: 205650196227760974}
   m_Layer: 0
   m_Name: Road_Straight_With_Bustop_Prefab
   m_TagString: Road
@@ -80,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1601577583339274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -181.74683, y: -0.0036621094, z: 112.431885}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4746061839419640}
@@ -179,3 +180,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466908218958078}
   m_Mesh: {fileID: 4300000, guid: f226655be6e78ef459c49ea6a338f0b1, type: 3}
+--- !u!205 &205650196227760974
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1601577583339274}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.35818863, y: 0.81409454, z: 0.00000023841858}
+  m_Size: 5.7163773
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.1486214
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23788152911404288}
+    - renderer: {fileID: 23986982868899870}
+  - screenRelativeHeight: 0.010438702
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23986982868899870}
+  m_Enabled: 1

@@ -218,6 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4632012618821536}
   - component: {fileID: 114072724192636616}
+  - component: {fileID: 205082298609147482}
   m_Layer: 0
   m_Name: Road_Tee_With_Lights_Prefab
   m_TagString: Road
@@ -2280,7 +2281,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100330387221510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -121.68198, y: -0.0036621094, z: 119.19833}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4578912932975128}
@@ -3073,3 +3074,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f047c0506c828428a5e55a78b63a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!205 &205082298609147482
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1100330387221510}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.015249014, y: 1.3389845, z: 0.030891538}
+  m_Size: 5.2328143
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.14587612
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23313580031693798}
+    - renderer: {fileID: 23892586309376242}
+    - renderer: {fileID: 23777923771359112}
+    - renderer: {fileID: 23277601819783838}
+    - renderer: {fileID: 23052975568214860}
+    - renderer: {fileID: 23548909110628744}
+    - renderer: {fileID: 23196582241091776}
+    - renderer: {fileID: 23114400508167400}
+    - renderer: {fileID: 23370499659550086}
+  - screenRelativeHeight: 0.0060189143
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23313580031693798}
+  m_Enabled: 1

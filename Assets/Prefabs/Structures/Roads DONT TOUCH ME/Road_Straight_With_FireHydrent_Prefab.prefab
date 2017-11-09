@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4625114959840040}
+  - component: {fileID: 205480536838717416}
   m_Layer: 0
   m_Name: Road_Straight_With_FireHydrent_Prefab
   m_TagString: Road
@@ -80,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1256836437832624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -141.92886, y: -0.0036621094, z: 120.8454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4845602384882740}
@@ -179,3 +180,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530975307894866}
   m_Mesh: {fileID: 4300000, guid: 1a73751aca2cddb44936c8268c69cdf0, type: 3}
+--- !u!205 &205480536838717416
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1256836437832624}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.13062358, y: 0.41003144, z: 0.00000023841858}
+  m_Size: 5.261246
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.15278701
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23557774899395138}
+    - renderer: {fileID: 23380733282282636}
+  - screenRelativeHeight: 0.0060189143
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23557774899395138}
+  m_Enabled: 1
