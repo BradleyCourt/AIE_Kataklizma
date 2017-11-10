@@ -77,6 +77,8 @@ namespace Scriptables {
         [Space]
         public EffectOptions Effects;
 
+
+
         protected CharacterBindOrigins _OwnerOrigins;
         protected CharacterBindOrigins OwnerOrigins {
             get {
@@ -91,6 +93,13 @@ namespace Scriptables {
         protected Transform Owner { get; set; }
 
         public AbilityActivationState ActivationState { get; protected set; }
+
+        public float DurationTotal {  get { return ChargeTime + ChannelTime + CleanupTime; } }
+        public float DurationRemaining {
+            get {
+                return ChargeRemaining + ChannelRemaining + (ActivationState != AbilityActivationState.Cleanup ? CleanupTime : Mathf.Clamp(CleanupEnds - Time.time, 0, CleanupTime));
+            }
+        }
 
         
 
@@ -245,6 +254,9 @@ namespace Scriptables {
 
         protected bool OnBeginEnd() {
             ActivationState = AbilityActivationState.Ready;
+            ChargeRemaining = ChargeTime;
+            ChannelRemaining = ChannelTime;
+
             RemoveEffects(Effects.OnCleanup);
 
             return false;

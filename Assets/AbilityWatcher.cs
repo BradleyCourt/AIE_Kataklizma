@@ -6,48 +6,74 @@ using Scriptables;
 
 public class AbilityWatcher : MonoBehaviour {
 
-    [System.Serializable]
-    public struct DebugValues {
-        public float CooldownRemaining;
-        public float CooldownPercent;
-    }
-
-    public Image Background;
-    public Image Filler;
+    [UnityEngine.Serialization.FormerlySerializedAs("Background")]
+    public Image Active;
+    [UnityEngine.Serialization.FormerlySerializedAs("Filler")]
+    public Image Inactive;
     public Image Foreground;
 
     
     public ScriptedAbility TargetAbility;
 
-    public DebugValues WatchValues;
+    [Header("Timers")]
+    protected float DurationTotal;
+    protected float DurationRemaining;
+    protected float _DurationPercent;
+    protected float DurationPercent {
+        get {
+            return TargetAbility.DurationRemaining / TargetAbility.DurationTotal;
+        }
+    }
+
+    protected float CooldownTotal;
+    protected float CooldownRemaining;
+    protected float _CooldownPercent;
+    protected float CooldownPercent {
+        get {
+            if (TargetAbility.CooldownTime == 0) return 0;
+
+            return Mathf.Clamp(TargetAbility.CooldownEnds - Time.time, 0, TargetAbility.CooldownTime) / TargetAbility.CooldownTime;
+        }
+    }
 
 	// Use this for initialization
 	void Start () {
-        Filler.fillAmount = 0;
-
-        var x = FindObjectOfType<Kataklizma.Gameplay.PlayerController>();
-        TargetAbility = x.Abilities[1].Ability;
-
-	}
+        Inactive.fillAmount = 0;
+    }
 	
 
 	// Update is called once per frame
 	void Update () {
 
-        WatchValues.CooldownRemaining = Mathf.Max(TargetAbility.CooldownEnds - Time.time,0);
-        WatchValues.CooldownPercent = 100.0f * WatchValues.CooldownRemaining / TargetAbility.CooldownTime;
+        if (TargetAbility == null) return;
 
-        //if (!TargetAbility) return;
+        DurationTotal = TargetAbility.DurationTotal;
+        DurationRemaining = TargetAbility.DurationRemaining;
+        _DurationPercent = DurationPercent;
 
-        if (TargetAbility.CooldownEnds < Time.time)
-            Filler.fillAmount = 0;
+        CooldownTotal = TargetAbility.CooldownTime;
+        CooldownRemaining = Mathf.Clamp(TargetAbility.CooldownEnds - Time.time, 0, TargetAbility.CooldownTime);
+        _CooldownPercent = CooldownPercent;
+
+
+        // If Ability State == Ready
+        // - Set Active as first child
+        // - Fill Active to 1
+        // - Fill Inactive from Countdown
+        // Else
+        // - Set Inactive as first child
+        // - Fill Inactive to 1
+        // - Fill Active from accumulated Activation Sequence time
+
+        if (TargetAbility.ActivationState == AbilityActivationState.Ready) {
+            Active.transform.SetAsFirstSibling();
+            Active.fillAmount = 1;
+            Inactive.fillAmount = CooldownPercent;
+        }
         else {
-            Filler.fillAmount = (TargetAbility.CooldownEnds - Time.time) / TargetAbility.CooldownTime;
+            Inactive.transform.SetAsFirstSibling();
+            Inactive.fillAmount = 1;
+            Active.fillAmount = DurationPercent;
         }
-
-
-        if ( Filler.fillAmount == 0 ) {
-            // Change Foreground tint?
-        }
-	}
+    }
 }
