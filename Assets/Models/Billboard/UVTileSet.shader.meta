@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 4e20e65a374af554780f76bcf0031eb4
+timeCreated: 1509601951
+licenseType: Free
+ShaderImporter:
+  defaultTextures:
+  - _Billboard_Texture: {fileID: 2800000, guid: 931ae4ab3d94ea241a71f2212ea0125a,
+      type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
