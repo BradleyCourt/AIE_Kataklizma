@@ -10439,61 +10439,6 @@ Prefab:
       propertyPath: m_Name
       value: FX_Breath_Lightning (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 198830093052411780, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: TrailModule.dieWithParticles
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198825554075282338, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: TrailModule.dieWithParticles
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198990333152522766, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: TrailModule.dieWithParticles
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198430874246055236, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: TrailModule.dieWithParticles
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198373556423208642, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: randomSeed
-      value: 527399856
-      objectReference: {fileID: 0}
-    - target: {fileID: 198373556423208642, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: TrailModule.dieWithParticles
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198830093052411780, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198825554075282338, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198990333152522766, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198430874246055236, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 198373556423208642, guid: 08172ef775ac0ec4aa780814d66ad3e6,
-        type: 2}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08172ef775ac0ec4aa780814d66ad3e6, type: 2}
   m_IsPrefabParent: 0
@@ -31603,7 +31548,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1139803422
+  randomSeed: -1982694858
   InitialModule:
     serializedVersion: 3
     enabled: 1
