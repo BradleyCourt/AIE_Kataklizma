@@ -16,7 +16,7 @@ public class BreakingNewsMover : MonoBehaviour {
         if(breakingNews.localPosition.x >= 500)
         {
             float oldY = breakingNews.localPosition.y;
-            transform.localPosition = new Vector3(-620, oldY, 0);
+            transform.localPosition = new Vector3(-740, oldY, 0);
         }
     }
 }
