@@ -4,7 +4,7 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
-namespace Gameplay {
+namespace Kataklizma.Gameplay {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(EntityAttributes))]
     public class LevelSystem : MonoBehaviour {

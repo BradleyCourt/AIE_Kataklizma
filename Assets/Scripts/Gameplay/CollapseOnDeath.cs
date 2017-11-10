@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameplay {
+namespace Kataklizma.Gameplay {
 
     [RequireComponent(typeof(EntityAttributes))]
     public class CollapseOnDeath : MonoBehaviour {

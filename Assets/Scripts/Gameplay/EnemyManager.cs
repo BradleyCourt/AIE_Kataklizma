@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Kataklizma.Gameplay;
 
 public class EnemyManager : MonoBehaviour
 {
-    public Gameplay.EntityAttributes playerAttributes;    // Reference to the player's heatlh.
+    public EntityAttributes playerAttributes;    // Reference to the player's heatlh.
     public GameObject enemy;                // The enemy prefab to be spawned.
     public float spawnTime = 3f;            // How long between each spawn.
     public int SpawnCount;
