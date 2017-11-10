@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using Kataklizma.Gameplay;
 
 namespace Scriptables {
 
@@ -16,12 +17,12 @@ namespace Scriptables {
         public bool AffectsOthers = true;
         public List<ValueCollection.Value> Effects;
 
-        protected Gameplay.EntityAttributes _SelfAttributes;
-        protected Gameplay.EntityAttributes SelfAttributes {
+        protected EntityAttributes _SelfAttributes;
+        protected EntityAttributes SelfAttributes {
             get {
                 if (Owner == null) return null;
                 if ( _SelfAttributes == null ) {
-                    _SelfAttributes = Owner.GetComponent<Gameplay.EntityAttributes>();
+                    _SelfAttributes = Owner.GetComponent<EntityAttributes>();
                 }
                 return _SelfAttributes;
             }
@@ -44,7 +45,7 @@ namespace Scriptables {
 
             if (AffectsOthers && data.Hits != null) {
                 foreach (var hit in data.Hits) {
-                    var attribs = hit.GetComponent<Gameplay.EntityAttributes>();
+                    var attribs = hit.GetComponent<EntityAttributes>();
                     if (attribs == null) continue; // No Attribute set to affect
 
                     attribs.ApplyEffects(Effects);

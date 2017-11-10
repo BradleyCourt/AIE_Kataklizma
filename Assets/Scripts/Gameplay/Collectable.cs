@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameplay {
+namespace Kataklizma.Gameplay {
     [DisallowMultipleComponent]
     public class Collectable : MonoBehaviour {
 

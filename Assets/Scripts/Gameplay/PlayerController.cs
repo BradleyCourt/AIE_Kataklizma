@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Scriptables;
 
-namespace Gameplay {
+namespace Kataklizma.Gameplay {
     
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(EntityAttributes))]

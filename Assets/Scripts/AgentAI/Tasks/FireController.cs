@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Gameplay;
+using Kataklizma.Gameplay;
 using System;
 
 public class FireController : MonoBehaviour
