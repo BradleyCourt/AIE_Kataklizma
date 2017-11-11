@@ -24,8 +24,8 @@ MonoBehaviour:
   CooldownStartsAfter: 2
   ContinuousActivation: 0
   ChargeCausesCleanup: 0
-  CanCancelCharge: 0
-  CanCancelChannel: 1
+  CanCancelCharge: 1
+  CanCancelChannel: 0
   LockMovement: 1
   LockRotation: 0
   AreaAnchor: 3
