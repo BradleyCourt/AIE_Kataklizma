@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc2d5bf42de1ad49abeacdfedf425fb, type: 3}
   m_Name: MinorDamage
   m_EditorClassIdentifier: 
-  IsRemovable: 1
+  IsRemovable: 0
   AffectsSelf: 0
   AffectsOthers: 1
   Effects:

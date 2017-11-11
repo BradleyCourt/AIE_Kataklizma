@@ -40,4 +40,4 @@ MonoBehaviour:
     - {fileID: 0}
     OnCleanup: []
     OnManifest:
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 7dd0c8a00c3574341a79e5ca119def47, type: 2}
