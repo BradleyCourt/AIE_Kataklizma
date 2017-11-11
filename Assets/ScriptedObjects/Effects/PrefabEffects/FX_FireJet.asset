@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a5a039bea83f47489fc5d42def8fc27, type: 3}
-  m_Name: Vis_FireJet
+  m_Name: FX_FireJet
   m_EditorClassIdentifier: 
   IsRemovable: 1
   Anchor: 2

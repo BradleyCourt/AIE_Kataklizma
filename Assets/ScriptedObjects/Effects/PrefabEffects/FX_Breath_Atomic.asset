@@ -14,4 +14,4 @@ MonoBehaviour:
   IsRemovable: 1
   Anchor: 2
   Prefab: {fileID: 1743380336242422, guid: 4213ade9c73fa454ab20566ac6106b46, type: 2}
-  RequiresLocalScale: 0
+  RequiresLocalScale: 1
