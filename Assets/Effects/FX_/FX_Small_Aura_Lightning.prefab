@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198816693414529588}
   - component: {fileID: 199521786628055368}
   m_Layer: 0
-  m_Name: FX_Aura_Lightning
+  m_Name: FX_Small_Aura_Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

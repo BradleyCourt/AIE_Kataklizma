@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198077253073014784}
   - component: {fileID: 199217910862548736}
   m_Layer: 0
-  m_Name: FlameThrower_Effect_ParticleSystem
+  m_Name: FX_Breath_Fire and FireJet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
