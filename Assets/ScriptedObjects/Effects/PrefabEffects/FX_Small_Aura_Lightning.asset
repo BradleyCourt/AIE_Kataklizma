@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a5a039bea83f47489fc5d42def8fc27, type: 3}
-  m_Name: FX_Small_Aura_Snow
+  m_Name: FX_Small_Aura_Lightning
   m_EditorClassIdentifier: 
   IsRemovable: 1
   Anchor: 3
-  Prefab: {fileID: 1484340623944312, guid: 0c5972f855965b64c8be4dbe40b1270f, type: 2}
+  Prefab: {fileID: 1346686375271210, guid: 217a9dc3c7b644543bd95b762f3b1520, type: 2}
   RequiresLocalScale: 1
