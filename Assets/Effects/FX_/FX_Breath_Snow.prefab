@@ -68,8 +68,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489088848207048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -82.31, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.4951782, y: -2.587349, z: -3.38725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4743894152610256}
@@ -3372,9 +3372,9 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489088848207048}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 1.6
   simulationSpeed: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -3424,7 +3424,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 415361434
+  randomSeed: -1827258823
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7461,8 +7461,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0
-      minScalar: 0
+      scalar: 3.1415925
+      minScalar: -3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -7502,8 +7502,8 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0
-      minScalar: 0
+      scalar: 3.1415925
+      minScalar: -3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -7543,8 +7543,8 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5707963
-      minScalar: -1.5707963
+      scalar: 3.1415925
+      minScalar: -3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -7581,7 +7581,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxes: 0
+    separateAxes: 1
   ColorModule:
     enabled: 1
     gradient:
@@ -10039,7 +10039,7 @@ ParticleSystemRenderer:
   m_LengthScale: 2
   m_SortingFudge: 0
   m_NormalDirection: 1
-  m_RenderAlignment: 0
+  m_RenderAlignment: 1
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304

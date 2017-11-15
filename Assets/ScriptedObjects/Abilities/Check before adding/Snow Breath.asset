@@ -17,7 +17,7 @@ MonoBehaviour:
   Prerequisites: []
   Precluders: []
   ChargeTime: 0.1
-  ChannelTime: 7
+  ChannelTime: 3.5
   CleanupTime: 2
   ManifestCount: 15
   CooldownTime: 5

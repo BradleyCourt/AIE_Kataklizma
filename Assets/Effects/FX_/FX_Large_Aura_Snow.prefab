@@ -934,8 +934,8 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0
-      minScalar: 0
+      scalar: -3.1415925
+      minScalar: 3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -975,8 +975,8 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0
-      minScalar: 0
+      scalar: -3.1415925
+      minScalar: 3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1016,8 +1016,8 @@ ParticleSystem:
     curve:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.5707963
-      minScalar: -1.5707963
+      scalar: 3.1415925
+      minScalar: -3.1415925
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1054,7 +1054,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    separateAxes: 0
+    separateAxes: 1
   ColorModule:
     enabled: 1
     gradient:
@@ -6686,7 +6686,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1728777367
+  randomSeed: 1743527626
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9935,7 +9935,7 @@ ParticleSystemRenderer:
   m_LengthScale: 2
   m_SortingFudge: 0
   m_NormalDirection: 1
-  m_RenderAlignment: 0
+  m_RenderAlignment: 1
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
