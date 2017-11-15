@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b23597cc2d58454aaba092fd3c5b551, type: 3}
+  m_Name: Snow Breath
+  m_EditorClassIdentifier: 
+  weight: 1
+  icon: {fileID: 21300000, guid: 492b9988436bd45049a9a6bc52ac8fb0, type: 3}
+  RequiredLevel: 1
+  Prerequisites: []
+  Precluders: []
+  ChargeTime: 0.1
+  ChannelTime: 3.5
+  CleanupTime: 2
+  ManifestCount: 15
+  CooldownTime: 5
+  CooldownStartsAfter: 2
+  ContinuousActivation: 0
+  ChargeCausesCleanup: 0
+  CanCancelCharge: 0
+  CanCancelChannel: 1
+  LockMovement: 1
+  LockRotation: 0
+  AreaAnchor: 2
+  AreaOfEffect: {fileID: 11400000, guid: 8a0ef631c2aec8e4d8c35dc80eecd541, type: 2}
+  Effects:
+    Lifetime: []
+    OnCharging:
+    - {fileID: 0}
+    OnChannelling:
+    - {fileID: 11400000, guid: 661d808b2852a5f4d8a3fd3a80e28806, type: 2}
+    - {fileID: 11400000, guid: d607c025e9ab3e44b839b552b731a65c, type: 2}
+    - {fileID: 0}
+    OnCleanup: []
+    OnManifest:
+    - {fileID: 11400000, guid: 7dd0c8a00c3574341a79e5ca119def47, type: 2}

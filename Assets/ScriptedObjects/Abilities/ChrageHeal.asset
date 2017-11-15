@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Name: ChrageHeal
   m_EditorClassIdentifier: 
   weight: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 0fe26557ad02d8142ba9773bfe5b1eba, type: 3}
   RequiredLevel: 0
   Prerequisites: []
   Precluders: []
   ChargeTime: 0
-  ChannelTime: 0.05
+  ChannelTime: 5
   CleanupTime: 0.2
-  ManifestCount: 1
+  ManifestCount: 100
   CooldownTime: 0
   CooldownStartsAfter: 3
   ContinuousActivation: 0
   ChargeCausesCleanup: 0
   CanCancelCharge: 0
-  CanCancelChannel: 0
+  CanCancelChannel: 1
   LockMovement: 1
   LockRotation: 0
   AreaAnchor: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
     Lifetime: []
     OnCharging: []
     OnChannelling:
-    - {fileID: 11400000, guid: dee7ae76fd686d5478cfe67ce96329f1, type: 2}
     - {fileID: 11400000, guid: 3199517670c3a904591d63bb8d6f50cd, type: 2}
     OnCleanup: []
-    OnManifest: []
+    OnManifest:
+    - {fileID: 11400000, guid: dee7ae76fd686d5478cfe67ce96329f1, type: 2}

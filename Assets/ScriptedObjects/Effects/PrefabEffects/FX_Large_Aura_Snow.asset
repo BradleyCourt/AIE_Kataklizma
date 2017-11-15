@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5a039bea83f47489fc5d42def8fc27, type: 3}
+  m_Name: FX_Large_Aura_Snow
+  m_EditorClassIdentifier: 
+  IsRemovable: 1
+  Anchor: 3
+  Prefab: {fileID: 1198484751349886, guid: a77a8f8e655f7884993980cd4c62281f, type: 2}
+  RequiresLocalScale: 1

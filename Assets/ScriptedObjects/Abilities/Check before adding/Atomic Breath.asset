@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b23597cc2d58454aaba092fd3c5b551, type: 3}
+  m_Name: Atomic Breath
+  m_EditorClassIdentifier: 
+  weight: 0
+  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  RequiredLevel: 0
+  Prerequisites: []
+  Precluders: []
+  ChargeTime: 0.1
+  ChannelTime: 3
+  CleanupTime: 0.2
+  ManifestCount: 22
+  CooldownTime: 0
+  CooldownStartsAfter: 2
+  ContinuousActivation: 0
+  ChargeCausesCleanup: 0
+  CanCancelCharge: 0
+  CanCancelChannel: 0
+  LockMovement: 1
+  LockRotation: 0
+  AreaAnchor: 2
+  AreaOfEffect: {fileID: 11400000, guid: c2285243d512a42448ec95451c350518, type: 2}
+  Effects:
+    Lifetime: []
+    OnCharging: []
+    OnChannelling:
+    - {fileID: 11400000, guid: 69e238ed26b75d34dbec8941a3e9b8bc, type: 2}
+    - {fileID: 11400000, guid: 661d808b2852a5f4d8a3fd3a80e28806, type: 2}
+    - {fileID: 0}
+    OnCleanup: []
+    OnManifest:
+    - {fileID: 11400000, guid: bf49938ff87e5d14aaac2e2bb43e6797, type: 2}

@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Name: LargeBreathZone
   m_EditorClassIdentifier: 
   CanAffectTags:
-  - Building
   - Enemy
   ScaleWithAnchor: 1
   Bounds:
-    m_Center: {x: 0, y: 0, z: 30}
-    m_Extent: {x: 10, y: 10, z: 60}
+    m_Center: {x: 0, y: 0, z: 60}
+    m_Extent: {x: 20, y: 50, z: 120}
