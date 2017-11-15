@@ -20,7 +20,7 @@ MonoBehaviour:
   ChannelTime: 3
   CleanupTime: 0.2
   ManifestCount: 22
-  CooldownTime: 60
+  CooldownTime: 0
   CooldownStartsAfter: 2
   ContinuousActivation: 0
   ChargeCausesCleanup: 0

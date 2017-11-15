@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsRemovable: 1
   Anchor: 2
-  Prefab: {fileID: 1560281442565072, guid: 3da04a6a667450f499ccc75d45fe5a81, type: 2}
+  Prefab: {fileID: 1560281442565072, guid: c85bc4d523830874f875bddaf530afe6, type: 2}
   RequiresLocalScale: 0

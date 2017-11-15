@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4252977266621846}
   - component: {fileID: 82764950184902408}
   m_Layer: 0
-  m_Name: Sound_Abilites_Fire_1
+  m_Name: SFX_FireBreathe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
