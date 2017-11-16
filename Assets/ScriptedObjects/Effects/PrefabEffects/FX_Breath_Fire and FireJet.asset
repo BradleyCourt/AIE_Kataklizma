@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: FX_Breath_Fire and FireJet
   m_EditorClassIdentifier: 
   IsRemovable: 1
-  Anchor: 2
+  Anchor: 1
   Prefab: {fileID: 1481817889259168, guid: ee5d53db42322bb4c9c2af962ebc8294, type: 2}
   RequiresLocalScale: 1

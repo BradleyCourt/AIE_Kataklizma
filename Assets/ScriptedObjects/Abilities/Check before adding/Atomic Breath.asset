@@ -36,7 +36,7 @@ MonoBehaviour:
     OnChannelling:
     - {fileID: 11400000, guid: 69e238ed26b75d34dbec8941a3e9b8bc, type: 2}
     - {fileID: 11400000, guid: 661d808b2852a5f4d8a3fd3a80e28806, type: 2}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: f15ce2fa0e4d7c341a0c062e263237a4, type: 2}
     OnCleanup: []
     OnManifest:
     - {fileID: 11400000, guid: bf49938ff87e5d14aaac2e2bb43e6797, type: 2}

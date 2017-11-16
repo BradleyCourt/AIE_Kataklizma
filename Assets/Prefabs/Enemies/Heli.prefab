@@ -461,7 +461,9 @@ MonoBehaviour:
   LockOnTime: 0
   P: {fileID: 0}
   Rocket: {fileID: 1773658540312008, guid: a8ab3cb673090dd4ca07226f90879cc9, type: 2}
-  RocketPos: {fileID: 4118355783240948}
+  RocketOrigins:
+  - {fileID: 4118355783240948}
+  - {fileID: 4315665146523230}
   RocketSpeed: 50
   target: {fileID: 0}
   TargettingCircle: {fileID: 1664938654377808, guid: dc5f2d550389289459d47e7ee150fee3,
@@ -479,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a8ee018f7c79f4bb5d9de49bae5bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 800
+  speed: 1600
 --- !u!114 &114922650354106606
 MonoBehaviour:
   m_ObjectHideFlags: 1
