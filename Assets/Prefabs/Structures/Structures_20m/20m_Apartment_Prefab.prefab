@@ -43,9 +43,26 @@ GameObject:
   - component: {fileID: 114696533072404274}
   - component: {fileID: 208283851561536896}
   - component: {fileID: 205133739055848518}
+  - component: {fileID: 114918530696744822}
   m_Layer: 0
   m_Name: 20m_Apartment_Prefab
   m_TagString: Building
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1563201259924434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4895445321065184}
+  - component: {fileID: 114397957157216556}
+  m_Layer: 0
+  m_Name: BillboardSpawner
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,13 +87,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1251098927418836}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -298.56482, y: 174.4579, z: 515.3183}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4548372377602632}
+  - {fileID: 4895445321065184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4895445321065184
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563201259924434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.37, y: 20, z: 14.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4839047561725182}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23655212639727780
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -158,10 +189,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnhideRubble: {fileID: 0}
   SpawnRubble: {fileID: 0}
-  UseSceneGravity: 1
+  UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
+  MaxFallSpeed: 0.2
+  TimeToLive: 5
+--- !u!114 &114397957157216556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1563201259924434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6207082cd27844fbf5c52cbe9513ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cars:
+  - {fileID: 1603130872864012, guid: 49b2d324e056a3940a12fa9529d187cb, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
+  - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
 --- !u!114 &114696533072404274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,6 +223,18 @@ MonoBehaviour:
   CollectableRadius: 2
   CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
     type: 2}
+--- !u!114 &114918530696744822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1251098927418836}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 0.4
 --- !u!114 &114969686941874500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,7 +266,7 @@ LODGroup:
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LODs:
-  - screenRelativeHeight: 0.14389074
+  - screenRelativeHeight: 0.058196627
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23655212639727780}

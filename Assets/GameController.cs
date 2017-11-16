@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
     {
         Attributes.GetComponent<Kataklizma.Gameplay.PlayerController>().enabled = false;
         CharacterAnimator.SetFloat("WalkSpeed", 0);
-
+        player.tag = "Untagged";
         PauseMenu.winState = true;
         // Do game win
     }

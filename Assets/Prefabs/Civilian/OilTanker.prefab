@@ -104,6 +104,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4458908598727644}
+  - component: {fileID: 65458655423504104}
+  - component: {fileID: 114137778324044130}
+  - component: {fileID: 114157557555952020}
   m_Layer: 0
   m_Name: OilTanker
   m_TagString: Untagged
@@ -669,3 +672,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1217004802629506}
   m_Mesh: {fileID: 4300006, guid: 99a6352e66146224e92e3cc0e0147aa4, type: 3}
+--- !u!65 &65458655423504104
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394742958149522}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.031656, y: 2.898189, z: 5.2151585}
+  m_Center: {x: -0.014497638, y: 1.4180672, z: 0.1890707}
+--- !u!114 &114137778324044130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394742958149522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Attributes:
+    _Values:
+    - Type: 1
+      Base: 10
+      Modifier: 0
+--- !u!114 &114157557555952020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1394742958149522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectableRadius: 2
+  CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
+    type: 2}

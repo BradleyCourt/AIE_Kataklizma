@@ -75,6 +75,9 @@ namespace Kataklizma.Gameplay {
         // Update is called once per frame
         void Update() {
             if (IsFalling == true) {
+                var wobbler = GetComponent<Shake>();
+                if (wobbler != null) wobbler.enabled = true;
+
                 Velocity += UseSceneGravity ? Physics.gravity : new Vector3(0, -LocalGravity, 0); // Increase velocity from gravity
 
                 Velocity = Vector3.ClampMagnitude(Velocity, MaxFallSpeed); // Limit to MaxfallSpeed
