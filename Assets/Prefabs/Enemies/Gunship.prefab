@@ -191,7 +191,8 @@ MonoBehaviour:
   LockOnTime: 0
   P: {fileID: 0}
   Rocket: {fileID: 1896236326750532, guid: 6f07718616e7dc64cadedf4f6ba8bbb0, type: 2}
-  RocketPos: {fileID: 4662458611535422}
+  RocketOrigins:
+  - {fileID: 4662458611535422}
   RocketSpeed: 100
   target: {fileID: 0}
   TargettingCircle: {fileID: 1664938654377808, guid: dc5f2d550389289459d47e7ee150fee3,
