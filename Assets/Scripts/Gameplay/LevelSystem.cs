@@ -116,7 +116,12 @@ namespace Kataklizma.Gameplay {
         private void DoLevelGained() {
             Stats[ValueType.ExperienceThreshold, ValueSubtype.Base] = CurrentXpThreshold;
 
-            transform.localScale = Vector3.one * Mathf.Pow(2, Stats[ValueType.CharacterLevel] - 1);
+
+            //transform.localScale = Vector3.one * Mathf.Pow(2, Stats[ValueType.CharacterLevel] - 1);
+            LeanTween.value(gameObject, (value) =>
+            {
+                transform.localScale = value;
+            }, transform.localScale, Vector3.one * Mathf.Pow(2, Stats[ValueType.CharacterLevel] - 1), 0.5f);
 
             Stats.ApplyEffects(Levels[CurrentLevel-1].Effects);
         }
