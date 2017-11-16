@@ -80,15 +80,23 @@ namespace Kataklizma.Gameplay {
         protected bool InvertViewHorizontal;
         protected bool InvertViewVertical;
 
-        public void SetAbilitySlot(int index, ScriptedAbility ability)
+        public void SetAbilitySlot(int index, ScriptedAbility ability, bool isPrefab = false)
         {
-            // Remove old
-            Abilities[index].Ability.Unbind();
-            Destroy(Abilities[index].Ability);
+            if ( index < 0 || index >= Abilities.Count )
+            {
+                Debug.LogWarning("PlayerController::SetAbilitySlot(): Index out of range (" + index + ") for new ability: " + ability.name);
+                return;
+            }
+
+            // If exists, remove old
+            if (Abilities[index].Ability != null && !isPrefab)
+            {
+                Abilities[index].Ability.Unbind();
+                Destroy(Abilities[index].Ability);
+            }
 
             // Create new
-            Abilities[index].Ability = Instantiate(ability);
-            Abilities[index].Ability.Bind(transform);
+            Abilities[index].Ability = ability.CloneAndBind(transform);
             Abilities[index].Ability.Reset();
 
             // Raise Event
@@ -116,7 +124,7 @@ namespace Kataklizma.Gameplay {
 
             for ( var i = 0; i < Abilities.Count; i++) { 
                 if (Abilities[i].Ability != null) {
-                    SetAbilitySlot(i, Abilities[i].Ability);
+                    SetAbilitySlot(i, Abilities[i].Ability, true);
                 }
             }
 

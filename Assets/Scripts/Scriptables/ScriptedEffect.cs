@@ -21,6 +21,13 @@ namespace Scriptables {
 
         public bool IsRemovable = true;
 
+        public virtual ScriptedEffect CloneAndBind(Transform owner)
+        {
+            var result = Instantiate(this);
+            result.Bind(owner);
+            return result;
+        }
+
         public virtual bool Bind(Transform owner) {
             if (owner == null) { Unbind(); return false; }
 

@@ -127,7 +127,28 @@ namespace Scriptables {
 
         public ScriptedAbility CloneAndBind(Transform owner) {
             var result = Instantiate(this);
-            result.Bind(owner);
+
+            result.Owner = owner;
+
+            var maxCount = Mathf.Max(Effects.Lifetime.Count, Effects.OnCharging.Count, Effects.OnChannelling.Count, Effects.OnCleanup.Count, Effects.OnManifest.Count);
+            for ( var i = 0; i < maxCount; i++ )
+            {
+                if (i < result.Effects.Lifetime.Count && result.Effects.Lifetime[i] != null)
+                    result.Effects.Lifetime[i] = result.Effects.Lifetime[i].CloneAndBind(owner);
+
+                if (i < Effects.OnCharging.Count && result.Effects.OnCharging[i] != null)
+                    result.Effects.OnCharging[i] = result.Effects.OnCharging[i].CloneAndBind(owner);
+
+                if (i < result.Effects.OnChannelling.Count && result.Effects.OnChannelling[i] != null)
+                    result.Effects.OnChannelling[i] = result.Effects.OnChannelling[i].CloneAndBind(owner);
+
+                if (i < result.Effects.OnCleanup.Count && result.Effects.OnCleanup[i] != null)
+                    result.Effects.OnCleanup[i] = result.Effects.OnCleanup[i].CloneAndBind(owner);
+
+                if (i < result.Effects.OnManifest.Count && result.Effects.OnManifest[i] != null)
+                    result.Effects.OnManifest[i] = result.Effects.OnManifest[i].CloneAndBind(owner);
+            }
+
             return result;
         }
 
@@ -150,6 +171,15 @@ namespace Scriptables {
             foreach (var effect in Effects.AllEffects) {
                 if (effect == null) continue;
                 effect.Unbind();
+            }
+        }
+
+        void OnDestroy()
+        {
+            foreach (var effect in Effects.AllEffects)
+            {
+                if (effect == null) continue;
+                Destroy(effect);
             }
         }
 
