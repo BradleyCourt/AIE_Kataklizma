@@ -48,9 +48,7 @@ public class Pause : MonoBehaviour {
 
         if(winState)
         {
-            //player cant be killed and enemies drop aggro
             //rotate camera
-            //disable controller
             levelCompleteImage.SetActive(true);
             mainMenuButton.SetActive(true);
             nextLevelButton.SetActive(true);
@@ -60,10 +58,8 @@ public class Pause : MonoBehaviour {
 
         if(deathState)
         {
-            //enemies drop aggro
             //play death animation
             //rotate camera
-            //disable controller
             gameOverImage.SetActive(true);
             mainMenuButton.SetActive(true);
             restartButton.SetActive(true);

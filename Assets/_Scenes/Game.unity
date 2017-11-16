@@ -3456,6 +3456,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4854596405097008, guid: d5490a90e2ca01b43a99741268956503,
     type: 2}
   m_PrefabInternal: {fileID: 1122933758}
+--- !u!95 &639439808 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95755631731138124, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+    type: 2}
+  m_PrefabInternal: {fileID: 174007426}
 --- !u!4 &647961725 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4854596405097008, guid: d5490a90e2ca01b43a99741268956503,
@@ -5277,6 +5282,17 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5490a90e2ca01b43a99741268956503, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &871815754 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1431774962278804, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+    type: 2}
+  m_PrefabInternal: {fileID: 174007426}
+--- !u!114 &871815756 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114749656060951336, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+    type: 2}
+  m_PrefabInternal: {fileID: 174007426}
+  m_Script: {fileID: 11500000, guid: 8df017b7feb007241b2b15ecb9a66ffc, type: 3}
 --- !u!1 &874379804
 GameObject:
   m_ObjectHideFlags: 0
@@ -9317,6 +9333,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cd44a6130f1614a8fc3407cf24094a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 871815754}
+  PauseMenu: {fileID: 844232363}
+  CharacterAnimator: {fileID: 639439808}
+  Attributes: {fileID: 700515449}
+  Levels: {fileID: 871815756}
 --- !u!4 &1471876846
 Transform:
   m_ObjectHideFlags: 0
