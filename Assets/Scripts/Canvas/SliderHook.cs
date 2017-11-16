@@ -5,7 +5,7 @@ using Kataklizma.Gameplay;
 
 namespace Kataklizma.Canvas {
     public class SliderHook : MonoBehaviour {
-
+        
         public EntityAttributes AttributeSource;
 
         private UnityEngine.UI.Slider Widget;
@@ -28,6 +28,7 @@ namespace Kataklizma.Canvas {
 
             Widget.maxValue = AttributeSource[ValueMaxSource];
             Widget.value = AttributeSource[ValueSource];
+            
         }
 
         private void OnValueChanged(Object source, ValueType type, ValueSubtype subtype, float oldValue) {
@@ -42,6 +43,7 @@ namespace Kataklizma.Canvas {
                     Widget.minValue = oldValue;
 
                 Widget.value = AttributeSource[ValueSource];
+               
             }
         }
         

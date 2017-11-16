@@ -24,9 +24,10 @@ public class NavMeshGen : MonoBehaviour {
         List<NavMeshBuildSource> results = new List<NavMeshBuildSource>();
 
         NavMeshBuilder.CollectSources(root, 255, NavMeshCollectGeometry.RenderMeshes, 0, new List<NavMeshBuildMarkup>(), results);
-        
+
         // Build the actual navmesh
         NavMeshData data = NavMeshBuilder.BuildNavMeshData(settings, results, bounds, Vector3.zero, Quaternion.identity);
+
         instances.Add(NavMesh.AddNavMeshData(data));
         
         //success = NavMeshBuilder.UpdateNavMeshData(data, settings, results, bounds);
