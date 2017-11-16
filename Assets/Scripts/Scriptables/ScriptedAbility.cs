@@ -149,6 +149,8 @@ namespace Scriptables {
                     result.Effects.OnManifest[i] = result.Effects.OnManifest[i].CloneAndBind(owner);
             }
 
+            ApplyEffects(Effects.Lifetime);
+
             return result;
         }
 
@@ -161,10 +163,14 @@ namespace Scriptables {
                 if (effect == null) continue;
                 effect.Bind(Owner);
             }
+
+            ApplyEffects(Effects.Lifetime);
         }
 
         public void Unbind() {
             if (Owner == null) return;
+
+            RemoveEffects(Effects.Lifetime);
 
             Owner = null;
 
