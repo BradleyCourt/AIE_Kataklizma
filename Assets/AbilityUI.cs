@@ -14,8 +14,16 @@ namespace Kataklizma.Gameplay {
         void Start() {
 
             Controller = FindObjectOfType<PlayerController>();
+            Controller.AbilitySlotChanged += Controller_AbilitySlotChanged;
 
             Items = new AbilityWatcher[0];
+
+
+        }
+
+        private void Controller_AbilitySlotChanged(object sender, int slot)
+        {
+            RebindItem(slot);
         }
 
         // Update is called once per frame

@@ -9,6 +9,8 @@ namespace Kataklizma.Gameplay {
     [RequireComponent(typeof(EntityAttributes))]
     public class PlayerController : MonoBehaviour {
 
+
+
         [System.Serializable]
         public class AbilitySlot {
             public string TriggerName;
@@ -16,6 +18,13 @@ namespace Kataklizma.Gameplay {
 
             public bool CanActivate { get { return Ability != null && Ability.CanActivate; } }
 
+        }
+
+
+        public event System.Action<object, int> AbilitySlotChanged;
+        protected void RaiseAbilitySlotChanged(int index)
+        {
+            if (AbilitySlotChanged != null) AbilitySlotChanged(this, index);
         }
 
         private bool IsGrounded {
@@ -71,6 +80,30 @@ namespace Kataklizma.Gameplay {
         protected bool InvertViewHorizontal;
         protected bool InvertViewVertical;
 
+        public void SetAbilitySlot(int index, ScriptedAbility ability, bool isPrefab = false)
+        {
+            if ( index < 0 || index >= Abilities.Count )
+            {
+                Debug.LogWarning("PlayerController::SetAbilitySlot(): Index out of range (" + index + ") for new ability: " + ability.name);
+                return;
+            }
+
+            // If exists, remove old
+            if (Abilities[index].Ability != null && !isPrefab)
+            {
+                Abilities[index].Ability.Unbind();
+                Destroy(Abilities[index].Ability);
+            }
+
+            // Create new
+            Abilities[index].Ability = ability.CloneAndBind(transform);
+            Abilities[index].Ability.Reset();
+
+            // Raise Event
+            RaiseAbilitySlotChanged(index);
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -89,10 +122,9 @@ namespace Kataklizma.Gameplay {
 
             IsControllable = true;
 
-            foreach (var slot in Abilities) {
-                if (slot.Ability != null) {
-                    slot.Ability.Bind(transform);
-                    slot.Ability.Reset();
+            for ( var i = 0; i < Abilities.Count; i++) { 
+                if (Abilities[i].Ability != null) {
+                    SetAbilitySlot(i, Abilities[i].Ability, true);
                 }
             }
 

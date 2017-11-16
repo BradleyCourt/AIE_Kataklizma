@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 65045118609533416}
   - component: {fileID: 114749656060951336}
   - component: {fileID: 114583009035678324}
+  - component: {fileID: 114353922593564358}
   m_Layer: 8
   m_Name: PlayerAvatar
   m_TagString: Player
@@ -1075,7 +1076,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431774962278804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.2, y: 0.64, z: -107.9}
+  m_LocalPosition: {x: 0.11172485, y: -0.1, z: 6.3024597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4272444309565150}
@@ -1268,7 +1269,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612280163498898}
-  m_LocalRotation: {x: -0.70106184, y: 0.7108747, z: -0.052357882, w: 0.020691603}
+  m_LocalRotation: {x: -0.7010619, y: 0.71087474, z: -0.052357942, w: 0.020691605}
   m_LocalPosition: {x: -0.002800439, y: 2.1940196, z: 0.026612196}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1551,10 +1552,10 @@ MonoBehaviour:
   _Attributes:
     _Values:
     - Type: 1
-      Base: 25
+      Base: 5
       Modifier: 0
     - Type: 2
-      Base: 50
+      Base: 100
       Modifier: 0
     - Type: 6
       Base: 1
@@ -1611,6 +1612,20 @@ MonoBehaviour:
   LeftFoot: {fileID: 4325406987474978}
   RightFoot: {fileID: 4383214827606694}
   Tail: {fileID: 4211989987967632}
+--- !u!114 &114353922593564358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431774962278804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4dd68c2a8b3354f83a732bfe72221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewAbility: {fileID: 0}
+  AbilitySlot: 0
+  Ready: 0
 --- !u!114 &114583009035678324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1637,6 +1652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df017b7feb007241b2b15ecb9a66ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p: {fileID: 0}
   Levels:
   - XpThreshold: 100
     Effects:
