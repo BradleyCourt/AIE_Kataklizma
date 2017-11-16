@@ -9,13 +9,32 @@ public class HeliFire : MonoBehaviour {
 
     public Patrol P;
     public GameObject Rocket; // define the object of what a rocket is
-    public Transform RocketPos; //position of which rockets are fired from
+    public List<Transform> RocketOrigins; //position of which rockets are fired from
     public float RocketSpeed; // speed of rockets
     public GameObject target; // where the reticle will be placed
     public GameObject TargettingCircle;
     private bool CanFire;
     public float RocketCooldown = 0.1f;
     public int amount = 0;
+
+    protected int _RocketPosIdx = -1;
+    protected int RocketPosIdx {
+        get {
+            _RocketPosIdx++;
+
+            if (_RocketPosIdx >= RocketOrigins.Count) _RocketPosIdx = 0;
+
+            return _RocketPosIdx;
+        }
+    }
+
+    protected Transform RocketPos {
+        get {
+            if (RocketOrigins.Count == 0) return null;
+
+            return RocketOrigins[RocketPosIdx];
+        }
+    }
     // Use this for initialization
     void Start ()
     {
