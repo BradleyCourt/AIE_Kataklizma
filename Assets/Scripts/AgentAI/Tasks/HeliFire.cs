@@ -15,7 +15,7 @@ public class HeliFire : MonoBehaviour {
     public GameObject TargettingCircle;
     private bool CanFire;
     public float RocketCooldown = 0.1f;
-
+    public int amount = 0;
     // Use this for initialization
     void Start ()
     {
@@ -84,7 +84,7 @@ public class HeliFire : MonoBehaviour {
 
 
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < amount; i++)
         {
             GameObject go = Instantiate(Rocket, RocketPos.position, RocketPos.rotation);
             go.transform.forward = reticle.transform.position - RocketPos.position;
