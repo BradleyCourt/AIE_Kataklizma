@@ -197,6 +197,7 @@ MonoBehaviour:
   TargettingCircle: {fileID: 1664938654377808, guid: dc5f2d550389289459d47e7ee150fee3,
     type: 2}
   RocketCooldown: 0.1
+  amount: 10
 --- !u!136 &136664152623142532
 CapsuleCollider:
   m_ObjectHideFlags: 1
