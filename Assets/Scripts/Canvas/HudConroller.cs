@@ -52,6 +52,7 @@ namespace Kataklizma.Canvas {
                     if (Widgets.XpBar != null) {
                         Widgets.XpBar.minValue = old;
                         Widgets.XpBar.maxValue = (source as EntityAttributes)[type];
+                        
                     }
                     break;
                 case ValueType.Health:

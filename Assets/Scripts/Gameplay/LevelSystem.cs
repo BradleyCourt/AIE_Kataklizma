@@ -10,6 +10,7 @@ namespace Kataklizma.Gameplay {
     public class LevelSystem : MonoBehaviour {
 
         protected EntityAttributes Stats;
+        public Pause p;
 
         [System.Serializable]
         public struct LevelUpOptions {
@@ -21,14 +22,15 @@ namespace Kataklizma.Gameplay {
 
         public List<LevelUpOptions> Levels;
         
-        protected int CurrentLevel {
+        public int CurrentLevel {
             get { return (int)Stats[ValueType.CharacterLevel];  }
-            set { Stats[ValueType.CharacterLevel, ValueSubtype.Base] = value; }
+            protected set { Stats[ValueType.CharacterLevel, ValueSubtype.Base] = value; }
         }
 
-        protected int CurrentXp {
+        public int CurrentXp {
             get { return (int)Stats[ValueType.Experience]; }
-            set { Stats[ValueType.Experience, ValueSubtype.Base] = value; }
+            protected set { Stats[ValueType.Experience, ValueSubtype.Base] = value; }
+
         }
 
         public int PreviousXpThreshold {
@@ -56,7 +58,6 @@ namespace Kataklizma.Gameplay {
 
             if (Levels.Count < 1) throw new System.ApplicationException(gameObject.name + " - LevelSystem: Levels cannot be empty.");
             
-            
 
             Stats[ValueType.CharacterLevel, ValueSubtype.Base] = 1;
             //Stats[ValueType.ExperienceThreshold, ValueSubtype.Base] = CurrentXpThreshold;
@@ -70,7 +71,9 @@ namespace Kataklizma.Gameplay {
         }
 
         // Update is called once per frame
-        void Update() {
+        void Update()
+        {
+
 
         }
 
