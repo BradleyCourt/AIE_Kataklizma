@@ -416,8 +416,11 @@ namespace MapGen
                 NavMeshGen.BuildNavMesh(Roads, new Bounds(transform.position, new Vector3(5 * Columns, 1, 5 * Rows)));
             }
 
-            if ( Skyway != null ) { // Always generate NavMesh if Skyway exists
+            if (Skyway != null)
+            { // Always generate NavMesh if Skyway exists
                 NavMeshGen.BuildNavMesh(Skyway, new Bounds(Skyway.transform.position, new Vector3(5 * Columns, 1, 5 * Rows)));
+
+
             }
         }
         void OnDestroy()
