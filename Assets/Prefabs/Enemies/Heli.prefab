@@ -140,7 +140,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1255731546162744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.85, y: -0.463, z: 0.853}
+  m_LocalPosition: {x: 1.03, y: -0.71, z: 1.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4782020921387870}
@@ -153,7 +153,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1038720854115162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.83, y: -0.46300125, z: 0.8529968}
+  m_LocalPosition: {x: -1.05, y: -0.73, z: 1.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4782020921387870}
@@ -205,7 +205,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1593274314268264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 162.4841, y: -38.35327, z: -74.739395}
+  m_LocalPosition: {x: 0, y: 2.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4768007635863382}
@@ -462,11 +462,11 @@ MonoBehaviour:
   P: {fileID: 0}
   Rocket: {fileID: 1773658540312008, guid: a8ab3cb673090dd4ca07226f90879cc9, type: 2}
   RocketPos: {fileID: 4118355783240948}
-  RocketSpeed: 200
+  RocketSpeed: 50
   target: {fileID: 0}
   TargettingCircle: {fileID: 1664938654377808, guid: dc5f2d550389289459d47e7ee150fee3,
     type: 2}
-  RocketCooldown: 0.1
+  RocketCooldown: 1
   amount: 2
 --- !u!114 &114462865206528016
 MonoBehaviour:
