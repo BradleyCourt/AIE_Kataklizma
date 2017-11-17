@@ -31,10 +31,10 @@ MonoBehaviour:
   AreaAnchor: 3
   AreaOfEffect: {fileID: 11400000, guid: 3e37b07c88bef5a4588fb89041a75b49, type: 2}
   Effects:
-    Lifetime: []
     OnCharging: []
     OnChannelling:
     - {fileID: 11400000, guid: 456b58185487a1f4cb22c899ea2ac1c4, type: 2}
+    - {fileID: 11400000, guid: 347a3aa4666efa6498bd1e562eeedb8c, type: 2}
     OnCleanup: []
     OnManifest:
     - {fileID: 11400000, guid: ddca94c6fb2159d4caa732665b929f9f, type: 2}

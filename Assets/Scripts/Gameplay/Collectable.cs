@@ -7,7 +7,9 @@ namespace Kataklizma.Gameplay {
     public class Collectable : MonoBehaviour {
 
         public float RotationSpeed = 30;
-        
+
+        public AudioClip Sound;
+
         [UnityTag]
         public List<string> CollectableBy;
 
@@ -24,6 +26,9 @@ namespace Kataklizma.Gameplay {
 
         private void OnTriggerEnter(Collider other) {
             if (CollectableBy.Contains(other.gameObject.transform.root.tag)) {
+                var soundPlayer = GetComponent<AudioSource>();
+                if (soundPlayer) soundPlayer.PlayOneShot(Sound, 5.0f);
+
                 var stats = other.gameObject.transform.root.GetComponent<EntityAttributes>();
 
                 foreach (var preset in Contents) {
@@ -32,9 +37,12 @@ namespace Kataklizma.Gameplay {
                 }
 
                 // Handle exceptional cases of multiple-triggering
-                Contents.Clear(); 
+                Contents.Clear();
 
-                Destroy(gameObject);
+                for (int i = 0; i < transform.childCount; i++)
+                    transform.GetChild(i).gameObject.SetActive(false);
+
+                Destroy(gameObject, Sound.length);
             }
         }
     }

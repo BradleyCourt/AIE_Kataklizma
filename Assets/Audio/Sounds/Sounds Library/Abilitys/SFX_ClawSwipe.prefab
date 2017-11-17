@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4252977266621846}
   - component: {fileID: 82764950184902408}
+  - component: {fileID: 114672104799103392}
   m_Layer: 0
   m_Name: SFX_ClawSwipe
   m_TagString: Untagged
@@ -49,8 +50,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a960fc6c0bfc287429a298312a34cf38, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -62,7 +63,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -89,7 +90,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.505
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -107,7 +108,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -120,3 +121,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114672104799103392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560281442565072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 079980de442790942b0278eedc76cc82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shuffle: 1
+  Clips:
+  - {fileID: 8300000, guid: 75c1c6b13909c5341ad01b81f588592d, type: 3}
+  - {fileID: 8300000, guid: 1c7dce01bb06afb479f7bf20707165d0, type: 3}
+  - {fileID: 8300000, guid: 88f41fd1bbc28a04883bcacbfd585791, type: 3}
+  - {fileID: 8300000, guid: cb034391996b8c248a16aefc83789f5a, type: 3}

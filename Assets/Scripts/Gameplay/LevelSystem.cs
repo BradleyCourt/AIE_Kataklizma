@@ -9,8 +9,10 @@ namespace Kataklizma.Gameplay {
     [RequireComponent(typeof(EntityAttributes))]
     public class LevelSystem : MonoBehaviour {
 
+        
+        public AudioSource SoundPlayer;
+        public AudioClip Sound;
         protected EntityAttributes Stats;
-        public Pause p;
 
         [System.Serializable]
         public struct LevelUpOptions {
@@ -20,6 +22,7 @@ namespace Kataklizma.Gameplay {
             //public List<Scriptables.ScriptedAbility> AddAbilities;
         }
 
+        [Space]
         public List<LevelUpOptions> Levels;
         
         public int CurrentLevel {
@@ -116,6 +119,8 @@ namespace Kataklizma.Gameplay {
         private void DoLevelGained() {
             Stats[ValueType.ExperienceThreshold, ValueSubtype.Base] = CurrentXpThreshold;
 
+            if (CurrentLevel > 1)
+                SoundPlayer.PlayOneShot(Sound);
 
             //transform.localScale = Vector3.one * Mathf.Pow(2, Stats[ValueType.CharacterLevel] - 1);
             LeanTween.value(gameObject, (value) =>

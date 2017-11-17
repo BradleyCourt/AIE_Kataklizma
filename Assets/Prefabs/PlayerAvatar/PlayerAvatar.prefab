@@ -1272,7 +1272,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612280163498898}
-  m_LocalRotation: {x: -0.70106184, y: 0.7108747, z: -0.052357916, w: 0.020691603}
+  m_LocalRotation: {x: -0.7010619, y: 0.71087474, z: -0.052357916, w: 0.020691605}
   m_LocalPosition: {x: 0.000014113096, y: 2.0821073, z: 0.02686794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1759,7 +1759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df017b7feb007241b2b15ecb9a66ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p: {fileID: 0}
+  SoundPlayer: {fileID: 82852155400815422}
+  Sound: {fileID: 8300000, guid: 6ee8ead420f2600418fcaac1c2397587, type: 3}
   Levels:
   - XpThreshold: 100
     Effects:
