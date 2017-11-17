@@ -58,6 +58,9 @@ namespace Kataklizma.Gameplay {
                     for (int i = 0; i < LotterySpawnCount; i++)
                     {
                         var prefab = RandomLotteryItem;
+
+                        if (prefab == null) continue;
+
                         var offset2D = Random.insideUnitCircle * SpawnRadius;
                         var offset = OriginOffset + new Vector3(offset2D.x, 0, offset2D.y);
 
