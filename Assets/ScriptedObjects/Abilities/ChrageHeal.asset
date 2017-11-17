@@ -19,7 +19,7 @@ MonoBehaviour:
   ChargeTime: 0
   ChannelTime: 5
   CleanupTime: 0.2
-  ManifestCount: 100
+  ManifestCount: 10
   CooldownTime: 0
   CooldownStartsAfter: 3
   ContinuousActivation: 0
@@ -34,6 +34,7 @@ MonoBehaviour:
     OnCharging: []
     OnChannelling:
     - {fileID: 11400000, guid: 9efff61721736da4d9fb22c73e4b7e5b, type: 2}
+    - {fileID: 11400000, guid: 3199517670c3a904591d63bb8d6f50cd, type: 2}
     OnCleanup: []
     OnManifest:
     - {fileID: 11400000, guid: dee7ae76fd686d5478cfe67ce96329f1, type: 2}

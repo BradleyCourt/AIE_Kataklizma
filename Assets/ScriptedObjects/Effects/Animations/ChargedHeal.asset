@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895781e9c93988f4f9246d1a6e2596a5, type: 3}
   m_Name: ChargedHeal
   m_EditorClassIdentifier: 
-  IsRemovable: 0
+  IsRemovable: 1
   AnimationName: Hunch

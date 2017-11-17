@@ -31,8 +31,12 @@ namespace Scriptables {
             if (IsRemovable && IsApplied) return; // Is already applied
             base.Apply(data);
 
-            if (OwnerAnimator != null && !string.IsNullOrEmpty(AnimationName))
-                OwnerAnimator.SetTrigger(AnimationName);
+            if (OwnerAnimator != null && !string.IsNullOrEmpty(AnimationName)) {
+                if (!IsRemovable)
+                    OwnerAnimator.SetTrigger(AnimationName);
+                else
+                    OwnerAnimator.SetBool(AnimationName, true);
+            }
         }
 
         public override void Remove() {
@@ -40,8 +44,7 @@ namespace Scriptables {
             base.Remove();
 
             if (OwnerAnimator != null && !string.IsNullOrEmpty(AnimationName))
-                //OwnerAnimator.Stop(AnimationName);
-                OwnerAnimator.ResetTrigger(AnimationName);
+                OwnerAnimator.SetBool(AnimationName, false);
         }
     }
 }

@@ -24,6 +24,7 @@ public enum ValueType {
     WalkSpeed,
     DashSpeed,
     WalkAnimationSpeed,
+    WalkSoundPitch,
 }
 
 public enum ValueSubtype {

@@ -113,6 +113,10 @@ namespace Kataklizma.Gameplay {
                 case ValueType.WalkAnimationSpeed:
                     this[ValueType.WalkAnimationSpeed] = value.Derived;
                     break;
+                case ValueType.WalkSoundPitch:
+                    this[ValueType.WalkSoundPitch] = value.Derived;
+                    GetComponentInChildren<CharacterFootfall>().Sound.pitch = value.Derived;
+                    break;
                 default:
                     Debug.LogWarning(gameObject.name + " - EntityAttributes::ApplyEffect(): Unknown value type: " + value.Type.ToString());
                     break;
