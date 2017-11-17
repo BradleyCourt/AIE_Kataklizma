@@ -165,7 +165,7 @@ Prefab:
     - target: {fileID: 198457579574497546, guid: 6928099d2a498614f97f3921527de7c1,
         type: 2}
       propertyPath: randomSeed
-      value: 1900569224
+      value: 1112593863
       objectReference: {fileID: 0}
     - target: {fileID: 198457579574497546, guid: 6928099d2a498614f97f3921527de7c1,
         type: 2}
@@ -376,6 +376,16 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.size3D
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199349621306093026, guid: 6928099d2a498614f97f3921527de7c1,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 026cb4b3e763e714483a05647ef88a75, type: 3}
+    - target: {fileID: 198457579574497546, guid: 6928099d2a498614f97f3921527de7c1,
+        type: 2}
+      propertyPath: ShapeModule.m_Position.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6928099d2a498614f97f3921527de7c1, type: 2}
