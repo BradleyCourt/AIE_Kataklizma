@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114152325541840018}
   - component: {fileID: 114637009648964354}
   - component: {fileID: 205548958879915324}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 10m_ModernHouse_Prefab
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33730962822770120}
   - component: {fileID: 23772779147706134}
   - component: {fileID: 95072155263323342}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 5m_ModernHouse_Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

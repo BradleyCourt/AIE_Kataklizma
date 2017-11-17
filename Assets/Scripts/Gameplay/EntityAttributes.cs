@@ -100,6 +100,19 @@ namespace Kataklizma.Gameplay {
                     this[ValueType.ContactDamage, ValueSubtype.Base] += value.Base;
                     this[ValueType.ContactDamage, ValueSubtype.Modifier] += value.Modifier;
                     break;
+                case ValueType.HealthMax:
+                    var pct = this[ValueType.Health] / this[ValueType.HealthMax];
+                    this[ValueType.HealthMax, ValueSubtype.Base] = value.Base;
+                    this[ValueType.HealthMax, ValueSubtype.Modifier] = value.Modifier;
+                    this[ValueType.Health] = pct * this[ValueType.HealthMax];
+
+                    break;
+                case ValueType.WalkSpeed:
+                    this[ValueType.WalkSpeed] = value.Derived;
+                    break;
+                case ValueType.WalkAnimationSpeed:
+                    this[ValueType.WalkAnimationSpeed] = value.Derived;
+                    break;
                 default:
                     Debug.LogWarning(gameObject.name + " - EntityAttributes::ApplyEffect(): Unknown value type: " + value.Type.ToString());
                     break;

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4610980045107330}
   - component: {fileID: 33293902968915102}
   - component: {fileID: 23279675304159524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 10m_House_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114220919119185266}
   - component: {fileID: 65894292079613416}
   - component: {fileID: 205389228018400486}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 10m_House_Prefab
   m_TagString: Building
   m_Icon: {fileID: 0}
