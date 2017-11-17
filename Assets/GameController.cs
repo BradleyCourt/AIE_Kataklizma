@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
     {
         Attributes.GetComponent<Kataklizma.Gameplay.PlayerController>().enabled = false;
         CharacterAnimator.SetFloat("WalkSpeed", 0);
+        CharacterAnimator.SetTrigger("Death");
         player.tag = "Untagged";
         // Do death animation
         //CharacterAnimator.SetTrigger("Death");
