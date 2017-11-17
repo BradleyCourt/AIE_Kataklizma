@@ -7,10 +7,23 @@ namespace Kataklizma.Gameplay {
 
     [RequireComponent(typeof(EntityAttributes))]
     public class SpawnOnDeath : MonoBehaviour {
+
+        public Vector3 OriginOffset = new Vector3(2.5f, 0, 2.5f);
         
-        public float CollectableRadius = 2;
-        public GameObject CollectablePrefab;
+        public Transform OptionalParent;
         
+        [UnityEngine.Serialization.FormerlySerializedAs("CollectableRadius")]
+        public float SpawnRadius = 2;
+
+        [Space]
+        public List<GameObject> MustSpawn;
+
+        [Space]
+        public int LotterySpawnCount;
+        public List<GameObject> LotterySpawn;
+        public GameObject RandomLotteryItem {  get { return LotterySpawn[Random.Range(0, LotterySpawn.Count)]; } }
+
+
         private EntityAttributes Stats;
         private bool HasSpawned = false;
 
@@ -29,16 +42,28 @@ namespace Kataklizma.Gameplay {
             if ( type == ValueType.Health && Stats[ValueType.Health] <= 0 && !HasSpawned ) {
                 HasSpawned = true;
 
-                if (CollectablePrefab == null) {
-                    Debug.LogWarning(gameObject.name + " - SpawnOnDeath: CollectablePrefab is null");
-                    return;
+                foreach ( var prefab in MustSpawn)
+                {
+                    if (prefab == null) continue;
+
+                    var offset2D = Random.insideUnitCircle * SpawnRadius;
+                    var offset = OriginOffset + new Vector3(offset2D.x, 0, offset2D.y);
+
+                    Instantiate(prefab, gameObject.transform.position + offset, gameObject.transform.rotation, OptionalParent);
                 }
 
-                // Spawn Collectables
 
-                // foreach (prefab)
-                var offset = Random.insideUnitCircle * CollectableRadius;
-                Instantiate(CollectablePrefab, gameObject.transform.position + new Vector3(offset.x, 0, offset.y), new Quaternion());
+                if (LotterySpawn.Count > 0)
+                {
+                    for (int i = 0; i < LotterySpawnCount; i++)
+                    {
+                        var prefab = RandomLotteryItem;
+                        var offset2D = Random.insideUnitCircle * SpawnRadius;
+                        var offset = OriginOffset + new Vector3(offset2D.x, 0, offset2D.y);
+
+                        Instantiate(prefab, gameObject.transform.position + offset, gameObject.transform.rotation, OptionalParent);
+                    }
+                }                
             }
         }
     }

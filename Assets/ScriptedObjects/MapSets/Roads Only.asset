@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c7468dbf63ba3469f8e3bdbda5d34a, type: 3}
+  m_Name: Roads Only
+  m_EditorClassIdentifier: 
+  Roads:
+    End:
+    - {fileID: 1021192304127646, guid: d1063f866d7d8db45942f33dcb73b419, type: 2}
+    Inter:
+    - {fileID: 1715133271137580, guid: 954f01d61bdaa7b41b4ac49a7d1f0429, type: 2}
+    Straight:
+    - {fileID: 1869687094050442, guid: ec8ad3c7b8b2558449a85b65cc594744, type: 2}
+    Tee:
+    - {fileID: 1341815001043210, guid: 2b508ffa5b0b10b449109172b5454865, type: 2}
+    Turn:
+    - {fileID: 1058480083302316, guid: 112c80919de292146beb503645ff48b1, type: 2}
+  Structures:
+  - Size: 1
+    Tiles:
+    - {fileID: 1034614153185756, guid: a6b013e5ee9a4074b9a499e149998467, type: 2}
+    - {fileID: 1623410030333960, guid: fde59870d756e0649bcf8f039960d28b, type: 2}
