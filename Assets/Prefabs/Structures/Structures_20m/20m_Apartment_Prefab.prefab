@@ -215,13 +215,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1251098927418836}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectableRadius: 2
-  CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
+  CollectableRadius: 0
+  CollectablePrefab: {fileID: 1399443920203272, guid: f5cbff3d6cf1cf547a5fd7e65d726ff7,
     type: 2}
 --- !u!114 &114918530696744822
 MonoBehaviour:
