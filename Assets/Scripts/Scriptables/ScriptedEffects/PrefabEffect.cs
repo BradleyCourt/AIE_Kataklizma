@@ -11,6 +11,7 @@ namespace Scriptables {
 
         public GameObject Prefab;
         public bool RequiresLocalScale;
+        public bool SpawnAsChild = false;
 
         protected GameObject Instance;
 
@@ -42,6 +43,9 @@ namespace Scriptables {
 
                     if (RequiresLocalScale)
                         Instance.transform.localScale = Owner.transform.localScale;
+
+                    if (SpawnAsChild)
+                        Instance.transform.parent = Owner.transform;
 
                     if (!IsRemovable && !float.IsInfinity(data.Duration)) {
                         Destroy(Instance, data.Duration);
