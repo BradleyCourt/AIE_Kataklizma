@@ -117,22 +117,35 @@ public class Patrol : MonoBehaviour
 
     }
 
+
+    const int Structure05mMask = 1 << 9; // See Unity Layers for "Structure 05m"
+    const int Structure10mMask = 1 << 10; // See Unity Layers for "Structure 10m"
+
+
     public bool PlayerVisible()
     {
-        RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, ChaseDist))
+        // Define Raycast mask:  Always ignore 5m buildings, and also ignore 10m buildings when Character Level 3 or greater
+        var layerMask = ~(Structure05mMask | (player.GetComponent<Kataklizma.Gameplay.EntityAttributes>()[ValueType.CharacterLevel] > 1 ? Structure10mMask : 0));
+
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, ChaseDist, layerMask ))
         {
             return (hit.collider.gameObject.tag == "Player");
         }
+
         return false;
     }
 
     void TargetPlayer(float ChaseDist)
     {
+        // Define Raycast mask:  Always ignore 5m buildings, and also ignore 10m buildings when Character Level 3 or greater
+        var layerMask = ~(Structure05mMask | (player.GetComponent<Kataklizma.Gameplay.EntityAttributes>()[ValueType.CharacterLevel] > 1 ? Structure10mMask : 0));
+
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, ChaseDist))
+        if (Physics.Raycast(transform.position, (player.transform.position - transform.position), out hit, ChaseDist, layerMask))
         {
             if(hit.collider.gameObject.tag == "Player")
             {

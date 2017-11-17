@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33606292544647020}
   - component: {fileID: 23712297382024968}
   - component: {fileID: 95560650211273794}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: House_with_Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114532927667851094}
   - component: {fileID: 114252449604643042}
   - component: {fileID: 205513176386665232}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 10m_House_Fence_Prefab
   m_TagString: Building
   m_Icon: {fileID: 0}

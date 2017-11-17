@@ -155,6 +155,7 @@ namespace Kataklizma.Gameplay {
             UpdateAbilities();
             
             var moveSpeed = Attributes[ValueType.WalkSpeed];
+            var moveAnimationSpeed = Attributes[ValueType.WalkAnimationSpeed];
 
             // Move character
             Vector3 motionIntent = GetPlayerMotionIntent() * moveSpeed ;
@@ -188,7 +189,7 @@ namespace Kataklizma.Gameplay {
             if ( Mathf.Approximately(Rb.velocity.magnitude, 0.0f))
                 CharacterAnimator.SetFloat("WalkSpeed", 0);
             else
-                CharacterAnimator.SetFloat("WalkSpeed", Rb.velocity.magnitude / moveSpeed);
+                CharacterAnimator.SetFloat("WalkSpeed", moveAnimationSpeed * Rb.velocity.magnitude / moveSpeed);
 
             Rb.angularVelocity = Vector3.zero;
 

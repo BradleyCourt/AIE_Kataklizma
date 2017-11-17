@@ -23,6 +23,7 @@ public enum ValueType {
     ContactDamageBonus,
     WalkSpeed,
     DashSpeed,
+    WalkAnimationSpeed,
 }
 
 public enum ValueSubtype {
