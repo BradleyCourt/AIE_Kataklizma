@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 114152325541840018}
   - component: {fileID: 114637009648964354}
   - component: {fileID: 205548958879915324}
+  - component: {fileID: 114511768453032568}
+  - component: {fileID: 114386761319852286}
   m_Layer: 10
   m_Name: 10m_ModernHouse_Prefab
   m_TagString: Building
@@ -174,12 +176,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
   UseSceneGravity: 0
   LocalGravity: 0.01
-  MaxFallSpeed: 1
-  TimeToLive: 5
+  MaxFallSpeed: 0.5
+  TimeToLive: 4
+  DustCloud: {fileID: 1373473461852580, guid: 5fcd8f2d7a31a4243a4ee1c4c1fc4e14, type: 2}
+--- !u!114 &114386761319852286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872029372634516}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 0.3
+--- !u!114 &114511768453032568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872029372634516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginOffset: {x: 0, y: 0, z: 0}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 2
+  MustSpawn: []
+  LotterySpawnCount: 1
+  LotterySpawn:
+  - {fileID: 1627396029037228, guid: 38aefa89e731c204fb45169150e2410f, type: 2}
+  - {fileID: 0}
 --- !u!114 &114637009648964354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,9 +223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectableRadius: 2
-  CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
-    type: 2}
+  OriginOffset: {x: 2.5, y: 0, z: 2.5}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 2
+  MustSpawn: []
+  LotterySpawnCount: 0
+  LotterySpawn: []
 --- !u!205 &205548958879915324
 LODGroup:
   m_ObjectHideFlags: 1

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23237106113138744}
   - component: {fileID: 95096213300537598}
   m_Layer: 10
-  m_Name: Burgerbar_20m_mesh
+  m_Name: Burgerbar_10m_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 65295992749404160}
   - component: {fileID: 114321309576816604}
   - component: {fileID: 205133542720320070}
+  - component: {fileID: 114298155939083176}
+  - component: {fileID: 114837874805261252}
   m_Layer: 10
   m_Name: 10m_BurgerBar_prefab
   m_TagString: Building
@@ -56,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1932820765753484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -245.40509, y: -0.0036621094, z: 174.50037}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4954960098902840}
@@ -155,12 +157,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
-  UseSceneGravity: 1
-  LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
+  UseSceneGravity: 0
+  LocalGravity: 0.01
+  MaxFallSpeed: 0.5
+  TimeToLive: 4
+  DustCloud: {fileID: 1373473461852580, guid: 5fcd8f2d7a31a4243a4ee1c4c1fc4e14, type: 2}
+--- !u!114 &114298155939083176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1932820765753484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginOffset: {x: 0, y: 0, z: 0}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 2
+  MustSpawn: []
+  LotterySpawnCount: 1
+  LotterySpawn:
+  - {fileID: 1627396029037228, guid: 38aefa89e731c204fb45169150e2410f, type: 2}
+  - {fileID: 0}
 --- !u!114 &114321309576816604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,8 +192,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectableRadius: 2
-  CollectablePrefab: {fileID: 0}
+  OriginOffset: {x: 2.5, y: 0, z: 2.5}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 2
+  MustSpawn: []
+  LotterySpawnCount: 0
+  LotterySpawn: []
 --- !u!114 &114812016574421822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,6 +217,18 @@ MonoBehaviour:
     - Type: 13
       Base: 7
       Modifier: 0
+--- !u!114 &114837874805261252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1932820765753484}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 0.3
 --- !u!205 &205133542720320070
 LODGroup:
   m_ObjectHideFlags: 1

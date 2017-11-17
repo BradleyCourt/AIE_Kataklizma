@@ -23,6 +23,9 @@ GameObject:
   - component: {fileID: 114199964190535694}
   - component: {fileID: 114212709720062080}
   - component: {fileID: 205394875108088454}
+  - component: {fileID: 114584398827198318}
+  - component: {fileID: 114520738997574958}
+  - component: {fileID: 114509913711609150}
   m_Layer: 9
   m_Name: 5m_SmallHouse_Prefab
   m_TagString: Building
@@ -68,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1046029153478328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -214.74881, y: -0.0036621094, z: 135.30893}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4165985001714642}
@@ -124,8 +127,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.2421637, y: 5.22, z: 4.2529106}
-  m_Center: {x: 2.329783, y: 1.1590896, z: 2.8148441}
+  m_Size: {x: 3.2421637, y: 2.7855916, z: 4.2529106}
+  m_Center: {x: 2.329783, y: 1.3897214, z: 2.8148441}
 --- !u!95 &95941706326014460
 Animator:
   serializedVersion: 3
@@ -173,12 +176,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
-  UseSceneGravity: 1
+  UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
+  MaxFallSpeed: 0.1
+  TimeToLive: 3
+  DustCloud: {fileID: 1670443025448720, guid: 1bc14f24e9b870441b1b5d2185c5c43d, type: 2}
+--- !u!114 &114509913711609150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1046029153478328}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 0.3
+--- !u!114 &114520738997574958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1046029153478328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginOffset: {x: 2.5, y: 0, z: 2.5}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 2
+  MustSpawn: []
+  LotterySpawnCount: 0
+  LotterySpawn: []
+--- !u!114 &114584398827198318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1046029153478328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginOffset: {x: 0, y: 0, z: 0}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 0
+  MustSpawn: []
+  LotterySpawnCount: 1
+  LotterySpawn:
+  - {fileID: 1627396029037228, guid: d86596aebfd408349a7217ff361425e5, type: 2}
+  - {fileID: 0}
 --- !u!205 &205394875108088454
 LODGroup:
   m_ObjectHideFlags: 1

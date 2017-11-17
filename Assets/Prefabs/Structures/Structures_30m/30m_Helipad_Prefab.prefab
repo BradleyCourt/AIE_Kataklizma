@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 114308240209435428}
   - component: {fileID: 114511366872456380}
   - component: {fileID: 208147802648004370}
+  - component: {fileID: 114536078040184038}
+  - component: {fileID: 114325354046256082}
   m_Layer: 0
   m_Name: 30m_Helipad_Prefab
   m_TagString: Building
@@ -187,12 +189,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
-  UseSceneGravity: 1
+  UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 1
+  MaxFallSpeed: 0.5
   TimeToLive: 1
+  DustCloud: {fileID: 1046218421909302, guid: 6bd89c9850a2af945979cae57c94a45c, type: 2}
+--- !u!114 &114325354046256082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878541635614608}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 0.3
 --- !u!114 &114511366872456380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,9 +217,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectableRadius: 2
-  CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
-    type: 2}
+  OriginOffset: {x: 2.5, y: 0, z: 2.5}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 2
+  MustSpawn: []
+  LotterySpawnCount: 0
+  LotterySpawn: []
+--- !u!114 &114536078040184038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878541635614608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginOffset: {x: 0, y: 0, z: 0}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 2
+  MustSpawn: []
+  LotterySpawnCount: 1
+  LotterySpawn:
+  - {fileID: 1627396029037228, guid: d73f2bcde7474104eac6f4df816987ff, type: 2}
+  - {fileID: 0}
 --- !u!208 &208147802648004370
 NavMeshObstacle:
   m_ObjectHideFlags: 1

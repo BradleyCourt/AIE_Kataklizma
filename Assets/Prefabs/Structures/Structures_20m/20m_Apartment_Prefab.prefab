@@ -187,12 +187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
   UseSceneGravity: 0
   LocalGravity: 0.05
   MaxFallSpeed: 0.2
   TimeToLive: 5
+  DustCloud: {fileID: 1814046860006698, guid: e27c63f9277a2834cb682626aac7b637, type: 2}
 --- !u!114 &114397957157216556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,9 +219,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectableRadius: 0
-  CollectablePrefab: {fileID: 1399443920203272, guid: f5cbff3d6cf1cf547a5fd7e65d726ff7,
-    type: 2}
+  OriginOffset: {x: 0, y: 0, z: 0}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 0
+  MustSpawn: []
+  LotterySpawnCount: 1
+  LotterySpawn:
+  - {fileID: 1814046860006698, guid: e27c63f9277a2834cb682626aac7b637, type: 2}
+  - {fileID: 0}
 --- !u!114 &114918530696744822
 MonoBehaviour:
   m_ObjectHideFlags: 1

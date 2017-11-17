@@ -26,4 +26,6 @@ MonoBehaviour:
   - Size: 1
     Tiles:
     - {fileID: 1034614153185756, guid: a6b013e5ee9a4074b9a499e149998467, type: 2}
-    - {fileID: 1623410030333960, guid: fde59870d756e0649bcf8f039960d28b, type: 2}
+  - Size: 2
+    Tiles:
+    - {fileID: 1932820765753484, guid: d20b1552a71f1d34e904c15789ccdfa4, type: 2}
