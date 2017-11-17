@@ -9,14 +9,15 @@ namespace Kataklizma.Gameplay {
     public class CollapseOnDeath : MonoBehaviour {
         private bool IsFalling { get; set; }
 
-        public GameObject UnhideRubble;
-        public GameObject SpawnRubble;
 
         public bool UseSceneGravity = true;
         public float LocalGravity = 0.05f; // "Fall Speed"
         public float MaxFallSpeed = 1.0f;
 
         public float TimeToLive = 1; // "Fall Time"
+
+        [Space]
+        public GameObject DustCloud;
 
         private Rigidbody Rb;
         private EntityAttributes Stats;
@@ -59,12 +60,10 @@ namespace Kataklizma.Gameplay {
                 IsFalling = true;
 
                 // Spawn Rubble tile
-                if (SpawnRubble != null)
-                    Instantiate(SpawnRubble, gameObject.transform.position, gameObject.transform.rotation, gameObject.transform.parent);
-
-                if ( UnhideRubble != null) {
-                    UnhideRubble.transform.parent = null;
-                    UnhideRubble.SetActive(true);                    
+                if (DustCloud != null)
+                {
+                    var go = Instantiate(DustCloud, gameObject.transform.position, gameObject.transform.rotation);
+                    Destroy(go, TimeToLive);
                 }
 
                 Destroy(gameObject, TimeToLive);
