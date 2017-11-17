@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4026429067937960}
   m_Layer: 0
-  m_Name: Smoke_5M - Riley Smoke to Scale
+  m_Name: VFX_Smoke_5M - Riley Smoke to Scale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
