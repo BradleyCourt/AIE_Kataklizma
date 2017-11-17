@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Kataklizma.Gameplay {
     public class AbilityUI : MonoBehaviour {
 
+        public Vector3 Separation = new Vector3(70,0,0);
 
         protected PlayerController Controller;
         protected AbilityWatcher[] Items;
@@ -17,6 +18,7 @@ namespace Kataklizma.Gameplay {
             Controller.AbilitySlotChanged += Controller_AbilitySlotChanged;
 
             Items = new AbilityWatcher[0];
+            ResizeItems();
 
 
         }
@@ -58,7 +60,7 @@ namespace Kataklizma.Gameplay {
                     Destroy(old[idx].gameObject);
                 } else {
                     var go = Instantiate(Resources.Load<GameObject>("AbilityElement"), transform);
-                    go.transform.position += new Vector3(70, 0, 0) * idx;
+                    go.transform.position += Separation * idx;
                     go.name = "Ability " + idx;
 
                     Items[idx] = go.GetComponent<AbilityWatcher>();
