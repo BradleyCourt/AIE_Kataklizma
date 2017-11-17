@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 114654425017656144}
   - component: {fileID: 114829644940467804}
   m_Layer: 0
-  m_Name: DropPod
+  m_Name: 20m_DropPod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

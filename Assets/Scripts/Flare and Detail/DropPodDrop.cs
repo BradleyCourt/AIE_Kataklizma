@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DropPodDrop : MonoBehaviour {
-    CarBounce bounceScrpit;
+
+    CarBounce bounceScript;
     TweenRotator[] doorScript;
-    public float time = 1f;
+
+    public float DropTime = 1f;
+
     public GameObject explosionPrefab;
+
+    [Space]
+    public GameObject ContainedUnit;
+    public float ReleaseHeight;
+
     // Use this for initialization
     void Start () {
-        bounceScrpit = gameObject.GetComponent<CarBounce>();
+        bounceScript = gameObject.GetComponent<CarBounce>();
         doorScript = gameObject.GetComponentsInChildren<TweenRotator>();
-        LeanTween.moveLocalY(gameObject, 0f, time).setOnComplete(GroundHit);
+
+        LeanTween.moveLocalY(gameObject, ReleaseHeight, DropTime).setOnComplete(GroundHit);
 	}
 	
 	// Update is called once per frame
@@ -22,7 +31,7 @@ public class DropPodDrop : MonoBehaviour {
     void GroundHit()
     {
         //Instantiate(explosionPrefab, gameObject.transform);
-        bounceScrpit.Activate();
+        bounceScript.Activate();
         for (int i = 0; i < doorScript.Length; i++)
         {
             doorScript[i].RotateTo();

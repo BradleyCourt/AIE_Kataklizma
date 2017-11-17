@@ -18,19 +18,29 @@ public class CarBounce : MonoBehaviour {
 
     protected bool animating;
 
+    protected float InitalPosnY;
+    protected float InitialScaleY;
+
     // Use this for initialization
     void Start () {
         animating = false;
+
+
     }
 	
 	// Update is called once per frame
 	void Update () {
         if ((PlayOnce || loop ) && !animating)
             Activate();
+
+
 	}
 
     public void Activate()
     {
+        InitalPosnY = transform.position.y;
+        InitialScaleY = transform.lossyScale.y;
+
         if (!animating)
             Hop();
     }
@@ -40,14 +50,14 @@ public class CarBounce : MonoBehaviour {
     {
         animating = true;
         PlayOnce = false;
-        LeanTween.moveLocalY(gameObject, jumpHeight, timeToTop).setEase(moveTypeOnHop);
-        LeanTween.scaleY(gameObject, scaleAmount, timeToTop).setEase(scaleTypeOnHop).setOnComplete(Slam);
+        LeanTween.moveLocalY(gameObject, jumpHeight * InitialScaleY, timeToTop).setEase(moveTypeOnHop);
+        LeanTween.scaleY(gameObject, scaleAmount * InitialScaleY, timeToTop).setEase(scaleTypeOnHop).setOnComplete(Slam);
     }
 
     void Slam()
     {
-        LeanTween.moveLocalY(gameObject, 0.0f, fastResetTime).setEase(moveTypeOnSlam);
-        LeanTween.scaleY(gameObject, 1f, fullResetTime).setEase(scaleTypeOnSlam).setOnComplete(End);
+        LeanTween.moveLocalY(gameObject, InitalPosnY, fastResetTime).setEase(moveTypeOnSlam);
+        LeanTween.scaleY(gameObject, InitialScaleY, fullResetTime).setEase(scaleTypeOnSlam).setOnComplete(End);
     }
 
 

@@ -13,11 +13,13 @@ public class TweenRotator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown("o"))
+#if DEBUG
+        if(Input.GetKeyDown("o"))
         {
             RotateTo();
         }
-	}
+#endif
+    }
 
     public void RotateTo()
     {
