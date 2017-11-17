@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 114788962354120366}
   - component: {fileID: 114762966677895580}
   - component: {fileID: 65647474878326886}
+  - component: {fileID: 114883473646879132}
+  - component: {fileID: 114229713761153638}
   m_Layer: 0
   m_Name: 20M_Mansion_Prefab
   m_TagString: Building
@@ -142,6 +144,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114229713761153638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115205280795292}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 0.4
 --- !u!114 &114762966677895580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,12 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
-  UseSceneGravity: 1
+  UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
+  MaxFallSpeed: 0.2
+  TimeToLive: 5
+  DustCloud: {fileID: 1814046860006698, guid: e27c63f9277a2834cb682626aac7b637, type: 2}
 --- !u!114 &114788962354120366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,3 +191,22 @@ MonoBehaviour:
     - Type: 13
       Base: 10
       Modifier: 0
+--- !u!114 &114883473646879132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115205280795292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginOffset: {x: 0, y: 0, z: 0}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 0
+  MustSpawn: []
+  LotterySpawnCount: 1
+  LotterySpawn:
+  - {fileID: 1814046860006698, guid: e27c63f9277a2834cb682626aac7b637, type: 2}
+  - {fileID: 0}

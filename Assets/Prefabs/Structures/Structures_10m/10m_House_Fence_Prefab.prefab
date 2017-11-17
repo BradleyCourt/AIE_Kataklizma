@@ -41,6 +41,8 @@ GameObject:
   - component: {fileID: 114532927667851094}
   - component: {fileID: 114252449604643042}
   - component: {fileID: 205513176386665232}
+  - component: {fileID: 114283896002735074}
+  - component: {fileID: 114810355573040974}
   m_Layer: 10
   m_Name: 10m_House_Fence_Prefab
   m_TagString: Building
@@ -55,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1797576069286800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -316.86606, y: 51.88304, z: 286.3586}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4689372851213898}
@@ -154,12 +156,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
-  UseSceneGravity: 1
-  LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
+  UseSceneGravity: 0
+  LocalGravity: 0.01
+  MaxFallSpeed: 0.5
+  TimeToLive: 4
+  DustCloud: {fileID: 1373473461852580, guid: 5fcd8f2d7a31a4243a4ee1c4c1fc4e14, type: 2}
+--- !u!114 &114283896002735074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797576069286800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginOffset: {x: 0, y: 0, z: 0}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 2
+  MustSpawn: []
+  LotterySpawnCount: 1
+  LotterySpawn:
+  - {fileID: 1627396029037228, guid: 38aefa89e731c204fb45169150e2410f, type: 2}
+  - {fileID: 0}
 --- !u!114 &114532927667851094
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,6 +199,18 @@ MonoBehaviour:
     - Type: 13
       Base: 7
       Modifier: 0
+--- !u!114 &114810355573040974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797576069286800}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 0.3
 --- !u!205 &205513176386665232
 LODGroup:
   m_ObjectHideFlags: 1
