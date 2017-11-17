@@ -21,7 +21,7 @@ namespace Scriptables {
         public struct EffectOptions {
 
             [Tooltip("Always Active, \"Status Effect\" Types.")]
-            public List<ScriptedEffect> Lifetime;
+            //public List<ScriptedEffect> Lifetime;
             public List<ScriptedEffect> OnCharging;
             public List<ScriptedEffect> OnChannelling;
             public List<ScriptedEffect> OnCleanup;
@@ -30,7 +30,7 @@ namespace Scriptables {
             public List<ScriptedEffect> AllEffects {
                 get {
                     var result = new List<ScriptedEffect>();
-                    result.AddRange(Lifetime);
+                    //result.AddRange(Lifetime);
                     result.AddRange(OnCharging);
                     result.AddRange(OnChannelling);
                     result.AddRange(OnCleanup);
@@ -130,11 +130,11 @@ namespace Scriptables {
 
             result.Owner = owner;
 
-            var maxCount = Mathf.Max(Effects.Lifetime.Count, Effects.OnCharging.Count, Effects.OnChannelling.Count, Effects.OnCleanup.Count, Effects.OnManifest.Count);
+            var maxCount = Mathf.Max(/*Effects.Lifetime.Count,*/ Effects.OnCharging.Count, Effects.OnChannelling.Count, Effects.OnCleanup.Count, Effects.OnManifest.Count);
             for ( var i = 0; i < maxCount; i++ )
             {
-                if (i < result.Effects.Lifetime.Count && result.Effects.Lifetime[i] != null)
-                    result.Effects.Lifetime[i] = result.Effects.Lifetime[i].CloneAndBind(owner);
+                //if (i < result.Effects.Lifetime.Count && result.Effects.Lifetime[i] != null)
+                //    result.Effects.Lifetime[i] = result.Effects.Lifetime[i].CloneAndBind(owner);
 
                 if (i < Effects.OnCharging.Count && result.Effects.OnCharging[i] != null)
                     result.Effects.OnCharging[i] = result.Effects.OnCharging[i].CloneAndBind(owner);
@@ -149,7 +149,7 @@ namespace Scriptables {
                     result.Effects.OnManifest[i] = result.Effects.OnManifest[i].CloneAndBind(owner);
             }
 
-            ApplyEffects(Effects.Lifetime);
+            //ApplyEffects(Effects.Lifetime);
 
             return result;
         }
@@ -164,13 +164,13 @@ namespace Scriptables {
                 effect.Bind(Owner);
             }
 
-            ApplyEffects(Effects.Lifetime);
+            //ApplyEffects(Effects.Lifetime);
         }
 
         public void Unbind() {
             if (Owner == null) return;
 
-            RemoveEffects(Effects.Lifetime);
+            //RemoveEffects(Effects.Lifetime);
 
             Owner = null;
 
@@ -310,8 +310,8 @@ namespace Scriptables {
         /// 
         /// </summary>
         protected void ApplyEffects(List<ScriptedEffect> effects, float timeToLive = float.PositiveInfinity) {
-            if (Owner == null) return;
-            if (effects == null || effects.Count == 0) return;
+            //if (Owner == null) return;
+            //if (effects == null || effects.Count == 0) return;
 
             var data = new ScriptedEffect.Params();
 
