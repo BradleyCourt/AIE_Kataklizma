@@ -1366,30 +1366,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4609564169073696, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.052357934
+      value: -0.05235793
       objectReference: {fileID: 0}
     - target: {fileID: 4609564169073696, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
       propertyPath: m_LocalRotation.w
       value: 0.020691603
       objectReference: {fileID: 0}
-    - target: {fileID: 114296767256596916, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
-        type: 2}
-      propertyPath: Abilities.Array.data[1].Ability
-      value: 
-      objectReference: {fileID: 11400000, guid: 1957387a49a559e49864a82b20ffcd40,
-        type: 2}
-    - target: {fileID: 114296767256596916, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
-        type: 2}
-      propertyPath: Abilities.Array.data[0].Ability
-      value: 
-      objectReference: {fileID: 11400000, guid: 2f47afb9ca7452d4bade4e90d0e853e6,
-        type: 2}
-    - target: {fileID: 114296767256596916, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
-        type: 2}
-      propertyPath: Abilities.Array.data[2].Ability
-      value: 
-      objectReference: {fileID: 11400000, guid: 9c263568e1a37434fb54e3dab0c81914,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
   m_IsPrefabParent: 0
