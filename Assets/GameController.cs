@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
     {
         Attributes.GetComponent<Kataklizma.Gameplay.PlayerController>().enabled = false;
         CharacterAnimator.SetFloat("WalkSpeed", 0);
+        CharacterAnimator.SetTrigger("Victory");
         player.tag = "Untagged";
         PauseMenu.winState = true;
         // Do game win
@@ -53,11 +54,11 @@ public class GameController : MonoBehaviour
         //CharacterAnimator.SetTrigger("Death");
 
         // Show Death Menu
-
-        StartCoroutine(this.DelayedAction(0.3f, () =>
-        {
-            PauseMenu.deathState = true;
-        }));
+        PauseMenu.deathState = true;
+        //StartCoroutine(this.DelayedAction(0.3f, () =>
+        //{
+        //    PauseMenu.deathState = true;
+        //}));
 
     }
 }

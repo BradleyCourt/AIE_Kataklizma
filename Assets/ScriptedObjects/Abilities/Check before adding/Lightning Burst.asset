@@ -20,14 +20,14 @@ MonoBehaviour:
   ChannelTime: 5
   CleanupTime: 0
   ManifestCount: 22
-  CooldownTime: 25
+  CooldownTime: 1
   CooldownStartsAfter: 2
   ContinuousActivation: 0
   ChargeCausesCleanup: 0
   CanCancelCharge: 0
   CanCancelChannel: 0
   LockMovement: 1
-  LockRotation: 0
+  LockRotation: 2
   AreaAnchor: 3
   AreaOfEffect: {fileID: 11400000, guid: 1e0319b85baec114fa4325fe3526c3f3, type: 2}
   Effects:
@@ -35,7 +35,7 @@ MonoBehaviour:
     OnChannelling:
     - {fileID: 11400000, guid: 82ac3c8311b97464596a8c20ccb084e4, type: 2}
     - {fileID: 11400000, guid: 2838fb4216e299247af0f6fca3c40a2b, type: 2}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 9925f8edbb04cf0428cd63896d0126ce, type: 2}
     - {fileID: 0}
     OnCleanup: []
     OnManifest:
