@@ -18,14 +18,14 @@ MonoBehaviour:
   Precluders: []
   ChargeTime: 0.1
   ChannelTime: 3.5
-  CleanupTime: 2
+  CleanupTime: 0.1
   ManifestCount: 15
   CooldownTime: 5
   CooldownStartsAfter: 2
   ContinuousActivation: 0
   ChargeCausesCleanup: 0
   CanCancelCharge: 0
-  CanCancelChannel: 1
+  CanCancelChannel: 0
   LockMovement: 1
   LockRotation: 0
   AreaAnchor: 2
@@ -37,7 +37,7 @@ MonoBehaviour:
     OnChannelling:
     - {fileID: 11400000, guid: 661d808b2852a5f4d8a3fd3a80e28806, type: 2}
     - {fileID: 11400000, guid: d607c025e9ab3e44b839b552b731a65c, type: 2}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 5243e45d76ec9e247a5a44407b9ac716, type: 2}
     OnCleanup: []
     OnManifest:
     - {fileID: 11400000, guid: 7dd0c8a00c3574341a79e5ca119def47, type: 2}
