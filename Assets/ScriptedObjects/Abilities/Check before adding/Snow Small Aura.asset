@@ -33,6 +33,7 @@ MonoBehaviour:
   Effects:
     Lifetime:
     - {fileID: 11400000, guid: 1644e45507980c94e840fb0b0ba3285b, type: 2}
+    - {fileID: 11400000, guid: a71418ef585c58c4481884a5fce7f42e, type: 2}
     OnCharging: []
     OnChannelling:
     - {fileID: 11400000, guid: 456b58185487a1f4cb22c899ea2ac1c4, type: 2}
