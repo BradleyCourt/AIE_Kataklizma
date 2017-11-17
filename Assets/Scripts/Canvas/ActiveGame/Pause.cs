@@ -11,6 +11,7 @@ public class Pause : MonoBehaviour {
     public GameObject mainMenuButton;
     public GameObject nextLevelButton;
     public GameObject restartButton;
+    public GameObject HUD;
 
     bool isPaused = false;
     public bool winState = false;
@@ -52,14 +53,17 @@ public class Pause : MonoBehaviour {
             levelCompleteImage.SetActive(true);
             mainMenuButton.SetActive(true);
             nextLevelButton.SetActive(true);
+            HUD.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            
         }
 
         if(deathState)
         {
             //play death animation
             //rotate camera
+            HUD.SetActive(false);
             gameOverImage.SetActive(true);
             mainMenuButton.SetActive(true);
             restartButton.SetActive(true);
