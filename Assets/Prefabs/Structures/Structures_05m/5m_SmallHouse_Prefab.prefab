@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114199964190535694}
   - component: {fileID: 114212709720062080}
   - component: {fileID: 205394875108088454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 5m_SmallHouse_Prefab
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 33636343212475692}
   - component: {fileID: 23402118873631912}
   - component: {fileID: 95941706326014460}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 5m_smallHouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33717135539390650}
   - component: {fileID: 23237106113138744}
   - component: {fileID: 95096213300537598}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Burgerbar_20m_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 65295992749404160}
   - component: {fileID: 114321309576816604}
   - component: {fileID: 205133542720320070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 10m_BurgerBar_prefab
   m_TagString: Building
   m_Icon: {fileID: 0}
