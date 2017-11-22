@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 0.5
+  MaxFallSpeed: 0.2
   TimeToLive: 1
   DustCloud: {fileID: 1046218421909302, guid: 6bd89c9850a2af945979cae57c94a45c, type: 2}
 --- !u!114 &114282268738634392

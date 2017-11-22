@@ -254,7 +254,7 @@ MonoBehaviour:
   _Attributes:
     _Values:
     - Type: 15
-      Base: 5
+      Base: 15
       Modifier: 0
 --- !u!114 &114162023409476654
 MonoBehaviour:

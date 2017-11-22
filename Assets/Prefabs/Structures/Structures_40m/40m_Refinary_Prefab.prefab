@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 65598366630650904}
   - component: {fileID: 114999260140378782}
   - component: {fileID: 114414202518747752}
+  - component: {fileID: 114322666317977810}
   m_Layer: 0
   m_Name: 40m_Refinary_Prefab
   m_TagString: Building
@@ -124,6 +125,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 40.155262, y: 20.762299, z: 38.826424}
   m_Center: {x: 19.577631, y: 9.881149, z: 20.077198}
+--- !u!114 &114322666317977810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645457123841460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginOffset: {x: 20, y: 2, z: 20}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 5
+  MustSpawn:
+  - {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
+  - {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
+  - {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
+  LotterySpawnCount: 6
+  LotterySpawn:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
 --- !u!114 &114414202518747752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,12 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
-  UseSceneGravity: 1
+  UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
+  MaxFallSpeed: 0.2
+  TimeToLive: 5
+  DustCloud: {fileID: 1245084013128276, guid: d99e84e7a067b144e8cc8f6220f2c04f, type: 2}
 --- !u!114 &114999260140378782
 MonoBehaviour:
   m_ObjectHideFlags: 1

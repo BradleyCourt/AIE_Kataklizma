@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114161079424070944}
   - component: {fileID: 114861473638205118}
   - component: {fileID: 65724028087167204}
+  - component: {fileID: 114636680878298300}
   m_Layer: 0
   m_Name: 40m_PowerPlant_Prefab
   m_TagString: Building
@@ -161,6 +162,29 @@ MonoBehaviour:
     - Type: 13
       Base: 15
       Modifier: 0
+--- !u!114 &114636680878298300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226661465270384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginOffset: {x: 20, y: 2, z: 20}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 5
+  MustSpawn:
+  - {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
+  - {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
+  - {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
+  LotterySpawnCount: 6
+  LotterySpawn:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
 --- !u!114 &114861473638205118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,9 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
-  UseSceneGravity: 1
+  UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
+  MaxFallSpeed: 0.2
+  TimeToLive: 3
+  DustCloud: {fileID: 1245084013128276, guid: d99e84e7a067b144e8cc8f6220f2c04f, type: 2}
