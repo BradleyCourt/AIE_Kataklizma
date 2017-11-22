@@ -361,7 +361,7 @@ MonoBehaviour:
   BulletSpawn: {fileID: 4600654624149160}
   P: {fileID: 114601030989153186}
   Projectile: {fileID: 1744910218477984, guid: 6a4fc5d98ba27ea438e92fe5c7be55d3, type: 2}
-  PlayerIdletime: 0.2
+  PlayerIdletime: -1
   BulletSpeed: 10
   CannonFire: 50
   MachineGun: 0
@@ -395,12 +395,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
   UseSceneGravity: 0
   LocalGravity: 0
   MaxFallSpeed: 1
   TimeToLive: 0.2
+  DustCloud: {fileID: 0}
 --- !u!114 &114770946846857720
 MonoBehaviour:
   m_ObjectHideFlags: 1
