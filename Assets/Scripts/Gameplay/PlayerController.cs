@@ -95,9 +95,16 @@ namespace Kataklizma.Gameplay {
                 Destroy(Abilities[index].Ability);
             }
 
-            // Create new
-            Abilities[index].Ability = ability.CloneAndBind(transform);
-            Abilities[index].Ability.Reset();
+            if (ability != null) {
+                // Create new
+                Abilities[index].Ability = ability.CloneAndBind(transform);
+                Abilities[index].Ability.Reset();
+
+            }
+            else {
+                Abilities[index].Ability = null;
+            }
+
 
             // Raise Event
             RaiseAbilitySlotChanged(index);

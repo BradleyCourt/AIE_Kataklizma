@@ -999,6 +999,16 @@ Prefab:
       propertyPath: Levels.Array.data[2].Effects.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114749656060951336, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: Levels.Array.data[1].Mutators.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114749656060951336, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: Levels.Array.data[2].Mutators.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4439188968153136, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2.21
@@ -1156,6 +1166,17 @@ Prefab:
         type: 2}
       propertyPath: Levels.Array.data[2].Effects.Array.data[3].Base
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 114749656060951336, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: Levels.Array.data[1].Mutators.Array.data[0].Ability
+      value: 
+      objectReference: {fileID: 11400000, guid: 1957387a49a559e49864a82b20ffcd40,
+        type: 2}
+    - target: {fileID: 114749656060951336, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: Levels.Array.data[2].Mutators.Array.data[0].AbilitySlot
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}

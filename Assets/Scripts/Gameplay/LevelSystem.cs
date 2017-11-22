@@ -14,12 +14,20 @@ namespace Kataklizma.Gameplay {
         public AudioClip Sound;
         protected EntityAttributes Stats;
 
+
+        protected PlayerController Controller { get { return GetComponent<PlayerController>(); } }
+
+        [System.Serializable]
+        public struct LevelUpMutator {
+            public int AbilitySlot;
+            public Scriptables.ScriptedAbility Ability;
+        }
+
         [System.Serializable]
         public struct LevelUpOptions {
-
             public int XpThreshold;
             public List<ValueCollection.Value> Effects;
-            //public List<Scriptables.ScriptedAbility> AddAbilities;
+            public List<LevelUpMutator> Mutators;
         }
 
         [Space]
@@ -72,14 +80,7 @@ namespace Kataklizma.Gameplay {
         void OnDestroy() {
             Stats.ValueChanged -= OnPlayerStatsValueChanged;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-
-        }
-
+        
         /// <summary>
         /// 
         /// </summary>
@@ -129,6 +130,11 @@ namespace Kataklizma.Gameplay {
             }, transform.localScale, Vector3.one * Mathf.Pow(2, Stats[ValueType.CharacterLevel] - 1), 0.5f);
 
             Stats.ApplyEffects(Levels[CurrentLevel-1].Effects);
+
+            foreach (var mutator in Levels[CurrentLevel - 1].Mutators) {
+
+                Controller.SetAbilitySlot(mutator.AbilitySlot, mutator.Ability);
+            }
         }
     }
 }
