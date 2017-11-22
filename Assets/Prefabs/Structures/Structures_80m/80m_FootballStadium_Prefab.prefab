@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 65628731180706456}
   - component: {fileID: 114530964497581432}
   - component: {fileID: 114471596430026350}
+  - component: {fileID: 114850882709517888}
   m_Layer: 0
   m_Name: 80m_FootballStadium_Prefab
   m_TagString: Building
@@ -154,7 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowDebug: 0
   _Attributes:
     _Values:
     - Type: 1
@@ -183,9 +183,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
   UseSceneGravity: 1
   LocalGravity: 0.05
   MaxFallSpeed: 1
   TimeToLive: 1
+  DustCloud: {fileID: 0}
+--- !u!114 &114850882709517888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1913110297970878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 1
+  Speed: 0.05
+  DurationOnDamage: 0.5
+  _Shake: 0

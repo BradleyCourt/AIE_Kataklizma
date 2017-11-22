@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 65598366630650904}
   - component: {fileID: 114999260140378782}
   - component: {fileID: 114414202518747752}
+  - component: {fileID: 114990045273984656}
   m_Layer: 0
   m_Name: 40m_Refinary_Prefab
   m_TagString: Building
@@ -135,12 +136,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
   UseSceneGravity: 1
   LocalGravity: 0.05
   MaxFallSpeed: 1
   TimeToLive: 1
+  DustCloud: {fileID: 0}
+--- !u!114 &114990045273984656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645457123841460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 1
+  Speed: 0.05
+  DurationOnDamage: 0.5
+  _Shake: 0
 --- !u!114 &114999260140378782
 MonoBehaviour:
   m_ObjectHideFlags: 1
