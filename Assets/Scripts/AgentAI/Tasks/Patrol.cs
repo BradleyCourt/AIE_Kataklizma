@@ -73,7 +73,7 @@ public class Patrol : MonoBehaviour
         
         // Choose the next destination point when the agent gets
         // close to the current one.
-        float dist = Vector3.Distance(transform.position, player.transform.position);
+        float dist = player == null ? float.PositiveInfinity : Vector3.Distance(transform.position, player.transform.position);
 
         
 
