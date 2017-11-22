@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public Pause PauseMenu;
     public Animator CharacterAnimator;
+    public Rigidbody Rb;
+    public Kataklizma.Gameplay.PlayerController Controller;
     public Kataklizma.Gameplay.EntityAttributes Attributes;
     public Kataklizma.Gameplay.LevelSystem Levels;
 
@@ -36,20 +38,25 @@ public class GameController : MonoBehaviour
 
     protected void HandleWinning()
     {
-        Attributes.GetComponent<Kataklizma.Gameplay.PlayerController>().enabled = false;
+        Attributes.GetComponent<Kataklizma.Gameplay.PlayerController>().IsControllable = false;
         CharacterAnimator.SetFloat("WalkSpeed", 0);
         CharacterAnimator.SetTrigger("Victory");
         player.tag = "Untagged";
         PauseMenu.winState = true;
+        Controller.OrbitCamera = true;
+        Rb.isKinematic = true;
+
         // Do game win
     }
 
     protected void HandleLosing()
     {
-        Attributes.GetComponent<Kataklizma.Gameplay.PlayerController>().enabled = false;
+        Attributes.GetComponent<Kataklizma.Gameplay.PlayerController>().IsControllable = false;
         CharacterAnimator.SetFloat("WalkSpeed", 0);
         CharacterAnimator.SetTrigger("Death");
         player.tag = "Untagged";
+        Controller.OrbitCamera = true;
+        Rb.isKinematic = true;
         // Do death animation
         //CharacterAnimator.SetTrigger("Death");
 
