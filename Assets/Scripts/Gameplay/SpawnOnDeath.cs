@@ -47,9 +47,12 @@ namespace Kataklizma.Gameplay {
                     if (prefab == null) continue;
 
                     var offset2D = Random.insideUnitCircle * SpawnRadius;
-                    var offset = OriginOffset + new Vector3(offset2D.x, 0, offset2D.y);
+                    var offset = OriginOffset + new Vector3(offset2D.x, 0, offset2D.y); // In Local Coords
 
-                    Instantiate(prefab, gameObject.transform.position + offset, gameObject.transform.rotation, OptionalParent);
+                    var position = transform.TransformPoint(offset);
+
+                    //Instantiate(prefab, gameObject.transform.position + offset, gameObject.transform.rotation, OptionalParent);
+                    Instantiate(prefab, position, gameObject.transform.rotation, OptionalParent);
                 }
 
 
@@ -62,9 +65,13 @@ namespace Kataklizma.Gameplay {
                         if (prefab == null) continue;
 
                         var offset2D = Random.insideUnitCircle * SpawnRadius;
-                        var offset = OriginOffset + new Vector3(offset2D.x, 0, offset2D.y);
+                        var offset = OriginOffset + new Vector3(offset2D.x, 0, offset2D.y); // In Local Coords
 
-                        Instantiate(prefab, gameObject.transform.position + offset, gameObject.transform.rotation, OptionalParent);
+
+                        var position = transform.TransformPoint(offset);
+
+                        //Instantiate(prefab, gameObject.transform.position + offset, gameObject.transform.rotation, OptionalParent);
+                        Instantiate(prefab, position, gameObject.transform.rotation, OptionalParent);
                     }
                 }                
             }

@@ -45,7 +45,6 @@ public class SoundRandomizer : MonoBehaviour {
         if (Source != null && !Source.isPlaying)
         {
             var clip = NextClip;
-            Debug.Log("Now Playing: " + clip.name);
             Source.PlayOneShot(clip);
         }
         
