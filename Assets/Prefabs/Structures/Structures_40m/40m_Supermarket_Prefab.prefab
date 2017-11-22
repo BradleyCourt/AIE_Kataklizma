@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 65457144412608526}
   - component: {fileID: 114702512532860586}
   - component: {fileID: 114387531928525642}
-  - component: {fileID: 114488350534986430}
+  - component: {fileID: 114741686366588846}
   m_Layer: 0
   m_Name: 40m_Supermarket_Prefab
   m_TagString: Building
@@ -411,11 +411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseSceneGravity: 1
+  UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
-  DustCloud: {fileID: 0}
+  MaxFallSpeed: 0.2
+  TimeToLive: 3
+  DustCloud: {fileID: 1245084013128276, guid: d99e84e7a067b144e8cc8f6220f2c04f, type: 2}
 --- !u!114 &114390440471596670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,21 +450,6 @@ MonoBehaviour:
   - {fileID: 1843443736313472, guid: 6be3bee3465cbfb47a9d87aba629ae5a, type: 2}
   - {fileID: 1879137905728330, guid: 6063fd2698ce6ea48b038a80c9aad76d, type: 2}
   - {fileID: 1014418155515942, guid: 9bceb8ba73ea0de4285808b72e91e4c3, type: 2}
---- !u!114 &114488350534986430
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320205515849504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Displacement: 1
-  Speed: 0.05
-  DurationOnDamage: 0.5
-  _Shake: 0
 --- !u!114 &114493466666574812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -535,6 +520,21 @@ MonoBehaviour:
     - Type: 13
       Base: 15
       Modifier: 0
+--- !u!114 &114741686366588846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320205515849504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 1
+  Speed: 0.05
+  DurationOnDamage: 0.5
+  _Shake: 0
 --- !u!114 &114806441032649124
 MonoBehaviour:
   m_ObjectHideFlags: 1

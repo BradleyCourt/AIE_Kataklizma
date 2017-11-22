@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114468616834734146}
   - component: {fileID: 65601929171603602}
   - component: {fileID: 208584181326277852}
-  - component: {fileID: 114946577661885236}
+  - component: {fileID: 114139612831726748}
   m_Layer: 0
   m_Name: 30m_HighRise
   m_TagString: Building
@@ -144,6 +144,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114139612831726748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1696291305683356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 1
+  Speed: 0.05
+  DurationOnDamage: 0.5
+  _Shake: 0
 --- !u!114 &114468616834734146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,11 +170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseSceneGravity: 1
+  UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
-  DustCloud: {fileID: 0}
+  MaxFallSpeed: 0.2
+  TimeToLive: 5
+  DustCloud: {fileID: 1046218421909302, guid: 6bd89c9850a2af945979cae57c94a45c, type: 2}
 --- !u!114 &114544493336769712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,21 +194,6 @@ MonoBehaviour:
     - Type: 13
       Base: 12
       Modifier: 0
---- !u!114 &114946577661885236
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1696291305683356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Displacement: 1
-  Speed: 0.05
-  DurationOnDamage: 0.5
-  _Shake: 0
 --- !u!208 &208584181326277852
 NavMeshObstacle:
   m_ObjectHideFlags: 1

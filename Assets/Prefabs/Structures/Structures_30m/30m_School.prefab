@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 65281093649253246}
   - component: {fileID: 114320913368463522}
   - component: {fileID: 114310581602756398}
+  - component: {fileID: 114482231369802966}
   m_Layer: 0
   m_Name: 30m_School
   m_TagString: Building
@@ -1608,12 +1609,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
-  UseSceneGravity: 1
+  UseSceneGravity: 0
   LocalGravity: 0.05
-  MaxFallSpeed: 1
-  TimeToLive: 1
+  MaxFallSpeed: 0.2
+  TimeToLive: 3
+  DustCloud: {fileID: 0}
 --- !u!114 &114320913368463522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1633,3 +1633,18 @@ MonoBehaviour:
     - Type: 13
       Base: 12
       Modifier: 0
+--- !u!114 &114482231369802966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1968215083114586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 1
+  Speed: 0.05
+  DurationOnDamage: 0.5
+  _Shake: 0
