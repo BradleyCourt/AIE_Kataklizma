@@ -89,8 +89,6 @@ namespace Kataklizma.Gameplay {
                 case ValueType._NONE: break;
                 case ValueType.Damage:
                     this[ValueType.Health] -= Mathf.Clamp(value.Derived - this[ValueType.DamageReduction], 0, this[ValueType.Health]);
-
-                    GetComponent<Shake>().Shaking = true;
                     break;
                 case ValueType.Health:
                     this[ValueType.Health] += Mathf.Clamp(value.Derived, 0, this[ValueType.HealthMax] - this[ValueType.Health]);

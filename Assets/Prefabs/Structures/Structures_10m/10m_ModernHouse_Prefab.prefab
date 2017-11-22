@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872029372634516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -301.72925, y: 164.30324, z: 499.20416}
+  m_LocalPosition: {x: 38.0448, y: -0.0036621094, z: 2.7461395}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4324306654327936}
@@ -195,7 +195,7 @@ MonoBehaviour:
   Displacement: 0.3
   Speed: 0.05
   DurationOnDamage: 0.5
-  _Shake: 0
+  Shaking: 0
 --- !u!114 &114511768453032568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OriginOffset: {x: 0, y: 0, z: 0}
   OptionalParent: {fileID: 0}
-  SpawnRadius: 2
+  SpawnRadius: 0
   MustSpawn: []
   LotterySpawnCount: 1
   LotterySpawn:

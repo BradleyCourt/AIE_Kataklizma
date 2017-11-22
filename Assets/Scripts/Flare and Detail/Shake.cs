@@ -14,15 +14,17 @@ public class Shake : MonoBehaviour {
     private int TweenId;
 
     [Space]
-    public bool _Shake = false;
+    public bool Shaking = false;
     protected int _ShakeRefCount = 0;
     
-    public bool Shaking {
-        get { return _Shake || (_ShakeRefCount > 0); }
-        set {
-            _ShakeRefCount += value ? 1 : -1;
-        }
-    }
+    //public bool Shaking {
+    //    get { return _Shake || (_ShakeRefCount > 0); }
+    //    set {
+    //        _ShakeRefCount += value ? 1 : -1;
+    //    }
+    //}
+
+        
 
     protected Kataklizma.Gameplay.EntityAttributes Attributes;
 
