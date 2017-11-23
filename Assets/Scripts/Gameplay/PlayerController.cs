@@ -61,6 +61,9 @@ namespace Kataklizma.Gameplay {
 
             public Vector3 Focus;
 
+            [Space]
+            public float OrbitSpeed;
+
             [HideInInspector]
             public Camera Camera;
 
@@ -71,9 +74,13 @@ namespace Kataklizma.Gameplay {
             [HideInInspector]
             public float Distance;
 
+
+            
         }
 
         public ObserverOptions Observer;
+
+        public bool OrbitCamera { get; set; }
 
         protected bool InvertMoveHorizontal;
         protected bool InvertMoveVertical;
@@ -222,7 +229,7 @@ namespace Kataklizma.Gameplay {
         /// 
         /// </summary>
         void UpdateCamera() {
-            if (Cursor.lockState == CursorLockMode.Locked) {
+            if (Cursor.lockState == CursorLockMode.Locked && IsControllable) {
 
                 // Update Camera
                 Observer.Distance = Mathf.Clamp(Observer.Distance + Input.GetAxis("ViewZoom"), Observer.Range.x, Observer.Range.y);
@@ -230,6 +237,10 @@ namespace Kataklizma.Gameplay {
                 Observer.Phi = Mathf.Clamp(Observer.Phi + Input.GetAxis("ViewVertical"), Observer.Elevation.x, Observer.Elevation.y);
             }
 
+            if ( OrbitCamera)
+            {
+                Observer.Theta = Mathf.Repeat(Observer.Theta + Observer.OrbitSpeed * Time.deltaTime, 360);
+            }
 
             // Apply Camera
             var yaw = Quaternion.Euler(0, Observer.Theta, 0);
@@ -270,7 +281,7 @@ namespace Kataklizma.Gameplay {
         protected void UpdateAbilities() {
             // Chech currently-active player-activated ability
             if (UserActivatedAbility != null) {
-                var continuing = UserActivatedAbility.Ability.OnUpdate(Input.GetButton(UserActivatedAbility.TriggerName));
+                var continuing = IsControllable && UserActivatedAbility.Ability.OnUpdate(Input.GetButton(UserActivatedAbility.TriggerName));
 
                 if (!continuing)
                     UserActivatedAbility = null;
@@ -280,7 +291,7 @@ namespace Kataklizma.Gameplay {
 
             // Check currently-active "system"-activated ablities (Continuous Activations)
             foreach (var ability in SystemActiveAbilities) {
-                var continuing = ability.OnUpdate(false);
+                var continuing = IsControllable && ability.OnUpdate(false);
 
                 if (!continuing)
                     deactivate.Add(ability);
@@ -292,24 +303,33 @@ namespace Kataklizma.Gameplay {
                 SystemActiveAbilities.Remove(stopped);
 
 
-            // Check all abilities if they can and should activate
-            foreach (var slot in Abilities) {
-                if (slot.Ability == null) continue;
-                if (slot.Ability.ContinuousActivation) { // System Activated
-                    if (SystemActiveAbilities.Contains(slot.Ability)) continue; // Ability is already active
+            if (IsControllable) {
+                // Check all abilities if they can and should activate
+                foreach (var slot in Abilities)
+                {
+                    if (slot.Ability == null) continue;
+                    if (slot.Ability.ContinuousActivation)
+                    { // System Activated
+                        if (SystemActiveAbilities.Contains(slot.Ability)) continue; // Ability is already active
 
-                    if (slot.CanActivate) {
-                        if (slot.Ability.OnBegin()) {
-                            SystemActiveAbilities.Add(slot.Ability);
+                        if (slot.CanActivate)
+                        {
+                            if (slot.Ability.OnBegin())
+                            {
+                                SystemActiveAbilities.Add(slot.Ability);
+                            }
                         }
                     }
-                }
-                else { // Player Activated
-                    if (UserActivatedAbility != null) continue; // Player already has an active ability
+                    else
+                    { // Player Activated
+                        if (UserActivatedAbility != null) continue; // Player already has an active ability
 
-                    if (slot.CanActivate && Input.GetButton(slot.TriggerName)) {
-                        if (slot.Ability.OnBegin()) {
-                            UserActivatedAbility = slot;
+                        if (slot.CanActivate && Input.GetButton(slot.TriggerName))
+                        {
+                            if (slot.Ability.OnBegin())
+                            {
+                                UserActivatedAbility = slot;
+                            }
                         }
                     }
                 }
