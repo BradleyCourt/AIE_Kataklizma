@@ -567,6 +567,8 @@ GameObject:
   - component: {fileID: 114964246563210134}
   - component: {fileID: 82852155400815422}
   - component: {fileID: 114140542011313768}
+  - component: {fileID: 82653615711618986}
+  - component: {fileID: 114878993148437766}
   m_Layer: 8
   m_Name: MonsterBase
   m_TagString: Untagged
@@ -1079,7 +1081,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431774962278804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -0.1, z: -31.2}
+  m_LocalPosition: {x: 2.21, y: 2.55, z: -107.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4272444309565150}
@@ -1272,7 +1274,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612280163498898}
-  m_LocalRotation: {x: -0.7010619, y: 0.71087474, z: -0.052357916, w: 0.020691605}
+  m_LocalRotation: {x: -0.7010619, y: 0.71087474, z: -0.05235788, w: 0.020691605}
   m_LocalPosition: {x: 0.000014113096, y: 2.0821073, z: 0.02686794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1517,6 +1519,86 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1577257734890234}
   m_Enabled: 1
+--- !u!82 &82653615711618986
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722696165808154}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4ad2bb7699fa42a47b27426bf346d743, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!82 &82852155400815422
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1685,9 +1767,9 @@ MonoBehaviour:
   - TriggerName: Fire1
     Ability: {fileID: 11400000, guid: 2f47afb9ca7452d4bade4e90d0e853e6, type: 2}
   - TriggerName: Fire2
-    Ability: {fileID: 11400000, guid: 1957387a49a559e49864a82b20ffcd40, type: 2}
+    Ability: {fileID: 0}
   - TriggerName: Fire3
-    Ability: {fileID: 11400000, guid: 9c263568e1a37434fb54e3dab0c81914, type: 2}
+    Ability: {fileID: 0}
   - TriggerName: Jump
     Ability: {fileID: 0}
   - TriggerName: Sprint
@@ -1773,12 +1855,10 @@ MonoBehaviour:
     - Type: 19
       Base: 1
       Modifier: 0
-    - Type: 20
-      Base: 2.36
-      Modifier: 0
     - Type: 2
       Base: 100
       Modifier: 0
+    Mutators: []
   - XpThreshold: 500
     Effects:
     - Type: 16
@@ -1790,12 +1870,12 @@ MonoBehaviour:
     - Type: 19
       Base: 0.5
       Modifier: 0
-    - Type: 20
-      Base: 1.6
-      Modifier: 0
     - Type: 2
       Base: 150
       Modifier: 0
+    Mutators:
+    - AbilitySlot: 1
+      Ability: {fileID: 11400000, guid: 9c263568e1a37434fb54e3dab0c81914, type: 2}
   - XpThreshold: 2000
     Effects:
     - Type: 16
@@ -1807,12 +1887,12 @@ MonoBehaviour:
     - Type: 19
       Base: 0.25
       Modifier: 0
-    - Type: 20
-      Base: 0.7
-      Modifier: 0
     - Type: 2
       Base: 300
       Modifier: 0
+    Mutators:
+    - AbilitySlot: 1
+      Ability: {fileID: 11400000, guid: 1957387a49a559e49864a82b20ffcd40, type: 2}
 --- !u!114 &114762293060381324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1825,6 +1905,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TriggerName: Fire2
+--- !u!114 &114878993148437766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722696165808154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0c30d161a93ce4cb46e2fab6bbb8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: {fileID: 0}
+  BindOrigins: {fileID: 0}
+  Dustcloud: {fileID: 0}
+  DustcloudTTL: 0.5
 --- !u!114 &114913449467081796
 MonoBehaviour:
   m_ObjectHideFlags: 1
