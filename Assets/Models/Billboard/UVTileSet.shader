@@ -1,7 +1,7 @@
 // Shader created with Shader Forge v1.37 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.37;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:False,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:3138,x:33109,y:32736,varname:node_3138,prsc:2|diff-5482-RGB,spec-7236-OUT,gloss-7236-OUT;n:type:ShaderForge.SFN_Tex2d,id:5482,x:32588,y:33019,ptovrint:False,ptlb:Billboard_Texture,ptin:_Billboard_Texture,varname:node_5482,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:931ae4ab3d94ea241a71f2212ea0125a,ntxv:0,isnm:False|UVIN-8494-UVOUT;n:type:ShaderForge.SFN_UVTile,id:8494,x:32391,y:33003,varname:node_8494,prsc:2|UVIN-8202-UVOUT,WDT-8650-OUT,HGT-8650-OUT,TILE-4319-OUT;n:type:ShaderForge.SFN_Vector1,id:8650,x:32391,y:33163,varname:node_8650,prsc:2,v1:2;n:type:ShaderForge.SFN_TexCoord,id:8202,x:32161,y:33003,varname:node_8202,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Slider,id:3608,x:31722,y:33276,ptovrint:False,ptlb:BillboardSelection,ptin:_BillboardSelection,varname:node_3608,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:3;n:type:ShaderForge.SFN_Vector1,id:7236,x:32473,y:32743,varname:node_7236,prsc:2,v1:0;n:type:ShaderForge.SFN_Round,id:4319,x:32181,y:33190,varname:node_4319,prsc:2|IN-3652-OUT;n:type:ShaderForge.SFN_ObjectPosition,id:4049,x:31128,y:33043,varname:node_4049,prsc:2;n:type:ShaderForge.SFN_Add,id:3107,x:31356,y:33027,varname:node_3107,prsc:2|A-4049-X,B-4049-Y,C-4049-Z;n:type:ShaderForge.SFN_Sin,id:9190,x:31578,y:33027,varname:node_9190,prsc:2|IN-3107-OUT;n:type:ShaderForge.SFN_Multiply,id:3652,x:31837,y:33013,varname:node_3652,prsc:2|A-1234-OUT,B-9190-OUT;n:type:ShaderForge.SFN_Vector1,id:1234,x:31567,y:32846,varname:node_1234,prsc:2,v1:99999;proporder:5482-3608;pass:END;sub:END;*/
+/*SF_DATA;ver:1.37;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,cgin:,lico:1,lgpr:1,limd:3,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,imps:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,atcv:False,rfrpo:True,rfrpn:Refraction,coma:15,ufog:False,aust:True,igpj:False,qofs:0,qpre:1,rntp:1,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False,fsmp:False;n:type:ShaderForge.SFN_Final,id:3138,x:33109,y:32736,varname:node_3138,prsc:2|diff-5482-RGB,spec-7236-OUT,gloss-7236-OUT;n:type:ShaderForge.SFN_Tex2d,id:5482,x:32588,y:33019,ptovrint:False,ptlb:Billboard_Texture,ptin:_Billboard_Texture,varname:node_5482,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,ntxv:0,isnm:False|UVIN-8494-UVOUT;n:type:ShaderForge.SFN_UVTile,id:8494,x:32391,y:33003,varname:node_8494,prsc:2|UVIN-8202-UVOUT,WDT-8650-OUT,HGT-8650-OUT,TILE-4319-OUT;n:type:ShaderForge.SFN_Vector1,id:8650,x:32391,y:33163,varname:node_8650,prsc:2,v1:2;n:type:ShaderForge.SFN_TexCoord,id:8202,x:32161,y:33003,varname:node_8202,prsc:2,uv:0,uaff:False;n:type:ShaderForge.SFN_Slider,id:3608,x:31722,y:33276,ptovrint:False,ptlb:BillboardSelection,ptin:_BillboardSelection,varname:node_3608,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,min:0,cur:0,max:3;n:type:ShaderForge.SFN_Vector1,id:7236,x:32473,y:32743,varname:node_7236,prsc:2,v1:0;n:type:ShaderForge.SFN_Round,id:4319,x:32181,y:33190,varname:node_4319,prsc:2|IN-3652-OUT;n:type:ShaderForge.SFN_ObjectPosition,id:4049,x:31128,y:33043,varname:node_4049,prsc:2;n:type:ShaderForge.SFN_Add,id:3107,x:31356,y:33027,varname:node_3107,prsc:2|A-4049-X,B-4049-Y,C-4049-Z;n:type:ShaderForge.SFN_Sin,id:9190,x:31578,y:33027,varname:node_9190,prsc:2|IN-3107-OUT;n:type:ShaderForge.SFN_Multiply,id:3652,x:31837,y:33013,varname:node_3652,prsc:2|A-1234-OUT,B-9190-OUT;n:type:ShaderForge.SFN_Vector1,id:1234,x:31567,y:32846,varname:node_1234,prsc:2,v1:99999;proporder:5482-3608;pass:END;sub:END;*/
 
 Shader "Shader Forge/UVTileSet" {
     Properties {
@@ -28,7 +28,7 @@ Shader "Shader Forge/UVTileSet" {
             #include "UnityPBSLighting.cginc"
             #include "UnityStandardBRDF.cginc"
             #pragma multi_compile_fwdbase_fullshadows
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles ps4 
             #pragma target 3.0
             uniform sampler2D _Billboard_Texture; uniform float4 _Billboard_Texture_ST;
             struct VertexInput {
@@ -102,8 +102,7 @@ Shader "Shader Forge/UVTileSet" {
                 float3 specularColor = node_7236;
                 float specularMonochrome;
                 float node_8650 = 2.0;
-                float node_3652 = (99999.0*sin((objPos.r+objPos.g+objPos.b)));
-                float node_4319 = round(node_3652);
+                float node_4319 = round((99999.0*sin((objPos.r+objPos.g+objPos.b))));
                 float2 node_8494_tc_rcp = float2(1.0,1.0)/float2( node_8650, node_8650 );
                 float node_8494_ty = floor(node_4319 * node_8494_tc_rcp.x);
                 float node_8494_tx = node_4319 - node_8650 * node_8494_ty;
@@ -160,7 +159,7 @@ Shader "Shader Forge/UVTileSet" {
             #include "UnityPBSLighting.cginc"
             #include "UnityStandardBRDF.cginc"
             #pragma multi_compile_fwdadd_fullshadows
-            #pragma only_renderers d3d9 d3d11 glcore gles 
+            #pragma only_renderers d3d9 d3d11 glcore gles ps4 
             #pragma target 3.0
             uniform sampler2D _Billboard_Texture; uniform float4 _Billboard_Texture_ST;
             struct VertexInput {
@@ -211,8 +210,7 @@ Shader "Shader Forge/UVTileSet" {
                 float3 specularColor = node_7236;
                 float specularMonochrome;
                 float node_8650 = 2.0;
-                float node_3652 = (99999.0*sin((objPos.r+objPos.g+objPos.b)));
-                float node_4319 = round(node_3652);
+                float node_4319 = round((99999.0*sin((objPos.r+objPos.g+objPos.b))));
                 float2 node_8494_tc_rcp = float2(1.0,1.0)/float2( node_8650, node_8650 );
                 float node_8494_ty = floor(node_4319 * node_8494_tc_rcp.x);
                 float node_8494_tx = node_4319 - node_8650 * node_8494_ty;
