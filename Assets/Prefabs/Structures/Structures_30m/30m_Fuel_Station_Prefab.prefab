@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 223235513782654500}
   - component: {fileID: 114611112070428830}
   - component: {fileID: 114569064381025580}
+  - component: {fileID: 114614572815218736}
   m_Layer: 0
   m_Name: PickUpCanvas
   m_TagString: Untagged
@@ -386,6 +387,17 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114614572815218736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029202987741180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c1f234434207246b69bda99d38022e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114623307855338154
 MonoBehaviour:
   m_ObjectHideFlags: 1

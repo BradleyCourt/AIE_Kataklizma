@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 224228552701735288}
   - component: {fileID: 222207820645110120}
   - component: {fileID: 114697811290400732}
+  - component: {fileID: 114911607118876000}
   m_Layer: 5
   m_Name: Menu Holder
   m_TagString: Untagged
@@ -928,6 +929,17 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114911607118876000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554315850611592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c1f234434207246b69bda99d38022e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114916370327756620
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 223736045079978820}
   - component: {fileID: 114458077597399864}
   - component: {fileID: 114317345245866476}
+  - component: {fileID: 114868435089357944}
   m_Layer: 0
   m_Name: PickUpCanvas
   m_TagString: Untagged
@@ -317,6 +318,17 @@ MonoBehaviour:
   MaxFallSpeed: 0.2
   TimeToLive: 3
   DustCloud: {fileID: 1245084013128276, guid: d99e84e7a067b144e8cc8f6220f2c04f, type: 2}
+--- !u!114 &114868435089357944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521640452065040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c1f234434207246b69bda99d38022e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222392886410079146
 CanvasRenderer:
   m_ObjectHideFlags: 1
