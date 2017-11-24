@@ -232,7 +232,8 @@ namespace Kataklizma.Gameplay {
             if (Cursor.lockState == CursorLockMode.Locked && IsControllable) {
 
                 // Update Camera
-                Observer.Distance = Mathf.Clamp(Observer.Distance + Input.GetAxis("ViewZoom"), Observer.Range.x, Observer.Range.y);
+                var minDist = Observer.Range.x * (1 + transform.localScale.x) / 2;
+                Observer.Distance = Mathf.Clamp(Observer.Distance + Input.GetAxis("ViewZoom"), minDist, Observer.Range.y * transform.localScale.x);
                 Observer.Theta = Mathf.Repeat(Observer.Theta + Input.GetAxis("ViewHorizontal"), 360);
                 Observer.Phi = Mathf.Clamp(Observer.Phi + Input.GetAxis("ViewVertical"), Observer.Elevation.x, Observer.Elevation.y);
             }
