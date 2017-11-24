@@ -86,7 +86,7 @@ public class TSUIManager : MonoBehaviour
 
 	public void Quit()
 	{
-		
+        Application.Quit();
 	}
 
 	public void UnlocksBack()

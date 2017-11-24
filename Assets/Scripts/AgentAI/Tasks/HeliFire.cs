@@ -99,7 +99,7 @@ public class HeliFire : MonoBehaviour {
         GameObject reticle = Instantiate(TargettingCircle);
         reticle.transform.position = target.transform.position;
         reticle.SetActive(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(LockOnTime);
 
 
 

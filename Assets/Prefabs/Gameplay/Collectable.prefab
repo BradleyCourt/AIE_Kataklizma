@@ -339,7 +339,7 @@ MonoBehaviour:
   - Enemy
   Contents:
   - Type: 4
-    Base: 80
+    Base: 10
     Modifier: 0
 --- !u!135 &135581058128679456
 SphereCollider:
