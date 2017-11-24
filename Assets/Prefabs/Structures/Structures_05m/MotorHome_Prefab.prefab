@@ -3649,7 +3649,7 @@ MonoBehaviour:
   Displacement: 0.3
   Speed: 0.05
   DurationOnDamage: 0.5
-  _Shake: 0
+  Shaking: 0
 --- !u!205 &205629944339134456
 LODGroup:
   m_ObjectHideFlags: 1
@@ -3714,4 +3714,4 @@ LODGroup:
     - renderer: {fileID: 23268624814166334}
     - renderer: {fileID: 23467682418581004}
     - renderer: {fileID: 23282482766192464}
-  m_Enabled: 0
+  m_Enabled: 1

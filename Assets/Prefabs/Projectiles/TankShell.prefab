@@ -270,6 +270,7 @@ MonoBehaviour:
   CanAffectTags:
   - Player
   - Building
+  - Enemy
   EffectsToApply: 0f000000
 --- !u!114 &114943086179340612
 MonoBehaviour:
