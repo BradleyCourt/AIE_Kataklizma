@@ -195,7 +195,7 @@ MonoBehaviour:
   Displacement: 0.3
   Speed: 0.05
   DurationOnDamage: 0.5
-  _Shake: 0
+  Shaking: 0
 --- !u!114 &114520738997574958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,4 +248,4 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23402118873631912}
-  m_Enabled: 0
+  m_Enabled: 1
