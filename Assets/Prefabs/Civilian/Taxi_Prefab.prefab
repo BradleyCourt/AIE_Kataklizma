@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4480244919464568}
   - component: {fileID: 65664742911312122}
   - component: {fileID: 114364263315910596}
+  - component: {fileID: 114213300381789810}
   m_Layer: 0
   m_Name: Taxi_Prefab
   m_TagString: Untagged
@@ -141,6 +142,28 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114213300381789810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1392138924436868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99279f409a80214fa8884d796a9a0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAmount: 0.9
+  jumpHeight: 0.4
+  timeToTop: 0.4
+  fastResetTime: 0.2
+  fullResetTime: 0.3
+  PlayOnce: 0
+  loop: 0
+  moveTypeOnHop: 6
+  scaleTypeOnHop: 15
+  moveTypeOnSlam: 27
+  scaleTypeOnSlam: 27
 --- !u!114 &114364263315910596
 MonoBehaviour:
   m_ObjectHideFlags: 1

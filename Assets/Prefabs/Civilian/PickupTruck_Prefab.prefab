@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 4131584754848154}
   - component: {fileID: 65035738065189874}
   - component: {fileID: 114573916136489312}
+  - component: {fileID: 114885407285750634}
   m_Layer: 0
   m_Name: PickupTruck_Prefab
   m_TagString: Untagged
@@ -812,3 +813,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
+--- !u!114 &114885407285750634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1843443736313472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99279f409a80214fa8884d796a9a0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAmount: 0.9
+  jumpHeight: 0.4
+  timeToTop: 0.4
+  fastResetTime: 0.2
+  fullResetTime: 0.3
+  PlayOnce: 0
+  loop: 0
+  moveTypeOnHop: 6
+  scaleTypeOnHop: 15
+  moveTypeOnSlam: 27
+  scaleTypeOnSlam: 27

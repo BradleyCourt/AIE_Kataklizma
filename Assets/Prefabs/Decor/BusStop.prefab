@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4621404998278480}
   - component: {fileID: 33002355471890366}
   - component: {fileID: 23794861189729020}
+  - component: {fileID: 114826761476381374}
   m_Layer: 0
   m_Name: BusStop
   m_TagString: Untagged
@@ -80,3 +81,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434465853004478}
   m_Mesh: {fileID: 4300000, guid: 8451212721cd9a74580c28f304ca1c3e, type: 3}
+--- !u!114 &114826761476381374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1434465853004478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99279f409a80214fa8884d796a9a0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAmount: 0.9
+  jumpHeight: 0.4
+  timeToTop: 0.4
+  fastResetTime: 0.2
+  fullResetTime: 0.3
+  PlayOnce: 0
+  loop: 0
+  moveTypeOnHop: 6
+  scaleTypeOnHop: 15
+  moveTypeOnSlam: 27
+  scaleTypeOnSlam: 27

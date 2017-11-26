@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4686657814028148}
   - component: {fileID: 65475430612675410}
   - component: {fileID: 114574178188599024}
+  - component: {fileID: 114771335916027540}
   m_Layer: 0
   m_Name: PoliceCar_Prefab
   m_TagString: Untagged
@@ -153,3 +154,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
+--- !u!114 &114771335916027540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1607823942346878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99279f409a80214fa8884d796a9a0e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAmount: 0.9
+  jumpHeight: 0.4
+  timeToTop: 0.4
+  fastResetTime: 0.2
+  fullResetTime: 0.3
+  PlayOnce: 0
+  loop: 0
+  moveTypeOnHop: 6
+  scaleTypeOnHop: 15
+  moveTypeOnSlam: 27
+  scaleTypeOnSlam: 27
