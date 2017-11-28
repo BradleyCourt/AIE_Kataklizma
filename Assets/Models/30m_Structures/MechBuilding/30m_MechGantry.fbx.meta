@@ -1,17 +1,26 @@
 fileFormatVersion: 2
-guid: 8868f642e900b704890a55e5e07851ed
-timeCreated: 1501119221
+guid: a0dc2278168f4d440a4a1a9be44a1c31
+timeCreated: 1511836840
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Road_Inter
-    100002: //RootNode
-    400000: Road_Inter
-    400002: //RootNode
-    2300000: Road_Inter
-    3300000: Road_Inter
-    4300000: Road_Inter
+    100000: //RootNode
+    100002: Gantry
+    100004: Mech
+    100006: transform2
+    100008: transform3
+    400000: //RootNode
+    400002: Gantry
+    400004: Mech
+    400006: transform2
+    400008: transform3
+    2300000: Gantry
+    2300002: Mech
+    3300000: Gantry
+    3300002: Mech
+    4300000: Mech
+    4300002: Gantry
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,13 +48,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.05
+    globalScale: 10
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -61,7 +70,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

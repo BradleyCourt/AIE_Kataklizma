@@ -1,17 +1,37 @@
 fileFormatVersion: 2
-guid: d0e1ef90a1f08684998f0726bff3633e
-timeCreated: 1501119221
+guid: cde6544567fe972448d04d21706fd7da
+timeCreated: 1511837370
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Road_T
-    100002: //RootNode
-    400000: Road_T
-    400002: //RootNode
-    2300000: Road_T
-    3300000: Road_T
-    4300000: Road_T
+    100000: Barrel
+    100002: Body
+    100004: MG
+    100006: Rack
+    100008: //RootNode
+    100010: Turret
+    400000: Barrel
+    400002: Body
+    400004: MG
+    400006: Rack
+    400008: //RootNode
+    400010: Turret
+    2300000: Barrel
+    2300002: Body
+    2300004: MG
+    2300006: Rack
+    2300008: Turret
+    3300000: Barrel
+    3300002: Body
+    3300004: MG
+    3300006: Rack
+    3300008: Turret
+    4300000: Body
+    4300002: Turret
+    4300004: MG
+    4300006: Rack
+    4300008: Barrel
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,13 +59,13 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.05
+    globalScale: 5
     meshCompression: 0
     addColliders: 0
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -61,7 +81,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

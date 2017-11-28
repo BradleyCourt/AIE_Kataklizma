@@ -36,10 +36,10 @@ public class CharacterFootfall : MonoBehaviour {
             var go = Instantiate(Dustcloud, origin.position, origin.rotation);
             Destroy(go, DustcloudTTL);
         }
-        Level = Player.GetComponent<EntityAttributes>()[ValueType.CharacterLevel];
+        //Level = Player.GetComponent<EntityAttributes>()[ValueType.CharacterLevel];
         if(Level >= 3)
         {
-            Bounce();
+            //Bounce();
         }
         
 
