@@ -10,7 +10,13 @@ namespace MapGen
 
     public class CinematicMapMaker : MonoBehaviour
     {
+        public LineRenderer GodRay;
+        const float GodRayHeight = 500;
+
+        [Space]
         public Scriptables.MapTileCollection SourceTiles;
+
+        
 
         public Vector2 Size = new Vector2(400,400);
 
@@ -27,6 +33,12 @@ namespace MapGen
         protected Transform Structures;
         protected Transform Roads;
         protected Transform Roadblocks;
+
+        [Header("Animate")]
+        public bool AligningPresets = true;
+        public bool LayoutRoads = true;
+        public bool InstantiateRoads = true;
+        public bool GenerateBuildings = true;
 
         protected const float TileWidth = 5;
         protected const float TileHeight = 5;
@@ -57,6 +69,16 @@ namespace MapGen
         private bool CanPlaceRoad(int ix, int iy, int crossChance) {
             return (TileMap[ix, iy] == null && (RoadMap[ix, iy] == false || UnityEngine.Random.Range(0, 100) < crossChance));
         }
+
+        private void ShowGodray(Vector3 origin, int tileSize) {
+            if (GodRay) {
+                GodRay.enabled = true;
+                var centreOffset = new Vector3(0.5f, 0, 0.5f) * tileSize;
+                GodRay.SetPositions(new Vector3[] { origin + centreOffset, origin + centreOffset + new Vector3(0, GodRayHeight, 0) });
+                GodRay.startWidth = tileSize / 2.0f;
+                GodRay.endWidth = 0;
+            }
+        }
         #endregion
 
         IEnumerator DiscoverStructures()
@@ -70,10 +92,16 @@ namespace MapGen
                 // snap origin to grid
                 int[] indices = WorldToIndex(pos);
 
+                var worldPosition = IndexToWorld(indices[0], indices[1]);
+
+                ShowGodray(worldPosition, (int)preset.Size * 5);
+
                 // snap orientation to grid
                 //preset.transform.position = IndexToWorld(indices[0], indices[1]);
-                LeanTween.move(preset.gameObject, IndexToWorld(indices[0], indices[1]), AnimTime * 5).setEase(LeanTweenType.easeInOutBounce);
-                yield return new WaitForSeconds(AnimTime * 5);
+                LeanTween.move(preset.gameObject, worldPosition, AnimTime * 5).setEase(LeanTweenType.easeInOutBounce);
+
+                if (AligningPresets)
+                    yield return new WaitForSeconds(AnimTime * 5);
                 
 
                 
@@ -81,7 +109,9 @@ namespace MapGen
                 // snap rotation to a 90 degrees value, assuming all buildings are children of the grid
                 //preset.transform.localEulerAngles = new Vector3(0, Mathf.Floor((int)(preset.transform.localEulerAngles.y / 90.0f)) * 90.0f, 0);
                 LeanTween.rotateLocal(preset.gameObject, new Vector3(0, Mathf.Round(preset.transform.localEulerAngles.y / 90.0f) * 90.0f, 0), AnimTime * 5).setEase(LeanTweenType.easeInOutBounce);
-                yield return new WaitForSeconds(AnimTime * 5);
+
+                if (AligningPresets)
+                    yield return new WaitForSeconds(AnimTime * 5);
 
                 Vector3 oppositeCorner = pos + (preset.transform.right + preset.transform.forward) * (int)(preset.Size) * 5;
 
@@ -104,8 +134,12 @@ namespace MapGen
                     for (var r = startY; r < endY; r++)
                         TileMap[c, r] = preset.gameObject;
 
-                
+                var disablers = preset.GetComponentsInChildren<MeshDisable>();
+                foreach (var disabler in disablers)
+                    if (disabler) disabler.enabled = true;
             }
+
+            if (GodRay) GodRay.enabled = false;
         }
 
 
@@ -115,6 +149,8 @@ namespace MapGen
             for (int c = 0; c < Columns; c++) {
                 for (int r = 0; r < Rows; r++) {
                     if (TileMap[c, r] != null) continue;
+
+                    ShowGodray(IndexToWorld(c, r), 5);
 
                     // find all the pieces that fit and store in a local list
                     var onesThatFit = new List<Scriptables.MapTileCollection.StructurePrefabs>();
@@ -187,7 +223,17 @@ namespace MapGen
                             break;
                     }
 
+                    var endScale = go.transform.localScale.x;
+                    go.transform.localScale = Vector3.zero;
+                    LeanTween.value(go, (value) => { go.transform.localScale = Vector3.one * value; }, 0, endScale, 1)
+                        .setOnComplete(() => {
+                            var disablers = go.GetComponentsInChildren<MeshDisable>();
+                            foreach (var disabler in disablers)
+                                if (disabler) disabler.enabled = true;
+                        });
+
                     go.name += " [" + c.ToString("N3") + "," + r.ToString("N3") + "]";
+
 
                     //write to mapObjects array
                     for (int i = 0; i < (int)(preset.Size); i++) {
@@ -196,7 +242,8 @@ namespace MapGen
                         }
                     }
 
-                    yield return new WaitForSeconds(AnimTime/4f);
+                    if (GenerateBuildings)
+                        yield return new WaitForSeconds(AnimTime/4f);
                 }
 
             }
@@ -261,7 +308,7 @@ namespace MapGen
                     continue; // Conform to bounds
                 }
 
-
+                IEnumerator result;
                 // move up and down* filling in road markers till we hit a road
                 int ix = indexX;
                 int iy = indexY;
@@ -269,14 +316,18 @@ namespace MapGen
                     // go up
                     while (iy < Rows && CanPlaceRoad(ix, iy, 30)) {
                         RoadMap[ix, iy] = true;
-                        yield return CreateRoadblock(ix, iy, roadblocks, cuboidZone);
+                        result = CreateRoadblock(ix, iy, roadblocks, cuboidZone);
+                        if (LayoutRoads)
+                            yield return result;
                         iy++;
                     }
                     // go back to start and go down
                     iy = indexY - 1;
                     while (iy >= 0 && CanPlaceRoad(ix, iy, 30)) {
                         RoadMap[ix, iy] = true;
-                        yield return CreateRoadblock(ix, iy, roadblocks, cuboidZone);
+                        result = CreateRoadblock(ix, iy, roadblocks, cuboidZone);
+                        if (LayoutRoads)
+                            yield return result;
                         iy--;
                     }
                 }
@@ -284,7 +335,9 @@ namespace MapGen
                     // go up
                     while (ix < Columns && CanPlaceRoad(ix, iy, 30)) {
                         RoadMap[ix, iy] = true;
-                        yield return CreateRoadblock(ix, iy, roadblocks, cuboidZone);
+                        result = CreateRoadblock(ix, iy, roadblocks, cuboidZone);
+                        if (LayoutRoads)
+                            yield return result;
                         ix++;
                     }
                     // go back to start and go down
@@ -292,17 +345,23 @@ namespace MapGen
                     while (ix >= 0 && CanPlaceRoad(ix, iy, 30)) {
 
                         RoadMap[ix, iy] = true;
-                        yield return CreateRoadblock(ix, iy, roadblocks, cuboidZone);
+                        result = CreateRoadblock(ix, iy, roadblocks, cuboidZone);
+                        if (LayoutRoads)
+                            yield return result;
                         ix--;
                     }
                 }
             }
+
+            if (GodRay) GodRay.enabled = false;
         }
 
         IEnumerator CreateRoadblock(int x, int y, GameObject collection, GameObject prefab) {
             GameObject go = Instantiate(prefab, collection.transform);
             go.transform.localPosition = IndexToWorld(x, y) + new Vector3(2.5f, 0, 2.5f);
             go.transform.localScale = new Vector3(5, 1, 5);
+
+            ShowGodray(IndexToWorld(x, y), 5);
 
             go.name += "Roadblock [" + x.ToString("N") + "," + y.ToString("N") + "]";
             yield return new WaitForSeconds(AnimTime / 10f);
@@ -392,12 +451,16 @@ namespace MapGen
                             TileMap[c, r] = go; // fills array
                         }
 
-                        yield return new WaitForSeconds(AnimTime / 20.0f);
+                        ShowGodray(IndexToWorld(c, r), 5);
+
+                        if (InstantiateRoads)
+                            yield return new WaitForSeconds(AnimTime / 20.0f);
                     }
 
                 }
             }
             if (Roadblocks != null) Destroy(Roadblocks.gameObject);
+            if (GodRay) GodRay.enabled = false;
         }
 
         IEnumerator DoWork() {
