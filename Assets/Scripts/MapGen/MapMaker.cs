@@ -179,9 +179,6 @@ namespace MapGen
                     }
 
                     go.name += " [" + c.ToString("N3") + "," + r.ToString("N3") + "]";
-                    var disablers = go.GetComponentsInChildren<MeshDisable>();
-                    foreach (var disabler in disablers)
-                        if (disabler) disabler.enabled = true;
 
                     //write to mapObjects array
                     for (int i = 0; i < (int)(preset.Size); i++) {

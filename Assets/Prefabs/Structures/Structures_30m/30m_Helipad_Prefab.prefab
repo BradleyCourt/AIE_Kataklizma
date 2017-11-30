@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 208147802648004370}
   - component: {fileID: 114536078040184038}
   - component: {fileID: 114325354046256082}
+  - component: {fileID: 114210787144358126}
   m_Layer: 0
   m_Name: 30m_Helipad_Prefab
   m_TagString: Building
@@ -178,6 +179,21 @@ MonoBehaviour:
     - Type: 13
       Base: 12
       Modifier: 0
+--- !u!114 &114210787144358126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878541635614608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 6
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3
 --- !u!114 &114308240209435428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,7 +224,7 @@ MonoBehaviour:
   Displacement: 0.3
   Speed: 0.05
   DurationOnDamage: 0.5
-  _Shake: 0
+  Shaking: 0
 --- !u!114 &114511366872456380
 MonoBehaviour:
   m_ObjectHideFlags: 1

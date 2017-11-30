@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114414202518747752}
   - component: {fileID: 114322666317977810}
   - component: {fileID: 114282186090476774}
+  - component: {fileID: 114602606067346824}
   m_Layer: 0
   m_Name: 40m_Refinary_Prefab
   m_TagString: Building
@@ -254,6 +255,21 @@ MonoBehaviour:
   MaxFallSpeed: 0.2
   TimeToLive: 5
   DustCloud: {fileID: 1245084013128276, guid: d99e84e7a067b144e8cc8f6220f2c04f, type: 2}
+--- !u!114 &114602606067346824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645457123841460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 8
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3
 --- !u!114 &114715772675499932
 MonoBehaviour:
   m_ObjectHideFlags: 1

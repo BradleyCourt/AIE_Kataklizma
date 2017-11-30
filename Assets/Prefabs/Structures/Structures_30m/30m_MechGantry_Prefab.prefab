@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4835233329630738}
   - component: {fileID: 65502410422774480}
+  - component: {fileID: 114377701448784272}
   m_Layer: 0
   m_Name: 30m_MechGantry_Prefab
   m_TagString: Untagged
@@ -279,3 +280,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 28.512955, y: 20.50299, z: 28.66247}
   m_Center: {x: 14.990379, y: 9.751495, z: 15.018048}
+--- !u!114 &114377701448784272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1021916091556838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 6
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3

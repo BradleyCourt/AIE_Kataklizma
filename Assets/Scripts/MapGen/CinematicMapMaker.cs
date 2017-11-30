@@ -223,15 +223,6 @@ namespace MapGen
                             break;
                     }
 
-                    var endScale = go.transform.localScale.x;
-                    go.transform.localScale = Vector3.zero;
-                    LeanTween.value(go, (value) => { go.transform.localScale = Vector3.one * value; }, 0, endScale, 1)
-                        .setOnComplete(() => {
-                            var disablers = go.GetComponentsInChildren<MeshDisable>();
-                            foreach (var disabler in disablers)
-                                if (disabler) disabler.enabled = true;
-                        });
-
                     go.name += " [" + c.ToString("N3") + "," + r.ToString("N3") + "]";
 
 

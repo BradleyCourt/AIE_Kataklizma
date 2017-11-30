@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 65647474878326886}
   - component: {fileID: 114883473646879132}
   - component: {fileID: 114229713761153638}
+  - component: {fileID: 114844068634040654}
   m_Layer: 0
   m_Name: 20M_Mansion_Prefab
   m_TagString: Building
@@ -158,7 +159,7 @@ MonoBehaviour:
   Displacement: 0.4
   Speed: 0.05
   DurationOnDamage: 0.5
-  _Shake: 0
+  Shaking: 0
 --- !u!114 &114762966677895580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,6 +195,21 @@ MonoBehaviour:
     - Type: 13
       Base: 10
       Modifier: 0
+--- !u!114 &114844068634040654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1115205280795292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 4
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3
 --- !u!114 &114883473646879132
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 205548958879915324}
   - component: {fileID: 114511768453032568}
   - component: {fileID: 114386761319852286}
+  - component: {fileID: 114859831155947218}
   m_Layer: 10
   m_Name: 10m_ModernHouse_Prefab
   m_TagString: Building
@@ -232,6 +233,21 @@ MonoBehaviour:
   MustSpawn: []
   LotterySpawnCount: 0
   LotterySpawn: []
+--- !u!114 &114859831155947218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1872029372634516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 2
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3
 --- !u!205 &205548958879915324
 LODGroup:
   m_ObjectHideFlags: 1

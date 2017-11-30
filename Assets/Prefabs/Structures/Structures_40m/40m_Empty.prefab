@@ -39,6 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4963808319559038}
   - component: {fileID: 114718481222835496}
+  - component: {fileID: 114451906157673078}
   m_Layer: 0
   m_Name: 40m_Empty
   m_TagString: Building
@@ -86,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 30cefd0a388914c4a849a4a1fa76917c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,6 +136,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 498ec62373e5daf4282d10e0658a9caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114451906157673078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572986258081380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 0
+  UnshrinkOnSpawn: 0
+  UnshrinkTimeScales: 1
+  UnshrinkTime: 1
 --- !u!114 &114718481222835496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,3 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 8
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3
