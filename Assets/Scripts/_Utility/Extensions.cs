@@ -63,4 +63,8 @@ public static partial class Extensions {
             lhs.GetColumn(1).magnitude,
             lhs.GetColumn(2).magnitude);
     }
+
+    public static float WorldSize( this MapTileType lhs) {
+        return 5 * (int)lhs;
+    }
 }

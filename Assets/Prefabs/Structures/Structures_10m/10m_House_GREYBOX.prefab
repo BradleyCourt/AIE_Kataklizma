@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114314267113929254}
   - component: {fileID: 65610067237807892}
   - component: {fileID: 114189118283554446}
+  - component: {fileID: 114560527569398988}
   m_Layer: 10
   m_Name: 10m_House_GREYBOX
   m_TagString: Building
@@ -136,9 +137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e707306880c19464cbfb6698bb732e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectableRadius: 2
-  CollectablePrefab: {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d,
-    type: 2}
+  OriginOffset: {x: 2.5, y: 0, z: 2.5}
+  OptionalParent: {fileID: 0}
+  SpawnRadius: 2
+  MustSpawn: []
+  LotterySpawnCount: 0
+  LotterySpawn: []
 --- !u!114 &114240645426652042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,9 +170,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnhideRubble: {fileID: 0}
-  SpawnRubble: {fileID: 0}
   UseSceneGravity: 1
   LocalGravity: 0.05
   MaxFallSpeed: 1
   TimeToLive: 1
+  DustCloud: {fileID: 0}
+--- !u!114 &114560527569398988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1846581146321834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 2
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3

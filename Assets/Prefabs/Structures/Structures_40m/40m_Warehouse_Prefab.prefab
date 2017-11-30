@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 65862832872990110}
   - component: {fileID: 114510677412891744}
   - component: {fileID: 114911841287625814}
+  - component: {fileID: 114556477251840792}
   m_Layer: 0
   m_Name: 40m_Warehouse_Prefab
   m_TagString: Building
@@ -178,6 +179,21 @@ MonoBehaviour:
   MustSpawn: []
   LotterySpawnCount: 0
   LotterySpawn: []
+--- !u!114 &114556477251840792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1997265242942306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 8
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3
 --- !u!114 &114911841287625814
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,4 +208,4 @@ MonoBehaviour:
   Displacement: 1
   Speed: 0.05
   DurationOnDamage: 0.5
-  _Shake: 0
+  Shaking: 0

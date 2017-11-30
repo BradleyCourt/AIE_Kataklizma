@@ -94,7 +94,9 @@ namespace MapGen
                     for (var r = startY; r < endY; r++)
                         TileMap[c, r] = preset.gameObject;
 
-                
+                var disablers = preset.GetComponentsInChildren<MeshDisable>();
+                foreach (var disabler in disablers)
+                    if (disabler) disabler.enabled = true;
             }
         }
 

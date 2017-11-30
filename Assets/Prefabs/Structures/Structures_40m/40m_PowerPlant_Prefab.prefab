@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 65724028087167204}
   - component: {fileID: 114636680878298300}
   - component: {fileID: 114528989449472910}
+  - component: {fileID: 114673207248925676}
   m_Layer: 0
   m_Name: 40m_PowerPlant_Prefab
   m_TagString: Building
@@ -302,6 +303,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 1786709654690586, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
+--- !u!114 &114673207248925676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226661465270384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 8
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3
 --- !u!114 &114861473638205118
 MonoBehaviour:
   m_ObjectHideFlags: 1

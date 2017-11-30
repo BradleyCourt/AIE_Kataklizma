@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 114623352909526844}
   - component: {fileID: 114591922613447386}
   - component: {fileID: 114782152229921904}
+  - component: {fileID: 114073692423392766}
   m_Layer: 0
   m_Name: 30m_Fuel_Station_Prefab
   m_TagString: Building
@@ -301,6 +302,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114073692423392766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671484449186382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 0
+  UnshrinkOnSpawn: 0
+  UnshrinkTimeScales: 1
+  UnshrinkTime: 1
 --- !u!114 &114111019023133930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -512,6 +528,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 6
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3
 --- !u!222 &222564947110298782
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 205389228018400486}
   - component: {fileID: 114633203791222614}
   - component: {fileID: 114086289667754958}
+  - component: {fileID: 114862484732253732}
   m_Layer: 10
   m_Name: 10m_House_Prefab
   m_TagString: Building
@@ -141,7 +142,7 @@ MonoBehaviour:
   Displacement: 0.3
   Speed: 0.05
   DurationOnDamage: 0.5
-  _Shake: 0
+  Shaking: 0
 --- !u!114 &114220919119185266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,6 +178,21 @@ MonoBehaviour:
   LotterySpawn:
   - {fileID: 1627396029037228, guid: 38aefa89e731c204fb45169150e2410f, type: 2}
   - {fileID: 0}
+--- !u!114 &114862484732253732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452910394916176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e318553315969a74bbd8641b57cffd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Size: 2
+  UnshrinkOnSpawn: 1
+  UnshrinkTimeScales: 0
+  UnshrinkTime: 3
 --- !u!114 &114888015499315430
 MonoBehaviour:
   m_ObjectHideFlags: 1
