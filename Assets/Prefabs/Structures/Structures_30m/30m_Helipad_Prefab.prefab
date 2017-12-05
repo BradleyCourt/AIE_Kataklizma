@@ -60,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1878541635614608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 93.42618, y: 0, z: 38.015045}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4943333087574472}
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 6
-  UnshrinkOnSpawn: 1
+  UnshrinkOnSpawn: 0
   UnshrinkTimeScales: 0
   UnshrinkTime: 3
 --- !u!114 &114308240209435428
@@ -208,7 +208,7 @@ MonoBehaviour:
   UseSceneGravity: 0
   LocalGravity: 0.05
   MaxFallSpeed: 0.2
-  TimeToLive: 5
+  TimeToLive: 4
   DustCloud: {fileID: 1046218421909302, guid: 6bd89c9850a2af945979cae57c94a45c, type: 2}
 --- !u!114 &114325354046256082
 MonoBehaviour:

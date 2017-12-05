@@ -174,7 +174,7 @@ MonoBehaviour:
   UseSceneGravity: 0
   LocalGravity: 0.05
   MaxFallSpeed: 0.2
-  TimeToLive: 5
+  TimeToLive: 2.5
   DustCloud: {fileID: 1814046860006698, guid: e27c63f9277a2834cb682626aac7b637, type: 2}
 --- !u!114 &114788962354120366
 MonoBehaviour:
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 4
-  UnshrinkOnSpawn: 1
+  UnshrinkOnSpawn: 0
   UnshrinkTimeScales: 0
   UnshrinkTime: 3
 --- !u!114 &114883473646879132
@@ -227,5 +227,5 @@ MonoBehaviour:
   MustSpawn: []
   LotterySpawnCount: 1
   LotterySpawn:
-  - {fileID: 1814046860006698, guid: e27c63f9277a2834cb682626aac7b637, type: 2}
+  - {fileID: 1627396029037228, guid: 7cba28b34a4712b4698c5fb17d52d5cf, type: 2}
   - {fileID: 0}

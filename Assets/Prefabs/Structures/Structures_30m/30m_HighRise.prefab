@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 6
-  UnshrinkOnSpawn: 1
+  UnshrinkOnSpawn: 0
   UnshrinkTimeScales: 0
   UnshrinkTime: 3
 --- !u!114 &114544493336769712
@@ -219,9 +219,9 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_Extents: {x: 13.666145, y: 27.539696, z: 14.57153}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 14.78337, y: 27.0397, z: 15.3755}
   m_TimeToStationary: 0.5

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 0.7
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.32050174, g: 0.3872779, b: 0.5588235, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: f15c336556dd74f40aaca655f7767970, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1236,6 +1236,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82852155400815422, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.174
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114140542011313768, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
     - {fileID: 114878993148437766, guid: cb85d3fb5f2cb0a4d874c7bcf4c64801, type: 2}
@@ -2340,7 +2345,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &319855782 stripped
 Transform:
@@ -11561,7 +11566,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4990100986107190, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 114734996111215374, guid: 0296ebaf590e25642b4df64bb31de86d,
         type: 2}
@@ -14580,7 +14585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!120 &1833482961
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -16513,6 +16518,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1671484449186382, guid: 7fbb4e4badf89a54887805b6b881bfca, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7fbb4e4badf89a54887805b6b881bfca, type: 2}
   m_IsPrefabParent: 0
@@ -16599,7 +16608,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4990100986107190, guid: 0296ebaf590e25642b4df64bb31de86d, type: 2}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 114734996111215374, guid: 0296ebaf590e25642b4df64bb31de86d,
         type: 2}

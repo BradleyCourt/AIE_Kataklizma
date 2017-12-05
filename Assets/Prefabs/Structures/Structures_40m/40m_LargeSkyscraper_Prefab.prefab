@@ -21,6 +21,11 @@ GameObject:
   - component: {fileID: 4416821631300462}
   - component: {fileID: 114581951169173194}
   - component: {fileID: 114403783523588206}
+  - component: {fileID: 208794076800814376}
+  - component: {fileID: 65731822032673166}
+  - component: {fileID: 114904606793185096}
+  - component: {fileID: 114129596235641770}
+  - component: {fileID: 114808526783708004}
   m_Layer: 0
   m_Name: 40m_LargeSkyscraper_Prefab
   m_TagString: Building
@@ -53,8 +58,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352831568567346}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.5}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 4416821631300462}
   m_RootOrder: 0
@@ -112,6 +117,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352831568567346}
   m_Mesh: {fileID: 4300000, guid: b991bf89180270345ba99733d43bc174, type: 3}
+--- !u!65 &65731822032673166
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1128340581038232}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 34.517597, y: 120.46994, z: 27.067577}
+  m_Center: {x: 19.975115, y: 59.73497, z: 18.46964}
 --- !u!95 &95349125008001546
 Animator:
   serializedVersion: 3
@@ -129,6 +146,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114129596235641770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1128340581038232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965823dca66c324383127bbddcb12e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Attributes:
+    _Values:
+    - Type: 1
+      Base: 40
+      Modifier: 0
+    - Type: 13
+      Base: 15
+      Modifier: 0
 --- !u!114 &114403783523588206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,6 +192,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 8
-  UnshrinkOnSpawn: 1
+  UnshrinkOnSpawn: 0
   UnshrinkTimeScales: 0
   UnshrinkTime: 3
+--- !u!114 &114808526783708004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1128340581038232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f21a5b2aaaa7f42b9c8a237713804f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Displacement: 1
+  Speed: 0.05
+  DurationOnDamage: 0.5
+  Shaking: 0
+--- !u!114 &114904606793185096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1128340581038232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41bd817d5bca214439896b614d87ae41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseSceneGravity: 0
+  LocalGravity: 0.05
+  MaxFallSpeed: 0.3
+  TimeToLive: 8
+  DustCloud: {fileID: 1245084013128276, guid: d99e84e7a067b144e8cc8f6220f2c04f, type: 2}
+--- !u!208 &208794076800814376
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1128340581038232}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 17.2588, y: 60.23495, z: 13.53379}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 19.97511, y: 59.73497, z: 18.46964}
+  m_TimeToStationary: 0.5

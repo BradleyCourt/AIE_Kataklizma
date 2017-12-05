@@ -1614,7 +1614,7 @@ MonoBehaviour:
   LocalGravity: 0.05
   MaxFallSpeed: 0.2
   TimeToLive: 3
-  DustCloud: {fileID: 0}
+  DustCloud: {fileID: 1046218421909302, guid: 6bd89c9850a2af945979cae57c94a45c, type: 2}
 --- !u!114 &114320913368463522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1661,6 +1661,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 6
-  UnshrinkOnSpawn: 1
+  UnshrinkOnSpawn: 0
   UnshrinkTimeScales: 0
   UnshrinkTime: 3

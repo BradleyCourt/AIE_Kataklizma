@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 1
-  UnshrinkOnSpawn: 1
+  UnshrinkOnSpawn: 0
   UnshrinkTimeScales: 0
   UnshrinkTime: 3
 --- !u!114 &114212709720062080
@@ -195,7 +195,7 @@ MonoBehaviour:
   UseSceneGravity: 0
   LocalGravity: 0.05
   MaxFallSpeed: 0.1
-  TimeToLive: 3
+  TimeToLive: 1
   DustCloud: {fileID: 1670443025448720, guid: 1bc14f24e9b870441b1b5d2185c5c43d, type: 2}
 --- !u!114 &114509913711609150
 MonoBehaviour:
